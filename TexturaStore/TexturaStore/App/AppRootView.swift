@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct AppRootView: View {
-    var body: some View {
-        Text("Textura Store")
+    
+    @StateObject private var coordinator: AppCoordinator
+    
+    init() {
+        let auth = AuthCoordinator()
+        let main = MainTabCoordinator()
+        let app = AppCoordinator(authCoordinator: auth, mainTabCoordinator: main)
+        _coordinator = StateObject(wrappedValue: app)
     }
-}
-
-#Preview {
-    AppRootView()
+    
+    var body: some View {
+        coordinator.rootView
+            .onAppear {
+                coordinator.start()
+            }
+    }
 }
