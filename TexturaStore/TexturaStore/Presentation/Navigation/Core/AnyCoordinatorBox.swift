@@ -1,0 +1,29 @@
+//
+//  AnyCoordinatorBox.swift
+//  TexturaStore
+//
+//  Created by Matvei Khlestov on 31.01.2026.
+//
+
+import Foundation
+
+@MainActor
+final class AnyCoordinatorBox<C: Coordinator>: CoordinatorBox {
+    let id: UUID = UUID()
+    let coordinator: C
+
+    init(_ coordinator: C) {
+        self.coordinator = coordinator
+    }
+}
+
+@MainActor
+extension Coordinator {
+    func storeChild<C: Coordinator>(_ coordinator: C) {
+        childCoordinators.append(AnyCoordinatorBox(coordinator))
+    }
+
+    func removeAllChildren() {
+        childCoordinators.removeAll()
+    }
+}

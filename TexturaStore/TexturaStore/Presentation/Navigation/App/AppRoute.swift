@@ -1,8 +1,13 @@
 //
-//  26.swift
+//  AppRoute.swift
 //  TexturaStore
 //
 //  Created by Matvei Khlestov on 31.01.2026.
 //
 
 import Foundation
+
+enum AppRoute: Equatable {
+    case auth
+    case main
+}
