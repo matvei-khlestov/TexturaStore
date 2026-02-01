@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A021D33C2F2E678A00AF94A1 /* 1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33B2F2E678A00AF94A1 /* 1.swift */; };
 		A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33D2F2E679C00AF94A1 /* 2.swift */; };
 		A021D3402F2E67A800AF94A1 /* 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33F2F2E67A800AF94A1 /* 3.swift */; };
 		A021D3422F2E67B500AF94A1 /* 4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3412F2E67B500AF94A1 /* 4.swift */; };
@@ -50,6 +49,21 @@
 		A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2510C2F2E886A00C6B040 /* Color+DesignSystem.swift */; };
 		A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2510E2F2E88A800C6B040 /* Font+DesignSystem.swift */; };
 		A0D251112F2E88D200C6B040 /* CGFloat+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251102F2E88D200C6B040 /* CGFloat+DesignSystem.swift */; };
+		A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251292F2F0A4C00C6B040 /* AuthCoordinating.swift */; };
+		A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2512B2F2F0A6D00C6B040 /* MainTabCoordinating.swift */; };
+		A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2512D2F2F0BA100C6B040 /* AppCoordinating.swift */; };
+		A0D251392F2F794400C6B040 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = A0D251382F2F794400C6B040 /* Factory */; };
+		A0D2513B2F2F794400C6B040 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = A0D2513A2F2F794400C6B040 /* FactoryKit */; };
+		A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2513D2F2F79AE00C6B040 /* Container+Coordinators.swift */; };
+		A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2513F2F2F7E5B00C6B040 /* Container+Factories.swift */; };
+		A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251422F2FA37300C6B040 /* CatalogCoordinating.swift */; };
+		A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251442F2FA39A00C6B040 /* FavoritesCoordinating.swift */; };
+		A0D251472F2FA3B600C6B040 /* CartCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251462F2FA3B600C6B040 /* CartCoordinating.swift */; };
+		A0D251492F2FA3DC00C6B040 /* ProfileCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251482F2FA3DC00C6B040 /* ProfileCoordinating.swift */; };
+		A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2514A2F2FA40E00C6B040 /* CatalogCoordinator.swift */; };
+		A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2514D2F2FA45900C6B040 /* FavoritesCoordinator.swift */; };
+		A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251502F2FA4A600C6B040 /* CartCoordinator.swift */; };
+		A0D251542F2FA50000C6B040 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251532F2FA50000C6B040 /* ProfileCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +84,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A021D33B2F2E678A00AF94A1 /* 1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1.swift; sourceTree = "<group>"; };
 		A021D33D2F2E679C00AF94A1 /* 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2.swift; sourceTree = "<group>"; };
 		A021D33F2F2E67A800AF94A1 /* 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3.swift; sourceTree = "<group>"; };
 		A021D3412F2E67B500AF94A1 /* 4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 4.swift; sourceTree = "<group>"; };
@@ -116,6 +129,19 @@
 		A0D2510C2F2E886A00C6B040 /* Color+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+DesignSystem.swift"; sourceTree = "<group>"; };
 		A0D2510E2F2E88A800C6B040 /* Font+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+DesignSystem.swift"; sourceTree = "<group>"; };
 		A0D251102F2E88D200C6B040 /* CGFloat+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+DesignSystem.swift"; sourceTree = "<group>"; };
+		A0D251292F2F0A4C00C6B040 /* AuthCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinating.swift; sourceTree = "<group>"; };
+		A0D2512B2F2F0A6D00C6B040 /* MainTabCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinating.swift; sourceTree = "<group>"; };
+		A0D2512D2F2F0BA100C6B040 /* AppCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinating.swift; sourceTree = "<group>"; };
+		A0D2513D2F2F79AE00C6B040 /* Container+Coordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Coordinators.swift"; sourceTree = "<group>"; };
+		A0D2513F2F2F7E5B00C6B040 /* Container+Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Factories.swift"; sourceTree = "<group>"; };
+		A0D251422F2FA37300C6B040 /* CatalogCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinating.swift; sourceTree = "<group>"; };
+		A0D251442F2FA39A00C6B040 /* FavoritesCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinating.swift; sourceTree = "<group>"; };
+		A0D251462F2FA3B600C6B040 /* CartCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinating.swift; sourceTree = "<group>"; };
+		A0D251482F2FA3DC00C6B040 /* ProfileCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinating.swift; sourceTree = "<group>"; };
+		A0D2514A2F2FA40E00C6B040 /* CatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinator.swift; sourceTree = "<group>"; };
+		A0D2514D2F2FA45900C6B040 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		A0D251502F2FA4A600C6B040 /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
+		A0D251532F2FA50000C6B040 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +149,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D2513B2F2F794400C6B040 /* FactoryKit in Frameworks */,
+				A0D251392F2F794400C6B040 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +274,7 @@
 		A0572AD42F2E5A3600B00C0F /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				A021D33B2F2E678A00AF94A1 /* 1.swift */,
+				A0D2513C2F2F796700C6B040 /* Factory */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -490,6 +518,10 @@
 				A0D251022F2E803F00C6B040 /* App */,
 				A0D251032F2E805600C6B040 /* MainTab */,
 				A0D251042F2E807300C6B040 /* Auth */,
+				A0D251412F2FA34500C6B040 /* Catalog */,
+				A0D2514C2F2FA43300C6B040 /* Favorites */,
+				A0D2514F2F2FA47D00C6B040 /* Cart */,
+				A0D251522F2FA4DF00C6B040 /* Profile */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -516,6 +548,13 @@
 			children = (
 				A0D250E52F2E7B1200C6B040 /* Coordinator.swift */,
 				A0D250E72F2E7B4000C6B040 /* CoordinatorBox.swift */,
+				A0D2512D2F2F0BA100C6B040 /* AppCoordinating.swift */,
+				A0D2512B2F2F0A6D00C6B040 /* MainTabCoordinating.swift */,
+				A0D251292F2F0A4C00C6B040 /* AuthCoordinating.swift */,
+				A0D251422F2FA37300C6B040 /* CatalogCoordinating.swift */,
+				A0D251442F2FA39A00C6B040 /* FavoritesCoordinating.swift */,
+				A0D251462F2FA3B600C6B040 /* CartCoordinating.swift */,
+				A0D251482F2FA3DC00C6B040 /* ProfileCoordinating.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -579,6 +618,47 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		A0D2513C2F2F796700C6B040 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				A0D2513D2F2F79AE00C6B040 /* Container+Coordinators.swift */,
+				A0D2513F2F2F7E5B00C6B040 /* Container+Factories.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		A0D251412F2FA34500C6B040 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				A0D2514A2F2FA40E00C6B040 /* CatalogCoordinator.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		A0D2514C2F2FA43300C6B040 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				A0D2514D2F2FA45900C6B040 /* FavoritesCoordinator.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		A0D2514F2F2FA47D00C6B040 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				A0D251502F2FA4A600C6B040 /* CartCoordinator.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		A0D251522F2FA4DF00C6B040 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A0D251532F2FA50000C6B040 /* ProfileCoordinator.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,6 +676,8 @@
 			);
 			name = TexturaStore;
 			packageProductDependencies = (
+				A0D251382F2F794400C6B040 /* Factory */,
+				A0D2513A2F2F794400C6B040 /* FactoryKit */,
 			);
 			productName = TexturaStore;
 			productReference = A0572A8C2F2E52B100B00C0F /* TexturaStore.app */;
@@ -673,6 +755,9 @@
 			);
 			mainGroup = A0572A832F2E52B100B00C0F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A0D251372F2F794400C6B040 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A0572A8D2F2E52B100B00C0F /* Products */;
 			projectDirPath = "";
@@ -719,12 +804,16 @@
 				A021D3742F2E694500AF94A1 /* 25.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
 				A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */,
+				A0D251542F2FA50000C6B040 /* ProfileCoordinator.swift in Sources */,
+				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
+				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
+				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
 				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
-				A021D33C2F2E678A00AF94A1 /* 1.swift in Sources */,
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
 				A021D34E2F2E680300AF94A1 /* 10.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
+				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
 				A021D3662F2E68DD00AF94A1 /* 19.swift in Sources */,
 				A0D250FD2F2E7D1F00C6B040 /* AuthRootView.swift in Sources */,
 				A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */,
@@ -737,21 +826,29 @@
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
 				A021D3522F2E682300AF94A1 /* 11.swift in Sources */,
 				A021D3622F2E68C500AF94A1 /* 17.swift in Sources */,
+				A0D251492F2FA3DC00C6B040 /* ProfileCoordinating.swift in Sources */,
 				A0D251112F2E88D200C6B040 /* CGFloat+DesignSystem.swift in Sources */,
+				A0D251472F2FA3B600C6B040 /* CartCoordinating.swift in Sources */,
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
 				A021D34C2F2E67EE00AF94A1 /* 9.swift in Sources */,
+				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
+				A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
+				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
+				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
 				A0D250EE2F2E7BCC00C6B040 /* AppNavigationContainer.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
 				A021D3582F2E685A00AF94A1 /* 13.swift in Sources */,
 				A021D3422F2E67B500AF94A1 /* 4.swift in Sources */,
+				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
+				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
 				A021D3402F2E67A800AF94A1 /* 3.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 			);
@@ -1109,6 +1206,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A0D251372F2F794400C6B040 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory?ysclid=mk26d1ie5n494880386";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A0D251382F2F794400C6B040 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0D251372F2F794400C6B040 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		A0D2513A2F2F794400C6B040 /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A0D251372F2F794400C6B040 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A0572ABE2F2E541800B00C0F /* TexturaStore.xcdatamodeld */ = {

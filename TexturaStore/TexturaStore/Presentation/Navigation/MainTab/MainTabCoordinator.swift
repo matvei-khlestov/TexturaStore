@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class MainTabCoordinator: Coordinator {
+final class MainTabCoordinator: MainTabCoordinating {
 
     // MARK: - Coordinator
 
@@ -23,10 +23,44 @@ final class MainTabCoordinator: Coordinator {
 
     var onLogout: (() -> Void)?
 
+    // MARK: - Dependencies
+
+    private let catalogCoordinator: any CatalogCoordinating
+    private let favoritesCoordinator: any FavoritesCoordinating
+    private let cartCoordinator: any CartCoordinating
+    private let profileCoordinator: any ProfileCoordinating
+
+    // MARK: - Init
+
+    init(
+        catalogCoordinator: any CatalogCoordinating,
+        favoritesCoordinator: any FavoritesCoordinating,
+        cartCoordinator: any CartCoordinating,
+        profileCoordinator: any ProfileCoordinating
+    ) {
+        self.catalogCoordinator = catalogCoordinator
+        self.favoritesCoordinator = favoritesCoordinator
+        self.cartCoordinator = cartCoordinator
+        self.profileCoordinator = profileCoordinator
+
+        storeChild(catalogCoordinator)
+        storeChild(favoritesCoordinator)
+        storeChild(cartCoordinator)
+        storeChild(profileCoordinator)
+
+        self.profileCoordinator.onLogout = { [weak self] in
+            self?.onLogout?()
+        }
+    }
+
     // MARK: - Coordinator Lifecycle
 
     func start() {
         selectedTab = .catalog
+        catalogCoordinator.start()
+        favoritesCoordinator.start()
+        cartCoordinator.start()
+        profileCoordinator.start()
     }
 
     func finish() {
@@ -36,41 +70,28 @@ final class MainTabCoordinator: Coordinator {
 
     // MARK: - Root View
 
-    var rootView: some View {
-        TabView(selection: selectionBinding) {
+    var rootView: AnyView {
+        AnyView(
+            TabView(selection: selectionBinding) {
 
-            AppNavigationContainer {
-                Text("Каталог")
-                    .navigationTitle("Каталог")
-            }
-            .tabItem { Label("Каталог", systemImage: "square.grid.2x2") }
-            .tag(MainTab.catalog)
+                catalogCoordinator.rootView
+                    .tabItem { Label("Каталог", systemImage: "square.grid.2x2") }
+                    .tag(MainTab.catalog)
 
-            AppNavigationContainer {
-                Text("Избранное")
-                    .navigationTitle("Избранное")
-            }
-            .tabItem { Label("Избранное", systemImage: "heart") }
-            .tag(MainTab.favorites)
+                favoritesCoordinator.rootView
+                    .tabItem { Label("Избранное", systemImage: "heart") }
+                    .tag(MainTab.favorites)
 
-            AppNavigationContainer {
-                Text("Корзина")
-                    .navigationTitle("Корзина")
-            }
-            .tabItem { Label("Корзина", systemImage: "cart") }
-            .tag(MainTab.cart)
+                cartCoordinator.rootView
+                    .tabItem { Label("Корзина", systemImage: "cart") }
+                    .tag(MainTab.cart)
 
-            AppNavigationContainer {
-                ProfileRootView(
-                    onLogout: { [weak self] in
-                        self?.onLogout?()
-                    }
-                )
+                profileCoordinator.rootView
+                    .tabItem { Label("Профиль", systemImage: "person") }
+                    .tag(MainTab.profile)
             }
-            .tabItem { Label("Профиль", systemImage: "person") }
-            .tag(MainTab.profile)
-        }
-        .tint(.brandPrimary)
+            .tint(.brandPrimary)
+        )
     }
 
     private var selectionBinding: Binding<MainTab> {

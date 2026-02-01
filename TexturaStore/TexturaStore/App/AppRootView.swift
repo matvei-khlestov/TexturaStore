@@ -7,20 +7,26 @@
 
 import SwiftUI
 
-struct AppRootView: View {
+struct AppRootView<C: AppCoordinating>: View {
     
-    @StateObject private var coordinator: AppCoordinator
+    // MARK: - State
     
-    init() {
-        let auth = AuthCoordinator()
-        let main = MainTabCoordinator()
-        let app = AppCoordinator(authCoordinator: auth, mainTabCoordinator: main)
-        _coordinator = StateObject(wrappedValue: app)
+    @StateObject private var coordinator: C
+    @State private var didStart: Bool = false
+    
+    // MARK: - Init
+    
+    init(coordinator: @autoclosure @escaping () -> C) {
+        _coordinator = StateObject(wrappedValue: coordinator())
     }
+    
+    // MARK: - Body
     
     var body: some View {
         coordinator.rootView
             .onAppear {
+                guard !didStart else { return }
+                didStart = true
                 coordinator.start()
             }
     }

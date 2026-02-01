@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: AppCoordinating, ObservableObject {
 
     // MARK: - Coordinator
 
@@ -21,13 +21,15 @@ final class AppCoordinator: Coordinator {
 
     // MARK: - Dependencies
 
-    private let authCoordinator: AuthCoordinator
-    private let mainTabCoordinator: MainTabCoordinator
+    private let authCoordinator: any AuthCoordinating
+    private let mainTabCoordinator: any MainTabCoordinating
 
     // MARK: - Init
 
-    init(authCoordinator: AuthCoordinator,
-         mainTabCoordinator: MainTabCoordinator) {
+    init(
+        authCoordinator: any AuthCoordinating,
+        mainTabCoordinator: any MainTabCoordinating
+    ) {
         self.authCoordinator = authCoordinator
         self.mainTabCoordinator = mainTabCoordinator
         bind()
@@ -51,15 +53,17 @@ final class AppCoordinator: Coordinator {
 
     // MARK: - Root View
 
-    var rootView: some View {
-        Group {
-            switch route {
-            case .auth:
-                authCoordinator.rootView
-            case .main:
-                mainTabCoordinator.rootView
+    var rootView: AnyView {
+        AnyView(
+            Group {
+                switch route {
+                case .auth:
+                    authCoordinator.rootView
+                case .main:
+                    mainTabCoordinator.rootView
+                }
             }
-        }
+        )
     }
 
     // MARK: - Routing

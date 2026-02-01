@@ -1,40 +1,39 @@
 //
-//  AuthCoordinator.swift
+//  ProfileCoordinator.swift
 //  TexturaStore
 //
-//  Created by Matvei Khlestov on 31.01.2026.
+//  Created by Matvei Khlestov on 01.02.2026.
 //
 
 import SwiftUI
-import Combine
 
 @MainActor
-final class AuthCoordinator: AuthCoordinating {
-    
+final class ProfileCoordinator: ProfileCoordinating {
+
     // MARK: - Coordinator
-    
+
     var childCoordinators: [any CoordinatorBox] = []
-    
+
     // MARK: - Callbacks
-    
-    var onAuthSuccess: (() -> Void)?
-    
+
+    var onLogout: (() -> Void)?
+
     // MARK: - Coordinator Lifecycle
-    
+
     func start() { }
-    
+
     func finish() {
         removeAllChildren()
     }
-    
+
     // MARK: - Root View
-    
+
     var rootView: AnyView {
         AnyView(
             AppNavigationContainer {
-                AuthRootView(
-                    onAuthSuccess: { [weak self] in
-                        self?.onAuthSuccess?()
+                ProfileRootView(
+                    onLogout: { [weak self] in
+                        self?.onLogout?()
                     }
                 )
             }
