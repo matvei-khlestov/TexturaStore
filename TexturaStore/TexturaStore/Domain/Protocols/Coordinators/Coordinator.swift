@@ -8,14 +8,11 @@
 import SwiftUI
 
 @MainActor
-protocol Coordinator: ObservableObject {
-    associatedtype Root: View
-
-    var rootView: Root { get }
+protocol Coordinator: AnyObject {
     var childCoordinators: [any CoordinatorBox] { get set }
-
     func start()
     func finish()
+    var rootView: AnyView { get }
 }
 
 @MainActor
