@@ -8,48 +8,51 @@
 import FactoryKit
 
 extension Container {
-
+    
     // MARK: - Tabs
-
+    
     var catalogCoordinator: Factory<any CatalogCoordinating> {
         Factory(self) { @MainActor in
             CatalogCoordinator()
         }
         .scope(.singleton)
     }
-
+    
     var favoritesCoordinator: Factory<any FavoritesCoordinating> {
         Factory(self) { @MainActor in
             FavoritesCoordinator()
         }
         .scope(.singleton)
     }
-
+    
     var cartCoordinator: Factory<any CartCoordinating> {
         Factory(self) { @MainActor in
             CartCoordinator()
         }
         .scope(.singleton)
     }
-
+    
     var profileCoordinator: Factory<any ProfileCoordinating> {
         Factory(self) { @MainActor in
             ProfileCoordinator()
         }
         .scope(.singleton)
     }
-
+    
     // MARK: - Auth
-
+    
     var authCoordinator: Factory<any AuthCoordinating> {
         Factory(self) { @MainActor in
-            AuthCoordinator()
+            AuthCoordinator(
+                signInViewModel: self.signInViewModel(),
+                signUpViewModel: self.signUpViewModel()
+            )
         }
         .scope(.singleton)
     }
-
+    
     // MARK: - MainTab
-
+    
     var mainTabCoordinator: Factory<any MainTabCoordinating> {
         Factory(self) { @MainActor in
             MainTabCoordinator(
@@ -61,9 +64,9 @@ extension Container {
         }
         .scope(.singleton)
     }
-
+    
     // MARK: - App
-
+    
     var appCoordinator: Factory<any AppCoordinating> {
         Factory(self) { @MainActor in
             AppCoordinator(

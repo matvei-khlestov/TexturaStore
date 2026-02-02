@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33D2F2E679C00AF94A1 /* 2.swift */; };
-		A021D3402F2E67A800AF94A1 /* 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33F2F2E67A800AF94A1 /* 3.swift */; };
 		A021D3422F2E67B500AF94A1 /* 4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3412F2E67B500AF94A1 /* 4.swift */; };
 		A021D34E2F2E680300AF94A1 /* 10.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D34D2F2E680300AF94A1 /* 10.swift */; };
 		A021D3522F2E682300AF94A1 /* 11.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3512F2E682300AF94A1 /* 11.swift */; };
@@ -66,6 +65,25 @@
 		A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D251552F2FACD800C6B040 /* MainTabRootView.swift */; };
 		A0E3B7642F30C15D0038E3BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0E3B7622F30C15D0038E3BB /* Localizable.strings */; };
 		A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7672F30C6E20038E3BB /* Strings+Generated.swift */; };
+		A0E3B7702F311D160038E3BB /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B76F2F311D160038E3BB /* FormValidator.swift */; };
+		A0E3B7732F311D9B0038E3BB /* FormValidatingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7722F311D9B0038E3BB /* FormValidatingProtocol.swift */; };
+		A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7742F311DD40038E3BB /* AuthField.swift */; };
+		A0E3B7772F311E0B0038E3BB /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7762F311E0B0038E3BB /* ValidationResult.swift */; };
+		A0E3B77A2F31201B0038E3BB /* SignInViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7792F31201B0038E3BB /* SignInViewModelProtocol.swift */; };
+		A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B77B2F3120B40038E3BB /* SignInViewModel.swift */; };
+		A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B77E2F3123290038E3BB /* PhoneFormatter.swift */; };
+		A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7812F3123D80038E3BB /* PhoneFormattingProtocol.swift */; };
+		A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7832F3128740038E3BB /* FormTextField.swift */; };
+		A0E3B7892F3129AC0038E3BB /* FormTextFieldKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7882F3129AC0038E3BB /* FormTextFieldKind.swift */; };
+		A0E3B78C2F312C590038E3BB /* UnderlinedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B78B2F312C590038E3BB /* UnderlinedButton.swift */; };
+		A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B78D2F312DC10038E3BB /* BrandedButton.swift */; };
+		A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7902F312FA40038E3BB /* LabelLinkRow.swift */; };
+		A0E3B7932F3130740038E3BB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7922F3130740038E3BB /* SignInView.swift */; };
+		A0E3B7992F313AB70038E3BB /* SignUpViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */; };
+		A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B79A2F313AE50038E3BB /* SignUpViewModel.swift */; };
+		A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B79C2F313BF40038E3BB /* SignUpView.swift */; };
+		A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */; };
+		A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +105,6 @@
 
 /* Begin PBXFileReference section */
 		A021D33D2F2E679C00AF94A1 /* 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2.swift; sourceTree = "<group>"; };
-		A021D33F2F2E67A800AF94A1 /* 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3.swift; sourceTree = "<group>"; };
 		A021D3412F2E67B500AF94A1 /* 4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 4.swift; sourceTree = "<group>"; };
 		A021D34D2F2E680300AF94A1 /* 10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 10.swift; sourceTree = "<group>"; };
 		A021D3512F2E682300AF94A1 /* 11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 11.swift; sourceTree = "<group>"; };
@@ -147,6 +164,25 @@
 		A0E3B7632F30C15D0038E3BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0E3B7652F30C1770038E3BB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0E3B7672F30C6E20038E3BB /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		A0E3B76F2F311D160038E3BB /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
+		A0E3B7722F311D9B0038E3BB /* FormValidatingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidatingProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7742F311DD40038E3BB /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
+		A0E3B7762F311E0B0038E3BB /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		A0E3B7792F31201B0038E3BB /* SignInViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B77B2F3120B40038E3BB /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		A0E3B77E2F3123290038E3BB /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
+		A0E3B7812F3123D80038E3BB /* PhoneFormattingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormattingProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7832F3128740038E3BB /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		A0E3B7882F3129AC0038E3BB /* FormTextFieldKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldKind.swift; sourceTree = "<group>"; };
+		A0E3B78B2F312C590038E3BB /* UnderlinedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedButton.swift; sourceTree = "<group>"; };
+		A0E3B78D2F312DC10038E3BB /* BrandedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedButton.swift; sourceTree = "<group>"; };
+		A0E3B7902F312FA40038E3BB /* LabelLinkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelLinkRow.swift; sourceTree = "<group>"; };
+		A0E3B7922F3130740038E3BB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B79A2F313AE50038E3BB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		A0E3B79C2F313BF40038E3BB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+ViewModels.swift"; sourceTree = "<group>"; };
+		A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,12 +235,12 @@
 		A0572AC02F2E541800B00C0F /* TexturaStore */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3B7662F30C2910038E3BB /* Generated */,
 				A0572AD22F2E590400B00C0F /* App */,
 				A0572AD32F2E5A2500B00C0F /* Core */,
 				A0572ACF2F2E57ED00B00C0F /* Data */,
 				A0572AE42F2E5BC800B00C0F /* Domain */,
 				A0572B1D2F2E60F300B00C0F /* Presentation */,
+				A0E3B7662F30C2910038E3BB /* Generated */,
 				A0572AD12F2E581100B00C0F /* Resources */,
 			);
 			path = TexturaStore;
@@ -297,7 +333,7 @@
 		A0572AD62F2E5A5A00B00C0F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A021D33F2F2E67A800AF94A1 /* 3.swift */,
+				A0E3B77D2F3123000038E3BB /* Formatters */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -349,7 +385,10 @@
 		A0572ADD2F2E5B1100B00C0F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A0D251552F2FACD800C6B040 /* MainTabRootView.swift */,
+				A0E3B78F2F312F8D0038E3BB /* Links */,
+				A0E3B78A2F312C400038E3BB /* Buttons */,
+				A0E3B7852F3129500038E3BB /* TabBarView */,
+				A0E3B7872F31297C0038E3BB /* TextFields */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -409,6 +448,7 @@
 				A0572AE52F2E5C0700B00C0F /* Models */,
 				A0572AE62F2E5C1300B00C0F /* Protocols */,
 				A0572AE72F2E5E8500B00C0F /* UseCases */,
+				A0E3B76E2F311CF00038E3BB /* Validation */,
 				A0572AF02F2E5F2600B00C0F /* Errors */,
 			);
 			path = Domain;
@@ -425,6 +465,9 @@
 		A0572AE62F2E5C1300B00C0F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7802F3123B40038E3BB /* Formatters */,
+				A0E3B7782F3120000038E3BB /* ViewModels */,
+				A0E3B7712F311D7B0038E3BB /* Validator */,
 				A0D250E42F2E7AEE00C6B040 /* Coordinators */,
 			);
 			path = Protocols;
@@ -569,7 +612,9 @@
 		A0D250FB2F2E7D1100C6B040 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				A0D250FC2F2E7D1F00C6B040 /* AuthRootView.swift */,
+				A0E3B7952F31398A0038E3BB /* SignUp */,
+				A0E3B76B2F3118780038E3BB /* SignIn */,
+				A0E3B7942F3139700038E3BB /* AuthRoot */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -630,6 +675,8 @@
 			children = (
 				A0D2513D2F2F79AE00C6B040 /* Container+Coordinators.swift */,
 				A0D2513F2F2F7E5B00C6B040 /* Container+Factories.swift */,
+				A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */,
+				A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -680,6 +727,141 @@
 				A0E3B7672F30C6E20038E3BB /* Strings+Generated.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		A0E3B76B2F3118780038E3BB /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B76D2F3118940038E3BB /* ViewModel */,
+				A0E3B76C2F31188A0038E3BB /* View */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		A0E3B76C2F31188A0038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7922F3130740038E3BB /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B76D2F3118940038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B77B2F3120B40038E3BB /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B76E2F311CF00038E3BB /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B76F2F311D160038E3BB /* FormValidator.swift */,
+				A0E3B7742F311DD40038E3BB /* AuthField.swift */,
+				A0E3B7762F311E0B0038E3BB /* ValidationResult.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		A0E3B7712F311D7B0038E3BB /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7722F311D9B0038E3BB /* FormValidatingProtocol.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		A0E3B7782F3120000038E3BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7792F31201B0038E3BB /* SignInViewModelProtocol.swift */,
+				A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A0E3B77D2F3123000038E3BB /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B77E2F3123290038E3BB /* PhoneFormatter.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		A0E3B7802F3123B40038E3BB /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7812F3123D80038E3BB /* PhoneFormattingProtocol.swift */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		A0E3B7852F3129500038E3BB /* TabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				A0D251552F2FACD800C6B040 /* MainTabRootView.swift */,
+			);
+			path = TabBarView;
+			sourceTree = "<group>";
+		};
+		A0E3B7872F31297C0038E3BB /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7832F3128740038E3BB /* FormTextField.swift */,
+				A0E3B7882F3129AC0038E3BB /* FormTextFieldKind.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		A0E3B78A2F312C400038E3BB /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B78B2F312C590038E3BB /* UnderlinedButton.swift */,
+				A0E3B78D2F312DC10038E3BB /* BrandedButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A0E3B78F2F312F8D0038E3BB /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7902F312FA40038E3BB /* LabelLinkRow.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		A0E3B7942F3139700038E3BB /* AuthRoot */ = {
+			isa = PBXGroup;
+			children = (
+				A0D250FC2F2E7D1F00C6B040 /* AuthRootView.swift */,
+			);
+			path = AuthRoot;
+			sourceTree = "<group>";
+		};
+		A0E3B7952F31398A0038E3BB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7972F3139A60038E3BB /* ViewModels */,
+				A0E3B7962F31399C0038E3BB /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		A0E3B7962F31399C0038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B79C2F313BF40038E3BB /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B7972F3139A60038E3BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B79A2F313AE50038E3BB /* SignUpViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -825,36 +1007,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0E3B7732F311D9B0038E3BB /* FormValidatingProtocol.swift in Sources */,
 				A0D2510B2F2E85CB00C6B040 /* DesignSystem.swift in Sources */,
 				A021D3742F2E694500AF94A1 /* 25.swift in Sources */,
+				A0E3B7702F311D160038E3BB /* FormValidator.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
+				A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */,
 				A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */,
 				A0D251542F2FA50000C6B040 /* ProfileCoordinator.swift in Sources */,
 				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
 				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
 				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
+				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
+				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
+				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
+				A0E3B7772F311E0B0038E3BB /* ValidationResult.swift in Sources */,
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
 				A021D34E2F2E680300AF94A1 /* 10.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
+				A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */,
+				A0E3B7892F3129AC0038E3BB /* FormTextFieldKind.swift in Sources */,
 				A021D3662F2E68DD00AF94A1 /* 19.swift in Sources */,
 				A0D250FD2F2E7D1F00C6B040 /* AuthRootView.swift in Sources */,
 				A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */,
 				A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */,
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
+				A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */,
 				A021D3542F2E683300AF94A1 /* 12.swift in Sources */,
 				A0572AC32F2E541800B00C0F /* Persistence.swift in Sources */,
+				A0E3B7992F313AB70038E3BB /* SignUpViewModelProtocol.swift in Sources */,
+				A0E3B78C2F312C590038E3BB /* UnderlinedButton.swift in Sources */,
 				A0D250F62F2E7C6500C6B040 /* AuthCoordinator.swift in Sources */,
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
 				A021D3522F2E682300AF94A1 /* 11.swift in Sources */,
+				A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */,
 				A021D3622F2E68C500AF94A1 /* 17.swift in Sources */,
 				A0D251492F2FA3DC00C6B040 /* ProfileCoordinating.swift in Sources */,
 				A0D251112F2E88D200C6B040 /* CGFloat+DesignSystem.swift in Sources */,
 				A0D251472F2FA3B600C6B040 /* CartCoordinating.swift in Sources */,
+				A0E3B77A2F31201B0038E3BB /* SignInViewModelProtocol.swift in Sources */,
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
@@ -869,14 +1065,18 @@
 				A0D250EE2F2E7BCC00C6B040 /* AppNavigationContainer.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
+				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
 				A021D3582F2E685A00AF94A1 /* 13.swift in Sources */,
+				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
 				A021D3422F2E67B500AF94A1 /* 4.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
+				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
-				A021D3402F2E67A800AF94A1 /* 3.swift in Sources */,
+				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 				A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */,
+				A0E3B7932F3130740038E3BB /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
