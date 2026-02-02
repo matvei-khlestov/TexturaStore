@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  TexturaStore
+
+  Created by Matvei Khlestov on 02.02.2026.
+  
+*/
+
+"tab.catalog" = "Каталог";
+"tab.favorites" = "Избранное";
+"tab.cart" = "Корзина";
+"tab.profile" = "Профиль";
+
+"screen.catalog.title" = "Каталог";
+"screen.favorites.title" = "Избранное";
+"screen.cart.title" = "Корзина";
+"screen.profile.title" = "Профиль";
