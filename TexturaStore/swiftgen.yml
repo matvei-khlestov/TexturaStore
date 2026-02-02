@@ -1,0 +1,8 @@
+strings:
+  inputs:
+    - TexturaStore/Resources/Localization/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: TexturaStore/Generated/Strings+Generated.swift
+      params:
+        enumName: L10n
