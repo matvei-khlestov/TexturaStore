@@ -8,7 +8,5 @@
 import SwiftUI
 
 extension Font {
-    static let appTitle = DesignSystem.Fonts.title
-    static let appBody = DesignSystem.Fonts.body
-    static let appCaption = DesignSystem.Fonts.caption
+    
 }

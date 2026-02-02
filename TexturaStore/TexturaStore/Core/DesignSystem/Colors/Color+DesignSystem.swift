@@ -9,7 +9,4 @@ import SwiftUI
 
 extension Color {
     static let brandPrimary = DesignSystem.Colors.brandPrimary
-    static let background = DesignSystem.Colors.background
-    static let textPrimary = DesignSystem.Colors.textPrimary
-    static let textSecondary = DesignSystem.Colors.textSecondary
 }
