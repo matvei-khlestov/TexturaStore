@@ -25,81 +25,84 @@ import Combine
 /// - кастомный чекбокс с обновлением UI;
 /// - показ ошибок регистрации через алерт.
 struct SignUpView: View {
-
+    
     // MARK: - Callbacks
     
     var onOpenPrivacy: (() -> Void)?
     var onLogin: (() -> Void)?
-
+    
     // MARK: - Dependencies
-
+    
     private let viewModel: SignUpViewModelProtocol
-
+    
     // MARK: - Metrics
-
+    
     private enum Metrics {
         enum Insets {
             static let horizontal: CGFloat = 20
             static let verticalTop: CGFloat = 70
             static let verticalBottom: CGFloat = 24
         }
-
+        
         enum Spacing {
             static let formSpacing: CGFloat = 15
             static let agreeRow: CGFloat = 10
         }
-
+        
         enum Checkbox {
             static let size: CGFloat = 20
             static let cornerRadius: CGFloat = 5
             static let borderWidth: CGFloat = 2
             static let checkmarkPoint: CGFloat = 10
         }
-
+        
         enum Fonts {
             static let agreeError: Font = .system(size: 13, weight: .regular)
         }
     }
-
+    
     // MARK: - Texts
-
+    
     private enum Texts {
-        static let privacyTitle = "Политика конфиденциальности"
-        static let submitTitle  = "Зарегистрироваться"
-        static let noteText     = "Уже есть аккаунт?"
-        static let noteAction   = "Войти"
+        static let privacyTitle = L10n.Auth.Signup.privacyTitle
+        static let submitTitle  = L10n.Auth.Signup.submit
+        static let noteText     = L10n.Auth.Signup.noteText
+        static let noteAction   = L10n.Auth.Signup.noteAction
+        
+        static let errorTitle = L10n.Common.Error.title
+        static let okTitle = L10n.Common.ok
     }
-
+    
     // MARK: - State
-
+    
     @State private var nameText: String = ""
     @State private var emailText: String = ""
     @State private var passwordText: String = ""
-
+    
     @State private var isAgreed: Bool = false
-
+    
     @State private var nameErrorText: String? = nil
     @State private var emailErrorText: String? = nil
     @State private var passwordErrorText: String? = nil
     @State private var agreementErrorText: String? = nil
-
+    
     @State private var isSubmitEnabled: Bool = false
-
+    
     @State private var errorAlertMessage: String? = nil
     @State private var isErrorAlertPresented: Bool = false
-
+    
     @State private var bag = Set<AnyCancellable>()
-
+    
     @FocusState private var focusedField: FocusField?
-
+    
     private enum FocusField {
         case name
         case email
         case password
     }
-
+    
     // MARK: - Init
-
+    
     init(
         viewModel: SignUpViewModelProtocol,
         onOpenPrivacy: (() -> Void)? = nil,
@@ -109,9 +112,9 @@ struct SignUpView: View {
         self.onOpenPrivacy = onOpenPrivacy
         self.onLogin = onLogin
     }
-
+    
     // MARK: - Body
-
+    
     var body: some View {
         VStack(spacing: 0) {
             content
@@ -123,18 +126,18 @@ struct SignUpView: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert("Ошибка", isPresented: $isErrorAlertPresented) {
-            Button("OK", role: .cancel) {}
+        .alert(Texts.errorTitle, isPresented: $isErrorAlertPresented) {
+            Button(Texts.okTitle, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
         }
     }
-
+    
     // MARK: - Content
-
+    
     private var content: some View {
         VStack(alignment: .leading, spacing: Metrics.Spacing.formSpacing) {
-
+            
             FormTextField(
                 kind: .name,
                 text: $nameText,
@@ -148,7 +151,7 @@ struct SignUpView: View {
                 focusedField = .email
             }
             .accessibilityIdentifier("signup.name")
-
+            
             FormTextField(
                 kind: .email,
                 text: $emailText,
@@ -162,7 +165,7 @@ struct SignUpView: View {
                 focusedField = .password
             }
             .accessibilityIdentifier("signup.email")
-
+            
             FormTextField(
                 kind: .password,
                 text: $passwordText,
@@ -176,11 +179,11 @@ struct SignUpView: View {
                 focusedField = nil
             }
             .accessibilityIdentifier("signup.password")
-
+            
             agreeRow
-
+            
             agreementErrorRow
-
+            
             BrandedButton(
                 style: .submit,
                 title: Texts.submitTitle,
@@ -189,7 +192,7 @@ struct SignUpView: View {
                 submitTapped()
             }
             .accessibilityIdentifier("signup.submit")
-
+            
             LabelLinkRow(
                 label: Texts.noteText,
                 button: Texts.noteAction,
@@ -204,14 +207,14 @@ struct SignUpView: View {
         .padding(.bottom, Metrics.Insets.verticalBottom)
         .frame(maxWidth: .infinity, alignment: .topLeading)
     }
-
+    
     // MARK: - Agree row
-
+    
     private var agreeRow: some View {
         HStack(alignment: .center, spacing: Metrics.Spacing.agreeRow) {
             checkboxButton
                 .accessibilityIdentifier("signup.agree.checkbox")
-
+            
             UnderlinedButton(
                 text: Texts.privacyTitle,
                 alignment: .leading
@@ -219,11 +222,11 @@ struct SignUpView: View {
                 onOpenPrivacy?()
             }
             .accessibilityIdentifier("signup.agree.link")
-
+            
             Spacer(minLength: 0)
         }
     }
-
+    
     private var checkboxButton: some View {
         Button {
             toggleAgree()
@@ -231,10 +234,10 @@ struct SignUpView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: Metrics.Checkbox.cornerRadius, style: .continuous)
                     .fill(isAgreed ? Color(.brand) : Color.clear)
-
+                
                 RoundedRectangle(cornerRadius: Metrics.Checkbox.cornerRadius, style: .continuous)
                     .stroke(Color(.brand), lineWidth: Metrics.Checkbox.borderWidth)
-
+                
                 if isAgreed {
                     Image(systemName: "checkmark")
                         .font(.system(size: Metrics.Checkbox.checkmarkPoint, weight: .medium))
@@ -245,7 +248,7 @@ struct SignUpView: View {
         }
         .buttonStyle(.plain)
     }
-
+    
     private var agreementErrorRow: some View {
         Text(agreementErrorText ?? "")
             .font(Metrics.Fonts.agreeError)
@@ -254,40 +257,40 @@ struct SignUpView: View {
             .opacity(agreementErrorText == nil ? 0 : 1)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
-
+    
     // MARK: - Bindings
-
+    
     private func bindIfNeeded() {
         guard bag.isEmpty else { return }
-
+        
         viewModel.nameError
             .receive(on: RunLoop.main)
             .sink { value in
                 nameErrorText = value
             }
             .store(in: &bag)
-
+        
         viewModel.emailError
             .receive(on: RunLoop.main)
             .sink { value in
                 emailErrorText = value
             }
             .store(in: &bag)
-
+        
         viewModel.passwordError
             .receive(on: RunLoop.main)
             .sink { value in
                 passwordErrorText = value
             }
             .store(in: &bag)
-
+        
         viewModel.agreementError
             .receive(on: RunLoop.main)
             .sink { value in
                 agreementErrorText = value
             }
             .store(in: &bag)
-
+        
         viewModel.isSubmitEnabled
             .receive(on: RunLoop.main)
             .sink { enabled in
@@ -295,17 +298,17 @@ struct SignUpView: View {
             }
             .store(in: &bag)
     }
-
+    
     // MARK: - Actions
-
+    
     private func toggleAgree() {
         isAgreed.toggle()
         viewModel.setAgreement(isAgreed)
     }
-
+    
     private func submitTapped() {
         focusedField = nil
-
+        
         Task {
             do {
                 try await viewModel.signUp()

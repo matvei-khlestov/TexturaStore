@@ -10,6 +10,46 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  internal enum Auth {
+    internal enum Root {
+      internal enum Signin {
+        /// Auth - Root
+        internal static let title = L10n.tr("Localizable", "auth.root.signin.title", fallback: "Sign In")
+      }
+      internal enum Signup {
+        /// Sign Up
+        internal static let title = L10n.tr("Localizable", "auth.root.signup.title", fallback: "Sign Up")
+      }
+    }
+    internal enum Signin {
+      /// Auth - Sign In
+      internal static let forgotPassword = L10n.tr("Localizable", "auth.signin.forgotPassword", fallback: "Forgot password?")
+      /// Sign Up
+      internal static let noteAction = L10n.tr("Localizable", "auth.signin.noteAction", fallback: "Sign Up")
+      /// Don't have an account?
+      internal static let noteText = L10n.tr("Localizable", "auth.signin.noteText", fallback: "Don't have an account?")
+      /// Sign In
+      internal static let submit = L10n.tr("Localizable", "auth.signin.submit", fallback: "Sign In")
+    }
+    internal enum Signup {
+      /// Sign In
+      internal static let noteAction = L10n.tr("Localizable", "auth.signup.noteAction", fallback: "Sign In")
+      /// Already have an account?
+      internal static let noteText = L10n.tr("Localizable", "auth.signup.noteText", fallback: "Already have an account?")
+      /// Auth - Sign Up
+      internal static let privacyTitle = L10n.tr("Localizable", "auth.signup.privacyTitle", fallback: "Privacy Policy")
+      /// Sign Up
+      internal static let submit = L10n.tr("Localizable", "auth.signup.submit", fallback: "Sign Up")
+    }
+  }
+  internal enum Common {
+    /// OK
+    internal static let ok = L10n.tr("Localizable", "common.ok", fallback: "OK")
+    internal enum Error {
+      /// Common
+      internal static let title = L10n.tr("Localizable", "common.error.title", fallback: "Error")
+    }
+  }
   internal enum Screen {
     internal enum Cart {
       /// Cart
@@ -31,10 +71,7 @@ internal enum L10n {
   internal enum Tab {
     /// Cart
     internal static let cart = L10n.tr("Localizable", "tab.cart", fallback: "Cart")
-    /// Localizable.strings
-    ///   TexturaStore
-    /// 
-    ///   Created by Matvei Khlestov on 02.02.2026.
+    /// TabBar
     internal static let catalog = L10n.tr("Localizable", "tab.catalog", fallback: "Catalog")
     /// Favorites
     internal static let favorites = L10n.tr("Localizable", "tab.favorites", fallback: "Favorites")

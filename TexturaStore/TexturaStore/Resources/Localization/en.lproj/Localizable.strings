@@ -6,6 +6,7 @@
   
 */
 
+/* TabBar */
 "tab.catalog" = "Catalog";
 "tab.favorites" = "Favorites";
 "tab.cart" = "Cart";
@@ -15,3 +16,23 @@
 "screen.favorites.title" = "Favorites";
 "screen.cart.title" = "Cart";
 "screen.profile.title" = "Profile";
+
+/* Auth - Sign In */
+"auth.signin.forgotPassword" = "Forgot password?";
+"auth.signin.submit" = "Sign In";
+"auth.signin.noteText" = "Don't have an account?";
+"auth.signin.noteAction" = "Sign Up";
+
+/* Auth - Sign Up */
+"auth.signup.privacyTitle" = "Privacy Policy";
+"auth.signup.submit" = "Sign Up";
+"auth.signup.noteText" = "Already have an account?";
+"auth.signup.noteAction" = "Sign In";
+
+/* Auth - Root */
+"auth.root.signin.title" = "Sign In";
+"auth.root.signup.title" = "Sign Up";
+
+/* Common */
+"common.error.title" = "Error";
+"common.ok" = "OK";
