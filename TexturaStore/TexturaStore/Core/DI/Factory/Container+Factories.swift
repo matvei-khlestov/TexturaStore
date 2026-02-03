@@ -8,6 +8,16 @@
 import FactoryKit
 
 extension Container {
-
     
+    // MARK: - Screen Factories
+    
+    var authScreenFactory: Factory<AuthScreenBuilding> {
+        Factory(self) { @MainActor in
+            AuthScreenFactory(
+                signInViewModel: self.signInViewModel(),
+                signUpViewModel: self.signUpViewModel()
+            )
+        }
+        .scope(.singleton)
+    }
 }

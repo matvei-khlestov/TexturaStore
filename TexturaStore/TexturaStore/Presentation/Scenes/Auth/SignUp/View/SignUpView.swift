@@ -27,8 +27,7 @@ import Combine
 struct SignUpView: View {
 
     // MARK: - Callbacks
-
-    var onBack: (() -> Void)?
+    
     var onOpenPrivacy: (() -> Void)?
     var onLogin: (() -> Void)?
 
@@ -103,12 +102,10 @@ struct SignUpView: View {
 
     init(
         viewModel: SignUpViewModelProtocol,
-        onBack: (() -> Void)? = nil,
         onOpenPrivacy: (() -> Void)? = nil,
         onLogin: (() -> Void)? = nil
     ) {
         self.viewModel = viewModel
-        self.onBack = onBack
         self.onOpenPrivacy = onOpenPrivacy
         self.onLogin = onLogin
     }

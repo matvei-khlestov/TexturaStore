@@ -32,7 +32,6 @@ struct AuthRootView: View {
 
     // MARK: - Callbacks
 
-    var onBack: (() -> Void)?
     var onOpenPrivacy: (() -> Void)?
     var onForgotPassword: (() -> Void)?
 
@@ -66,14 +65,12 @@ struct AuthRootView: View {
         signInViewModel: SignInViewModelProtocol,
         signUpViewModel: SignUpViewModelProtocol,
         start mode: Mode = .signIn,
-        onBack: (() -> Void)? = nil,
         onOpenPrivacy: (() -> Void)? = nil,
         onForgotPassword: (() -> Void)? = nil
     ) {
         self.signInViewModel = signInViewModel
         self.signUpViewModel = signUpViewModel
         self._mode = State(initialValue: mode)
-        self.onBack = onBack
         self.onOpenPrivacy = onOpenPrivacy
         self.onForgotPassword = onForgotPassword
     }
@@ -111,7 +108,6 @@ struct AuthRootView: View {
     private var signInView: some View {
         SignInView(
             viewModel: signInViewModel,
-            onBack: { onBack?() },
             onOpenSignUp: { setMode(.signUp, animated: true) },
             onForgotPassword: { onForgotPassword?() }
         )
@@ -120,7 +116,6 @@ struct AuthRootView: View {
     private var signUpView: some View {
         SignUpView(
             viewModel: signUpViewModel,
-            onBack: { onBack?() },
             onOpenPrivacy: { onOpenPrivacy?() },
             onLogin: { setMode(.signIn, animated: true) }
         )
