@@ -44,7 +44,8 @@ extension Container {
     var authCoordinator: Factory<any AuthCoordinating> {
         Factory(self) { @MainActor in
             AuthCoordinator(
-                screenFactory: self.authScreenFactory()
+                authScreenFactory: self.authScreenFactory(),
+                privacyPolicyScreenFactory: self.privacyPolicyScreenFactory()
             )
         }
         .scope(.singleton)

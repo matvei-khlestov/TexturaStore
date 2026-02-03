@@ -9,34 +9,33 @@ import SwiftUI
 
 @MainActor
 final class ProfileCoordinator: ProfileCoordinating {
-
+    
     // MARK: - Coordinator
-
+    
     var childCoordinators: [any CoordinatorBox] = []
-
+    
     // MARK: - Callbacks
-
+    
     var onLogout: (() -> Void)?
-
+    
     // MARK: - Coordinator Lifecycle
-
+    
     func start() { }
-
+    
     func finish() {
         removeAllChildren()
     }
-
+    
     // MARK: - Root View
-
+    
     var rootView: AnyView {
         AnyView(
-            AppNavigationContainer {
-                ProfileRootView(
-                    onLogout: { [weak self] in
-                        self?.onLogout?()
-                    }
-                )
-            }
+            ProfileRootView(
+                onLogout: { [weak self] in
+                    self?.onLogout?()
+                }
+            )
+            
         )
     }
 }

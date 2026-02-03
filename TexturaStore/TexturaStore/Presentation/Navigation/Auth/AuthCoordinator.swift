@@ -9,51 +9,73 @@ import SwiftUI
 import Combine
 
 @MainActor
-final class AuthCoordinator: AuthCoordinating {
-
+final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
+    
+    // MARK: - Routes
+    
+    typealias StackRoute = AuthRoute
+    
     // MARK: - Coordinator
-
+    
     var childCoordinators: [any CoordinatorBox] = []
-
+    
+    // MARK: - Router
+    
+    let router: AppRouter<AuthRoute, NoRoute, NoRoute> = AppRouter()
+    
     // MARK: - Callbacks
-
+    
     var onAuthSuccess: (() -> Void)?
-
+    
     // MARK: - Dependencies
-
-    private let screenFactory: AuthScreenBuilding
-
+    
+    private let authScreenFactory: AuthScreenBuilding
+    private let privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
+    
     // MARK: - Init
-
-    init(screenFactory: AuthScreenBuilding) {
-        self.screenFactory = screenFactory
+    
+    init(
+        authScreenFactory: AuthScreenBuilding,
+        privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
+    ) {
+        self.authScreenFactory = authScreenFactory
+        self.privacyPolicyScreenFactory = privacyPolicyScreenFactory
     }
-
+    
     // MARK: - Coordinator Lifecycle
-
+    
     func start() { }
-
+    
     func finish() {
+        router.resetAll()
         removeAllChildren()
     }
-
-    // MARK: - Root View
-
-    var rootView: AnyView {
+    
+    // MARK: - RoutableCoordinator
+    
+    func makeRoot() -> AnyView {
         AnyView(
-            AppNavigationContainer {
-                screenFactory.makeAuthRootView(
-                    start: .signIn,
-                    onOpenPrivacy: { [weak self] in
-                        // сюда позже заведёшь переход на экран/вебвью политики
-                        _ = self
-                    },
-                    onForgotPassword: { [weak self] in
-                        // сюда позже заведёшь переход на восстановление пароля
-                        _ = self
-                    }
-                )
-            }
+            authScreenFactory.makeAuthRootView(
+                start: .signIn,
+                onOpenPrivacy: { [weak self] in
+                    self?.router.push(.privacyPolicy)
+                },
+                onForgotPassword: { [weak self] in
+                    // сюда позже добавишь route для reset password
+                    _ = self
+                }
+            )
         )
+    }
+    
+    func buildStack(_ route: AuthRoute) -> AnyView {
+        switch route {
+        case .privacyPolicy:
+            return privacyPolicyScreenFactory.makePrivacyPolicyView(
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
+        }
     }
 }
