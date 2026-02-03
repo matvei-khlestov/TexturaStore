@@ -86,6 +86,8 @@
 		A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */; };
 		A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */; };
 		A0E3B7A72F31FD730038E3BB /* AuthScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */; };
+		A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A92F32143A0038E3BB /* PrivacyPolicyText.swift */; };
+		A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7AB2F3215720038E3BB /* PrivacyPolicyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,8 @@
 		A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Utils.swift"; sourceTree = "<group>"; };
 		A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenFactory.swift; sourceTree = "<group>"; };
+		A0E3B7A92F32143A0038E3BB /* PrivacyPolicyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyText.swift; sourceTree = "<group>"; };
+		A0E3B7AB2F3215720038E3BB /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,6 +591,7 @@
 			children = (
 				A0D250FE2F2E7D4300C6B040 /* Profile */,
 				A0D250FB2F2E7D1100C6B040 /* Auth */,
+				A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -886,6 +891,15 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7A92F32143A0038E3BB /* PrivacyPolicyText.swift */,
+				A0E3B7AB2F3215720038E3BB /* PrivacyPolicyView.swift */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1048,6 +1062,7 @@
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
+				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
 				A021D34E2F2E680300AF94A1 /* 10.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
@@ -1058,6 +1073,7 @@
 				A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */,
 				A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */,
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
+				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
 				A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */,
 				A021D3542F2E683300AF94A1 /* 12.swift in Sources */,

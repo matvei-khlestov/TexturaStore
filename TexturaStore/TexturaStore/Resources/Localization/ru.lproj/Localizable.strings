@@ -6,6 +6,7 @@
   
 */
 
+/* TabBar */
 "tab.catalog" = "Каталог";
 "tab.favorites" = "Избранное";
 "tab.cart" = "Корзина";
@@ -15,3 +16,23 @@
 "screen.favorites.title" = "Избранное";
 "screen.cart.title" = "Корзина";
 "screen.profile.title" = "Профиль";
+
+/* Auth - Sign In */
+"auth.signin.forgotPassword" = "Забыли пароль?";
+"auth.signin.submit" = "Войти";
+"auth.signin.noteText" = "Ещё нет аккаунта?";
+"auth.signin.noteAction" = "Регистрация";
+
+/* Auth - Sign Up */
+"auth.signup.privacyTitle" = "Политика конфиденциальности";
+"auth.signup.submit" = "Зарегистрироваться";
+"auth.signup.noteText" = "Уже есть аккаунт?";
+"auth.signup.noteAction" = "Войти";
+
+/* Auth - Root */
+"auth.root.signin.title" = "Вход";
+"auth.root.signup.title" = "Регистрация";
+
+/* Common */
+"common.error.title" = "Ошибка";
+"common.ok" = "OK";

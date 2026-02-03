@@ -53,10 +53,13 @@ struct SignInView: View {
     // MARK: - Texts
     
     private enum Texts {
-        static let forgotPasswordTitle = "Забыли пароль?"
-        static let submitTitle = "Войти"
-        static let noteText = "Ещё нет аккаунта?"
-        static let noteAction = "Регистрация"
+        static let forgotPasswordTitle = L10n.Auth.Signin.forgotPassword
+        static let submitTitle = L10n.Auth.Signin.submit
+        static let noteText = L10n.Auth.Signin.noteText
+        static let noteAction = L10n.Auth.Signin.noteAction
+        
+        static let errorTitle = L10n.Common.Error.title
+        static let okTitle = L10n.Common.ok
     }
     
     // MARK: - State
@@ -105,8 +108,8 @@ struct SignInView: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert("Ошибка", isPresented: $isErrorAlertPresented) {
-            Button("OK", role: .cancel) {}
+        .alert(Texts.errorTitle, isPresented: $isErrorAlertPresented) {
+            Button(Texts.okTitle, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
         }
