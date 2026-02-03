@@ -66,12 +66,14 @@ struct PrivacyPolicyView: View {
         .background(Color(.systemBackground))
         .navigationTitle(Texts.navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
                     onBack?()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .foregroundStyle(Color(.brand))
                 }
                 .accessibilityIdentifier("privacy.back")
             }

@@ -9,7 +9,7 @@ import FactoryKit
 
 extension Container {
     
-    // MARK: - Screen Factories
+    // MARK: - Auth
     
     var authScreenFactory: Factory<AuthScreenBuilding> {
         Factory(self) { @MainActor in
@@ -17,6 +17,15 @@ extension Container {
                 signInViewModel: self.signInViewModel(),
                 signUpViewModel: self.signUpViewModel()
             )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Legal / Common
+    
+    var privacyPolicyScreenFactory: Factory<PrivacyPolicyScreenBuilding> {
+        Factory(self) { @MainActor in
+            PrivacyPolicyScreenFactory()
         }
         .scope(.singleton)
     }

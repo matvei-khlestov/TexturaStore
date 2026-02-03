@@ -35,7 +35,6 @@
 		A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250E52F2E7B1200C6B040 /* Coordinator.swift */; };
 		A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250E72F2E7B4000C6B040 /* CoordinatorBox.swift */; };
 		A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250EB2F2E7B8200C6B040 /* AnyCoordinatorBox.swift */; };
-		A0D250EE2F2E7BCC00C6B040 /* AppNavigationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250ED2F2E7BCC00C6B040 /* AppNavigationContainer.swift */; };
 		A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250EF2F2E7BF400C6B040 /* AppRoute.swift */; };
 		A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250F12F2E7C0F00C6B040 /* MainTab.swift */; };
 		A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250F32F2E7C2900C6B040 /* AppCoordinator.swift */; };
@@ -88,6 +87,15 @@
 		A0E3B7A72F31FD730038E3BB /* AuthScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */; };
 		A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A92F32143A0038E3BB /* PrivacyPolicyText.swift */; };
 		A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7AB2F3215720038E3BB /* PrivacyPolicyView.swift */; };
+		A0E3B7B72F3244C20038E3BB /* RouteIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7B62F3244C20038E3BB /* RouteIdentifiable.swift */; };
+		A0E3B7B92F3244E70038E3BB /* NoRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7B82F3244E70038E3BB /* NoRoute.swift */; };
+		A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7BA2F3245080038E3BB /* AppRouter.swift */; };
+		A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7BC2F3245490038E3BB /* NavigationHost.swift */; };
+		A0E3B7BF2F3245880038E3BB /* RoutableCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7BE2F3245880038E3BB /* RoutableCoordinator.swift */; };
+		A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C22F3257030038E3BB /* AppRouter+Typealiases.swift */; };
+		A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C42F3264700038E3BB /* AuthRoute.swift */; };
+		A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */; };
+		A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,7 +147,6 @@
 		A0D250E52F2E7B1200C6B040 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A0D250E72F2E7B4000C6B040 /* CoordinatorBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorBox.swift; sourceTree = "<group>"; };
 		A0D250EB2F2E7B8200C6B040 /* AnyCoordinatorBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCoordinatorBox.swift; sourceTree = "<group>"; };
-		A0D250ED2F2E7BCC00C6B040 /* AppNavigationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationContainer.swift; sourceTree = "<group>"; };
 		A0D250EF2F2E7BF400C6B040 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
 		A0D250F12F2E7C0F00C6B040 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		A0D250F32F2E7C2900C6B040 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -191,6 +198,15 @@
 		A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenFactory.swift; sourceTree = "<group>"; };
 		A0E3B7A92F32143A0038E3BB /* PrivacyPolicyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyText.swift; sourceTree = "<group>"; };
 		A0E3B7AB2F3215720038E3BB /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		A0E3B7B62F3244C20038E3BB /* RouteIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteIdentifiable.swift; sourceTree = "<group>"; };
+		A0E3B7B82F3244E70038E3BB /* NoRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRoute.swift; sourceTree = "<group>"; };
+		A0E3B7BA2F3245080038E3BB /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		A0E3B7BC2F3245490038E3BB /* NavigationHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHost.swift; sourceTree = "<group>"; };
+		A0E3B7BE2F3245880038E3BB /* RoutableCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutableCoordinator.swift; sourceTree = "<group>"; };
+		A0E3B7C22F3257030038E3BB /* AppRouter+Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppRouter+Typealiases.swift"; sourceTree = "<group>"; };
+		A0E3B7C42F3264700038E3BB /* AuthRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoute.swift; sourceTree = "<group>"; };
+		A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyScreenBuilding.swift; sourceTree = "<group>"; };
+		A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				A0D250E52F2E7B1200C6B040 /* Coordinator.swift */,
+				A0E3B7BE2F3245880038E3BB /* RoutableCoordinator.swift */,
+				A0E3B7B62F3244C20038E3BB /* RouteIdentifiable.swift */,
 				A0D250E72F2E7B4000C6B040 /* CoordinatorBox.swift */,
 				A0D2512D2F2F0BA100C6B040 /* AppCoordinating.swift */,
 				A0D2512B2F2F0A6D00C6B040 /* MainTabCoordinating.swift */,
@@ -641,8 +659,11 @@
 		A0D251012F2E800200C6B040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				A0D250ED2F2E7BCC00C6B040 /* AppNavigationContainer.swift */,
 				A0D250EB2F2E7B8200C6B040 /* AnyCoordinatorBox.swift */,
+				A0E3B7BA2F3245080038E3BB /* AppRouter.swift */,
+				A0E3B7B82F3244E70038E3BB /* NoRoute.swift */,
+				A0E3B7BC2F3245490038E3BB /* NavigationHost.swift */,
+				A0E3B7C22F3257030038E3BB /* AppRouter+Typealiases.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -668,6 +689,7 @@
 		A0D251042F2E807300C6B040 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7C42F3264700038E3BB /* AuthRoute.swift */,
 				A0D250F52F2E7C6500C6B040 /* AuthCoordinator.swift */,
 			);
 			path = Auth;
@@ -879,6 +901,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */,
+				A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -887,6 +910,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */,
+				A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1057,11 +1081,14 @@
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
 				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
+				A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */,
 				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
 				A0E3B7772F311E0B0038E3BB /* ValidationResult.swift in Sources */,
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
+				A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */,
+				A0E3B7B92F3244E70038E3BB /* NoRoute.swift in Sources */,
 				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
 				A021D34E2F2E680300AF94A1 /* 10.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
@@ -1074,7 +1101,9 @@
 				A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */,
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
+				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
+				A0E3B7B72F3244C20038E3BB /* RouteIdentifiable.swift in Sources */,
 				A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */,
 				A021D3542F2E683300AF94A1 /* 12.swift in Sources */,
 				A0572AC32F2E541800B00C0F /* Persistence.swift in Sources */,
@@ -1096,16 +1125,18 @@
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
 				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
+				A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */,
 				A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
+				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
-				A0D250EE2F2E7BCC00C6B040 /* AppNavigationContainer.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
 				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
 				A021D3582F2E685A00AF94A1 /* 13.swift in Sources */,
+				A0E3B7BF2F3245880038E3BB /* RoutableCoordinator.swift in Sources */,
 				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
 				A021D3422F2E67B500AF94A1 /* 4.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
@@ -1113,6 +1144,7 @@
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
+				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
 				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 				A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */,

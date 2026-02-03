@@ -9,27 +9,26 @@ import SwiftUI
 
 @MainActor
 final class FavoritesCoordinator: FavoritesCoordinating {
-
+    
     // MARK: - Coordinator
-
+    
     var childCoordinators: [any CoordinatorBox] = []
-
+    
     // MARK: - Coordinator Lifecycle
-
+    
     func start() { }
-
+    
     func finish() {
         removeAllChildren()
     }
-
+    
     // MARK: - Root View
-
+    
     var rootView: AnyView {
         AnyView(
-            AppNavigationContainer {
-                Text("Избранное")
-                    .navigationTitle("Избранное")
-            }
+            Text("Избранное")
+                .navigationTitle("Избранное")
+            
         )
     }
 }

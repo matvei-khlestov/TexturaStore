@@ -9,27 +9,26 @@ import SwiftUI
 
 @MainActor
 final class CatalogCoordinator: CatalogCoordinating {
-
+    
     // MARK: - Coordinator
-
+    
     var childCoordinators: [any CoordinatorBox] = []
-
+    
     // MARK: - Coordinator Lifecycle
-
+    
     func start() { }
-
+    
     func finish() {
         removeAllChildren()
     }
-
+    
     // MARK: - Root View
-
+    
     var rootView: AnyView {
         AnyView(
-            AppNavigationContainer {
-                Text("Каталог")
-                    .navigationTitle("Каталог")
-            }
+            Text("Каталог")
+                .navigationTitle("Каталог")
+            
         )
     }
 }
