@@ -9,11 +9,14 @@ import Foundation
 
 enum AuthRoute: @MainActor RouteIdentifiable {
     case privacyPolicy
-
+    case resetPassword
+    
     var id: String {
         switch self {
         case .privacyPolicy:
             return "auth.privacyPolicy"
+        case .resetPassword:
+            return "auth.resetPassword"
         }
     }
 }

@@ -29,4 +29,12 @@ extension Container {
         .scope(.singleton)
     }
     
+    var resetPasswordViewModel: Factory<any ResetPasswordViewModelProtocol> {
+        Factory(self) { @MainActor in
+            ResetPasswordViewModel(
+                validator: self.formValidator()
+            )
+        }
+        .scope(.shared)
+    }
 }

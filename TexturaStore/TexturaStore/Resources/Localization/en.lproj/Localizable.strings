@@ -17,6 +17,37 @@
 "screen.cart.title" = "Cart";
 "screen.profile.title" = "Profile";
 
+/* Validation */
+"validation.name.minLength" = "Name must contain at least 2 characters";
+
+"validation.email.invalid" = "Enter a valid e-mail";
+
+"validation.password.minLength" = "At least 6 characters";
+"validation.password.noSpaces" = "Password must not contain spaces";
+"validation.password.allowedChars" = "Allowed: latin letters, digits, !@#$%";
+"validation.password.requireDigit" = "Add at least one digit";
+"validation.password.requireSpecial" = "Add at least one special character (!@#$%)";
+"validation.password.requireUppercase" = "Add at least one uppercase letter";
+
+"validation.phone.invalidFormat" = "Enter a phone number in the format +7 (XXX) XXX-XX-XX";
+
+"validation.comment.empty" = "Comment cannot be empty";
+"validation.comment.tooShort" = "Comment is too short";
+"validation.comment.tooLong" = "Comment is too long (maximum 500 characters)";
+
+/* Form - Fields */
+"form.field.name.title" = "Name";
+"form.field.name.placeholder" = "Enter name";
+
+"form.field.email.title" = "E-mail";
+"form.field.email.placeholder" = "Enter e-mail";
+
+"form.field.password.title" = "Password";
+"form.field.password.placeholder" = "Enter password";
+
+"form.field.phone.title" = "Phone";
+"form.field.phone.placeholder" = "+7 (___) ___-__-__";
+
 /* Auth - Sign In */
 "auth.signin.forgotPassword" = "Forgot password?";
 "auth.signin.submit" = "Sign In";
@@ -32,6 +63,15 @@
 /* Auth - Root */
 "auth.root.signin.title" = "Sign In";
 "auth.root.signup.title" = "Sign Up";
+
+/* Auth - Reset Password */
+"auth.reset.title" = "Password reset";
+"auth.reset.subtitle" = "Enter your e-mail and we will send a password reset link.";
+"auth.reset.submit" = "Send";
+"auth.reset.backRowLabel" = "Remembered your password?";
+"auth.reset.backRowAction" = "Back to Sign In";
+"auth.reset.alert.done.title" = "Done";
+"auth.reset.alert.done.message" = "We sent you an email. Check your inbox.";
 
 /* Common */
 "common.error.title" = "Error";

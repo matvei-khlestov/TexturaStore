@@ -96,6 +96,11 @@
 		A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C42F3264700038E3BB /* AuthRoute.swift */; };
 		A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */; };
 		A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */; };
+		A0E3B7CB2F326DE40038E3BB /* BrandBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7CA2F326DE40038E3BB /* BrandBackButton.swift */; };
+		A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7CD2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift */; };
+		A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */; };
+		A0E3B7D62F3289010038E3BB /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7D52F3289010038E3BB /* ResetPasswordViewModel.swift */; };
+		A0E3B7D82F328B3B0038E3BB /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7D72F328B3B0038E3BB /* ResetPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +212,11 @@
 		A0E3B7C42F3264700038E3BB /* AuthRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoute.swift; sourceTree = "<group>"; };
 		A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyScreenFactory.swift; sourceTree = "<group>"; };
+		A0E3B7CA2F326DE40038E3BB /* BrandBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandBackButton.swift; sourceTree = "<group>"; };
+		A0E3B7CD2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandNavigationBackButtonModifier.swift; sourceTree = "<group>"; };
+		A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7D52F3289010038E3BB /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		A0E3B7D72F328B3B0038E3BB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +419,7 @@
 		A0572ADD2F2E5B1100B00C0F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7CC2F326EB10038E3BB /* Navigation */,
 				A0E3B78F2F312F8D0038E3BB /* Links */,
 				A0E3B78A2F312C400038E3BB /* Buttons */,
 				A0E3B7852F3129500038E3BB /* TabBarView */,
@@ -490,6 +501,7 @@
 		A0572AE62F2E5C1300B00C0F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7CF2F32885D0038E3BB /* Services */,
 				A0E3B7A22F31FCF80038E3BB /* Factories */,
 				A0E3B7802F3123B40038E3BB /* Formatters */,
 				A0E3B7782F3120000038E3BB /* ViewModels */,
@@ -607,6 +619,7 @@
 			children = (
 				A0D250FE2F2E7D4300C6B040 /* Profile */,
 				A0D250FB2F2E7D1100C6B040 /* Auth */,
+				A0E3B7D22F3288A90038E3BB /* ResetPassword */,
 				A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */,
 			);
 			path = Scenes;
@@ -659,8 +672,8 @@
 		A0D251012F2E800200C6B040 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				A0D250EB2F2E7B8200C6B040 /* AnyCoordinatorBox.swift */,
 				A0E3B7BA2F3245080038E3BB /* AppRouter.swift */,
+				A0D250EB2F2E7B8200C6B040 /* AnyCoordinatorBox.swift */,
 				A0E3B7B82F3244E70038E3BB /* NoRoute.swift */,
 				A0E3B7BC2F3245490038E3BB /* NavigationHost.swift */,
 				A0E3B7C22F3257030038E3BB /* AppRouter+Typealiases.swift */,
@@ -924,6 +937,48 @@
 			path = PrivacyPolicy;
 			sourceTree = "<group>";
 		};
+		A0E3B7CC2F326EB10038E3BB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7CA2F326DE40038E3BB /* BrandBackButton.swift */,
+				A0E3B7CD2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		A0E3B7CF2F32885D0038E3BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A0E3B7D22F3288A90038E3BB /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7D42F3288DC0038E3BB /* ViewModel */,
+				A0E3B7D32F3288D40038E3BB /* View */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		A0E3B7D32F3288D40038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7D72F328B3B0038E3BB /* ResetPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B7D42F3288DC0038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7D52F3289010038E3BB /* ResetPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1086,6 +1141,7 @@
 				A0E3B7772F311E0B0038E3BB /* ValidationResult.swift in Sources */,
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */,
+				A0E3B7CB2F326DE40038E3BB /* BrandBackButton.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
 				A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */,
 				A0E3B7B92F3244E70038E3BB /* NoRoute.swift in Sources */,
@@ -1093,12 +1149,14 @@
 				A021D34E2F2E680300AF94A1 /* 10.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
+				A0E3B7D82F328B3B0038E3BB /* ResetPasswordView.swift in Sources */,
 				A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */,
 				A0E3B7892F3129AC0038E3BB /* FormTextFieldKind.swift in Sources */,
 				A021D3662F2E68DD00AF94A1 /* 19.swift in Sources */,
 				A0D250FD2F2E7D1F00C6B040 /* AuthRootView.swift in Sources */,
 				A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */,
 				A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */,
+				A0E3B7D62F3289010038E3BB /* ResetPasswordViewModel.swift in Sources */,
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
 				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
@@ -1131,6 +1189,7 @@
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
+				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
@@ -1144,6 +1203,7 @@
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
+				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
 				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
