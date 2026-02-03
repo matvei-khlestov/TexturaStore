@@ -9,9 +9,16 @@ import SwiftUI
 
 @MainActor
 protocol AuthScreenBuilding {
+    
     func makeAuthRootView(
         start: AuthRootView.Mode,
         onOpenPrivacy: @escaping () -> Void,
         onForgotPassword: @escaping () -> Void
+    ) -> AnyView
+    
+    func makeResetPasswordView(
+        viewModel: any ResetPasswordViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onDone: @escaping () -> Void
     ) -> AnyView
 }

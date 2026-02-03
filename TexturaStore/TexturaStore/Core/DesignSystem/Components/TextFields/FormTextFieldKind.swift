@@ -12,30 +12,30 @@ enum FormTextFieldKind {
     case email
     case password
     case phone
-
+    
     var title: String {
         switch self {
         case .name:
-            return "Имя"
+            return L10n.Form.Field.Name.title
         case .email:
-            return "E-mail"
+            return L10n.Form.Field.Email.title
         case .password:
-            return "Пароль"
+            return L10n.Form.Field.Password.title
         case .phone:
-            return "Телефон"
+            return L10n.Form.Field.Phone.title
         }
     }
-
+    
     var placeholder: String {
         switch self {
         case .name:
-            return "Введите имя"
+            return L10n.Form.Field.Name.placeholder
         case .email:
-            return "Введите e-mail"
+            return L10n.Form.Field.Email.placeholder
         case .password:
-            return "Введите пароль"
+            return L10n.Form.Field.Password.placeholder
         case .phone:
-            return "+7 (___) ___-__-__"
+            return L10n.Form.Field.Phone.placeholder
         }
     }
 }

@@ -36,4 +36,18 @@ final class AuthScreenFactory: AuthScreenBuilding {
             )
         )
     }
+    
+    func makeResetPasswordView(
+        viewModel: any ResetPasswordViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onDone: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            ResetPasswordView(
+                viewModel: viewModel,
+                onBack: onBack,
+                onDone: onDone
+            )
+        )
+    }
 }

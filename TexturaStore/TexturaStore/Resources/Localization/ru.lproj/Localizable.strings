@@ -17,6 +17,37 @@
 "screen.cart.title" = "Корзина";
 "screen.profile.title" = "Профиль";
 
+/* Validation */
+"validation.name.minLength" = "Имя должно содержать минимум 2 символа";
+
+"validation.email.invalid" = "Введите корректный e-mail";
+
+"validation.password.minLength" = "Минимум 6 символов";
+"validation.password.noSpaces" = "Пароль не должен содержать пробелов";
+"validation.password.allowedChars" = "Допустимы: латиница, цифры, !@#$%";
+"validation.password.requireDigit" = "Добавьте хотя бы одну цифру";
+"validation.password.requireSpecial" = "Добавьте хотя бы один спецсимвол (!@#$%)";
+"validation.password.requireUppercase" = "Добавьте хотя бы одну заглавную букву";
+
+"validation.phone.invalidFormat" = "Введите номер в формате +7 (XXX) XXX-XX-XX";
+
+"validation.comment.empty" = "Комментарий не может быть пустым";
+"validation.comment.tooShort" = "Комментарий слишком короткий";
+"validation.comment.tooLong" = "Комментарий слишком длинный (максимум 500 символов)";
+
+/* Form - Fields */
+"form.field.name.title" = "Имя";
+"form.field.name.placeholder" = "Введите имя";
+
+"form.field.email.title" = "E-mail";
+"form.field.email.placeholder" = "Введите e-mail";
+
+"form.field.password.title" = "Пароль";
+"form.field.password.placeholder" = "Введите пароль";
+
+"form.field.phone.title" = "Телефон";
+"form.field.phone.placeholder" = "+7 (___) ___-__-__";
+
 /* Auth - Sign In */
 "auth.signin.forgotPassword" = "Забыли пароль?";
 "auth.signin.submit" = "Войти";
@@ -32,6 +63,15 @@
 /* Auth - Root */
 "auth.root.signin.title" = "Вход";
 "auth.root.signup.title" = "Регистрация";
+
+/* Auth - Reset Password */
+"auth.reset.title" = "Восстановление пароля";
+"auth.reset.subtitle" = "Укажите e-mail, мы отправим ссылку для смены пароля.";
+"auth.reset.submit" = "Отправить";
+"auth.reset.backRowLabel" = "Вспомнили пароль?";
+"auth.reset.backRowAction" = "Назад ко входу";
+"auth.reset.alert.done.title" = "Готово";
+"auth.reset.alert.done.message" = "Мы отправили письмо. Проверьте почту.";
 
 /* Common */
 "common.error.title" = "Ошибка";

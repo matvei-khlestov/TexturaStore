@@ -45,7 +45,8 @@ extension Container {
         Factory(self) { @MainActor in
             AuthCoordinator(
                 authScreenFactory: self.authScreenFactory(),
-                privacyPolicyScreenFactory: self.privacyPolicyScreenFactory()
+                privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
+                resetPasswordViewModel: self.resetPasswordViewModel()
             )
         }
         .scope(.singleton)

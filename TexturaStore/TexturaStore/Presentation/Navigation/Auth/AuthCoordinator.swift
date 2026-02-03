@@ -31,15 +31,18 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
     
     private let authScreenFactory: AuthScreenBuilding
     private let privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
+    private let resetPasswordViewModel: ResetPasswordViewModelProtocol
     
     // MARK: - Init
     
     init(
         authScreenFactory: AuthScreenBuilding,
-        privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
+        privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding,
+        resetPasswordViewModel: any ResetPasswordViewModelProtocol
     ) {
         self.authScreenFactory = authScreenFactory
         self.privacyPolicyScreenFactory = privacyPolicyScreenFactory
+        self.resetPasswordViewModel = resetPasswordViewModel
     }
     
     // MARK: - Coordinator Lifecycle
@@ -61,8 +64,7 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
                     self?.router.push(.privacyPolicy)
                 },
                 onForgotPassword: { [weak self] in
-                    // сюда позже добавишь route для reset password
-                    _ = self
+                    self?.router.push(.resetPassword)
                 }
             )
         )
@@ -73,6 +75,17 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
         case .privacyPolicy:
             return privacyPolicyScreenFactory.makePrivacyPolicyView(
                 onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
+            
+        case .resetPassword:
+            return authScreenFactory.makeResetPasswordView(
+                viewModel: resetPasswordViewModel,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onDone: { [weak self] in
                     self?.router.pop()
                 }
             )

@@ -21,38 +21,38 @@ import UIKit
 /// - поддерживает Dynamic Type и адаптивные отступы;
 /// - текст форматируется через `NSMutableParagraphStyle`.
 struct PrivacyPolicyView: View {
-
+    
     // MARK: - Callbacks
-
+    
     var onBack: (() -> Void)?
-
+    
     // MARK: - Metrics
-
+    
     private enum Metrics {
         enum Insets {
             static let horizontal: CGFloat = 16
             static let verticalTop: CGFloat = 16
             static let verticalBottom: CGFloat = 24
         }
-
+        
         enum Fonts {
             static let body: UIFont = .systemFont(ofSize: 15, weight: .regular)
         }
-
+        
         enum Paragraph {
             static let lineSpacing: CGFloat = 2
             static let paragraphSpacing: CGFloat = 6
         }
     }
-
+    
     // MARK: - Texts
-
+    
     private enum Texts {
         static let navigationTitle = L10n.Auth.Signup.privacyTitle
     }
-
+    
     // MARK: - Body
-
+    
     var body: some View {
         ScrollView(.vertical) {
             Text(attributedPolicyText)
@@ -66,32 +66,24 @@ struct PrivacyPolicyView: View {
         .background(Color(.systemBackground))
         .navigationTitle(Texts.navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    onBack?()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(Color(.brand))
-                }
-                .accessibilityIdentifier("privacy.back")
-            }
+        .brandBackButton {
+            onBack?()
         }
+        .accessibilityIdentifier("privacy.screen")
     }
-
+    
     // MARK: - Content
-
+    
     private var attributedPolicyText: AttributedString {
         let ns = makeAttributedPolicyText(PrivacyPolicyText.body)
         return (try? AttributedString(ns, including: \.uiKit)) ?? AttributedString(PrivacyPolicyText.body)
     }
-
+    
     private func makeAttributedPolicyText(_ text: String) -> NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineSpacing = Metrics.Paragraph.lineSpacing
         paragraph.paragraphSpacing = Metrics.Paragraph.paragraphSpacing
-
+        
         return NSAttributedString(
             string: text,
             attributes: [
