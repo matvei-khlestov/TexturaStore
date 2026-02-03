@@ -11,7 +11,7 @@ import Foundation
 final class AnyCoordinatorBox<C: Coordinator>: CoordinatorBox {
     let id: UUID = UUID()
     let coordinator: C
-
+    
     init(_ coordinator: C) {
         self.coordinator = coordinator
     }
@@ -19,10 +19,15 @@ final class AnyCoordinatorBox<C: Coordinator>: CoordinatorBox {
 
 @MainActor
 extension Coordinator {
+    
     func storeChild<C: Coordinator>(_ coordinator: C) {
         childCoordinators.append(AnyCoordinatorBox(coordinator))
     }
-
+    
+    func removeChild(id: UUID) {
+        childCoordinators.removeAll { $0.id == id }
+    }
+    
     func removeAllChildren() {
         childCoordinators.removeAll()
     }

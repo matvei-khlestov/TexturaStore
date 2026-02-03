@@ -84,6 +84,8 @@
 		A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B79C2F313BF40038E3BB /* SignUpView.swift */; };
 		A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */; };
 		A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */; };
+		A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */; };
+		A0E3B7A72F31FD730038E3BB /* AuthScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +185,8 @@
 		A0E3B79C2F313BF40038E3BB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+ViewModels.swift"; sourceTree = "<group>"; };
 		A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Utils.swift"; sourceTree = "<group>"; };
+		A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenBuilding.swift; sourceTree = "<group>"; };
+		A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,7 @@
 		A0572AE42F2E5BC800B00C0F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7A52F31FD5C0038E3BB /* Factories */,
 				A0572AE52F2E5C0700B00C0F /* Models */,
 				A0572AE62F2E5C1300B00C0F /* Protocols */,
 				A0572AE72F2E5E8500B00C0F /* UseCases */,
@@ -465,6 +470,7 @@
 		A0572AE62F2E5C1300B00C0F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7A22F31FCF80038E3BB /* Factories */,
 				A0E3B7802F3123B40038E3BB /* Formatters */,
 				A0E3B7782F3120000038E3BB /* ViewModels */,
 				A0E3B7712F311D7B0038E3BB /* Validator */,
@@ -864,6 +870,22 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A0E3B7A22F31FCF80038E3BB /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		A0E3B7A52F31FD5C0038E3BB /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1043,6 +1065,7 @@
 				A0E3B7992F313AB70038E3BB /* SignUpViewModelProtocol.swift in Sources */,
 				A0E3B78C2F312C590038E3BB /* UnderlinedButton.swift in Sources */,
 				A0D250F62F2E7C6500C6B040 /* AuthCoordinator.swift in Sources */,
+				A0E3B7A72F31FD730038E3BB /* AuthScreenFactory.swift in Sources */,
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
 				A021D3522F2E682300AF94A1 /* 11.swift in Sources */,
 				A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */,
@@ -1073,6 +1096,7 @@
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
+				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 				A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */,

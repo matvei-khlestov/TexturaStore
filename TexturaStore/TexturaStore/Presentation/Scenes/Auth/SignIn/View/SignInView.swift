@@ -25,7 +25,6 @@ struct SignInView: View {
     
     // MARK: - Callbacks
     
-    var onBack: (() -> Void)?
     var onOpenSignUp: (() -> Void)?
     var onForgotPassword: (() -> Void)?
     
@@ -85,12 +84,10 @@ struct SignInView: View {
     
     init(
         viewModel: SignInViewModelProtocol,
-        onBack: (() -> Void)? = nil,
         onOpenSignUp: (() -> Void)? = nil,
         onForgotPassword: (() -> Void)? = nil
     ) {
         self.viewModel = viewModel
-        self.onBack = onBack
         self.onOpenSignUp = onOpenSignUp
         self.onForgotPassword = onForgotPassword
     }

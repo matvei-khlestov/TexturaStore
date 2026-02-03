@@ -21,14 +21,14 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
 
     // MARK: - Dependencies
 
-    private let authCoordinator: any AuthCoordinating
-    private let mainTabCoordinator: any MainTabCoordinating
+    private let authCoordinator: AuthCoordinating
+    private let mainTabCoordinator: MainTabCoordinating
 
     // MARK: - Init
 
     init(
-        authCoordinator: any AuthCoordinating,
-        mainTabCoordinator: any MainTabCoordinating
+        authCoordinator: AuthCoordinating,
+        mainTabCoordinator: MainTabCoordinating
     ) {
         self.authCoordinator = authCoordinator
         self.mainTabCoordinator = mainTabCoordinator

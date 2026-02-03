@@ -21,17 +21,12 @@ final class AuthCoordinator: AuthCoordinating {
 
     // MARK: - Dependencies
 
-    private let signInViewModel: SignInViewModelProtocol
-    private let signUpViewModel: SignUpViewModelProtocol
+    private let screenFactory: AuthScreenBuilding
 
     // MARK: - Init
 
-    init(
-        signInViewModel: SignInViewModelProtocol,
-        signUpViewModel: SignUpViewModelProtocol
-    ) {
-        self.signInViewModel = signInViewModel
-        self.signUpViewModel = signUpViewModel
+    init(screenFactory: AuthScreenBuilding) {
+        self.screenFactory = screenFactory
     }
 
     // MARK: - Coordinator Lifecycle
@@ -47,11 +42,8 @@ final class AuthCoordinator: AuthCoordinating {
     var rootView: AnyView {
         AnyView(
             AppNavigationContainer {
-                AuthRootView(
-                    signInViewModel: signInViewModel,
-                    signUpViewModel: signUpViewModel,
+                screenFactory.makeAuthRootView(
                     start: .signIn,
-                    onBack: nil,
                     onOpenPrivacy: { [weak self] in
                         // сюда позже заведёшь переход на экран/вебвью политики
                         _ = self
