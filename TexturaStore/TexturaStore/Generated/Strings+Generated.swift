@@ -60,6 +60,20 @@ internal enum L10n {
       internal static let privacyTitle = L10n.tr("Localizable", "auth.signup.privacyTitle", fallback: "Privacy Policy")
       /// Sign Up
       internal static let submit = L10n.tr("Localizable", "auth.signup.submit", fallback: "Sign Up")
+      internal enum Agreement {
+        /// You must agree to the privacy policy
+        internal static let error = L10n.tr("Localizable", "auth.signup.agreement.error", fallback: "You must agree to the privacy policy")
+      }
+      internal enum Success {
+        /// We sent an email to confirm your email address.
+        /// 
+        /// Confirm your email and sign in to the app.
+        /// 
+        /// You will be redirected to the Sign In screen.
+        internal static let message = L10n.tr("Localizable", "auth.signup.success.message", fallback: "We sent an email to confirm your email address.\n\nConfirm your email and sign in to the app.\n\nYou will be redirected to the Sign In screen.")
+        /// Registration successful
+        internal static let title = L10n.tr("Localizable", "auth.signup.success.title", fallback: "Registration successful")
+      }
     }
   }
   internal enum Common {

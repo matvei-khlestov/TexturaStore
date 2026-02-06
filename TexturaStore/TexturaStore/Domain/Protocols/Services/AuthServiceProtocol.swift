@@ -1,0 +1,69 @@
+//
+//  AuthServiceProtocol.swift
+//  TexturaStore
+//
+//  Created by Matvei Khlestov on 04.02.2026.
+//
+
+import Foundation
+import Combine
+
+/// Протокол `AuthServiceProtocol`
+///
+/// Определяет интерфейс для сервиса аутентификации пользователя, который управляет
+/// жизненным циклом сессии (вход, регистрация, выход, удаление учётной записи).
+/// Слой абстракции, позволяющий использовать любую реализацию (например, FirebaseAuth или собственный backend),
+/// не нарушая архитектуру приложения.
+///
+/// Основные задачи:
+/// - управление состоянием авторизации и предоставление реактивного паблишера `isAuthorizedPublisher`;
+/// - выполнение входа и регистрации пользователя;
+/// - завершение или удаление сессии;
+/// - хранение и доступ к уникальному идентификатору текущего пользователя.
+///
+/// Используется в:
+/// - `AuthCoordinator` — для навигации между экранами аутентификации;
+/// - `SignInViewModel`, `SignUpViewModel` — для выполнения операций входа и регистрации;
+/// - `AppCoordinator` — для определения стартового сценария приложения (гость / авторизованный пользователь).
+
+protocol AuthServiceProtocol {
+    
+    /// Паблишер, уведомляющий об изменении статуса авторизации.
+    /// `true` — пользователь вошёл, `false` — пользователь вышел.
+    var isAuthorizedPublisher: AnyPublisher<Bool, Never> { get }
+    
+    /// Выполняет вход пользователя по e-mail и паролю.
+    /// - Parameters:
+    ///   - email: Электронная почта пользователя.
+    ///   - password: Пароль.
+    /// - Throws: Ошибку при неудачной аутентификации.
+    func signIn(email: String, password: String) async throws
+    
+    /// Регистрирует нового пользователя.
+    /// - Parameters:
+    ///   - email: Электронная почта.
+    ///   - password: Пароль.
+    /// - Throws: Ошибку при неудачной регистрации.
+    func signUp(email: String, password: String) async throws
+    
+    /// Завершает текущую сессию пользователя.
+    /// - Throws: Ошибку при сбое завершения сессии.
+    func signOut() async throws
+    
+    /// Удаляет текущую учётную запись пользователя.
+    /// - Throws: Ошибку при сбое удаления.
+    func deleteAccount() async throws
+    
+    /// Обновляет почту аккаунта в провайдере авторизации (FirebaseAuth).
+    ///
+    /// В Firebase для sensitive операций часто требуется "recent login" —
+    /// поэтому метод принимает `currentPassword`, чтобы выполнить reauthenticate.
+    ///
+    /// - Parameters:
+    ///   - newEmail: Новый email.
+    ///   - currentPassword: Текущий пароль (для reauth).
+    func updateEmail(to newEmail: String, currentPassword: String) async throws
+    
+    /// Уникальный идентификатор текущего авторизованного пользователя.
+    var currentUserId: String? { get }
+}

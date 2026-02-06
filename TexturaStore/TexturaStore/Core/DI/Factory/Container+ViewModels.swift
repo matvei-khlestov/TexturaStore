@@ -14,7 +14,8 @@ extension Container {
     var signInViewModel: Factory<any SignInViewModelProtocol> {
         Factory(self) { @MainActor in
             SignInViewModel(
-                validator: self.formValidator()
+                validator: self.formValidator(),
+                authService: self.authService()
             )
         }
         .scope(.singleton)
@@ -23,7 +24,8 @@ extension Container {
     var signUpViewModel: Factory<any SignUpViewModelProtocol> {
         Factory(self) { @MainActor in
             SignUpViewModel(
-                validator: self.formValidator()
+                validator: self.formValidator(),
+                authService: self.authService()
             )
         }
         .scope(.singleton)

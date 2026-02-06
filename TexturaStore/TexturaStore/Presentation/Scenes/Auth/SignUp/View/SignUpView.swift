@@ -71,6 +71,9 @@ struct SignUpView: View {
         
         static let errorTitle = L10n.Common.Error.title
         static let okTitle = L10n.Common.ok
+        
+        static let signUpSuccessTitle = L10n.Auth.Signup.Success.title
+        static let signUpSuccessMessage = L10n.Auth.Signup.Success.message
     }
     
     // MARK: - State
@@ -90,6 +93,8 @@ struct SignUpView: View {
     
     @State private var errorAlertMessage: String? = nil
     @State private var isErrorAlertPresented: Bool = false
+    
+    @State private var isSignUpSuccessAlertPresented: Bool = false
     
     @State private var bag = Set<AnyCancellable>()
     
@@ -130,6 +135,13 @@ struct SignUpView: View {
             Button(Texts.okTitle, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
+        }
+        .alert(Texts.signUpSuccessTitle, isPresented: $isSignUpSuccessAlertPresented) {
+            Button(Texts.okTitle) {
+                onLogin?()
+            }
+        } message: {
+            Text(Texts.signUpSuccessMessage)
         }
     }
     
@@ -295,6 +307,13 @@ struct SignUpView: View {
             .receive(on: RunLoop.main)
             .sink { enabled in
                 isSubmitEnabled = enabled
+            }
+            .store(in: &bag)
+        
+        viewModel.signUpSuccess
+            .receive(on: RunLoop.main)
+            .sink { _ in
+                isSignUpSuccessAlertPresented = true
             }
             .store(in: &bag)
     }
