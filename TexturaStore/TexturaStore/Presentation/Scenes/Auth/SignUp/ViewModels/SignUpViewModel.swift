@@ -18,18 +18,19 @@ import Combine
 /// Архитектура и зависимости:
 /// - Использует Combine для реактивной обработки ошибок валидации;
 /// - Работает с `FormValidatingProtocol` для проверок формата данных;
-/// - Не содержит сетевой логики и репозиториев (будут добавлены позже).
+/// - Выполняет регистрацию через `AuthServiceProtocol`.
 ///
 /// Особенности:
 /// - Автоматически обновляет ошибки при изменении значений полей;
 /// - Паблишеры ошибок (`nameError`, `emailError`, `passwordError`, `agreementError`);
 /// - Паблишер `isSubmitEnabled` активирует кнопку сабмита при валидных данных;
-/// - Метод `signUp()` выполняет только финальную валидацию.
+/// - Метод `signUp()` выполняет финальную валидацию и регистрацию.
 final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
     
     // MARK: - Dependencies
     
     private let validator: FormValidatingProtocol
+    private let authService: AuthServiceProtocol
     
     // MARK: - State
     
@@ -43,12 +44,18 @@ final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
     @Published private var _passwordError: String? = nil
     @Published private var _agreementError: String? = nil
     
+    private let signUpSuccessSubject = PassthroughSubject<Void, Never>()
+    
     private var bag = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    init(validator: FormValidatingProtocol) {
+    init(
+        validator: FormValidatingProtocol,
+        authService: AuthServiceProtocol
+    ) {
         self.validator = validator
+        self.authService = authService
         
         $name
             .map { [validator] in
@@ -69,7 +76,7 @@ final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
             .assign(to: &$_passwordError)
         
         $agreed
-            .map { $0 ? nil : "Необходимо согласиться с политикой конфиденциальности" }
+            .map { $0 ? nil : L10n.Auth.Signup.Agreement.error }
             .assign(to: &$_agreementError)
     }
     
@@ -102,6 +109,10 @@ final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
         .eraseToAnyPublisher()
     }
     
+    var signUpSuccess: AnyPublisher<Void, Never> {
+        signUpSuccessSubject.eraseToAnyPublisher()
+    }
+    
     // MARK: - Inputs
     
     func setName(_ v: String) { name = v }
@@ -117,6 +128,8 @@ final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
               validator.validate(password, for: .password).isValid,
               agreed else { return }
         
-        // Сетевая логика и создание профиля будут добавлены позже
+        try await authService.signUp(email: email, password: password)
+        
+        signUpSuccessSubject.send(())
     }
 }

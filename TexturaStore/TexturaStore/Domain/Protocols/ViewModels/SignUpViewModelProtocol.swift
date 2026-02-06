@@ -53,6 +53,9 @@ protocol SignUpViewModelProtocol: AnyObject {
     /// Флаг, разрешающий активацию кнопки регистрации.
     var isSubmitEnabled: AnyPublisher<Bool, Never> { get }
     
+    /// Событие успешной регистрации (одноразовый сигнал для UI).
+    var signUpSuccess: AnyPublisher<Void, Never> { get }
+    
     // MARK: - Actions
     
     /// Выполняет регистрацию нового пользователя с проверкой всех введённых данных.

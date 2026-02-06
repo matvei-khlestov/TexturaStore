@@ -56,9 +56,12 @@
 
 /* Auth - Sign Up */
 "auth.signup.privacyTitle" = "Privacy Policy";
+"auth.signup.agreement.error" = "You must agree to the privacy policy";
 "auth.signup.submit" = "Sign Up";
 "auth.signup.noteText" = "Already have an account?";
 "auth.signup.noteAction" = "Sign In";
+"auth.signup.success.title" = "Registration successful";
+"auth.signup.success.message" = "We sent an email to confirm your email address.\n\nConfirm your email and sign in to the app.\n\nYou will be redirected to the Sign In screen.";
 
 /* Auth - Root */
 "auth.root.signin.title" = "Sign In";

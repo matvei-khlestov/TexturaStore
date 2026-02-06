@@ -44,6 +44,7 @@ extension Container {
     var authCoordinator: Factory<any AuthCoordinating> {
         Factory(self) { @MainActor in
             AuthCoordinator(
+                authService: self.authService(),
                 authScreenFactory: self.authScreenFactory(),
                 privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
                 resetPasswordViewModel: self.resetPasswordViewModel()

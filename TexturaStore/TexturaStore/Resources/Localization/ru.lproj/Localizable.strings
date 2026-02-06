@@ -56,9 +56,12 @@
 
 /* Auth - Sign Up */
 "auth.signup.privacyTitle" = "Политика конфиденциальности";
+"auth.signup.agreement.error" = "Необходимо согласиться с политикой конфиденциальности";
 "auth.signup.submit" = "Зарегистрироваться";
 "auth.signup.noteText" = "Уже есть аккаунт?";
 "auth.signup.noteAction" = "Войти";
+"auth.signup.success.title" = "Регистрация успешна";
+"auth.signup.success.message" = "На вашу почту было направлено письмо для подтверждения email.\n\nПодтвердите почту и войдите в приложение.\n\nВы будете перенаправлены на экран входа в приложение.";
 
 /* Auth - Root */
 "auth.root.signin.title" = "Вход";
