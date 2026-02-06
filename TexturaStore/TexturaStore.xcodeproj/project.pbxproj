@@ -10,7 +10,6 @@
 		A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33D2F2E679C00AF94A1 /* 2.swift */; };
 		A021D3522F2E682300AF94A1 /* 11.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3512F2E682300AF94A1 /* 11.swift */; };
 		A021D3542F2E683300AF94A1 /* 12.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3532F2E683300AF94A1 /* 12.swift */; };
-		A021D3582F2E685A00AF94A1 /* 13.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3572F2E685A00AF94A1 /* 13.swift */; };
 		A021D35A2F2E686800AF94A1 /* 14.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3592F2E686800AF94A1 /* 14.swift */; };
 		A021D35C2F2E687900AF94A1 /* 15.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D35B2F2E687900AF94A1 /* 15.swift */; };
 		A021D3622F2E68C500AF94A1 /* 17.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3612F2E68C500AF94A1 /* 17.swift */; };
@@ -111,6 +110,16 @@
 		A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7EE2F33C3B10038E3BB /* Container+SupabaseClient.swift */; };
 		A0E3B7F12F33C69E0038E3BB /* SupabaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7F02F33C69E0038E3BB /* SupabaseAuthService.swift */; };
 		A0E3B7F32F33C75C0038E3BB /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7F22F33C75C0038E3BB /* AuthServiceProtocol.swift */; };
+		A0E3B7F52F3679C50038E3BB /* KeychainKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7F42F3679C50038E3BB /* KeychainKey.swift */; };
+		A0E3B7F72F367A2E0038E3BB /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7F62F367A2E0038E3BB /* KeychainService.swift */; };
+		A0E3B7F92F367A5B0038E3BB /* KeychainServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */; };
+		A0E3B7FC2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */; };
+		A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7FE2F367B9D0038E3BB /* AuthSessionStorage.swift */; };
+		A0E3B8032F3680D60038E3BB /* Container+Storages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8022F3680D60038E3BB /* Container+Storages.swift */; };
+		A0E3B8052F369A8E0038E3BB /* ProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */; };
+		A0E3B8072F369AE90038E3BB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */; };
+		A0E3B8092F369CF30038E3BB /* ProfileScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */; };
+		A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +143,6 @@
 		A021D33D2F2E679C00AF94A1 /* 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2.swift; sourceTree = "<group>"; };
 		A021D3512F2E682300AF94A1 /* 11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 11.swift; sourceTree = "<group>"; };
 		A021D3532F2E683300AF94A1 /* 12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 12.swift; sourceTree = "<group>"; };
-		A021D3572F2E685A00AF94A1 /* 13.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 13.swift; sourceTree = "<group>"; };
 		A021D3592F2E686800AF94A1 /* 14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 14.swift; sourceTree = "<group>"; };
 		A021D35B2F2E687900AF94A1 /* 15.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 15.swift; sourceTree = "<group>"; };
 		A021D3612F2E68C500AF94A1 /* 17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 17.swift; sourceTree = "<group>"; };
@@ -231,6 +239,16 @@
 		A0E3B7EE2F33C3B10038E3BB /* Container+SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+SupabaseClient.swift"; sourceTree = "<group>"; };
 		A0E3B7F02F33C69E0038E3BB /* SupabaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseAuthService.swift; sourceTree = "<group>"; };
 		A0E3B7F22F33C75C0038E3BB /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7F42F3679C50038E3BB /* KeychainKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKey.swift; sourceTree = "<group>"; };
+		A0E3B7F62F367A2E0038E3BB /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionStoringProtocol.swift; sourceTree = "<group>"; };
+		A0E3B7FE2F367B9D0038E3BB /* AuthSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionStorage.swift; sourceTree = "<group>"; };
+		A0E3B8022F3680D60038E3BB /* Container+Storages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Storages.swift"; sourceTree = "<group>"; };
+		A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenBuilding.swift; sourceTree = "<group>"; };
+		A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +494,7 @@
 		A0572AE12F2E5B8D00B00C0F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7FD2F367B680038E3BB /* AuthSession */,
 				A0572AE22F2E5B9F00B00C0F /* Keychain */,
 				A0572AE32F2E5BAB00B00C0F /* UserDefaults */,
 			);
@@ -485,7 +504,8 @@
 		A0572AE22F2E5B9F00B00C0F /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				A021D3572F2E685A00AF94A1 /* 13.swift */,
+				A0E3B7F42F3679C50038E3BB /* KeychainKey.swift */,
+				A0E3B7F62F367A2E0038E3BB /* KeychainService.swift */,
 			);
 			path = Keychain;
 			sourceTree = "<group>";
@@ -522,6 +542,7 @@
 		A0572AE62F2E5C1300B00C0F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B7FA2F367B060038E3BB /* Storage */,
 				A0E3B7CF2F32885D0038E3BB /* Services */,
 				A0E3B7A22F31FCF80038E3BB /* Factories */,
 				A0E3B7802F3123B40038E3BB /* Formatters */,
@@ -686,6 +707,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D250FF2F2E7D5300C6B040 /* ProfileRootView.swift */,
+				A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -746,6 +768,7 @@
 				A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */,
 				A0E3B7EC2F33C37A0038E3BB /* Container+Services.swift */,
 				A0E3B7EE2F33C3B10038E3BB /* Container+SupabaseClient.swift */,
+				A0E3B8022F3680D60038E3BB /* Container+Storages.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -847,6 +870,7 @@
 				A0E3B7792F31201B0038E3BB /* SignInViewModelProtocol.swift */,
 				A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */,
 				A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */,
+				A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -939,6 +963,7 @@
 			children = (
 				A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */,
 				A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */,
+				A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -948,6 +973,7 @@
 			children = (
 				A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */,
 				A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */,
+				A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -974,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7F22F33C75C0038E3BB /* AuthServiceProtocol.swift */,
+				A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1017,6 +1044,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0E3B7FA2F367B060038E3BB /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		A0E3B7FD2F367B680038E3BB /* AuthSession */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7FE2F367B9D0038E3BB /* AuthSessionStorage.swift */,
+			);
+			path = AuthSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1175,8 +1218,10 @@
 				A0E3B7702F311D160038E3BB /* FormValidator.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
 				A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */,
+				A0E3B7FC2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift in Sources */,
 				A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */,
 				A0D251542F2FA50000C6B040 /* ProfileCoordinator.swift in Sources */,
+				A0E3B8032F3680D60038E3BB /* Container+Storages.swift in Sources */,
 				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
 				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
 				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
@@ -1206,6 +1251,7 @@
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
 				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
+				A0E3B7F52F3679C50038E3BB /* KeychainKey.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
 				A0E3B7B72F3244C20038E3BB /* RouteIdentifiable.swift in Sources */,
 				A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */,
@@ -1218,15 +1264,18 @@
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
 				A021D3522F2E682300AF94A1 /* 11.swift in Sources */,
 				A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */,
+				A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */,
 				A0E3B7F12F33C69E0038E3BB /* SupabaseAuthService.swift in Sources */,
 				A021D3622F2E68C500AF94A1 /* 17.swift in Sources */,
 				A0D251492F2FA3DC00C6B040 /* ProfileCoordinating.swift in Sources */,
+				A0E3B7F72F367A2E0038E3BB /* KeychainService.swift in Sources */,
 				A0D251112F2E88D200C6B040 /* CGFloat+DesignSystem.swift in Sources */,
 				A0D251472F2FA3B600C6B040 /* CartCoordinating.swift in Sources */,
 				A0E3B77A2F31201B0038E3BB /* SignInViewModelProtocol.swift in Sources */,
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0E3B7F32F33C75C0038E3BB /* AuthServiceProtocol.swift in Sources */,
+				A0E3B7F92F367A5B0038E3BB /* KeychainServiceProtocol.swift in Sources */,
 				A0E3B7E62F33C0100038E3BB /* SupabaseConfig.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
@@ -1235,24 +1284,27 @@
 				A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */,
 				A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
+				A0E3B8052F369A8E0038E3BB /* ProfileViewModelProtocol.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
+				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0E3B7ED2F33C37A0038E3BB /* Container+Services.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
 				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
-				A021D3582F2E685A00AF94A1 /* 13.swift in Sources */,
 				A0E3B7E82F33C0320038E3BB /* SupabaseClientFactory.swift in Sources */,
 				A0E3B7BF2F3245880038E3BB /* RoutableCoordinator.swift in Sources */,
+				A0E3B8092F369CF30038E3BB /* ProfileScreenBuilding.swift in Sources */,
 				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A021D35C2F2E687900AF94A1 /* 15.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
+				A0E3B8072F369AE90038E3BB /* ProfileViewModel.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,

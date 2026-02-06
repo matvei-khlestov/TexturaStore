@@ -32,7 +32,7 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
     private let authService: AuthServiceProtocol
     private let authScreenFactory: AuthScreenBuilding
     private let privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
-    private let resetPasswordViewModel: any ResetPasswordViewModelProtocol
+    private let resetPasswordViewModel: ResetPasswordViewModelProtocol
 
     // MARK: - State
 
@@ -44,7 +44,7 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
         authService: AuthServiceProtocol,
         authScreenFactory: AuthScreenBuilding,
         privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding,
-        resetPasswordViewModel: any ResetPasswordViewModelProtocol
+        resetPasswordViewModel: ResetPasswordViewModelProtocol
     ) {
         self.authService = authService
         self.authScreenFactory = authScreenFactory
@@ -54,9 +54,7 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
 
     // MARK: - Coordinator Lifecycle
 
-    func start() {
-        bindAuthStateIfNeeded()
-    }
+    func start() {}
 
     func finish() {
         bag.removeAll()
@@ -100,23 +98,5 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
                 }
             )
         }
-    }
-}
-
-// MARK: - Private
-
-private extension AuthCoordinator {
-
-    func bindAuthStateIfNeeded() {
-        guard bag.isEmpty else { return }
-
-        authService.isAuthorizedPublisher
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] isAuthorized in
-                guard let self, isAuthorized else { return }
-                self.onAuthSuccess?()
-            }
-            .store(in: &bag)
     }
 }

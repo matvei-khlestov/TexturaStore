@@ -34,7 +34,10 @@ extension Container {
     
     var profileCoordinator: Factory<any ProfileCoordinating> {
         Factory(self) { @MainActor in
-            ProfileCoordinator()
+            ProfileCoordinator(
+                profileScreenFactory: self.profileScreenFactory(),
+                profileViewModel: self.profileViewModel()
+            )
         }
         .scope(.singleton)
     }
@@ -73,7 +76,9 @@ extension Container {
         Factory(self) { @MainActor in
             AppCoordinator(
                 authCoordinator: self.authCoordinator(),
-                mainTabCoordinator: self.mainTabCoordinator()
+                mainTabCoordinator: self.mainTabCoordinator(),
+                authService: self.authService(),
+                sessionStorage: self.authSessionStorage()
             )
         }
         .scope(.singleton)
