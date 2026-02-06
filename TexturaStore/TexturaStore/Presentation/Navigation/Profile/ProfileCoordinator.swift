@@ -18,6 +18,21 @@ final class ProfileCoordinator: ProfileCoordinating {
     
     var onLogout: (() -> Void)?
     
+    // MARK: - Dependencies
+    
+    private let profileScreenFactory: ProfileScreenBuilding
+    private let profileViewModel: ProfileViewModelProtocol
+    
+    // MARK: - Init
+    
+    init(
+        profileScreenFactory: ProfileScreenBuilding,
+        profileViewModel: ProfileViewModelProtocol
+    ) {
+        self.profileScreenFactory = profileScreenFactory
+        self.profileViewModel = profileViewModel
+    }
+    
     // MARK: - Coordinator Lifecycle
     
     func start() { }
@@ -29,13 +44,11 @@ final class ProfileCoordinator: ProfileCoordinating {
     // MARK: - Root View
     
     var rootView: AnyView {
-        AnyView(
-            ProfileRootView(
-                onLogout: { [weak self] in
-                    self?.onLogout?()
-                }
-            )
-            
+        profileScreenFactory.makeProfileRootView(
+            viewModel: profileViewModel,
+            onLogout: { [weak self] in
+                self?.onLogout?()
+            }
         )
     }
 }

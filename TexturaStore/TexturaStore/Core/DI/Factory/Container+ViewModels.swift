@@ -39,4 +39,15 @@ extension Container {
         }
         .scope(.shared)
     }
+    
+    // MARK: - Profile
+    
+    var profileViewModel: Factory<any ProfileViewModelProtocol> {
+        Factory(self) { @MainActor in
+            ProfileViewModel(
+                authService: self.authService()
+            )
+        }
+        .scope(.shared)
+    }
 }

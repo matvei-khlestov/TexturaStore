@@ -10,13 +10,26 @@ import FactoryKit
 import Supabase
 
 extension Container {
-
+    
+    // MARK: - Keychain
+    
+    var keychainService: Factory<KeychainServiceProtocol> {
+        Factory(self) { @MainActor in
+            KeychainService(
+                service: Bundle.main.bundleIdentifier ?? "TexturaStore",
+                accessible: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+            )
+        }
+        .scope(.singleton)
+    }
+    
     // MARK: - Auth
-
+    
     var authService: Factory<AuthServiceProtocol> {
         Factory(self) { @MainActor in
             SupabaseAuthService(
-                supabase: self.supabaseClient()
+                supabase: self.supabaseClient(),
+                session: self.authSessionStorage()
             )
         }
         .scope(.singleton)
