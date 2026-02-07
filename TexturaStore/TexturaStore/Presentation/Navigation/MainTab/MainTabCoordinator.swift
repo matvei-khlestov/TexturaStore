@@ -17,16 +17,16 @@ final class MainTabCoordinator: MainTabCoordinating {
     
     var onLogout: (() -> Void)?
     
-    private let catalogCoordinator: CatalogCoordinating
-    private let favoritesCoordinator: FavoritesCoordinating
-    private let cartCoordinator: CartCoordinating
-    private let profileCoordinator: ProfileCoordinating
+    private let catalogCoordinator: any CatalogCoordinating
+    private let favoritesCoordinator: any FavoritesCoordinating
+    private let cartCoordinator: any CartCoordinating
+    private let profileCoordinator: any ProfileCoordinating
     
     init(
-        catalogCoordinator: CatalogCoordinating,
-        favoritesCoordinator: FavoritesCoordinating,
-        cartCoordinator: CartCoordinating,
-        profileCoordinator: ProfileCoordinating
+        catalogCoordinator: any CatalogCoordinating,
+        favoritesCoordinator: any FavoritesCoordinating,
+        cartCoordinator: any CartCoordinating,
+        profileCoordinator: any ProfileCoordinating
     ) {
         self.catalogCoordinator = catalogCoordinator
         self.favoritesCoordinator = favoritesCoordinator

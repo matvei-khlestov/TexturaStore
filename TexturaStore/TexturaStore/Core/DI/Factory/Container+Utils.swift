@@ -11,7 +11,7 @@ extension Container {
 
     // MARK: - Utils
 
-    var formValidator: Factory<FormValidatingProtocol> {
+    var formValidator: Factory<any FormValidatingProtocol> {
         Factory(self) { @MainActor in
             FormValidator()
         }

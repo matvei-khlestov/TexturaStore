@@ -13,7 +13,7 @@ extension Container {
     
     // MARK: - Keychain
     
-    var keychainService: Factory<KeychainServiceProtocol> {
+    var keychainService: Factory<any KeychainServiceProtocol> {
         Factory(self) { @MainActor in
             KeychainService(
                 service: Bundle.main.bundleIdentifier ?? "TexturaStore",
@@ -25,11 +25,23 @@ extension Container {
     
     // MARK: - Auth
     
-    var authService: Factory<AuthServiceProtocol> {
+    var authService: Factory<any AuthServiceProtocol> {
         Factory(self) { @MainActor in
             SupabaseAuthService(
                 supabase: self.supabaseClient(),
                 session: self.authSessionStorage()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Password Reset
+    
+    var passwordResetService: Factory<any PasswordResetServiceProtocol> {
+        Factory(self) { @MainActor in
+            SupabasePasswordResetService(
+                supabase: self.supabaseClient(),
+                redirectURL: URL(string: "https://auth.texturastore.tech")
             )
         }
         .scope(.singleton)
