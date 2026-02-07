@@ -34,13 +34,13 @@ struct FormValidator: FormValidatingProtocol {
             if pwd.range(of: #"\s"#, options: .regularExpression) != nil {
                 errors.append(L10n.Validation.Password.noSpaces)
             }
-            if pwd.range(of: #"^[A-Za-z0-9!@#$%]+$"#, options: .regularExpression) == nil {
+            if pwd.range(of: #"^[A-Za-z0-9!@#$%-]+$"#, options: .regularExpression) == nil {
                 errors.append(L10n.Validation.Password.allowedChars)
             }
             if pwd.range(of: #"\d"#, options: .regularExpression) == nil {
                 errors.append(L10n.Validation.Password.requireDigit)
             }
-            if pwd.range(of: #"[!@#$%]"#, options: .regularExpression) == nil {
+            if pwd.range(of: #"[!@#$%-]"#, options: .regularExpression) == nil {
                 errors.append(L10n.Validation.Password.requireSpecial)
             }
             if pwd.range(of: #"[A-Z]"#, options: .regularExpression) == nil {

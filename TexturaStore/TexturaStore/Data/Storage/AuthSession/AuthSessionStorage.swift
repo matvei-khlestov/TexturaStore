@@ -22,9 +22,9 @@ import Foundation
 
 final class AuthSessionStorage: AuthSessionStoringProtocol {
 
-    private let keychain: KeychainServiceProtocol
+    private let keychain: any KeychainServiceProtocol
 
-    init(keychain: KeychainServiceProtocol) {
+    init(keychain: any KeychainServiceProtocol) {
         self.keychain = keychain
     }
 

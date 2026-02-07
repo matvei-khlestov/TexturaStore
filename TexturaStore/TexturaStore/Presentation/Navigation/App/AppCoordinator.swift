@@ -21,10 +21,10 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
     
     // MARK: - Dependencies
     
-    private let authCoordinator: AuthCoordinating
-    private let mainTabCoordinator: MainTabCoordinating
-    private let authService: AuthServiceProtocol
-    private let sessionStorage: AuthSessionStoringProtocol
+    private let authCoordinator: any AuthCoordinating
+    private let mainTabCoordinator: any MainTabCoordinating
+    private let authService: any AuthServiceProtocol
+    private let sessionStorage: any AuthSessionStoringProtocol
     
     // MARK: - Subscriptions
     
@@ -34,10 +34,10 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
     // MARK: - Init
     
     init(
-        authCoordinator: AuthCoordinating,
-        mainTabCoordinator: MainTabCoordinating,
-        authService: AuthServiceProtocol,
-        sessionStorage: AuthSessionStoringProtocol
+        authCoordinator: any AuthCoordinating,
+        mainTabCoordinator: any MainTabCoordinating,
+        authService: any AuthServiceProtocol,
+        sessionStorage: any AuthSessionStoringProtocol
     ) {
         self.authCoordinator = authCoordinator
         self.mainTabCoordinator = mainTabCoordinator

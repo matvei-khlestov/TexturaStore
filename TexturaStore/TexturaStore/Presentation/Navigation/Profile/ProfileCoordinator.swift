@@ -20,14 +20,14 @@ final class ProfileCoordinator: ProfileCoordinating {
     
     // MARK: - Dependencies
     
-    private let profileScreenFactory: ProfileScreenBuilding
-    private let profileViewModel: ProfileViewModelProtocol
+    private let profileScreenFactory: any ProfileScreenBuilding
+    private let profileViewModel: any ProfileViewModelProtocol
     
     // MARK: - Init
     
     init(
-        profileScreenFactory: ProfileScreenBuilding,
-        profileViewModel: ProfileViewModelProtocol
+        profileScreenFactory: any ProfileScreenBuilding,
+        profileViewModel: any ProfileViewModelProtocol
     ) {
         self.profileScreenFactory = profileScreenFactory
         self.profileViewModel = profileViewModel

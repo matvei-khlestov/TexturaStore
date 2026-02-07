@@ -120,6 +120,8 @@
 		A0E3B8072F369AE90038E3BB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */; };
 		A0E3B8092F369CF30038E3BB /* ProfileScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */; };
 		A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */; };
+		A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */; };
+		A0E3B80F2F375DBB0038E3BB /* SupabasePasswordResetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80E2F375DBB0038E3BB /* SupabasePasswordResetService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +251,9 @@
 		A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenFactory.swift; sourceTree = "<group>"; };
+		A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetServiceProtocol.swift; sourceTree = "<group>"; };
+		A0E3B80E2F375DBB0038E3BB /* SupabasePasswordResetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabasePasswordResetService.swift; sourceTree = "<group>"; };
+		A0E3B8102F376CA40038E3BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +313,7 @@
 		A0572AC02F2E541800B00C0F /* TexturaStore */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B8102F376CA40038E3BB /* Info.plist */,
 				A0572AD22F2E590400B00C0F /* App */,
 				A0572AD32F2E5A2500B00C0F /* Core */,
 				A0572ACF2F2E57ED00B00C0F /* Data */,
@@ -415,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7F02F33C69E0038E3BB /* SupabaseAuthService.swift */,
+				A0E3B80E2F375DBB0038E3BB /* SupabasePasswordResetService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1000,6 +1007,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7F22F33C75C0038E3BB /* AuthServiceProtocol.swift */,
+				A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */,
 				A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */,
 			);
 			path = Services;
@@ -1224,6 +1232,7 @@
 				A0E3B8032F3680D60038E3BB /* Container+Storages.swift in Sources */,
 				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
 				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
+				A0E3B80F2F375DBB0038E3BB /* SupabasePasswordResetService.swift in Sources */,
 				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
@@ -1291,6 +1300,7 @@
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
+				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0E3B7ED2F33C37A0038E3BB /* Container+Services.swift in Sources */,
@@ -1493,6 +1503,7 @@
 				DEVELOPMENT_TEAM = QZ329TNU43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TexturaStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1530,6 +1541,7 @@
 				DEVELOPMENT_TEAM = QZ329TNU43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TexturaStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

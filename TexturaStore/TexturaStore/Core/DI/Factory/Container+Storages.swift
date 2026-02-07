@@ -12,7 +12,7 @@ extension Container {
     
     // MARK: - Storages
     
-    var authSessionStorage: Factory<AuthSessionStoringProtocol> {
+    var authSessionStorage: Factory<any AuthSessionStoringProtocol> {
         Factory(self) { @MainActor in
             AuthSessionStorage(
                 keychain: self.keychainService()

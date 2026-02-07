@@ -29,22 +29,18 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
 
     // MARK: - Dependencies
 
-    private let authService: AuthServiceProtocol
-    private let authScreenFactory: AuthScreenBuilding
-    private let privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding
-    private let resetPasswordViewModel: ResetPasswordViewModelProtocol
-
-    // MARK: - State
-
-    private var bag = Set<AnyCancellable>()
+    private let authService: any AuthServiceProtocol
+    private let authScreenFactory: any AuthScreenBuilding
+    private let privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding
+    private let resetPasswordViewModel: any ResetPasswordViewModelProtocol
 
     // MARK: - Init
 
     init(
-        authService: AuthServiceProtocol,
-        authScreenFactory: AuthScreenBuilding,
-        privacyPolicyScreenFactory: PrivacyPolicyScreenBuilding,
-        resetPasswordViewModel: ResetPasswordViewModelProtocol
+        authService: any AuthServiceProtocol,
+        authScreenFactory: any AuthScreenBuilding,
+        privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding,
+        resetPasswordViewModel: any ResetPasswordViewModelProtocol
     ) {
         self.authService = authService
         self.authScreenFactory = authScreenFactory
@@ -54,10 +50,11 @@ final class AuthCoordinator: AuthCoordinating, @MainActor RoutableCoordinator {
 
     // MARK: - Coordinator Lifecycle
 
-    func start() {}
+    func start() {
+        router.resetAll()
+    }
 
     func finish() {
-        bag.removeAll()
         router.resetAll()
         removeAllChildren()
     }

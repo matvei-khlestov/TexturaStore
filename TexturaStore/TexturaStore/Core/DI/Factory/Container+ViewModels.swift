@@ -34,7 +34,8 @@ extension Container {
     var resetPasswordViewModel: Factory<any ResetPasswordViewModelProtocol> {
         Factory(self) { @MainActor in
             ResetPasswordViewModel(
-                validator: self.formValidator()
+                validator: self.formValidator(),
+                passwordResetService: self.passwordResetService()
             )
         }
         .scope(.shared)
