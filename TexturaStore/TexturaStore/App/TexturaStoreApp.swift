@@ -12,14 +12,14 @@ import FactoryKit
 @main
 struct TexturaStoreApp: App {
     
-    private let persistenceController = PersistenceController.shared
+    private let coreData = CoreDataStack.shared
     
     var body: some Scene {
         WindowGroup {
             AppRootView(coordinator: makeAppCoordinator())
                 .environment(
                     \.managedObjectContext,
-                     persistenceController.container.viewContext
+                     coreData.container.viewContext
                 )
         }
     }

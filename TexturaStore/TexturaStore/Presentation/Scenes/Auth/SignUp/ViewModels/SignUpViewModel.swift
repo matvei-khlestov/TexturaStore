@@ -128,7 +128,7 @@ final class SignUpViewModel: SignUpViewModelProtocol, ObservableObject {
               validator.validate(password, for: .password).isValid,
               agreed else { return }
         
-        try await authService.signUp(email: email, password: password)
+        try await authService.signUp(email: email, password: password, name: name)
         
         signUpSuccessSubject.send(())
     }
