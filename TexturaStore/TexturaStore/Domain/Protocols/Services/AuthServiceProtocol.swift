@@ -44,7 +44,7 @@ protocol AuthServiceProtocol {
     ///   - email: Электронная почта.
     ///   - password: Пароль.
     /// - Throws: Ошибку при неудачной регистрации.
-    func signUp(email: String, password: String) async throws
+    func signUp(email: String, password: String, name: String) async throws
     
     /// Завершает текущую сессию пользователя.
     /// - Throws: Ошибку при сбое завершения сессии.
@@ -53,16 +53,6 @@ protocol AuthServiceProtocol {
     /// Удаляет текущую учётную запись пользователя.
     /// - Throws: Ошибку при сбое удаления.
     func deleteAccount() async throws
-    
-    /// Обновляет почту аккаунта в провайдере авторизации (FirebaseAuth).
-    ///
-    /// В Firebase для sensitive операций часто требуется "recent login" —
-    /// поэтому метод принимает `currentPassword`, чтобы выполнить reauthenticate.
-    ///
-    /// - Parameters:
-    ///   - newEmail: Новый email.
-    ///   - currentPassword: Текущий пароль (для reauth).
-    func updateEmail(to newEmail: String, currentPassword: String) async throws
     
     /// Уникальный идентификатор текущего авторизованного пользователя.
     var currentUserId: String? { get }

@@ -15,10 +15,11 @@ extension Container {
         Factory(self) { @MainActor in
             SignInViewModel(
                 validator: self.formValidator(),
-                authService: self.authService()
+                authService: self.authService(),
+                makeProfileRepository: self.makeProfileRepository
             )
         }
-        .scope(.singleton)
+        .scope(.shared)
     }
     
     var signUpViewModel: Factory<any SignUpViewModelProtocol> {
