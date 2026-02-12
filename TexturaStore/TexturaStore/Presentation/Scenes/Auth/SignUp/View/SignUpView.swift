@@ -61,21 +61,6 @@ struct SignUpView: View {
         }
     }
     
-    // MARK: - Texts
-    
-    private enum Texts {
-        static let privacyTitle = L10n.Auth.Signup.privacyTitle
-        static let submitTitle  = L10n.Auth.Signup.submit
-        static let noteText     = L10n.Auth.Signup.noteText
-        static let noteAction   = L10n.Auth.Signup.noteAction
-        
-        static let errorTitle = L10n.Common.Error.title
-        static let okTitle = L10n.Common.ok
-        
-        static let signUpSuccessTitle = L10n.Auth.Signup.Success.title
-        static let signUpSuccessMessage = L10n.Auth.Signup.Success.message
-    }
-    
     // MARK: - State
     
     @State private var nameText: String = ""
@@ -131,17 +116,17 @@ struct SignUpView: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert(Texts.errorTitle, isPresented: $isErrorAlertPresented) {
-            Button(Texts.okTitle, role: .cancel) {}
+        .alert(L10n.Common.Error.title, isPresented: $isErrorAlertPresented) {
+            Button(L10n.Common.ok, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
         }
-        .alert(Texts.signUpSuccessTitle, isPresented: $isSignUpSuccessAlertPresented) {
-            Button(Texts.okTitle) {
+        .alert(L10n.Auth.Signup.Success.title, isPresented: $isSignUpSuccessAlertPresented) {
+            Button(L10n.Common.ok) {
                 onLogin?()
             }
         } message: {
-            Text(Texts.signUpSuccessMessage)
+            Text(L10n.Auth.Signup.Success.message)
         }
     }
     
@@ -198,7 +183,7 @@ struct SignUpView: View {
             
             BrandedButton(
                 style: .submit,
-                title: Texts.submitTitle,
+                title: L10n.Auth.Signup.submit,
                 isEnabled: isSubmitEnabled
             ) {
                 submitTapped()
@@ -206,8 +191,8 @@ struct SignUpView: View {
             .accessibilityIdentifier("signup.submit")
             
             LabelLinkRow(
-                label: Texts.noteText,
-                button: Texts.noteAction,
+                label: L10n.Auth.Signup.noteText,
+                button: L10n.Auth.Signup.noteAction,
                 alignment: .center
             ) {
                 onLogin?()
@@ -228,7 +213,7 @@ struct SignUpView: View {
                 .accessibilityIdentifier("signup.agree.checkbox")
             
             UnderlinedButton(
-                text: Texts.privacyTitle,
+                text: L10n.Auth.Signup.privacyTitle,
                 alignment: .leading
             ) {
                 onOpenPrivacy?()

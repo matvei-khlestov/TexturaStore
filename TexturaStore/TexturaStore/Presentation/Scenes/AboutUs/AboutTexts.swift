@@ -11,24 +11,14 @@ import Foundation
 
 enum AboutTexts {
     
-    static let intro: String = L10n.About.intro
+    static var intro: String { L10n.About.intro }
     
-    static let bullets: [(title: String, subtitle: String)] = [
-        (
-            L10n.About.Bullet.Quality.title,
-            L10n.About.Bullet.Quality.subtitle
-        ),
-        (
-            L10n.About.Bullet.Range.title,
-            L10n.About.Bullet.Range.subtitle
-        ),
-        (
-            L10n.About.Bullet.Design.title,
-            L10n.About.Bullet.Design.subtitle
-        ),
-        (
-            L10n.About.Bullet.Client.title,
-            L10n.About.Bullet.Client.subtitle
-        )
-    ]
+    static var bullets: [(title: String, subtitle: String)] {
+        [
+            (L10n.About.Bullet.Quality.title, L10n.About.Bullet.Quality.subtitle),
+            (L10n.About.Bullet.Range.title,   L10n.About.Bullet.Range.subtitle),
+            (L10n.About.Bullet.Design.title,  L10n.About.Bullet.Design.subtitle),
+            (L10n.About.Bullet.Client.title,  L10n.About.Bullet.Client.subtitle)
+        ]
+    }
 }

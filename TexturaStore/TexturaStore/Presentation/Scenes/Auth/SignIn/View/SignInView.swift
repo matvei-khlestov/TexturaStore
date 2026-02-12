@@ -50,18 +50,6 @@ struct SignInView: View {
         }
     }
     
-    // MARK: - Texts
-    
-    private enum Texts {
-        static let forgotPasswordTitle = L10n.Auth.Signin.forgotPassword
-        static let submitTitle = L10n.Auth.Signin.submit
-        static let noteText = L10n.Auth.Signin.noteText
-        static let noteAction = L10n.Auth.Signin.noteAction
-        
-        static let errorTitle = L10n.Common.Error.title
-        static let okTitle = L10n.Common.ok
-    }
-    
     // MARK: - State
     
     @State private var emailText: String = ""
@@ -108,8 +96,8 @@ struct SignInView: View {
         .onTapGesture {
             focusedField = nil
         }
-        .alert(Texts.errorTitle, isPresented: $isErrorAlertPresented) {
-            Button(Texts.okTitle, role: .cancel) {}
+        .alert(L10n.Common.Error.title, isPresented: $isErrorAlertPresented) {
+            Button(L10n.Common.ok, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
         }
@@ -149,7 +137,7 @@ struct SignInView: View {
                 Spacer(minLength: 0)
                 
                 UnderlinedButton(
-                    text: Texts.forgotPasswordTitle,
+                    text: L10n.Auth.Signin.forgotPassword,
                     alignment: .trailing
                 ) {
                     onForgotPassword?()
@@ -159,15 +147,15 @@ struct SignInView: View {
             
             BrandedButton(
                 style: .submit,
-                title: Texts.submitTitle,
+                title: L10n.Auth.Signin.submit,
                 isEnabled: isSubmitEnabled
             ) {
                 submitTapped()
             }
             
             LabelLinkRow(
-                label: Texts.noteText,
-                button: Texts.noteAction,
+                label: L10n.Auth.Signin.noteText,
+                button: L10n.Auth.Signin.noteAction,
                 alignment: .center
             ) {
                 onOpenSignUp?()

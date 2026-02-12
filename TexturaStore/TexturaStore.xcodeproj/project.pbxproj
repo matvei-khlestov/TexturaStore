@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A021D33E2F2E679C00AF94A1 /* 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D33D2F2E679C00AF94A1 /* 2.swift */; };
 		A021D3542F2E683300AF94A1 /* 12.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3532F2E683300AF94A1 /* 12.swift */; };
-		A021D35A2F2E686800AF94A1 /* 14.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3592F2E686800AF94A1 /* 14.swift */; };
 		A021D3622F2E68C500AF94A1 /* 17.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3612F2E68C500AF94A1 /* 17.swift */; };
 		A021D3642F2E68D100AF94A1 /* 18.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3632F2E68D100AF94A1 /* 18.swift */; };
 		A021D3662F2E68DD00AF94A1 /* 19.swift in Sources */ = {isa = PBXBuildFile; fileRef = A021D3652F2E68DD00AF94A1 /* 19.swift */; };
@@ -150,6 +149,19 @@
 		A0E3B86F2F3E0CA20038E3BB /* MailComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B86E2F3E0CA20038E3BB /* MailComposerView.swift */; };
 		A0E3B8722F3E132A0038E3BB /* AboutTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8712F3E132A0038E3BB /* AboutTexts.swift */; };
 		A0E3B8742F3E13E00038E3BB /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8732F3E13E00038E3BB /* AboutView.swift */; };
+		A0E3B8772F3E1A9F0038E3BB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8762F3E1A9F0038E3BB /* SettingsView.swift */; };
+		A0E3B87B2F3E53C70038E3BB /* SettingsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B87A2F3E53C70038E3BB /* SettingsStorageProtocol.swift */; };
+		A0E3B87D2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B87C2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift */; };
+		A0E3B8802F3E548B0038E3BB /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B87F2F3E548B0038E3BB /* SettingsService.swift */; };
+		A0E3B8822F3E54A70038E3BB /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8812F3E54A70038E3BB /* SettingsServiceProtocol.swift */; };
+		A0E3B8842F3E553F0038E3BB /* SettingsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8832F3E553F0038E3BB /* SettingsViewModelProtocol.swift */; };
+		A0E3B8882F3E55900038E3BB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8872F3E55900038E3BB /* SettingsViewModel.swift */; };
+		A0E3B88B2F3E56E40038E3BB /* SettingsSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B88A2F3E56E40038E3BB /* SettingsSymbols.swift */; };
+		A0E3B88D2F3E5A8B0038E3BB /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B88C2F3E5A8B0038E3BB /* AppLanguage.swift */; };
+		A0E3B88F2F3E5AAC0038E3BB /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B88E2F3E5AAC0038E3BB /* AppTheme.swift */; };
+		A0E3B8922F3E5BB80038E3BB /* Bundle+AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8912F3E5BB80038E3BB /* Bundle+AppLanguage.swift */; };
+		A0E3B8942F3E5BED0038E3BB /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8932F3E5BED0038E3BB /* LocalizationManager.swift */; };
+		A0E3B8962F3E5EAA0038E3BB /* Container+Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8952F3E5EAA0038E3BB /* Container+Managers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,7 +184,6 @@
 /* Begin PBXFileReference section */
 		A021D33D2F2E679C00AF94A1 /* 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2.swift; sourceTree = "<group>"; };
 		A021D3532F2E683300AF94A1 /* 12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 12.swift; sourceTree = "<group>"; };
-		A021D3592F2E686800AF94A1 /* 14.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 14.swift; sourceTree = "<group>"; };
 		A021D3612F2E68C500AF94A1 /* 17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 17.swift; sourceTree = "<group>"; };
 		A021D3632F2E68D100AF94A1 /* 18.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 18.swift; sourceTree = "<group>"; };
 		A021D3652F2E68DD00AF94A1 /* 19.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 19.swift; sourceTree = "<group>"; };
@@ -310,6 +321,19 @@
 		A0E3B86E2F3E0CA20038E3BB /* MailComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposerView.swift; sourceTree = "<group>"; };
 		A0E3B8712F3E132A0038E3BB /* AboutTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTexts.swift; sourceTree = "<group>"; };
 		A0E3B8732F3E13E00038E3BB /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A0E3B8762F3E1A9F0038E3BB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A0E3B87A2F3E53C70038E3BB /* SettingsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorageProtocol.swift; sourceTree = "<group>"; };
+		A0E3B87C2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStorage.swift; sourceTree = "<group>"; };
+		A0E3B87F2F3E548B0038E3BB /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		A0E3B8812F3E54A70038E3BB /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8832F3E553F0038E3BB /* SettingsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8872F3E55900038E3BB /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A0E3B88A2F3E56E40038E3BB /* SettingsSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSymbols.swift; sourceTree = "<group>"; };
+		A0E3B88C2F3E5A8B0038E3BB /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		A0E3B88E2F3E5AAC0038E3BB /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		A0E3B8912F3E5BB80038E3BB /* Bundle+AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+AppLanguage.swift"; sourceTree = "<group>"; };
+		A0E3B8932F3E5BED0038E3BB /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		A0E3B8952F3E5EAA0038E3BB /* Container+Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Managers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +468,7 @@
 				A0572AD62F2E5A5A00B00C0F /* Utils */,
 				A0572AD72F2E5A8600B00C0F /* Services */,
 				A0572AD82F2E5A9E00B00C0F /* DesignSystem */,
+				A0E3B8902F3E5B760038E3BB /* Localization */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -476,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B8522F3906850038E3BB /* Auth */,
+				A0E3B87E2F3E54650038E3BB /* Settings */,
 				A0E3B8512F39067C0038E3BB /* FileManager */,
 			);
 			path = Services;
@@ -578,7 +604,7 @@
 		A0572AE32F2E5BAB00B00C0F /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				A021D3592F2E686800AF94A1 /* 14.swift */,
+				A0E3B87C2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -600,6 +626,8 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B8152F37EAA20038E3BB /* UserProfile.swift */,
+				A0E3B88C2F3E5A8B0038E3BB /* AppLanguage.swift */,
+				A0E3B88E2F3E5AAC0038E3BB /* AppTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -732,6 +760,7 @@
 				A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */,
 				A0E3B8682F3E0ADB0038E3BB /* ContactUs */,
 				A0E3B8702F3E12F20038E3BB /* AboutUs */,
+				A0E3B8752F3E1A7E0038E3BB /* Settings */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -837,6 +866,7 @@
 				A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */,
 				A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */,
 				A0E3B7EC2F33C37A0038E3BB /* Container+Services.swift */,
+				A0E3B8952F3E5EAA0038E3BB /* Container+Managers.swift */,
 				A0E3B7EE2F33C3B10038E3BB /* Container+SupabaseClient.swift */,
 				A0E3B8022F3680D60038E3BB /* Container+Storages.swift */,
 				A0E3B8292F38AC980038E3BB /* Container+SupabaseStores.swift */,
@@ -945,6 +975,7 @@
 				A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */,
 				A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */,
 				A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */,
+				A0E3B8832F3E553F0038E3BB /* SettingsViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1079,6 +1110,7 @@
 				A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */,
 				A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */,
 				A0E3B8532F3906C20038E3BB /* AvatarStorageServiceProtocol.swift */,
+				A0E3B8812F3E54A70038E3BB /* SettingsServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1129,6 +1161,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */,
+				A0E3B87A2F3E53C70038E3BB /* SettingsStorageProtocol.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -1346,6 +1379,57 @@
 			path = AboutUs;
 			sourceTree = "<group>";
 		};
+		A0E3B8752F3E1A7E0038E3BB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8862F3E55770038E3BB /* ViewModel */,
+				A0E3B8852F3E556D0038E3BB /* View */,
+				A0E3B8892F3E56CC0038E3BB /* Symbols */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A0E3B87E2F3E54650038E3BB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B87F2F3E548B0038E3BB /* SettingsService.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A0E3B8852F3E556D0038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8762F3E1A9F0038E3BB /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8862F3E55770038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8872F3E55900038E3BB /* SettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B8892F3E56CC0038E3BB /* Symbols */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B88A2F3E56E40038E3BB /* SettingsSymbols.swift */,
+			);
+			path = Symbols;
+			sourceTree = "<group>";
+		};
+		A0E3B8902F3E5B760038E3BB /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8912F3E5BB80038E3BB /* Bundle+AppLanguage.swift */,
+				A0E3B8932F3E5BED0038E3BB /* LocalizationManager.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1520,7 +1604,6 @@
 				A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */,
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
-				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
 				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
 				A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */,
 				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
@@ -1535,6 +1618,7 @@
 				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
+				A0E3B8802F3E548B0038E3BB /* SettingsService.swift in Sources */,
 				A0E3B7D82F328B3B0038E3BB /* ResetPasswordView.swift in Sources */,
 				A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */,
 				A0E3B82C2F38AD1F0038E3BB /* Container+CoreDataStores.swift in Sources */,
@@ -1551,6 +1635,7 @@
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
 				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
+				A0E3B88D2F3E5A8B0038E3BB /* AppLanguage.swift in Sources */,
 				A0E3B7F52F3679C50038E3BB /* KeychainKey.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
 				A0E3B7B72F3244C20038E3BB /* RouteIdentifiable.swift in Sources */,
@@ -1563,7 +1648,9 @@
 				A0E3B8332F38AE8A0038E3BB /* CoreDataProfileStore.swift in Sources */,
 				A0E3B82A2F38AC980038E3BB /* Container+SupabaseStores.swift in Sources */,
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
+				A0E3B8822F3E54A70038E3BB /* SettingsServiceProtocol.swift in Sources */,
 				A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */,
+				A0E3B88B2F3E56E40038E3BB /* SettingsSymbols.swift in Sources */,
 				A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */,
 				A0E3B8582F390A0E0038E3BB /* ProfileUserRow.swift in Sources */,
 				A0E3B7F12F33C69E0038E3BB /* SupabaseAuthService.swift in Sources */,
@@ -1578,11 +1665,15 @@
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0E3B7F32F33C75C0038E3BB /* AuthServiceProtocol.swift in Sources */,
 				A0E3B8652F3E012A0038E3BB /* BootScreenBuilding.swift in Sources */,
+				A0E3B8942F3E5BED0038E3BB /* LocalizationManager.swift in Sources */,
 				A0E3B7F92F367A5B0038E3BB /* KeychainServiceProtocol.swift in Sources */,
 				A0E3B7E62F33C0100038E3BB /* SupabaseConfig.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
+				A0E3B8882F3E55900038E3BB /* SettingsViewModel.swift in Sources */,
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
+				A0E3B88F2F3E5AAC0038E3BB /* AppTheme.swift in Sources */,
 				A0E3B8562F3907450038E3BB /* AvatarStorageService.swift in Sources */,
+				A0E3B8842F3E553F0038E3BB /* SettingsViewModelProtocol.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
 				A0E3B86F2F3E0CA20038E3BB /* MailComposerView.swift in Sources */,
 				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
@@ -1592,6 +1683,7 @@
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
 				A0E3B8362F38AEDF0038E3BB /* ProfileFRCPublisher.swift in Sources */,
 				A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */,
+				A0E3B87D2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
@@ -1599,6 +1691,7 @@
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0E3B84A2F38B9C40038E3BB /* ProfileRepository.swift in Sources */,
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
+				A0E3B8772F3E1A9F0038E3BB /* SettingsView.swift in Sources */,
 				A0E3B8472F38B4E50038E3BB /* CDProfile+Mapper.swift in Sources */,
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
 				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
@@ -1609,13 +1702,16 @@
 				A0E3B81B2F37EC0A0038E3BB /* ProfileStoreProtocol.swift in Sources */,
 				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
 				A0E3B7E82F33C0320038E3BB /* SupabaseClientFactory.swift in Sources */,
+				A0E3B8922F3E5BB80038E3BB /* Bundle+AppLanguage.swift in Sources */,
 				A0E3B7BF2F3245880038E3BB /* RoutableCoordinator.swift in Sources */,
 				A0E3B8092F369CF30038E3BB /* ProfileScreenBuilding.swift in Sources */,
 				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
+				A0E3B87B2F3E53C70038E3BB /* SettingsStorageProtocol.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A0E3B85A2F3933120038E3BB /* ProfileRoute.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
+				A0E3B8962F3E5EAA0038E3BB /* Container+Managers.swift in Sources */,
 				A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,

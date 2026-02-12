@@ -51,4 +51,16 @@ final class ProfileScreenFactory: ProfileScreenBuilding {
             AboutView(onBack: onBack)
         )
     }
+    
+    func makeSettingsView(
+        viewModel: any SettingsViewModelProtocol,
+        onBack: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            SettingsView(
+                viewModel: viewModel,
+                onBack: onBack
+            )
+        )
+    }
 }

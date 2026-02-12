@@ -28,4 +28,9 @@ protocol ProfileScreenBuilding {
     func makeAboutView(
         onBack: @escaping () -> Void
     ) -> AnyView
+    
+    func makeSettingsView(
+        viewModel: any SettingsViewModelProtocol,
+        onBack: @escaping () -> Void
+    ) -> AnyView
 }

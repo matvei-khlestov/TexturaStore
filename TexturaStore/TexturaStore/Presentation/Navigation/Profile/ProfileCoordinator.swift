@@ -39,6 +39,7 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
     private let privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding
     private let authService: AuthServiceProtocol
     private let makeProfileViewModel: (String) -> any ProfileUserViewModelProtocol
+    private let settingsViewModel: any SettingsViewModelProtocol
     
     // MARK: - Init
     
@@ -46,12 +47,14 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
         profileScreenFactory: any ProfileScreenBuilding,
         privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding,
         authService: AuthServiceProtocol,
-        makeProfileViewModel: @escaping (String) -> any ProfileUserViewModelProtocol
+        makeProfileViewModel: @escaping (String) -> any ProfileUserViewModelProtocol,
+        settingsViewModel: any SettingsViewModelProtocol
     ) {
         self.profileScreenFactory = profileScreenFactory
         self.privacyPolicyScreenFactory = privacyPolicyScreenFactory
         self.authService = authService
         self.makeProfileViewModel = makeProfileViewModel
+        self.settingsViewModel = settingsViewModel
     }
     
     // MARK: - Coordinator Lifecycle
@@ -68,14 +71,17 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
     // MARK: - RoutableCoordinator
     
     func makeRoot() -> AnyView {
-        let uid = authService.currentUserId ?? ""
-        let vm = makeProfileViewModel(uid)
+        let userId = authService.currentUserId ?? ""
+        let vm = makeProfileViewModel(userId)
         
         return profileScreenFactory.makeProfileUserView(
             viewModel: vm,
             onEditProfileTap: { [weak self] in self?.onEditProfileTap?() },
             onOrdersTap: { [weak self] in self?.onOrdersTap?() },
-            onSettingsTap: { [weak self] in self?.onSettingsTap?() },
+            
+            onSettingsTap: { [weak self] in
+                self?.router.push(.settings)
+            },
             
             onAboutTap: { [weak self] in
                 self?.router.push(.about)
@@ -113,6 +119,14 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
             
         case .about:
             return profileScreenFactory.makeAboutView(
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
+            
+        case .settings:
+            return profileScreenFactory.makeSettingsView(
+                viewModel: settingsViewModel,
                 onBack: { [weak self] in
                     self?.router.pop()
                 }

@@ -22,17 +22,17 @@ enum ContactItem: CaseIterable {
     
     var title: String {
         switch self {
-        case .phone:   "Телефон"
-        case .email:   "Email"
-        case .address: "Адрес"
+        case .phone:   L10n.Contact.Item.Phone.title
+        case .email:   L10n.Contact.Item.Email.title
+        case .address: L10n.Contact.Item.Address.title
         }
     }
     
     var detail: String {
         switch self {
-        case .phone:   "+7 (800) 555-35-35"
-        case .email:   "support@vemora.ru"
-        case .address: "Москва, Ходынский бульвар, 4"
+        case .phone:   L10n.Contact.Item.Phone.detail
+        case .email:   L10n.Contact.Item.Email.detail
+        case .address: L10n.Contact.Item.Address.detail
         }
     }
     

@@ -12,6 +12,7 @@ enum ProfileRoute: @MainActor RouteIdentifiable {
     case privacyPolicy
     case contactUs
     case about
+    case settings
     
     var id: String {
         switch self {
@@ -21,6 +22,8 @@ enum ProfileRoute: @MainActor RouteIdentifiable {
             return "profile.contactUs"
         case .about:
             return "profile.about"
+        case .settings:
+            return "profile.settings"
         }
     }
 }

@@ -10,13 +10,22 @@ import FactoryKit
 
 extension Container {
     
-    // MARK: - Storages
+    // MARK: - Auth
     
     var authSessionStorage: Factory<any AuthSessionStoringProtocol> {
         Factory(self) { @MainActor in
             AuthSessionStorage(
                 keychain: self.keychainService()
             )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Settings
+    
+    var settingsStorage: Factory<SettingsStorageProtocol> {
+        Factory(self) { @MainActor in
+            UserDefaultsSettingsStorage()
         }
         .scope(.singleton)
     }

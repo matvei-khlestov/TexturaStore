@@ -53,4 +53,22 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Settings
+    
+    var settingsService: Factory<SettingsService> {
+        Factory(self) { @MainActor in
+            SettingsService(
+                storage: self.settingsStorage(),
+                localization: self.localizationManager()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    var settingsServiceProtocol: Factory<any SettingsServiceProtocol> {
+        Factory(self) { @MainActor in
+            self.settingsService()
+        }
+    }
 }
