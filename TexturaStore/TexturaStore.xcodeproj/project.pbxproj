@@ -145,6 +145,11 @@
 		A0E3B8632F3DFFCE0038E3BB /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8622F3DFFCE0038E3BB /* BootView.swift */; };
 		A0E3B8652F3E012A0038E3BB /* BootScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */; };
 		A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */; };
+		A0E3B86A2F3E0B270038E3BB /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8692F3E0B270038E3BB /* ContactItem.swift */; };
+		A0E3B86C2F3E0C200038E3BB /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B86B2F3E0C200038E3BB /* ContactUsView.swift */; };
+		A0E3B86F2F3E0CA20038E3BB /* MailComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B86E2F3E0CA20038E3BB /* MailComposerView.swift */; };
+		A0E3B8722F3E132A0038E3BB /* AboutTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8712F3E132A0038E3BB /* AboutTexts.swift */; };
+		A0E3B8742F3E13E00038E3BB /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8732F3E13E00038E3BB /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +305,11 @@
 		A0E3B8622F3DFFCE0038E3BB /* BootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
 		A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootScreenFactory.swift; sourceTree = "<group>"; };
+		A0E3B8692F3E0B270038E3BB /* ContactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactItem.swift; sourceTree = "<group>"; };
+		A0E3B86B2F3E0C200038E3BB /* ContactUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsView.swift; sourceTree = "<group>"; };
+		A0E3B86E2F3E0CA20038E3BB /* MailComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposerView.swift; sourceTree = "<group>"; };
+		A0E3B8712F3E132A0038E3BB /* AboutTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTexts.swift; sourceTree = "<group>"; };
+		A0E3B8732F3E13E00038E3BB /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,6 +520,7 @@
 		A0572ADD2F2E5B1100B00C0F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B86D2F3E0C970038E3BB /* MailComposerView */,
 				A0E3B8612F3DFFBF0038E3BB /* BootView */,
 				A0E3B8602F393F640038E3BB /* Rows */,
 				A0E3B7CC2F326EB10038E3BB /* Navigation */,
@@ -719,6 +730,8 @@
 				A0D250FB2F2E7D1100C6B040 /* Auth */,
 				A0E3B7D22F3288A90038E3BB /* ResetPassword */,
 				A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */,
+				A0E3B8682F3E0ADB0038E3BB /* ContactUs */,
+				A0E3B8702F3E12F20038E3BB /* AboutUs */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1307,6 +1320,32 @@
 			path = BootView;
 			sourceTree = "<group>";
 		};
+		A0E3B8682F3E0ADB0038E3BB /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8692F3E0B270038E3BB /* ContactItem.swift */,
+				A0E3B86B2F3E0C200038E3BB /* ContactUsView.swift */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		A0E3B86D2F3E0C970038E3BB /* MailComposerView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B86E2F3E0CA20038E3BB /* MailComposerView.swift */,
+			);
+			path = MailComposerView;
+			sourceTree = "<group>";
+		};
+		A0E3B8702F3E12F20038E3BB /* AboutUs */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8712F3E132A0038E3BB /* AboutTexts.swift */,
+				A0E3B8732F3E13E00038E3BB /* AboutView.swift */,
+			);
+			path = AboutUs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1461,6 +1500,7 @@
 				A0D2510B2F2E85CB00C6B040 /* DesignSystem.swift in Sources */,
 				A021D3742F2E694500AF94A1 /* 25.swift in Sources */,
 				A0E3B7702F311D160038E3BB /* FormValidator.swift in Sources */,
+				A0E3B8742F3E13E00038E3BB /* AboutView.swift in Sources */,
 				A0E3B83F2F38B3180038E3BB /* CDProfile+CoreDataClass.swift in Sources */,
 				A0E3B8402F38B3180038E3BB /* CDProfile+CoreDataProperties.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
@@ -1472,6 +1512,7 @@
 				A0E3B8032F3680D60038E3BB /* Container+Storages.swift in Sources */,
 				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
 				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
+				A0E3B86A2F3E0B270038E3BB /* ContactItem.swift in Sources */,
 				A0E3B8162F37EAA20038E3BB /* UserProfile.swift in Sources */,
 				A0E3B8632F3DFFCE0038E3BB /* BootView.swift in Sources */,
 				A0E3B80F2F375DBB0038E3BB /* SupabasePasswordResetService.swift in Sources */,
@@ -1489,6 +1530,7 @@
 				A0E3B7CB2F326DE40038E3BB /* BrandBackButton.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
 				A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */,
+				A0E3B86C2F3E0C200038E3BB /* ContactUsView.swift in Sources */,
 				A0E3B7B92F3244E70038E3BB /* NoRoute.swift in Sources */,
 				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
@@ -1542,6 +1584,7 @@
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
 				A0E3B8562F3907450038E3BB /* AvatarStorageService.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
+				A0E3B86F2F3E0CA20038E3BB /* MailComposerView.swift in Sources */,
 				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
 				A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */,
 				A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */,
@@ -1581,6 +1624,7 @@
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 				A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */,
 				A0E3B7932F3130740038E3BB /* SignInView.swift in Sources */,
+				A0E3B8722F3E132A0038E3BB /* AboutTexts.swift in Sources */,
 				A0E3B8182F37EAF70038E3BB /* SupabaseProfileStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

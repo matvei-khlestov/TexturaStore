@@ -17,12 +17,18 @@ enum ProfileUserRow: Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .editProfile: return "Редактировать профиль"
-        case .orders:      return "Мои заказы"
-        case .settings:    return "Настройки"
-        case .about:       return "О нас"
-        case .contact:     return "Связаться с нами"
-        case .privacy:     return "Политика конфиденциальности"
+        case .editProfile:
+            return L10n.Profile.Menu.editProfile
+        case .orders:
+            return L10n.Profile.Menu.orders
+        case .settings:
+            return L10n.Profile.Menu.settings
+        case .about:
+            return L10n.Profile.Menu.about
+        case .contact:
+            return L10n.Profile.Menu.contact
+        case .privacy:
+            return L10n.Profile.Menu.privacy
         }
     }
     

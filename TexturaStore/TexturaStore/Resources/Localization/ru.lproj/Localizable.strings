@@ -79,3 +79,45 @@
 /* Common */
 "common.error.title" = "Ошибка";
 "common.ok" = "OK";
+
+/* Profile */
+"profile.logout.title" = "Выйти";
+"profile.logout.confirm" = "Выйти из аккаунта?";
+"profile.delete.title" = "Удалить аккаунт";
+"profile.delete.confirm" = "Удалить аккаунт?";
+"profile.error.unknown" = "Неизвестная ошибка";
+
+/* Profile - Menu */
+"profile.menu.editProfile" = "Редактировать профиль";
+"profile.menu.orders" = "Мои заказы";
+"profile.menu.settings" = "Настройки";
+"profile.menu.about" = "О нас";
+"profile.menu.contact" = "Связаться с нами";
+"profile.menu.privacy" = "Политика конфиденциальности";
+
+/* Contact Us */
+"contact.title" = "Контакты";
+"contact.copy" = "Копировать";
+
+"contact.email.openFailed.title" = "Не удалось открыть почту";
+"contact.email.copied.prefix" = "Адрес скопирован в буфер обмена:\n";
+
+"contact.phone.unavailable.title" = "Звонок недоступен";
+"contact.phone.copied.prefix" = "Номер скопирован в буфер обмена:\n";
+
+"contact.url.openFailed.title" = "Не удалось открыть ссылку";
+
+/* About */
+"about.intro" = "Textura Store — это онлайн-магазин тканей и материалов для интерьера, созданный для тех, кто ценит качество, стиль и продуманные детали. Мы помогаем воплощать идеи в жизнь — от уютного домашнего пространства до профессиональных дизайнерских проектов.";
+
+"about.bullet.quality.title" = "Качество материалов";
+"about.bullet.quality.subtitle" = "Мы тщательно отбираем ткани и поставщиков, чтобы каждая позиция в каталоге соответствовала высоким стандартам качества и долговечности.";
+
+"about.bullet.range.title" = "Широкий выбор";
+"about.bullet.range.subtitle" = "В ассортименте представлены ткани разных фактур, цветов и назначений — для дома, офиса и коммерческих пространств.";
+
+"about.bullet.design.title" = "Актуальный дизайн";
+"about.bullet.design.subtitle" = "Мы следим за трендами в текстиле и интерьере, регулярно обновляя коллекции и предлагая современные решения.";
+
+"about.bullet.client.title" = "Ориентация на клиента";
+"about.bullet.client.subtitle" = "Мы всегда готовы помочь с выбором, ответить на вопросы и сделать процесс покупки простым и удобным.";

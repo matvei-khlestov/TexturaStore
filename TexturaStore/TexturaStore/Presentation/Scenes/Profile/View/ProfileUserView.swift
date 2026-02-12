@@ -5,6 +5,13 @@
 //  Created by Matvei Khlestov on 31.01.2026.
 //
 
+//
+//  ProfileUserView.swift
+//  TexturaStore
+//
+//  Created by Matvei Khlestov on 31.01.2026.
+//
+
 import SwiftUI
 
 struct ProfileUserView: View {
@@ -100,7 +107,7 @@ struct ProfileUserView: View {
                     Button {
                         showLogoutConfirm = true
                     } label: {
-                        Label("Выйти", systemImage: "rectangle.portrait.and.arrow.right")
+                        Label(L10n.Profile.Logout.title, systemImage: "rectangle.portrait.and.arrow.right")
                             .frame(maxWidth: .infinity, minHeight: 48)
                     }
                     .buttonStyle(.borderedProminent)
@@ -108,7 +115,7 @@ struct ProfileUserView: View {
                     Button(role: .destructive) {
                         showDeleteConfirm = true
                     } label: {
-                        Text("Удалить аккаунт")
+                        Text(L10n.Profile.Delete.title)
                             .frame(maxWidth: .infinity, minHeight: 44)
                     }
                     .buttonStyle(.bordered)
@@ -117,41 +124,41 @@ struct ProfileUserView: View {
                 .padding(.bottom, 24)
             }
         }
-        .navigationTitle("Профиль")
+        .navigationTitle(L10n.Screen.Profile.title)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             loadAvatarIfNeeded()
         }
         .confirmationDialog(
-            "Выйти из аккаунта?",
+            L10n.Profile.Logout.confirm,
             isPresented: $showLogoutConfirm,
             titleVisibility: .visible
         ) {
-            Button("Выйти", role: .destructive) {
+            Button(L10n.Profile.Logout.title, role: .destructive) {
                 Task { await logout() }
             }
-            Button("Отмена", role: .cancel) {}
+            Button(L10n.Common.ok, role: .cancel) {}
         }
         .confirmationDialog(
-            "Удалить аккаунт?",
+            L10n.Profile.Delete.confirm,
             isPresented: $showDeleteConfirm,
             titleVisibility: .visible
         ) {
-            Button("Удалить", role: .destructive) {
+            Button(L10n.Profile.Delete.title, role: .destructive) {
                 Task { await deleteAccount() }
             }
-            Button("Отмена", role: .cancel) {}
+            Button(L10n.Common.ok, role: .cancel) {}
         }
         .alert(
-            "Ошибка",
+            L10n.Common.Error.title,
             isPresented: Binding(
                 get: { errorMessage != nil },
                 set: { if !$0 { errorMessage = nil } }
             )
         ) {
-            Button("OK", role: .cancel) {}
+            Button(L10n.Common.ok, role: .cancel) {}
         } message: {
-            Text(errorMessage ?? "Неизвестная ошибка")
+            Text(errorMessage ?? L10n.Profile.Error.unknown)
         }
     }
 }

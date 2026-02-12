@@ -10,6 +10,36 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  internal enum About {
+    /// About
+    internal static let intro = L10n.tr("Localizable", "about.intro", fallback: "Textura Store is an online store of fabrics and interior materials, created for those who value quality, style, and thoughtful details. We help bring ideas to life — from cozy home spaces to professional design projects.")
+    internal enum Bullet {
+      internal enum Client {
+        /// We are always ready to help with selection, answer questions, and make the purchasing process simple and convenient.
+        internal static let subtitle = L10n.tr("Localizable", "about.bullet.client.subtitle", fallback: "We are always ready to help with selection, answer questions, and make the purchasing process simple and convenient.")
+        /// Customer focus
+        internal static let title = L10n.tr("Localizable", "about.bullet.client.title", fallback: "Customer focus")
+      }
+      internal enum Design {
+        /// We follow trends in textiles and interior design, regularly updating collections and offering modern solutions.
+        internal static let subtitle = L10n.tr("Localizable", "about.bullet.design.subtitle", fallback: "We follow trends in textiles and interior design, regularly updating collections and offering modern solutions.")
+        /// Contemporary design
+        internal static let title = L10n.tr("Localizable", "about.bullet.design.title", fallback: "Contemporary design")
+      }
+      internal enum Quality {
+        /// We carefully select fabrics and suppliers so that every item in the catalog meets high standards of quality and durability.
+        internal static let subtitle = L10n.tr("Localizable", "about.bullet.quality.subtitle", fallback: "We carefully select fabrics and suppliers so that every item in the catalog meets high standards of quality and durability.")
+        /// Material quality
+        internal static let title = L10n.tr("Localizable", "about.bullet.quality.title", fallback: "Material quality")
+      }
+      internal enum Range {
+        /// The assortment includes fabrics of various textures, colors, and purposes — for home, office, and commercial spaces.
+        internal static let subtitle = L10n.tr("Localizable", "about.bullet.range.subtitle", fallback: "The assortment includes fabrics of various textures, colors, and purposes — for home, office, and commercial spaces.")
+        /// Wide selection
+        internal static let title = L10n.tr("Localizable", "about.bullet.range.title", fallback: "Wide selection")
+      }
+    }
+  }
   internal enum Auth {
     internal enum Reset {
       /// Back to Sign In
@@ -84,6 +114,40 @@ internal enum L10n {
       internal static let title = L10n.tr("Localizable", "common.error.title", fallback: "Error")
     }
   }
+  internal enum Contact {
+    /// Copy
+    internal static let copy = L10n.tr("Localizable", "contact.copy", fallback: "Copy")
+    /// Contact Us
+    internal static let title = L10n.tr("Localizable", "contact.title", fallback: "Contact Us")
+    internal enum Email {
+      internal enum Copied {
+        /// Address copied to clipboard:
+        /// 
+        internal static let `prefix` = L10n.tr("Localizable", "contact.email.copied.prefix", fallback: "Address copied to clipboard:\n")
+      }
+      internal enum OpenFailed {
+        /// Unable to open Mail
+        internal static let title = L10n.tr("Localizable", "contact.email.openFailed.title", fallback: "Unable to open Mail")
+      }
+    }
+    internal enum Phone {
+      internal enum Copied {
+        /// Number copied to clipboard:
+        /// 
+        internal static let `prefix` = L10n.tr("Localizable", "contact.phone.copied.prefix", fallback: "Number copied to clipboard:\n")
+      }
+      internal enum Unavailable {
+        /// Call unavailable
+        internal static let title = L10n.tr("Localizable", "contact.phone.unavailable.title", fallback: "Call unavailable")
+      }
+    }
+    internal enum Url {
+      internal enum OpenFailed {
+        /// Unable to open link
+        internal static let title = L10n.tr("Localizable", "contact.url.openFailed.title", fallback: "Unable to open link")
+      }
+    }
+  }
   internal enum Form {
     internal enum Field {
       internal enum Email {
@@ -110,6 +174,38 @@ internal enum L10n {
         /// Phone
         internal static let title = L10n.tr("Localizable", "form.field.phone.title", fallback: "Phone")
       }
+    }
+  }
+  internal enum Profile {
+    internal enum Delete {
+      /// Delete your account?
+      internal static let confirm = L10n.tr("Localizable", "profile.delete.confirm", fallback: "Delete your account?")
+      /// Delete Account
+      internal static let title = L10n.tr("Localizable", "profile.delete.title", fallback: "Delete Account")
+    }
+    internal enum Error {
+      /// Unknown error
+      internal static let unknown = L10n.tr("Localizable", "profile.error.unknown", fallback: "Unknown error")
+    }
+    internal enum Logout {
+      /// Log out of your account?
+      internal static let confirm = L10n.tr("Localizable", "profile.logout.confirm", fallback: "Log out of your account?")
+      /// Profile
+      internal static let title = L10n.tr("Localizable", "profile.logout.title", fallback: "Log Out")
+    }
+    internal enum Menu {
+      /// About Us
+      internal static let about = L10n.tr("Localizable", "profile.menu.about", fallback: "About Us")
+      /// Contact Us
+      internal static let contact = L10n.tr("Localizable", "profile.menu.contact", fallback: "Contact Us")
+      /// Profile - Menu
+      internal static let editProfile = L10n.tr("Localizable", "profile.menu.editProfile", fallback: "Edit Profile")
+      /// My Orders
+      internal static let orders = L10n.tr("Localizable", "profile.menu.orders", fallback: "My Orders")
+      /// Privacy Policy
+      internal static let privacy = L10n.tr("Localizable", "profile.menu.privacy", fallback: "Privacy Policy")
+      /// Settings
+      internal static let settings = L10n.tr("Localizable", "profile.menu.settings", fallback: "Settings")
     }
   }
   internal enum Screen {

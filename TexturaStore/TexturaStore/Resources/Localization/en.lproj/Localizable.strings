@@ -79,3 +79,47 @@
 /* Common */
 "common.error.title" = "Error";
 "common.ok" = "OK";
+
+/* Profile */
+"profile.logout.title" = "Log Out";
+"profile.logout.confirm" = "Log out of your account?";
+"profile.delete.title" = "Delete Account";
+"profile.delete.confirm" = "Delete your account?";
+"profile.error.unknown" = "Unknown error";
+
+/* Profile - Menu */
+"profile.menu.editProfile" = "Edit Profile";
+"profile.menu.orders" = "My Orders";
+"profile.menu.settings" = "Settings";
+"profile.menu.about" = "About Us";
+"profile.menu.contact" = "Contact Us";
+"profile.menu.privacy" = "Privacy Policy";
+
+/* Contact Us */
+"contact.title" = "Contact Us";
+"contact.copy" = "Copy";
+
+"contact.email.openFailed.title" = "Unable to open Mail";
+"contact.email.copied.prefix" = "Address copied to clipboard:\n";
+
+"contact.phone.unavailable.title" = "Call unavailable";
+"contact.phone.copied.prefix" = "Number copied to clipboard:\n";
+
+"contact.url.openFailed.title" = "Unable to open link";
+
+/* About */
+"about.intro" = "Textura Store is an online store of fabrics and interior materials, created for those who value quality, style, and thoughtful details. We help bring ideas to life — from cozy home spaces to professional design projects.";
+
+"about.bullet.quality.title" = "Material quality";
+"about.bullet.quality.subtitle" = "We carefully select fabrics and suppliers so that every item in the catalog meets high standards of quality and durability.";
+
+"about.bullet.range.title" = "Wide selection";
+"about.bullet.range.subtitle" = "The assortment includes fabrics of various textures, colors, and purposes — for home, office, and commercial spaces.";
+
+"about.bullet.design.title" = "Contemporary design";
+"about.bullet.design.subtitle" = "We follow trends in textiles and interior design, regularly updating collections and offering modern solutions.";
+
+"about.bullet.client.title" = "Customer focus";
+"about.bullet.client.subtitle" = "We are always ready to help with selection, answer questions, and make the purchasing process simple and convenient.";
+
+

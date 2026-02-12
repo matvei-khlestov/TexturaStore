@@ -10,11 +10,17 @@ import Foundation
 @MainActor
 enum ProfileRoute: @MainActor RouteIdentifiable {
     case privacyPolicy
-
+    case contactUs
+    case about
+    
     var id: String {
         switch self {
         case .privacyPolicy:
             return "profile.privacyPolicy"
+        case .contactUs:
+            return "profile.contactUs"
+        case .about:
+            return "profile.about"
         }
     }
 }
