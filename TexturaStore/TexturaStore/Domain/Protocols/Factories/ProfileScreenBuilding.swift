@@ -20,4 +20,12 @@ protocol ProfileScreenBuilding {
         onLogoutTap: @escaping () -> Void,
         onDeleteAccountTap: @escaping () -> Void
     ) -> AnyView
+    
+    func makeContactUsView(
+        onBack: @escaping () -> Void
+    ) -> AnyView
+    
+    func makeAboutView(
+        onBack: @escaping () -> Void
+    ) -> AnyView
 }

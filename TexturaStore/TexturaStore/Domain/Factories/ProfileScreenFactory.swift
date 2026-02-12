@@ -35,4 +35,20 @@ final class ProfileScreenFactory: ProfileScreenBuilding {
             )
         )
     }
+    
+    func makeContactUsView(
+        onBack: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            ContactUsView(onBack: onBack)
+        )
+    }
+    
+    func makeAboutView(
+        onBack: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            AboutView(onBack: onBack)
+        )
+    }
 }
