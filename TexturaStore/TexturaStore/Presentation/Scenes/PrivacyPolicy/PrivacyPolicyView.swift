@@ -45,12 +45,6 @@ struct PrivacyPolicyView: View {
         }
     }
     
-    // MARK: - Texts
-    
-    private enum Texts {
-        static let navigationTitle = L10n.Auth.Signup.privacyTitle
-    }
-    
     // MARK: - Body
     
     var body: some View {
@@ -64,7 +58,7 @@ struct PrivacyPolicyView: View {
                 .padding(.bottom, Metrics.Insets.verticalBottom)
         }
         .background(Color(.systemBackground))
-        .navigationTitle(Texts.navigationTitle)
+        .navigationTitle(L10n.Auth.Signup.privacyTitle)
         .navigationBarTitleDisplayMode(.inline)
         .brandBackButton {
             onBack?()

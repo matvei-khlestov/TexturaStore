@@ -56,4 +56,15 @@ extension Container {
             }
         }
     }
+    
+    // MARK: - Settings
+    
+    var settingsViewModel: Factory<any SettingsViewModelProtocol> {
+        Factory(self) { @MainActor in
+            SettingsViewModel(
+                service: self.settingsService()
+            )
+        }
+        .scope(.shared)
+    }
 }

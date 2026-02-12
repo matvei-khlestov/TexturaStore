@@ -38,7 +38,8 @@ extension Container {
                 profileScreenFactory: self.profileScreenFactory(),
                 privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
                 authService: self.authService(),
-                makeProfileViewModel: self.profileViewModel()
+                makeProfileViewModel: self.profileViewModel(),
+                settingsViewModel: self.settingsViewModel()
             )
         }
         .scope(.singleton)

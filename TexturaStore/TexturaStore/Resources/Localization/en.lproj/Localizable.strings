@@ -95,6 +95,10 @@
 "profile.menu.contact" = "Contact Us";
 "profile.menu.privacy" = "Privacy Policy";
 
+/* Privacy Policy */
+"privacyPolicy.lastUpdated" = "Updated: September 17, 2025";
+"privacyPolicy.body" = "Updated: September 17, 2025\n\n1. General provisions\nTextura respects your personal data and processes it in accordance with applicable laws and internal security standards. This Policy describes what data we collect, how we use and protect it.\n\n2. What data we collect\n• Contact data: name, phone, e-mail.\n• Delivery data: city, street, building, apartment, postal code (if any), delivery comment.\n• Order data: order contents (products/fabrics, length, characteristics), cost, payment/delivery method, purchase history.\n• Technical data: device, OS version, IP address, session/device identifiers, diagnostic data and app usage analytics.\n\n3. Purposes of processing\n• Order placement, processing and delivery (including confirmation and status notifications).\n• User support and request handling.\n• Improving service quality, catalog personalization and recommendations.\n• Compliance with legal requirements (accounting and taxes, refunds, etc.).\n\n4. Legal bases\n• Contract performance (order placement, delivery, returns).\n• User consent (e.g. marketing messages — if enabled).\n• Legitimate interests (service security and fraud prevention).\n• Legal obligations (tax/financial requirements).\n\n5. Transfer to third parties\nWe may transfer data to:\n• Delivery and logistics partners — to fulfill delivery and communicate about the order.\n• Payment providers — to accept payments and process refunds.\n• IT infrastructure and analytics providers — hosting, monitoring, crash diagnostics and stability improvements.\nTransfers are carried out under agreements with data protection obligations.\n\n6. Storage and protection\n• Data is stored as long as necessary for the purposes of processing and within time limits established by law.\n• We apply technical and organizational security measures, including encryption, access control and audits.\n\n7. User rights\nYou can:\n• Request access to your data and receive a copy.\n• Correct inaccurate information.\n• Restrict processing or object to it.\n• Withdraw consent (does not affect lawfulness before withdrawal).\n• Request deletion of data if permitted by law.\n\n8. Cookies, identifiers and analytics\nWe use cookies/identifiers and analytics to ensure the app works properly, enable authorization, improve the UI and service quality. You can manage these settings in the system/device, however this may affect functionality.\n\n9. Contact us\nFor privacy matters:\n• E-mail: privacy@textura.ru\n• Phone: +7 (800) 555-35-35\n• Address: Moscow, Example street, 1\n\n10. Policy changes\nWe may periodically update the Policy. The new version comes into force from the moment it is published in the app. We recommend checking the update date periodically.\n\n—\nTextura";
+
 /* Contact Us */
 "contact.title" = "Contact Us";
 "contact.copy" = "Copy";
@@ -106,6 +110,15 @@
 "contact.phone.copied.prefix" = "Number copied to clipboard:\n";
 
 "contact.url.openFailed.title" = "Unable to open link";
+
+/* Contact Items */
+"contact.item.phone.title" = "Phone";
+"contact.item.email.title" = "Email";
+"contact.item.address.title" = "Address";
+
+"contact.item.phone.detail" = "+7 (800) 555-35-35";
+"contact.item.email.detail" = "support@vemora.ru";
+"contact.item.address.detail" = "Moscow, Khodynsky Boulevard, 4";
 
 /* About */
 "about.intro" = "Textura Store is an online store of fabrics and interior materials, created for those who value quality, style, and thoughtful details. We help bring ideas to life — from cozy home spaces to professional design projects.";
@@ -122,4 +135,18 @@
 "about.bullet.client.title" = "Customer focus";
 "about.bullet.client.subtitle" = "We are always ready to help with selection, answer questions, and make the purchasing process simple and convenient.";
 
+/* Settings */
+"settings.title" = "Settings";
 
+"settings.language.header" = "Language";
+"settings.language.footer" = "Choose the app interface language.";
+
+"settings.theme.header" = "Theme";
+"settings.theme.footer" = "Choose the app appearance.";
+
+"settings.language.ru" = "Russian";
+"settings.language.en" = "English";
+
+"settings.theme.light" = "Light";
+"settings.theme.dark" = "Dark";
+"settings.theme.system" = "System";
