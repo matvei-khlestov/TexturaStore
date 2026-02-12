@@ -44,12 +44,16 @@ extension Container {
     
     // MARK: - Profile
     
-    var profileViewModel: Factory<any ProfileViewModelProtocol> {
+    var profileViewModel: Factory<(String) -> any ProfileUserViewModelProtocol> {
         Factory(self) { @MainActor in
-            ProfileViewModel(
-                authService: self.authService()
-            )
+            { userId in
+                ProfileUserViewModel(
+                    auth: self.authService(),
+                    avatarStorage: self.avatarStorageService(),
+                    profileRepository: self.makeProfileRepository(userId),
+                    userId: userId
+                )
+            }
         }
-        .scope(.shared)
     }
 }

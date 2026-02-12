@@ -41,8 +41,10 @@ final class ProfileFRCPublisher: NSObject, NSFetchedResultsControllerDelegate {
     ///   - context: Контекст `NSManagedObjectContext`, из которого будет производиться выборка.
     ///   - userId: Идентификатор пользователя, чей профиль необходимо отслеживать.
     init(context: NSManagedObjectContext, userId: String) {
+        let normalizedUserId = userId.lowercased()
+        
         let req: NSFetchRequest<CDProfile> = CDProfile.fetchRequest()
-        req.predicate = NSPredicate(format: "userId == %@", userId)
+        req.predicate = NSPredicate(format: "userId == %@", normalizedUserId)
         req.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
         req.fetchLimit = 1
         

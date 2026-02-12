@@ -46,4 +46,11 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    var avatarStorageService: Factory<AvatarStorageServiceProtocol> {
+        Factory(self) { @MainActor in
+            AvatarStorageService()
+        }
+        .scope(.singleton)
+    }
 }

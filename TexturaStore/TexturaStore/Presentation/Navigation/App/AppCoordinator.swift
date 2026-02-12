@@ -25,11 +25,17 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
     private let mainTabCoordinator: any MainTabCoordinating
     private let authService: any AuthServiceProtocol
     private let sessionStorage: any AuthSessionStoringProtocol
+    private let bootScreenFactory: BootScreenBuilding
     
     // MARK: - Subscriptions
     
     private var bag = Set<AnyCancellable>()
     private var isStarted = false
+    
+    // MARK: - Boot flow
+    
+    private var didHandleFirstAuthEmission = false
+    private var bootFallbackTask: Task<Void, Never>?
     
     // MARK: - Init
     
@@ -37,19 +43,26 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
         authCoordinator: any AuthCoordinating,
         mainTabCoordinator: any MainTabCoordinating,
         authService: any AuthServiceProtocol,
-        sessionStorage: any AuthSessionStoringProtocol
+        sessionStorage: any AuthSessionStoringProtocol,
+        bootScreenFactory: BootScreenBuilding
     ) {
         self.authCoordinator = authCoordinator
         self.mainTabCoordinator = mainTabCoordinator
         self.authService = authService
         self.sessionStorage = sessionStorage
+        self.bootScreenFactory = bootScreenFactory
         
-        self.route = (sessionStorage.userId != nil) ? .main : .auth
+        self.route = .boot
         
         storeChild(authCoordinator)
         storeChild(mainTabCoordinator)
         
         bind()
+    }
+    
+    deinit {
+        bootFallbackTask?.cancel()
+        bootFallbackTask = nil
     }
     
     // MARK: - Coordinator Lifecycle
@@ -58,20 +71,16 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
         guard !isStarted else { return }
         isStarted = true
         
-        // Стартуем только нужный флоу, чтобы не было лишних стартов/финишей
-        switch route {
-        case .auth:
-            authCoordinator.start()
-        case .main:
-            mainTabCoordinator.start()
-        }
-        
         bindAuthStateIfNeeded()
+        startBootFallbackIfNeeded()
     }
     
     func finish() {
         isStarted = false
         bag.removeAll()
+        
+        bootFallbackTask?.cancel()
+        bootFallbackTask = nil
         
         authCoordinator.finish()
         mainTabCoordinator.finish()
@@ -85,6 +94,8 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
         AnyView(
             Group {
                 switch route {
+                case .boot:
+                    bootScreenFactory.makeBootView()
                 case .auth:
                     authCoordinator.rootView
                 case .main:
@@ -120,27 +131,63 @@ final class AppCoordinator: AppCoordinating, ObservableObject {
         }
     }
     
+    private var hasStoredSession: Bool {
+        guard let access = sessionStorage.accessToken,
+              let refresh = sessionStorage.refreshToken else {
+            return false
+        }
+        return !access.isEmpty && !refresh.isEmpty
+    }
+    
+    private func startBootFallbackIfNeeded() {
+        bootFallbackTask?.cancel()
+        bootFallbackTask = nil
+        
+        guard hasStoredSession else {
+            showAuth()
+            return
+        }
+        
+        bootFallbackTask = Task { [weak self] in
+            guard let self else { return }
+            
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            if Task.isCancelled { return }
+            
+            if self.route == .boot {
+                self.showAuth()
+            }
+        }
+    }
+    
     private func bindAuthStateIfNeeded() {
         guard bag.isEmpty else { return }
         
-        let base = authService.isAuthorizedPublisher
+        authService.isAuthorizedPublisher
             .removeDuplicates()
             .receive(on: RunLoop.main)
-        
-        let effective: AnyPublisher<Bool, Never>
-        if route == .main {
-            effective = base
-                .dropFirst()
-                .eraseToAnyPublisher()
-        } else {
-            effective = base
-                .eraseToAnyPublisher()
-        }
-        
-        effective
-            .sink { [weak self] (isAuthorized: Bool) in
+            .sink { [weak self] isAuthorized in
                 guard let self else { return }
-                isAuthorized ? self.showMain() : self.showAuth()
+                
+                if !self.didHandleFirstAuthEmission {
+                    self.didHandleFirstAuthEmission = true
+                    
+                    if self.route == .boot,
+                       self.hasStoredSession,
+                       isAuthorized == false {
+                        return
+                    }
+                }
+                
+                if isAuthorized {
+                    self.bootFallbackTask?.cancel()
+                    self.bootFallbackTask = nil
+                    self.showMain()
+                } else {
+                    if self.route != .boot {
+                        self.showAuth()
+                    }
+                }
             }
             .store(in: &bag)
     }

@@ -30,6 +30,15 @@ extension Container {
         .scope(.singleton)
     }
     
+    // MARK: - Boot
+    
+    var bootScreenFactory: Factory<any BootScreenBuilding> {
+        Factory(self) { @MainActor in
+            BootScreenFactory()
+        }
+        .scope(.singleton)
+    }
+    
     // MARK: - Profile
     
     var profileScreenFactory: Factory<any ProfileScreenBuilding> {

@@ -9,8 +9,15 @@ import SwiftUI
 
 @MainActor
 protocol ProfileScreenBuilding {
-    func makeProfileRootView(
-        viewModel: any ProfileViewModelProtocol,
-        onLogout: @escaping () -> Void
+    func makeProfileUserView(
+        viewModel: any ProfileUserViewModelProtocol,
+        onEditProfileTap: (() -> Void)?,
+        onOrdersTap: (() -> Void)?,
+        onSettingsTap: (() -> Void)?,
+        onAboutTap: (() -> Void)?,
+        onContactTap: (() -> Void)?,
+        onPrivacyTap: (() -> Void)?,
+        onLogoutTap: @escaping () -> Void,
+        onDeleteAccountTap: @escaping () -> Void
     ) -> AnyView
 }

@@ -70,9 +70,7 @@ final class DefaultProfileRepository: ProfileRepository {
     }
     
     func ensureInitialProfile(uid: String, name: String, email: String) async throws {
-        print("🟡 ProfileRepository.ensureInitialProfile start uid=\(uid)")
         try await remote.ensureInitialUserProfile(uid: uid, name: name, email: email)
-        print("🟢 ProfileRepository.ensureInitialProfile success uid=\(uid)")
     }
     
     func updateName(uid: String, name: String) async throws {

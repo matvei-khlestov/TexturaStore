@@ -35,7 +35,7 @@
 		A0D250F62F2E7C6500C6B040 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250F52F2E7C6500C6B040 /* AuthCoordinator.swift */; };
 		A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250F72F2E7CA200C6B040 /* MainTabCoordinator.swift */; };
 		A0D250FD2F2E7D1F00C6B040 /* AuthRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250FC2F2E7D1F00C6B040 /* AuthRootView.swift */; };
-		A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250FF2F2E7D5300C6B040 /* ProfileRootView.swift */; };
+		A0D251002F2E7D5300C6B040 /* ProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D250FF2F2E7D5300C6B040 /* ProfileUserView.swift */; };
 		A0D2510B2F2E85CB00C6B040 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2510A2F2E85CB00C6B040 /* DesignSystem.swift */; };
 		A0D2510D2F2E886A00C6B040 /* Color+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2510C2F2E886A00C6B040 /* Color+DesignSystem.swift */; };
 		A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2510E2F2E88A800C6B040 /* Font+DesignSystem.swift */; };
@@ -113,8 +113,8 @@
 		A0E3B7FC2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */; };
 		A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B7FE2F367B9D0038E3BB /* AuthSessionStorage.swift */; };
 		A0E3B8032F3680D60038E3BB /* Container+Storages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8022F3680D60038E3BB /* Container+Storages.swift */; };
-		A0E3B8052F369A8E0038E3BB /* ProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */; };
-		A0E3B8072F369AE90038E3BB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */; };
+		A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */; };
+		A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8062F369AE90038E3BB /* ProfileUserViewModel.swift */; };
 		A0E3B8092F369CF30038E3BB /* ProfileScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */; };
 		A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */; };
 		A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */; };
@@ -136,6 +136,15 @@
 		A0E3B84A2F38B9C40038E3BB /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8492F38B9C40038E3BB /* ProfileRepository.swift */; };
 		A0E3B84C2F38B9F70038E3BB /* DefaultProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B84B2F38B9F70038E3BB /* DefaultProfileRepository.swift */; };
 		A0E3B84E2F38BC700038E3BB /* Container+Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B84D2F38BC700038E3BB /* Container+Repositories.swift */; };
+		A0E3B8542F3906C20038E3BB /* AvatarStorageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8532F3906C20038E3BB /* AvatarStorageServiceProtocol.swift */; };
+		A0E3B8562F3907450038E3BB /* AvatarStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8552F3907450038E3BB /* AvatarStorageService.swift */; };
+		A0E3B8582F390A0E0038E3BB /* ProfileUserRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8572F390A0E0038E3BB /* ProfileUserRow.swift */; };
+		A0E3B85A2F3933120038E3BB /* ProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8592F3933120038E3BB /* ProfileRoute.swift */; };
+		A0E3B85C2F3935AB0038E3BB /* ProfileRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B85B2F3935AB0038E3BB /* ProfileRowView.swift */; };
+		A0E3B85F2F39387B0038E3BB /* ProfileAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B85E2F39387B0038E3BB /* ProfileAdapter.swift */; };
+		A0E3B8632F3DFFCE0038E3BB /* BootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8622F3DFFCE0038E3BB /* BootView.swift */; };
+		A0E3B8652F3E012A0038E3BB /* BootScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */; };
+		A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +196,7 @@
 		A0D250F52F2E7C6500C6B040 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		A0D250F72F2E7CA200C6B040 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
 		A0D250FC2F2E7D1F00C6B040 /* AuthRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRootView.swift; sourceTree = "<group>"; };
-		A0D250FF2F2E7D5300C6B040 /* ProfileRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRootView.swift; sourceTree = "<group>"; };
+		A0D250FF2F2E7D5300C6B040 /* ProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserView.swift; sourceTree = "<group>"; };
 		A0D2510A2F2E85CB00C6B040 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		A0D2510C2F2E886A00C6B040 /* Color+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+DesignSystem.swift"; sourceTree = "<group>"; };
 		A0D2510E2F2E88A800C6B040 /* Font+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+DesignSystem.swift"; sourceTree = "<group>"; };
@@ -258,8 +267,8 @@
 		A0E3B7FB2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionStoringProtocol.swift; sourceTree = "<group>"; };
 		A0E3B7FE2F367B9D0038E3BB /* AuthSessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionStorage.swift; sourceTree = "<group>"; };
 		A0E3B8022F3680D60038E3BB /* Container+Storages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Storages.swift"; sourceTree = "<group>"; };
-		A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelProtocol.swift; sourceTree = "<group>"; };
-		A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8062F369AE90038E3BB /* ProfileUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewModel.swift; sourceTree = "<group>"; };
 		A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenFactory.swift; sourceTree = "<group>"; };
 		A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetServiceProtocol.swift; sourceTree = "<group>"; };
@@ -282,6 +291,15 @@
 		A0E3B8492F38B9C40038E3BB /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		A0E3B84B2F38B9F70038E3BB /* DefaultProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultProfileRepository.swift; sourceTree = "<group>"; };
 		A0E3B84D2F38BC700038E3BB /* Container+Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Repositories.swift"; sourceTree = "<group>"; };
+		A0E3B8532F3906C20038E3BB /* AvatarStorageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStorageServiceProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8552F3907450038E3BB /* AvatarStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStorageService.swift; sourceTree = "<group>"; };
+		A0E3B8572F390A0E0038E3BB /* ProfileUserRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserRow.swift; sourceTree = "<group>"; };
+		A0E3B8592F3933120038E3BB /* ProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRoute.swift; sourceTree = "<group>"; };
+		A0E3B85B2F3935AB0038E3BB /* ProfileRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRowView.swift; sourceTree = "<group>"; };
+		A0E3B85E2F39387B0038E3BB /* ProfileAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAdapter.swift; sourceTree = "<group>"; };
+		A0E3B8622F3DFFCE0038E3BB /* BootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootView.swift; sourceTree = "<group>"; };
+		A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootScreenBuilding.swift; sourceTree = "<group>"; };
+		A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,8 +465,8 @@
 		A0572AD72F2E5A8600B00C0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3B7F02F33C69E0038E3BB /* SupabaseAuthService.swift */,
-				A0E3B80E2F375DBB0038E3BB /* SupabasePasswordResetService.swift */,
+				A0E3B8522F3906850038E3BB /* Auth */,
+				A0E3B8512F39067C0038E3BB /* FileManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -492,6 +510,8 @@
 		A0572ADD2F2E5B1100B00C0F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B8612F3DFFBF0038E3BB /* BootView */,
+				A0E3B8602F393F640038E3BB /* Rows */,
 				A0E3B7CC2F326EB10038E3BB /* Navigation */,
 				A0E3B78F2F312F8D0038E3BB /* Links */,
 				A0E3B78A2F312C400038E3BB /* Buttons */,
@@ -742,8 +762,9 @@
 		A0D250FE2F2E7D4300C6B040 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				A0D250FF2F2E7D5300C6B040 /* ProfileRootView.swift */,
-				A0E3B8062F369AE90038E3BB /* ProfileViewModel.swift */,
+				A0E3B85D2F3938670038E3BB /* Adapter */,
+				A0E3B84F2F3905840038E3BB /* View */,
+				A0E3B8502F39058F0038E3BB /* ViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -839,6 +860,7 @@
 		A0D251522F2FA4DF00C6B040 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B8592F3933120038E3BB /* ProfileRoute.swift */,
 				A0D251532F2FA50000C6B040 /* ProfileCoordinator.swift */,
 			);
 			path = Profile;
@@ -909,7 +931,7 @@
 				A0E3B7792F31201B0038E3BB /* SignInViewModelProtocol.swift */,
 				A0E3B7982F313AB70038E3BB /* SignUpViewModelProtocol.swift */,
 				A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */,
-				A0E3B8042F369A8E0038E3BB /* ProfileViewModelProtocol.swift */,
+				A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1003,6 +1025,7 @@
 				A0E3B7A32F31FD0E0038E3BB /* AuthScreenBuilding.swift */,
 				A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */,
 				A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */,
+				A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1013,6 +1036,7 @@
 				A0E3B7A62F31FD730038E3BB /* AuthScreenFactory.swift */,
 				A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */,
 				A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */,
+				A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1041,6 +1065,7 @@
 				A0E3B7F22F33C75C0038E3BB /* AuthServiceProtocol.swift */,
 				A0E3B80C2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift */,
 				A0E3B7F82F367A5B0038E3BB /* KeychainServiceProtocol.swift */,
+				A0E3B8532F3906C20038E3BB /* AvatarStorageServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1224,6 +1249,64 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		A0E3B84F2F3905840038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0D250FF2F2E7D5300C6B040 /* ProfileUserView.swift */,
+				A0E3B8572F390A0E0038E3BB /* ProfileUserRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8502F39058F0038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8062F369AE90038E3BB /* ProfileUserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B8512F39067C0038E3BB /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8552F3907450038E3BB /* AvatarStorageService.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
+		A0E3B8522F3906850038E3BB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B7F02F33C69E0038E3BB /* SupabaseAuthService.swift */,
+				A0E3B80E2F375DBB0038E3BB /* SupabasePasswordResetService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A0E3B85D2F3938670038E3BB /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B85E2F39387B0038E3BB /* ProfileAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		A0E3B8602F393F640038E3BB /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B85B2F3935AB0038E3BB /* ProfileRowView.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		A0E3B8612F3DFFBF0038E3BB /* BootView */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8622F3DFFCE0038E3BB /* BootView.swift */,
+			);
+			path = BootView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1390,8 +1473,10 @@
 				A0D2512C2F2F0A6D00C6B040 /* MainTabCoordinating.swift in Sources */,
 				A0D2512A2F2F0A4C00C6B040 /* AuthCoordinating.swift in Sources */,
 				A0E3B8162F37EAA20038E3BB /* UserProfile.swift in Sources */,
+				A0E3B8632F3DFFCE0038E3BB /* BootView.swift in Sources */,
 				A0E3B80F2F375DBB0038E3BB /* SupabasePasswordResetService.swift in Sources */,
 				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
+				A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */,
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A021D35A2F2E686800AF94A1 /* 14.swift in Sources */,
@@ -1415,6 +1500,7 @@
 				A0E3B7892F3129AC0038E3BB /* FormTextFieldKind.swift in Sources */,
 				A021D3662F2E68DD00AF94A1 /* 19.swift in Sources */,
 				A0D250FD2F2E7D1F00C6B040 /* AuthRootView.swift in Sources */,
+				A0E3B8542F3906C20038E3BB /* AvatarStorageServiceProtocol.swift in Sources */,
 				A0E3B8312F38AE3A0038E3BB /* ProfileLocalStore.swift in Sources */,
 				A0E3B84C2F38B9F70038E3BB /* DefaultProfileRepository.swift in Sources */,
 				A0D250EC2F2E7B8200C6B040 /* AnyCoordinatorBox.swift in Sources */,
@@ -1437,8 +1523,10 @@
 				A0D250E62F2E7B1200C6B040 /* Coordinator.swift in Sources */,
 				A0E3B7842F3128740038E3BB /* FormTextField.swift in Sources */,
 				A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */,
+				A0E3B8582F390A0E0038E3BB /* ProfileUserRow.swift in Sources */,
 				A0E3B7F12F33C69E0038E3BB /* SupabaseAuthService.swift in Sources */,
 				A021D3622F2E68C500AF94A1 /* 17.swift in Sources */,
+				A0E3B85F2F39387B0038E3BB /* ProfileAdapter.swift in Sources */,
 				A0D251492F2FA3DC00C6B040 /* ProfileCoordinating.swift in Sources */,
 				A0E3B7F72F367A2E0038E3BB /* KeychainService.swift in Sources */,
 				A0D251112F2E88D200C6B040 /* CGFloat+DesignSystem.swift in Sources */,
@@ -1447,17 +1535,20 @@
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0E3B7F32F33C75C0038E3BB /* AuthServiceProtocol.swift in Sources */,
+				A0E3B8652F3E012A0038E3BB /* BootScreenBuilding.swift in Sources */,
 				A0E3B7F92F367A5B0038E3BB /* KeychainServiceProtocol.swift in Sources */,
 				A0E3B7E62F33C0100038E3BB /* SupabaseConfig.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
 				A0D2510F2F2E88A800C6B040 /* Font+DesignSystem.swift in Sources */,
+				A0E3B8562F3907450038E3BB /* AvatarStorageService.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
 				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
 				A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */,
 				A0D2514B2F2FA40E00C6B040 /* CatalogCoordinator.swift in Sources */,
+				A0E3B85C2F3935AB0038E3BB /* ProfileRowView.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
 				A0E3B8362F38AEDF0038E3BB /* ProfileFRCPublisher.swift in Sources */,
-				A0E3B8052F369A8E0038E3BB /* ProfileViewModelProtocol.swift in Sources */,
+				A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
@@ -1468,7 +1559,7 @@
 				A0E3B8472F38B4E50038E3BB /* CDProfile+Mapper.swift in Sources */,
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
 				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
-				A0D251002F2E7D5300C6B040 /* ProfileRootView.swift in Sources */,
+				A0D251002F2E7D5300C6B040 /* ProfileUserView.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0E3B7ED2F33C37A0038E3BB /* Container+Services.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
@@ -1480,8 +1571,9 @@
 				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
+				A0E3B85A2F3933120038E3BB /* ProfileRoute.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
-				A0E3B8072F369AE90038E3BB /* ProfileViewModel.swift in Sources */,
+				A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
