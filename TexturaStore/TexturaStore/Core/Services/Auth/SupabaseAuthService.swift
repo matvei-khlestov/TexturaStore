@@ -9,19 +9,6 @@ import Foundation
 import Combine
 import Supabase
 
-/// Сервис авторизации `SupabaseAuthService`.
-///
-/// Реализация `AuthServiceProtocol` поверх Supabase Auth (email/password).
-///
-/// Особенности:
-/// - `isAuthorizedPublisher` обновляется реактивно через `authStateChanges`;
-/// - `currentUserId` берётся из `session.user.id`;
-/// - хранит локальную сессию через `AuthSessionStoringProtocol` (Keychain);
-/// - считает пользователя “авторизованным” только если email подтверждён.
-///
-/// Требования к Supabase:
-/// - Включён Email provider.
-/// - Email confirmation включена/настроена согласно политике проекта.
 final class SupabaseAuthService: AuthServiceProtocol {
     
     // MARK: - Publishers
@@ -72,7 +59,7 @@ final class SupabaseAuthService: AuthServiceProtocol {
             throw mapSupabaseAuthError(error)
         }
     }
-
+    
     func signUp(email: String, password: String, name: String) async throws {
         do {
             _ = try await supabase.auth.signUp(
@@ -82,7 +69,9 @@ final class SupabaseAuthService: AuthServiceProtocol {
                     "name": AnyJSON.string(name)
                 ]
             )
-
+            
+            // После signUp при включённой email confirmation часто нет активной сессии.
+            // Считаем не авторизованным.
             applyAuthState(session: nil)
         } catch {
             throw mapSupabaseAuthError(error)
@@ -99,8 +88,6 @@ final class SupabaseAuthService: AuthServiceProtocol {
     }
     
     func deleteAccount() async throws {
-        // В Supabase удаление пользователя — это Admin API (service role).
-        // На клиенте держать service role ключ НЕЛЬЗЯ.
         throw AuthDomainError.requiresBackendForAccountDeletion
     }
 }
@@ -115,10 +102,8 @@ private extension SupabaseAuthService {
         authEventsTask = Task { [weak self] in
             guard let self else { return }
             
-            // Синхронизация на старте
             await self.safeInitialSync()
             
-            // Реактивные события
             for await (_, session) in self.supabase.auth.authStateChanges {
                 if Task.isCancelled { return }
                 self.applyAuthState(session: session)
@@ -128,8 +113,31 @@ private extension SupabaseAuthService {
     
     func safeInitialSync() async {
         do {
+            // 1) Пробуем обычный путь (если Supabase сам сохранил/восстановил сессию)
             try await syncFromCurrentSessionIfPossible()
+            return
         } catch {
+            // 2) Если нет — пробуем восстановить из Keychain (access/refresh)
+            do {
+                if let access = session.accessToken,
+                   let refresh = session.refreshToken,
+                   !access.isEmpty,
+                   !refresh.isEmpty {
+                    
+                    _ = try await supabase.auth.setSession(
+                        accessToken: access,
+                        refreshToken: refresh
+                    )
+                    
+                    try await syncFromCurrentSessionIfPossible()
+                    return
+                }
+            } catch {
+                // если токены протухли / невалидны — чистим
+                self.session.clearSession()
+            }
+            
+            // 3) Итог: не авторизован
             applyAuthState(session: nil)
         }
     }
@@ -140,6 +148,7 @@ private extension SupabaseAuthService {
     }
     
     func applyAuthState(session: Session?) {
+        // 0) Сессии нет / она протухла -> чистим
         guard let session, !session.isExpired else {
             currentUserId = nil
             isAuthorizedSubject.send(false)
@@ -147,20 +156,19 @@ private extension SupabaseAuthService {
             return
         }
         
-        // Не пускаем в “авторизован” пока email не подтверждён
-        guard session.user.emailConfirmedAt != nil else {
-            currentUserId = nil
-            isAuthorizedSubject.send(false)
-            self.session.clearSession()
-            return
-        }
-        
-        let userId = session.user.id.uuidString
+        let userId = session.user.id.uuidString.lowercased()
         currentUserId = userId
-        isAuthorizedSubject.send(true)
         
-        // Сохраняем сессию в Keychain
-        self.session.saveSession(userId: userId, provider: "email")
+        self.session.saveSession(
+            userId: userId,
+            provider: "email",
+            accessToken: session.accessToken,
+            refreshToken: session.refreshToken
+        )
+        
+        // 3) Авторизованность = подтверждён ли email
+        let isConfirmed = (session.user.emailConfirmedAt != nil)
+        isAuthorizedSubject.send(isConfirmed)
     }
 }
 
@@ -202,7 +210,6 @@ private extension SupabaseAuthService {
         let underlying = (ns.userInfo[NSUnderlyingErrorKey] as? NSError)
         let root = underlying ?? ns
         
-        // 1) Network (URLSession)
         if root.domain == NSURLErrorDomain {
             switch root.code {
             case NSURLErrorCannotFindHost,
@@ -226,7 +233,6 @@ private extension SupabaseAuthService {
             }
         }
         
-        // 2) Text pool (устойчивее к локализации/обёрткам SDK)
         let candidates = [
             root.localizedDescription,
             root.localizedFailureReason,
@@ -237,12 +243,10 @@ private extension SupabaseAuthService {
             .compactMap { $0?.lowercased() }
             .joined(separator: " | ")
         
-        // 3) HTTP status hints
         if candidates.contains("429") { return AuthDomainError.rateLimited }
         if candidates.contains("401") { return AuthDomainError.invalidCredentials }
         if candidates.contains("409") { return AuthDomainError.emailAlreadyInUse }
         
-        // 4) Supabase/auth semantics
         if candidates.contains("invalid login")
             || candidates.contains("invalid credentials")
             || candidates.contains("invalid email or password")

@@ -10,4 +10,5 @@ import Foundation
 enum AppRoute: Equatable {
     case auth
     case main
+    case boot
 }

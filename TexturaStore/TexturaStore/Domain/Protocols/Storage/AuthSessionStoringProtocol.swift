@@ -9,31 +9,42 @@ import Foundation
 
 /// Протокол `AuthSessionStoringProtocol`
 ///
-/// Определяет контракт для хранения и управления
-/// данными пользовательской сессии (ID пользователя и тип авторизации).
+/// Определяет контракт для хранения и управления данными пользовательской сессии.
 ///
 /// Основные задачи:
 /// - сохранение данных активной сессии после успешного входа;
 /// - восстановление сохранённой сессии при запуске приложения;
-/// - очистка данных при выходе из аккаунта.
+/// - очистка данных при выходе пользователя.
 ///
 /// Используется в:
-/// - `AuthService` для управления состоянием авторизации;
-/// - `SessionManager` для восстановления текущего пользователя.
-
+/// - `SupabaseAuthService` для управления состоянием авторизации;
+/// - (опционально) `SessionManager` для восстановления текущего пользователя.
 protocol AuthSessionStoringProtocol: AnyObject {
     
-    /// Идентификатор текущего пользователя, если сессия активна.
+    /// Идентификатор текущего пользователя, если сессия сохранена.
     var userId: String? { get }
     
     /// Провайдер авторизации (например, `"email"` или `"apple"`).
     var authProvider: String? { get }
-
+    
+    /// Access token (если сохранён).
+    var accessToken: String? { get }
+    
+    /// Refresh token (если сохранён).
+    var refreshToken: String? { get }
+    
     /// Сохраняет данные активной сессии.
     /// - Parameters:
     ///   - userId: Уникальный идентификатор пользователя.
     ///   - provider: Тип авторизационного провайдера.
-    func saveSession(userId: String, provider: String)
+    ///   - accessToken: access token Supabase.
+    ///   - refreshToken: refresh token Supabase.
+    func saveSession(
+        userId: String,
+        provider: String,
+        accessToken: String,
+        refreshToken: String
+    )
     
     /// Очищает данные сессии при выходе пользователя.
     func clearSession()

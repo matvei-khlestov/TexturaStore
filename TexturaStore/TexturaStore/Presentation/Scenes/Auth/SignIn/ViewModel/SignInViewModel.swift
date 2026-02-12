@@ -18,7 +18,7 @@ import Combine
 ///
 /// Вариант A:
 /// - профиль создаётся на стороне БД триггером `auth.users -> public.profiles`;
-/// - после входа мы делаем `repo.refresh(uid:)`, чтобы подтянуть профиль в Core Data.
+/// - после входа выполняется `repo.refresh(uid:)`, чтобы подтянуть профиль в Core Data.
 final class SignInViewModel: SignInViewModelProtocol, ObservableObject {
     
     // MARK: - Dependencies
@@ -36,9 +36,6 @@ final class SignInViewModel: SignInViewModelProtocol, ObservableObject {
     
     @Published private var _emailError: String? = nil
     @Published private var _passwordError: String? = nil
-    
-    /// Триггер для “переинициализации” downstream (если где-то нужно).
-    @Published private var _refreshId: UUID = UUID()
     
     private var bag = Set<AnyCancellable>()
     
@@ -66,6 +63,12 @@ final class SignInViewModel: SignInViewModelProtocol, ObservableObject {
             .assign(to: &$_passwordError)
     }
     
+    // MARK: - Normalize
+    
+    private func normalizedUserId(_ value: String) -> String {
+        value.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
+    
     // MARK: - Outputs
     
     var emailError: AnyPublisher<String?, Never> {
@@ -77,17 +80,12 @@ final class SignInViewModel: SignInViewModelProtocol, ObservableObject {
     }
     
     var isSubmitEnabled: AnyPublisher<Bool, Never> {
-        let isEmailValid = $_emailError.map { $0 == nil }
-        let isPasswordValid = $_passwordError.map { $0 == nil }
-        
-        return Publishers.CombineLatest(isEmailValid, isPasswordValid)
-            .map { $0 && $1 }
-            .eraseToAnyPublisher()
-    }
-    
-    /// Если в твоём протоколе этого нет — просто удали блок целиком.
-    var refreshId: AnyPublisher<UUID, Never> {
-        $_refreshId.eraseToAnyPublisher()
+        Publishers.CombineLatest(
+            $_emailError.map { $0 == nil },
+            $_passwordError.map { $0 == nil }
+        )
+        .map { $0 && $1 }
+        .eraseToAnyPublisher()
     }
     
     // MARK: - Inputs
@@ -106,21 +104,19 @@ final class SignInViewModel: SignInViewModelProtocol, ObservableObject {
         // 1) Логин
         try await authService.signIn(email: email, password: password)
         
-        // 2) После логина uid уже должен быть доступен (в твоём AuthService он выставляется при подтверждённой почте)
-        guard let uid = authService.currentUserId, !uid.isEmpty else {
-            await MainActor.run { self._refreshId = UUID() }
+        // 2) После логина uid должен быть доступен (email подтверждён)
+        guard let rawUid = authService.currentUserId, !rawUid.isEmpty else {
             return
         }
         
-        // 3) Variant A: профиль создан триггером в БД — делаем refresh -> local upsert
+        let uid = normalizedUserId(rawUid)
+        
+        // 3) Variant A: профиль уже создан триггером в БД — подтягиваем в Core Data
         do {
             let repo = makeProfileRepository(uid)
             try await repo.refresh(uid: uid)
         } catch {
             print("⚠️ SignInViewModel: profile refresh failed: \(error)")
         }
-        
-        // 4) Триггерим рефреш для UI/потоков (если используется)
-        await MainActor.run { self._refreshId = UUID() }
     }
 }

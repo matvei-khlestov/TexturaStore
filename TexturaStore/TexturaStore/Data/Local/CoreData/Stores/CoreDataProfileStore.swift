@@ -8,20 +8,6 @@
 import CoreData
 import Combine
 
-/// Локальное хранилище профиля пользователя на Core Data.
-///
-/// Отвечает за:
-/// - хранение и обновление данных профиля пользователя локально;
-/// - реактивное наблюдение за изменениями профиля через `ProfileFRCPublisher`;
-/// - очистку данных при смене пользователя или логауте.
-///
-/// Особенности реализации:
-/// - чтение/наблюдение выполняется на `viewContext`, запись — на фоновой `bg` очереди;
-/// - стримы профилей кешируются по `userId` в словаре `profileStreams`;
-/// - перед сохранением выполняется сравнение (`matches`) для предотвращения лишних операций;
-/// - `save()` вызывается только при наличии изменений (`hasChanges`);
-/// - при очистке удаляются все записи и соответствующий кеш стрима.
-
 final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
     
     // MARK: - Streams cache
@@ -32,24 +18,41 @@ final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
     
     override init(container: NSPersistentContainer) {
         super.init(container: container)
+        
+        // ✅ чтобы изменения из bg-контекста прилетали в viewContext (FRC увидит апдейты)
+        viewContext.automaticallyMergesChangesFromParent = true
+        viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        bg.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+    }
+    
+    // MARK: - Normalize
+    
+    /// Приводим uid к единому виду, чтобы не было багов из-за разного регистра
+    private func normalized(_ userId: String) -> String {
+        userId.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
     
     // MARK: - ProfileLocalStore
     
     func observeProfile(userId: String) -> AnyPublisher<UserProfile?, Never> {
-        if let stream = profileStreams[userId] {
+        let uid = normalized(userId)
+        
+        if let stream = profileStreams[uid] {
             return stream.publisher()
         }
-        let stream = ProfileFRCPublisher(context: viewContext, userId: userId)
-        profileStreams[userId] = stream
+        
+        let stream = ProfileFRCPublisher(context: viewContext, userId: uid)
+        profileStreams[uid] = stream
         return stream.publisher()
     }
     
     func upsertProfile(_ dto: ProfileDTO) {
+        let uid = normalized(dto.userId)
+        
         bg.perform {
             do {
                 let req: NSFetchRequest<CDProfile> = CDProfile.fetchRequest()
-                req.predicate = NSPredicate(format: "userId == %@", dto.userId)
+                req.predicate = NSPredicate(format: "userId == %@", uid)
                 req.fetchLimit = 1
                 
                 let existing = try self.bg.fetch(req).first
@@ -58,36 +61,44 @@ final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
                 if let existing, existing.matches(dto) { return }
                 
                 let entity = existing ?? CDProfile(context: self.bg)
-                if existing == nil { entity.userId = dto.userId }
+                
+                // ✅ всегда сохраняем нормализованный userId
+                if existing == nil { entity.userId = uid }
+                
+                // ⚠️ ВАЖНО: entity.apply(dto:) может снова записать dto.userId в userId
+                // поэтому ещё раз фиксируем userId после apply.
                 entity.apply(dto: dto)
+                entity.userId = uid
                 
                 guard self.bg.hasChanges else { return }
                 try self.bg.save()
-                print("✅ CoreDataProfileStore: saved profile dto for uid=\(dto.userId)")
+                print("✅ CoreDataProfileStore: saved profile dto for uid=\(uid)")
             } catch {
                 print("❌ CoreDataProfileStore: save error \(error)")
             }
         }
     }
     
-    // MARK: - Clear (для смены пользователя / логаута)
+    // MARK: - Clear
     
     func clear(userId: String) {
+        let uid = normalized(userId)
+        
         bg.perform {
             do {
                 let req: NSFetchRequest<CDProfile> = CDProfile.fetchRequest()
-                req.predicate = NSPredicate(format: "userId == %@", userId)
+                req.predicate = NSPredicate(format: "userId == %@", uid)
                 let objs = try self.bg.fetch(req)
                 objs.forEach { self.bg.delete($0) }
                 
                 guard self.bg.hasChanges else { return }
                 try self.bg.save()
-                print("🧹 CoreDataProfileStore: cleared profile for uid=\(userId)")
+                print("🧹 CoreDataProfileStore: cleared profile for uid=\(uid)")
             } catch {
                 print("❌ CoreDataProfileStore.clear error: \(error)")
             }
         }
         
-        profileStreams[userId] = nil
+        profileStreams[uid] = nil
     }
 }
