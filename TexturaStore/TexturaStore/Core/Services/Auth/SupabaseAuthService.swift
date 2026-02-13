@@ -70,8 +70,6 @@ final class SupabaseAuthService: AuthServiceProtocol {
                 ]
             )
             
-            // После signUp при включённой email confirmation часто нет активной сессии.
-            // Считаем не авторизованным.
             applyAuthState(session: nil)
         } catch {
             throw mapSupabaseAuthError(error)
@@ -88,7 +86,24 @@ final class SupabaseAuthService: AuthServiceProtocol {
     }
     
     func deleteAccount() async throws {
-        throw AuthDomainError.requiresBackendForAccountDeletion
+        do {
+            var currentSession = try await supabase.auth.session
+            
+            if currentSession.isExpired {
+                _ = try await supabase.auth.refreshSession()
+                currentSession = try await supabase.auth.session
+            }
+            
+            let jwt = currentSession.accessToken
+            
+            try await callDeleteAccountFunction(jwt: jwt)
+            
+            do { try await supabase.auth.signOut() } catch {}
+            
+            applyAuthState(session: nil)
+        } catch {
+            throw mapSupabaseAuthError(error)
+        }
     }
 }
 
@@ -113,11 +128,9 @@ private extension SupabaseAuthService {
     
     func safeInitialSync() async {
         do {
-            // 1) Пробуем обычный путь (если Supabase сам сохранил/восстановил сессию)
             try await syncFromCurrentSessionIfPossible()
             return
         } catch {
-            // 2) Если нет — пробуем восстановить из Keychain (access/refresh)
             do {
                 if let access = session.accessToken,
                    let refresh = session.refreshToken,
@@ -133,11 +146,9 @@ private extension SupabaseAuthService {
                     return
                 }
             } catch {
-                // если токены протухли / невалидны — чистим
                 self.session.clearSession()
             }
             
-            // 3) Итог: не авторизован
             applyAuthState(session: nil)
         }
     }
@@ -148,7 +159,6 @@ private extension SupabaseAuthService {
     }
     
     func applyAuthState(session: Session?) {
-        // 0) Сессии нет / она протухла -> чистим
         guard let session, !session.isExpired else {
             currentUserId = nil
             isAuthorizedSubject.send(false)
@@ -166,9 +176,65 @@ private extension SupabaseAuthService {
             refreshToken: session.refreshToken
         )
         
-        // 3) Авторизованность = подтверждён ли email
         let isConfirmed = (session.user.emailConfirmedAt != nil)
         isAuthorizedSubject.send(isConfirmed)
+    }
+}
+
+// MARK: - Private: Account deletion (Edge Function)
+
+private extension SupabaseAuthService {
+    
+    func callDeleteAccountFunction(jwt: String) async throws {
+        let url = makeDeleteAccountFunctionURL()
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        request.setValue(SupabaseConfig.supabaseKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(SupabaseConfig.supabaseKey)", forHTTPHeaderField: "Authorization")
+        
+        request.setValue(jwt, forHTTPHeaderField: "X-User-JWT")
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let http = response as? HTTPURLResponse else {
+            throw AuthDomainError.network
+        }
+        
+        guard (200...299).contains(http.statusCode) else {
+            let serverMessage = parseServerMessage(from: data)
+            
+            switch http.statusCode {
+            case 401, 403:
+                throw AuthDomainError.server(message: serverMessage.isEmpty ? "Unauthorized" : serverMessage)
+            case 404:
+                throw AuthDomainError.server(message: serverMessage.isEmpty ? "Function not found" : serverMessage)
+            case 429:
+                throw AuthDomainError.rateLimited
+            default:
+                throw AuthDomainError.server(message: serverMessage.isEmpty ? "Unknown server error" : serverMessage)
+            }
+        }
+    }
+    
+    func makeDeleteAccountFunctionURL() -> URL {
+        SupabaseConfig.url.appendingPathComponent("functions/v1/delete-account")
+    }
+    
+    func parseServerMessage(from data: Data) -> String {
+        guard !data.isEmpty else { return "" }
+        
+        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            if let message = json["message"] as? String { return message }
+            if let error = json["error"] as? String { return error }
+            if let detail = json["detail"] as? String { return detail }
+        }
+        
+        return String(data: data, encoding: .utf8)?
+            .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
 
@@ -182,7 +248,7 @@ private extension SupabaseAuthService {
         case weakPassword
         case network
         case rateLimited
-        case requiresBackendForAccountDeletion
+        case server(message: String)
         case unknown
         
         var errorDescription: String? {
@@ -197,8 +263,8 @@ private extension SupabaseAuthService {
                 return "Проблема с сетью."
             case .rateLimited:
                 return "Слишком много попыток. Попробуйте позже."
-            case .requiresBackendForAccountDeletion:
-                return "Удаление аккаунта требует серверной операции (Admin API Supabase)."
+            case .server(let message):
+                return message.isEmpty ? "Ошибка сервера." : message
             case .unknown:
                 return "Неизвестная ошибка."
             }
@@ -206,6 +272,8 @@ private extension SupabaseAuthService {
     }
     
     func mapSupabaseAuthError(_ error: Error) -> Error {
+        if let domain = error as? AuthDomainError { return domain }
+        
         let ns = error as NSError
         let underlying = (ns.userInfo[NSUnderlyingErrorKey] as? NSError)
         let root = underlying ?? ns
