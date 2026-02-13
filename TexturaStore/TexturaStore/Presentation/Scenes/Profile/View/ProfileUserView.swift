@@ -125,7 +125,7 @@ struct ProfileUserView: View {
             }
         }
         .navigationTitle(L10n.Screen.Profile.title)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear {
             loadAvatarIfNeeded()
         }
