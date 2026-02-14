@@ -57,6 +57,19 @@ extension Container {
         }
     }
     
+    var editProfileViewModel: Factory<(String) -> any EditProfileViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                EditProfileViewModel(
+                    avatarStorage: self.avatarStorageService(),
+                    profileRepository: self.makeProfileRepository(userId),
+                    userId: userId
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
     // MARK: - Settings
     
     var settingsViewModel: Factory<any SettingsViewModelProtocol> {

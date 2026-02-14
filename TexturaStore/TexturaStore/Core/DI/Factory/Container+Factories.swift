@@ -47,4 +47,11 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    var profileEditScreenFactory: Factory<any ProfileEditScreenBuilding> {
+        Factory(self) { @MainActor in
+            ProfileEditScreenFactory()
+        }
+        .scope(.singleton)
+    }
 }
