@@ -120,12 +120,12 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
             }
             
             for await change in changes {
-                if Task.isCancelled { break }
-                
-                guard let record = Self.extractRecord(from: change),
-                      let recordId = record["id"] as? String,
-                      recordId == uid,
-                      let dto = self.decodeProfileFromRecord(record) else {
+                guard
+                    let record = Self.extractRecord(from: change),
+                    let recordId = Self.string(from: record["id"]),
+                    recordId == uid,
+                    let dto = self.decodeProfileFromRecord(record)
+                else {
                     continue
                 }
                 
@@ -159,42 +159,12 @@ private extension SupabaseProfileStore {
         let name: String?
         let email: String?
         let phone: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case name
-            case email
-            case phone
-        }
     }
 }
 
 // MARK: - Decoding
 
 private extension SupabaseProfileStore {
-    
-    /// Один декодер на весь стор — чтобы гарантированно понимать timestamptz Supabase
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            // 1) ISO8601 с fractional seconds (часто Supabase отдаёт так)
-            if let date = iso8601Fractional.date(from: s) { return date }
-            
-            // 2) ISO8601 без дробной части
-            if let date = iso8601Plain.date(from: s) { return date }
-            
-            // 3) Fallback (редко, но полезно)
-            if let date = postgresFallback.date(from: s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Expected ISO8601 date, got: \(s)"
-            )
-        }
-        return decoder
-    }()
     
     static let iso8601Fractional: ISO8601DateFormatter = {
         let f = ISO8601DateFormatter()
@@ -216,16 +186,70 @@ private extension SupabaseProfileStore {
         return f
     }()
     
+    static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .custom { d in
+            let c = try d.singleValueContainer()
+            let s = try c.decode(String.self)
+            
+            if let date = iso8601Fractional.date(from: s) { return date }
+            if let date = iso8601Plain.date(from: s) { return date }
+            if let date = postgresFallback.date(from: s) { return date }
+            
+            throw DecodingError.dataCorruptedError(
+                in: c,
+                debugDescription: "Expected ISO8601 date, got: \(s)"
+            )
+        }
+        return decoder
+    }()
+    
     func decodeProfile(from data: Data) throws -> ProfileDTO {
         try Self.decoder.decode(ProfileDTO.self, from: data)
     }
     
+    /// Исправлено под текущий `ProfileDTO`:
+    /// - `id` -> `userId: String`
+    /// - `created_at` не нужен (в DTO его нет)
+    /// - `updated_at` парсим в `Date`
     func decodeProfileFromRecord(_ record: [String: Any]) -> ProfileDTO? {
-        guard JSONSerialization.isValidJSONObject(record),
-              let data = try? JSONSerialization.data(withJSONObject: record, options: []) else {
+        guard
+            let userId = Self.string(from: record["id"]),
+            let updatedAtString = Self.string(from: record["updated_at"]),
+            let updatedAt = Self.parseDate(updatedAtString)
+        else {
             return nil
         }
-        return try? decodeProfile(from: data)
+        
+        let name = Self.string(from: record["name"]) ?? ""
+        let email = Self.string(from: record["email"]) ?? ""
+        let phone = Self.string(from: record["phone"]) ?? ""
+        
+        return ProfileDTO(
+            userId: userId,
+            name: name,
+            email: email,
+            phone: phone,
+            updatedAt: updatedAt
+        )
+    }
+    
+    static func parseDate(_ s: String) -> Date? {
+        iso8601Fractional.date(from: s)
+        ?? iso8601Plain.date(from: s)
+        ?? postgresFallback.date(from: s)
+    }
+    
+    static func string(from value: Any?) -> String? {
+        if let s = value as? String { return s }
+        if let u = value as? UUID { return u.uuidString }
+        if let s = value as? NSString { return s as String }
+        
+        if let v = value as? AnyJSON {
+            if case .string(let s) = v { return s }
+        }
+        
+        return nil
     }
 }
 

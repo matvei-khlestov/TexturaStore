@@ -39,7 +39,21 @@ extension Container {
                 privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
                 authService: self.authService(),
                 makeProfileViewModel: self.profileViewModel(),
-                settingsViewModel: self.settingsViewModel()
+                settingsViewModel: self.settingsViewModel(),
+                profileEditCoordinator: self.profileEditCoordinator()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Profile Edit
+    
+    var profileEditCoordinator: Factory<any ProfileEditCoordinating> {
+        Factory(self) { @MainActor in
+            ProfileEditCoordinator(
+                profileEditScreenFactory: self.profileEditScreenFactory(),
+                authService: self.authService(),
+                makeEditProfileViewModel: self.editProfileViewModel()
             )
         }
         .scope(.singleton)

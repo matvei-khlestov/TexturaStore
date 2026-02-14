@@ -27,7 +27,8 @@ import Combine
 /// - `updateName(uid:name:)`, `updateEmail(uid:email:)`, `updatePhone(uid:phone:)` — обновление отдельных полей профиля.
 ///
 /// Особенности реализации:
-/// - изменения из удалённого источника обновляют локальное хранилище через `listenProfile`;
+/// - при инициализации выполняет one-shot `refresh` (догоняет сервер, если приложение было выключено);
+/// - затем подключает realtime (`listenProfile`) и обновляет локальное хранилище;
 /// - локальный стор транслирует изменения через Combine (`CurrentValueSubject`);
 /// - предусмотрена фильтрация дубликатов по ключевым полям и `updatedAt`.
 final class DefaultProfileRepository: ProfileRepository {
@@ -91,12 +92,24 @@ final class DefaultProfileRepository: ProfileRepository {
 private extension DefaultProfileRepository {
     
     func bindProfileStreams() {
-        // Local -> UI stream
+        // 1) Local -> UI stream (сразу отдаём то, что есть в CoreData)
         local.observeProfile(userId: userId)
             .subscribe(subject)
             .store(in: &bag)
         
-        // Remote -> Local (dedup)
+        // 2) One-shot refresh (догоняем сервер при старте, если приложение было закрыто)
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                try await self.refresh(uid: self.userId)
+            } catch {
+#if DEBUG
+                print("🔴 [ProfileRepository] initial refresh failed:", error)
+#endif
+            }
+        }
+        
+        // 3) Realtime -> Local (дальше поддерживаем актуальность через изменения)
         remote.listenProfile(uid: userId)
             .compactMap { $0 }
             .removeDuplicates(by: { old, new in

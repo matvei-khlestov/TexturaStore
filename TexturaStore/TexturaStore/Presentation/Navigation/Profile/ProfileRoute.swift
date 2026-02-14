@@ -5,18 +5,17 @@
 //  Created by Matvei Khlestov on 09.02.2026.
 //
 
-import Foundation
-
 @MainActor
 enum ProfileRoute: @MainActor RouteIdentifiable {
     case privacyPolicy
     case contactUs
     case about
     case settings
+    case editProfile
     
     var id: String {
         switch self {
-        case .privacyPolicy:
+        case .privacyPolicy: 
             return "profile.privacyPolicy"
         case .contactUs:
             return "profile.contactUs"
@@ -24,6 +23,8 @@ enum ProfileRoute: @MainActor RouteIdentifiable {
             return "profile.about"
         case .settings:
             return "profile.settings"
+        case .editProfile:
+            return "profile.editProfile"
         }
     }
 }

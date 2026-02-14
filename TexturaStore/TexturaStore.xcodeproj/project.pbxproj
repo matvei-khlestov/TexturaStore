@@ -162,6 +162,15 @@
 		A0E3B8922F3E5BB80038E3BB /* Bundle+AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8912F3E5BB80038E3BB /* Bundle+AppLanguage.swift */; };
 		A0E3B8942F3E5BED0038E3BB /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8932F3E5BED0038E3BB /* LocalizationManager.swift */; };
 		A0E3B8962F3E5EAA0038E3BB /* Container+Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8952F3E5EAA0038E3BB /* Container+Managers.swift */; };
+		A0E3B8992F40AC890038E3BB /* EditProfileViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8982F40AC890038E3BB /* EditProfileViewModelProtocol.swift */; };
+		A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B89B2F40ACF40038E3BB /* EditProfileViewModel.swift */; };
+		A0E3B8A02F40B1F50038E3BB /* EditProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B89F2F40B1F50038E3BB /* EditProfileRow.swift */; };
+		A0E3B8A42F40B24F0038E3BB /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A32F40B24F0038E3BB /* EditProfileView.swift */; };
+		A0E3B8A62F40B79C0038E3BB /* ProfileEditScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A52F40B79C0038E3BB /* ProfileEditScreenBuilding.swift */; };
+		A0E3B8A82F40B7C20038E3BB /* ProfileEditScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A72F40B7C20038E3BB /* ProfileEditScreenFactory.swift */; };
+		A0E3B8AA2F40BA470038E3BB /* ProfileEditCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A92F40BA470038E3BB /* ProfileEditCoordinating.swift */; };
+		A0E3B8AD2F40BA920038E3BB /* ProfileEditCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */; };
+		A0E3B8AF2F40BB240038E3BB /* ProfileEditRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +343,15 @@
 		A0E3B8912F3E5BB80038E3BB /* Bundle+AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+AppLanguage.swift"; sourceTree = "<group>"; };
 		A0E3B8932F3E5BED0038E3BB /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		A0E3B8952F3E5EAA0038E3BB /* Container+Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Managers.swift"; sourceTree = "<group>"; };
+		A0E3B8982F40AC890038E3BB /* EditProfileViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B89B2F40ACF40038E3BB /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		A0E3B89F2F40B1F50038E3BB /* EditProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRow.swift; sourceTree = "<group>"; };
+		A0E3B8A32F40B24F0038E3BB /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		A0E3B8A52F40B79C0038E3BB /* ProfileEditScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditScreenBuilding.swift; sourceTree = "<group>"; };
+		A0E3B8A72F40B7C20038E3BB /* ProfileEditScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditScreenFactory.swift; sourceTree = "<group>"; };
+		A0E3B8A92F40BA470038E3BB /* ProfileEditCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCoordinating.swift; sourceTree = "<group>"; };
+		A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCoordinator.swift; sourceTree = "<group>"; };
+		A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditRoute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -747,6 +765,7 @@
 				A0D2514C2F2FA43300C6B040 /* Favorites */,
 				A0D2514F2F2FA47D00C6B040 /* Cart */,
 				A0D251522F2FA4DF00C6B040 /* Profile */,
+				A0E3B8AB2F40BA6F0038E3BB /* EditProfile */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -755,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D250FE2F2E7D4300C6B040 /* Profile */,
+				A0E3B89A2F40ACBE0038E3BB /* EditProfile */,
 				A0D250FB2F2E7D1100C6B040 /* Auth */,
 				A0E3B7D22F3288A90038E3BB /* ResetPassword */,
 				A0E3B7A82F32140F0038E3BB /* PrivacyPolicy */,
@@ -787,6 +807,7 @@
 				A0D251442F2FA39A00C6B040 /* FavoritesCoordinating.swift */,
 				A0D251462F2FA3B600C6B040 /* CartCoordinating.swift */,
 				A0D251482F2FA3DC00C6B040 /* ProfileCoordinating.swift */,
+				A0E3B8A92F40BA470038E3BB /* ProfileEditCoordinating.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -976,6 +997,7 @@
 				A0E3B7D02F3288790038E3BB /* ResetPasswordViewModelProtocol.swift */,
 				A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */,
 				A0E3B8832F3E553F0038E3BB /* SettingsViewModelProtocol.swift */,
+				A0E3B8982F40AC890038E3BB /* EditProfileViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1070,6 +1092,7 @@
 				A0E3B7C62F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift */,
 				A0E3B8082F369CF30038E3BB /* ProfileScreenBuilding.swift */,
 				A0E3B8642F3E012A0038E3BB /* BootScreenBuilding.swift */,
+				A0E3B8A52F40B79C0038E3BB /* ProfileEditScreenBuilding.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1081,6 +1104,7 @@
 				A0E3B7C82F3266740038E3BB /* PrivacyPolicyScreenFactory.swift */,
 				A0E3B80A2F369D330038E3BB /* ProfileScreenFactory.swift */,
 				A0E3B8662F3E014F0038E3BB /* BootScreenFactory.swift */,
+				A0E3B8A72F40B7C20038E3BB /* ProfileEditScreenFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1430,6 +1454,49 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		A0E3B89A2F40ACBE0038E3BB /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B89D2F40B1C50038E3BB /* ViewModel */,
+				A0E3B89E2F40B1DF0038E3BB /* View */,
+				A0E3B8A12F40B21C0038E3BB /* Row */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		A0E3B89D2F40B1C50038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B89B2F40ACF40038E3BB /* EditProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B89E2F40B1DF0038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8A32F40B24F0038E3BB /* EditProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8A12F40B21C0038E3BB /* Row */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B89F2F40B1F50038E3BB /* EditProfileRow.swift */,
+			);
+			path = Row;
+			sourceTree = "<group>";
+		};
+		A0E3B8AB2F40BA6F0038E3BB /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */,
+				A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1588,6 +1655,7 @@
 				A0E3B83F2F38B3180038E3BB /* CDProfile+CoreDataClass.swift in Sources */,
 				A0E3B8402F38B3180038E3BB /* CDProfile+CoreDataProperties.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
+				A0E3B8AD2F40BA920038E3BB /* ProfileEditCoordinator.swift in Sources */,
 				A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */,
 				A0E3B8242F38AA0E0038E3BB /* BaseCoreDataStore.swift in Sources */,
 				A0E3B7FC2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift in Sources */,
@@ -1604,6 +1672,7 @@
 				A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */,
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
+				A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */,
 				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
 				A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */,
 				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
@@ -1618,6 +1687,7 @@
 				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
+				A0E3B8992F40AC890038E3BB /* EditProfileViewModelProtocol.swift in Sources */,
 				A0E3B8802F3E548B0038E3BB /* SettingsService.swift in Sources */,
 				A0E3B7D82F328B3B0038E3BB /* ResetPasswordView.swift in Sources */,
 				A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */,
@@ -1635,6 +1705,7 @@
 				A0D250E82F2E7B4000C6B040 /* CoordinatorBox.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
 				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
+				A0E3B8A02F40B1F50038E3BB /* EditProfileRow.swift in Sources */,
 				A0E3B88D2F3E5A8B0038E3BB /* AppLanguage.swift in Sources */,
 				A0E3B7F52F3679C50038E3BB /* KeychainKey.swift in Sources */,
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
@@ -1653,6 +1724,7 @@
 				A0E3B88B2F3E56E40038E3BB /* SettingsSymbols.swift in Sources */,
 				A0E3B7FF2F367B9D0038E3BB /* AuthSessionStorage.swift in Sources */,
 				A0E3B8582F390A0E0038E3BB /* ProfileUserRow.swift in Sources */,
+				A0E3B8A42F40B24F0038E3BB /* EditProfileView.swift in Sources */,
 				A0E3B7F12F33C69E0038E3BB /* SupabaseAuthService.swift in Sources */,
 				A021D3622F2E68C500AF94A1 /* 17.swift in Sources */,
 				A0E3B85F2F39387B0038E3BB /* ProfileAdapter.swift in Sources */,
@@ -1675,6 +1747,7 @@
 				A0E3B8562F3907450038E3BB /* AvatarStorageService.swift in Sources */,
 				A0E3B8842F3E553F0038E3BB /* SettingsViewModelProtocol.swift in Sources */,
 				A0D250F42F2E7C2900C6B040 /* AppCoordinator.swift in Sources */,
+				A0E3B8AA2F40BA470038E3BB /* ProfileEditCoordinating.swift in Sources */,
 				A0E3B86F2F3E0CA20038E3BB /* MailComposerView.swift in Sources */,
 				A0D251512F2FA4A600C6B040 /* CartCoordinator.swift in Sources */,
 				A0E3B7BB2F3245080038E3BB /* AppRouter.swift in Sources */,
@@ -1693,12 +1766,14 @@
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
 				A0E3B8772F3E1A9F0038E3BB /* SettingsView.swift in Sources */,
 				A0E3B8472F38B4E50038E3BB /* CDProfile+Mapper.swift in Sources */,
+				A0E3B8A62F40B79C0038E3BB /* ProfileEditScreenBuilding.swift in Sources */,
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
 				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileUserView.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0E3B7ED2F33C37A0038E3BB /* Container+Services.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
+				A0E3B8A82F40B7C20038E3BB /* ProfileEditScreenFactory.swift in Sources */,
 				A0E3B81B2F37EC0A0038E3BB /* ProfileStoreProtocol.swift in Sources */,
 				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
 				A0E3B7E82F33C0320038E3BB /* SupabaseClientFactory.swift in Sources */,
@@ -1713,6 +1788,7 @@
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
 				A0E3B8962F3E5EAA0038E3BB /* Container+Managers.swift in Sources */,
 				A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */,
+				A0E3B8AF2F40BB240038E3BB /* ProfileEditRoute.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
