@@ -173,12 +173,15 @@
 		A0E3B8B52F4107F20038E3BB /* EditNameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */; };
 		A0E3B8B92F41089E0038E3BB /* EditNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8B82F41089E0038E3BB /* EditNameViewModel.swift */; };
 		A0E3B8BF2F410D690038E3BB /* BaseEditFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8BE2F410D690038E3BB /* BaseEditFieldView.swift */; };
-		A0E3B8C12F410DAC0038E3BB /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */; };
 		A0E3B8C42F41290E0038E3BB /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C32F41290E0038E3BB /* Routes.swift */; };
 		A0E3B8C62F41431B0038E3BB /* EditProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C52F41431B0038E3BB /* EditProfileRoute.swift */; };
 		A0E3B8C82F4143770038E3BB /* EditProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C72F4143770038E3BB /* EditProfileNavigator.swift */; };
 		A0E3B8CB2F4143E20038E3BB /* EditProfileNavigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */; };
 		A0E3B8CD2F4144C80038E3BB /* Container+Navigators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8CC2F4144C80038E3BB /* Container+Navigators.swift */; };
+		A0E3B8D52F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8D42F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift */; };
+		A0E3B8D72F41C6000038E3BB /* EditEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8D62F41C6000038E3BB /* EditEmailViewModel.swift */; };
+		A0E3B8DB2F41C8260038E3BB /* EditEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8DA2F41C8260038E3BB /* EditEmailView.swift */; };
+		A0E3B8DD2F41C8D20038E3BB /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8DC2F41C8D20038E3BB /* EditNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,12 +365,15 @@
 		A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewModelProtocol.swift; sourceTree = "<group>"; };
 		A0E3B8B82F41089E0038E3BB /* EditNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewModel.swift; sourceTree = "<group>"; };
 		A0E3B8BE2F410D690038E3BB /* BaseEditFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditFieldView.swift; sourceTree = "<group>"; };
-		A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		A0E3B8C32F41290E0038E3BB /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		A0E3B8C52F41431B0038E3BB /* EditProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRoute.swift; sourceTree = "<group>"; };
 		A0E3B8C72F4143770038E3BB /* EditProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileNavigator.swift; sourceTree = "<group>"; };
 		A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileNavigating.swift; sourceTree = "<group>"; };
 		A0E3B8CC2F4144C80038E3BB /* Container+Navigators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Navigators.swift"; sourceTree = "<group>"; };
+		A0E3B8D42F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8D62F41C6000038E3BB /* EditEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailViewModel.swift; sourceTree = "<group>"; };
+		A0E3B8DA2F41C8260038E3BB /* EditEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailView.swift; sourceTree = "<group>"; };
+		A0E3B8DC2F41C8D20038E3BB /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1019,6 +1025,7 @@
 				A0E3B8982F40AC890038E3BB /* EditProfileViewModelProtocol.swift */,
 				A0E3B8B22F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift */,
 				A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */,
+				A0E3B8D42F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1481,6 +1488,8 @@
 				A0E3B8B62F41085A0038E3BB /* Main */,
 				A0E3B8BD2F410D550038E3BB /* Base */,
 				A0E3B8B72F41086B0038E3BB /* EditName */,
+				A0E3B8D12F41C2170038E3BB /* EditEmail */,
+				A0E3B8CE2F41BA7A0038E3BB /* EditPhone */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1548,7 +1557,7 @@
 		A0E3B8BC2F4108E90038E3BB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */,
+				A0E3B8DC2F41C8D20038E3BB /* EditNameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1575,6 +1584,54 @@
 				A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */,
 			);
 			path = Navigators;
+			sourceTree = "<group>";
+		};
+		A0E3B8CE2F41BA7A0038E3BB /* EditPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8CF2F41BAC30038E3BB /* View */,
+				A0E3B8D02F41BAD20038E3BB /* ViewModel */,
+			);
+			path = EditPhone;
+			sourceTree = "<group>";
+		};
+		A0E3B8CF2F41BAC30038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8D02F41BAD20038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B8D12F41C2170038E3BB /* EditEmail */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8D22F41C2380038E3BB /* View */,
+				A0E3B8D32F41C2430038E3BB /* ViewModel */,
+			);
+			path = EditEmail;
+			sourceTree = "<group>";
+		};
+		A0E3B8D22F41C2380038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8DA2F41C8260038E3BB /* EditEmailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8D32F41C2430038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8D62F41C6000038E3BB /* EditEmailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1754,12 +1811,14 @@
 				A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */,
 				A0E3B8B32F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift in Sources */,
 				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
+				A0E3B8DD2F41C8D20038E3BB /* EditNameView.swift in Sources */,
 				A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */,
 				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
 				A0E3B7772F311E0B0038E3BB /* ValidationResult.swift in Sources */,
 				A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */,
 				A0E3B7682F30C6E20038E3BB /* Strings+Generated.swift in Sources */,
 				A0E3B7CB2F326DE40038E3BB /* BrandBackButton.swift in Sources */,
+				A0E3B8DB2F41C8260038E3BB /* EditEmailView.swift in Sources */,
 				A021D3682F2E68EE00AF94A1 /* 20.swift in Sources */,
 				A0E3B7C92F3266740038E3BB /* PrivacyPolicyScreenFactory.swift in Sources */,
 				A0E3B86C2F3E0C200038E3BB /* ContactUsView.swift in Sources */,
@@ -1837,8 +1896,8 @@
 				A0E3B85C2F3935AB0038E3BB /* ProfileRowView.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
 				A0E3B8362F38AEDF0038E3BB /* ProfileFRCPublisher.swift in Sources */,
+				A0E3B8D52F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift in Sources */,
 				A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */,
-				A0E3B8C12F410DAC0038E3BB /* EditNameView.swift in Sources */,
 				A0E3B8B52F4107F20038E3BB /* EditNameViewModelProtocol.swift in Sources */,
 				A0E3B87D2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
@@ -1877,6 +1936,7 @@
 				A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
+				A0E3B8D72F41C6000038E3BB /* EditEmailViewModel.swift in Sources */,
 				A0E3B8C62F41431B0038E3BB /* EditProfileRoute.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
 				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,

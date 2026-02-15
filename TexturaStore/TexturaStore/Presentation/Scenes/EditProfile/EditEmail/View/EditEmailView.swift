@@ -1,5 +1,5 @@
 //
-//  EditNameView.swift
+//  EditEmailView.swift
 //  TexturaStore
 //
 //  Created by Matvei Khlestov on 15.02.2026.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct EditNameView: View {
+struct EditEmailView: View {
     
     var onBack: (() -> Void)?
     var onFinish: (() -> Void)?
     
-    private let viewModel: EditNameViewModelProtocol
+    private let viewModel: EditEmailViewModelProtocol
     
     init(
-        viewModel: EditNameViewModelProtocol,
+        viewModel: EditEmailViewModelProtocol,
         onBack: (() -> Void)? = nil,
         onFinish: (() -> Void)? = nil
     ) {
@@ -27,8 +27,8 @@ struct EditNameView: View {
     var body: some View {
         BaseEditFieldView(
             viewModel: viewModel,
-            fieldKind: .name,
-            navTitle: "Изменить имя",
+            fieldKind: .email,
+            navTitle: "Изменить почту",
             onBack: onBack,
             onFinish: onFinish
         )

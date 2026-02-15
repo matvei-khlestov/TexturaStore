@@ -83,6 +83,19 @@ extension Container {
         .scope(.shared)
     }
     
+    var editEmailViewModel: Factory<(String) -> any EditEmailViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                EditEmailViewModel(
+                    profileRepository: self.makeProfileRepository(userId),
+                    userId: userId,
+                    validator: self.formValidator()
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
     // MARK: - Settings
     
     var settingsViewModel: Factory<any SettingsViewModelProtocol> {

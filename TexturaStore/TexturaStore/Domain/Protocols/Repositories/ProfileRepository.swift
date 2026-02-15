@@ -18,7 +18,8 @@ import Combine
 /// - реактивное наблюдение за состоянием профиля (`observeProfile`);
 /// - синхронизация данных между сервером и локальным хранилищем (`refresh`);
 /// - инициализация профиля при первой регистрации (`ensureInitialProfile`);
-/// - обновление данных пользователя — имени, e-mail и телефона.
+/// - обновление данных пользователя — имени, e-mail и телефона;
+/// - корректная смена e-mail через Supabase Auth (`requestEmailChange`) и последующая синхронизация (`syncEmailFromAuth`).
 ///
 /// Используется в:
 /// - `ProfileUserViewModel` — для отображения и обновления данных профиля;
@@ -55,11 +56,20 @@ protocol ProfileRepository: AnyObject {
     ///   - name: Новое имя.
     func updateName(uid: String, name: String) async throws
     
-    /// Обновляет адрес электронной почты пользователя.
+    /// Обновляет адрес электронной почты пользователя в таблице `profiles`.
+    /// - Important: Для реальной смены почты в Supabase Auth используйте `requestEmailChange(email:)`.
     /// - Parameters:
     ///   - uid: Идентификатор пользователя.
     ///   - email: Новый e-mail.
     func updateEmail(uid: String, email: String) async throws
+    
+    /// Запрашивает смену e-mail через Supabase Auth (письмо подтверждения).
+    /// - Parameter email: Новый e-mail.
+    func requestEmailChange(email: String) async throws
+    
+    /// Синхронизирует `profiles.email` с актуальным e-mail из Supabase Auth.
+    /// - Parameter uid: Идентификатор пользователя.
+    func syncEmailFromAuth(uid: String) async throws
     
     /// Обновляет номер телефона пользователя.
     /// - Parameters:

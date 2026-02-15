@@ -35,6 +35,6 @@ struct MainTabRootView: View {
                 .tabItem { Label(L10n.Tab.profile, systemImage: "person") }
                 .tag(MainTab.profile)
         }
-        .tint(.brandPrimary)
+        .tint(.brand)
     }
 }

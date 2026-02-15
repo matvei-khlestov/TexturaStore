@@ -42,6 +42,10 @@ struct BaseEditFieldView: View {
     @State private var isPresentingError: Bool = false
     @State private var errorMessage: String = ""
     
+    @State private var isPresentingSuccess: Bool = false
+    @State private var successTitle: String = ""
+    @State private var successMessage: String = ""
+    
     // MARK: - Constants
     
     private enum Metrics {
@@ -58,6 +62,15 @@ struct BaseEditFieldView: View {
     
     private enum Texts {
         static let submitButtonTitle = "Изменить"
+        
+        static let emailSuccessTitle = "Проверьте почту"
+        static let emailSuccessMessage = "Мы отправили письмо для подтверждения смены e-mail на старую и новую почту."
+        
+        static let nameSuccessTitle = "Готово"
+        static let nameSuccessMessage = "Имя успешно изменено."
+        
+        static let phoneSuccessTitle = "Готово"
+        static let phoneSuccessMessage = "Номер телефона успешно изменён."
     }
     
     // MARK: - Init
@@ -121,6 +134,13 @@ struct BaseEditFieldView: View {
         } message: {
             Text(errorMessage)
         }
+        .alert(successTitle, isPresented: $isPresentingSuccess) {
+            Button("Ок", role: .cancel) {
+                onFinish?()
+            }
+        } message: {
+            Text(successMessage)
+        }
         .onTapGesture {
             hideKeyboard()
         }
@@ -143,7 +163,26 @@ struct BaseEditFieldView: View {
         Task {
             do {
                 try await viewModel.submit()
-                onFinish?()
+                
+                switch fieldKind {
+                case .email:
+                    successTitle = Texts.emailSuccessTitle
+                    successMessage = Texts.emailSuccessMessage
+                    isPresentingSuccess = true
+                    
+                case .name:
+                    successTitle = Texts.nameSuccessTitle
+                    successMessage = Texts.nameSuccessMessage
+                    isPresentingSuccess = true
+                    
+                case .phone:
+                    successTitle = Texts.phoneSuccessTitle
+                    successMessage = Texts.phoneSuccessMessage
+                    isPresentingSuccess = true
+                    
+                default:
+                    onFinish?()
+                }
             } catch {
                 errorMessage = (error as NSError).localizedDescription
                 isPresentingError = true

@@ -22,4 +22,10 @@ protocol ProfileEditScreenBuilding {
         onBack: @escaping () -> Void,
         onFinish: @escaping () -> Void
     ) -> AnyView
+    
+    func makeEditEmailView(
+        viewModel: any EditEmailViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onFinish: @escaping () -> Void
+    ) -> AnyView
 }

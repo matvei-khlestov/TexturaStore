@@ -24,7 +24,9 @@ import Combine
 /// - `observeProfile()` — реактивное наблюдение за профилем в реальном времени;
 /// - `refresh(uid:)` — одноразовое обновление локальных данных из Supabase;
 /// - `ensureInitialProfile(uid:name:email:)` — создание или обновление базового профиля при регистрации/входе;
-/// - `updateName(uid:name:)`, `updateEmail(uid:email:)`, `updatePhone(uid:phone:)` — обновление отдельных полей профиля.
+/// - `updateName(uid:name:)`, `updateEmail(uid:email:)`, `updatePhone(uid:phone:)` — обновление отдельных полей профиля;
+/// - `requestEmailChange(email:)` — корректная смена e-mail через Supabase Auth (письмо подтверждения);
+/// - `syncEmailFromAuth(uid:)` — синхронизация `profiles.email` после подтверждения.
 ///
 /// Особенности реализации:
 /// - при инициализации выполняет one-shot `refresh` (догоняет сервер, если приложение было выключено);
@@ -38,6 +40,12 @@ final class DefaultProfileRepository: ProfileRepository {
     private let remote: any ProfileStoreProtocol
     private let local: any ProfileLocalStore
     private let userId: String
+    
+    // MARK: - Const
+    
+    private enum Constants {
+        static let emailChangeRedirectURL = URL(string: "https://auth.texturastore.tech/email-change.html")
+    }
     
     // MARK: - State
     
@@ -82,6 +90,17 @@ final class DefaultProfileRepository: ProfileRepository {
         try await remote.updateEmail(uid: uid, email: email)
     }
     
+    func requestEmailChange(email: String) async throws {
+        try await remote.requestEmailChange(
+            newEmail: email,
+            redirectURL: Constants.emailChangeRedirectURL
+        )
+    }
+    
+    func syncEmailFromAuth(uid: String) async throws {
+        try await remote.syncProfileEmailFromAuth(uid: uid)
+    }
+    
     func updatePhone(uid: String, phone: String) async throws {
         try await remote.updatePhone(uid: uid, phone: phone)
     }
@@ -101,11 +120,13 @@ private extension DefaultProfileRepository {
         Task { [weak self] in
             guard let self else { return }
             do {
+                try? await self.syncEmailFromAuth(uid: self.userId)
+
                 try await self.refresh(uid: self.userId)
             } catch {
-#if DEBUG
+        #if DEBUG
                 print("🔴 [ProfileRepository] initial refresh failed:", error)
-#endif
+        #endif
             }
         }
         
