@@ -182,6 +182,9 @@
 		A0E3B8D72F41C6000038E3BB /* EditEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8D62F41C6000038E3BB /* EditEmailViewModel.swift */; };
 		A0E3B8DB2F41C8260038E3BB /* EditEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8DA2F41C8260038E3BB /* EditEmailView.swift */; };
 		A0E3B8DD2F41C8D20038E3BB /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8DC2F41C8D20038E3BB /* EditNameView.swift */; };
+		A0E3B8DF2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8DE2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift */; };
+		A0E3B8E12F41EE790038E3BB /* EditPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8E02F41EE790038E3BB /* EditPhoneViewModel.swift */; };
+		A0E3B8E32F41F0FD0038E3BB /* EditPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8E22F41F0FD0038E3BB /* EditPhoneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +377,9 @@
 		A0E3B8D62F41C6000038E3BB /* EditEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailViewModel.swift; sourceTree = "<group>"; };
 		A0E3B8DA2F41C8260038E3BB /* EditEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailView.swift; sourceTree = "<group>"; };
 		A0E3B8DC2F41C8D20038E3BB /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
+		A0E3B8DE2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8E02F41EE790038E3BB /* EditPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneViewModel.swift; sourceTree = "<group>"; };
+		A0E3B8E22F41F0FD0038E3BB /* EditPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhoneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1026,6 +1032,7 @@
 				A0E3B8B22F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift */,
 				A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */,
 				A0E3B8D42F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift */,
+				A0E3B8DE2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1598,6 +1605,7 @@
 		A0E3B8CF2F41BAC30038E3BB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B8E22F41F0FD0038E3BB /* EditPhoneView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1605,6 +1613,7 @@
 		A0E3B8D02F41BAD20038E3BB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A0E3B8E02F41EE790038E3BB /* EditPhoneViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1807,6 +1816,7 @@
 				A0D251452F2FA39A00C6B040 /* FavoritesCoordinating.swift in Sources */,
 				A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */,
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
+				A0E3B8E12F41EE790038E3BB /* EditPhoneViewModel.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */,
 				A0E3B8B32F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift in Sources */,
@@ -1875,6 +1885,7 @@
 				A0D251472F2FA3B600C6B040 /* CartCoordinating.swift in Sources */,
 				A0E3B77A2F31201B0038E3BB /* SignInViewModelProtocol.swift in Sources */,
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
+				A0E3B8E32F41F0FD0038E3BB /* EditPhoneView.swift in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0E3B7F32F33C75C0038E3BB /* AuthServiceProtocol.swift in Sources */,
 				A0E3B8652F3E012A0038E3BB /* BootScreenBuilding.swift in Sources */,
@@ -1905,6 +1916,7 @@
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
 				A0E3B8142F37EA750038E3BB /* ProfileDTO.swift in Sources */,
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
+				A0E3B8DF2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift in Sources */,
 				A0E3B84A2F38B9C40038E3BB /* ProfileRepository.swift in Sources */,
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
 				A0E3B8772F3E1A9F0038E3BB /* SettingsView.swift in Sources */,
