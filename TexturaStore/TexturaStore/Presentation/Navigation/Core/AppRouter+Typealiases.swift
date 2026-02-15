@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias StackRouter<StackRoute: RouteIdentifiable> = AppRouter<StackRoute, NoRoute, NoRoute>
-typealias StackSheetRouter<StackRoute: RouteIdentifiable, SheetRoute: RouteIdentifiable> = AppRouter<StackRoute, SheetRoute, NoRoute>
-typealias StackFullScreenRouter<StackRoute: RouteIdentifiable, FullScreenRoute: RouteIdentifiable> = AppRouter<StackRoute, NoRoute, FullScreenRoute>
+typealias StackRouter<StackRoute: StackRoutable> = AppRouter<StackRoute, NoRoute, NoRoute>
+typealias StackSheetRouter<StackRoute: StackRoutable, SheetRoute: ModalRoutable> = AppRouter<StackRoute, SheetRoute, NoRoute>
+typealias StackFullScreenRouter<StackRoute: StackRoutable, FullScreenRoute: ModalRoutable> = AppRouter<StackRoute, NoRoute, FullScreenRoute>
 

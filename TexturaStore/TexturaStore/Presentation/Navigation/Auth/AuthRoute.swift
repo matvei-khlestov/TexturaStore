@@ -7,16 +7,8 @@
 
 import Foundation
 
-enum AuthRoute: @MainActor RouteIdentifiable {
+@MainActor
+enum AuthRoute: @MainActor StackRoutable {
     case privacyPolicy
     case resetPassword
-    
-    var id: String {
-        switch self {
-        case .privacyPolicy:
-            return "auth.privacyPolicy"
-        case .resetPassword:
-            return "auth.resetPassword"
-        }
-    }
 }

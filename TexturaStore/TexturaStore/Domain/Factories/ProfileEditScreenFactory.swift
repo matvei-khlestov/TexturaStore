@@ -27,4 +27,18 @@ final class ProfileEditScreenFactory: ProfileEditScreenBuilding {
             )
         )
     }
+    
+    func makeEditNameView(
+        viewModel: any EditNameViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onFinish: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            EditNameView(
+                viewModel: viewModel,
+                onBack: onBack,
+                onFinish: onFinish
+            )
+        )
+    }
 }

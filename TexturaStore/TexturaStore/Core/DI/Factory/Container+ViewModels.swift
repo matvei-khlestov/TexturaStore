@@ -70,6 +70,19 @@ extension Container {
         .scope(.shared)
     }
     
+    var editNameViewModel: Factory<(String) -> any EditNameViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                EditNameViewModel(
+                    profileRepository: self.makeProfileRepository(userId),
+                    userId: userId,
+                    validator: self.formValidator()
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
     // MARK: - Settings
     
     var settingsViewModel: Factory<any SettingsViewModelProtocol> {

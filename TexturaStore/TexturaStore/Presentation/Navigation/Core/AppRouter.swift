@@ -10,9 +10,9 @@ import Combine
 
 @MainActor
 final class AppRouter<
-    StackRoute: RouteIdentifiable,
-    SheetRoute: RouteIdentifiable,
-    FullScreenRoute: RouteIdentifiable
+    StackRoute: StackRoutable,
+    SheetRoute: ModalRoutable,
+    FullScreenRoute: ModalRoutable
 >: ObservableObject {
 
     // MARK: - Stack
