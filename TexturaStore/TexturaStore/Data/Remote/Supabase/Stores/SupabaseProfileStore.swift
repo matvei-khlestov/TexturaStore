@@ -32,9 +32,9 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
             if existing.name != name {
                 try await updateName(uid: uid, name: name)
             }
-            if existing.email != email {
-                try await updateEmail(uid: uid, email: email)
-            }
+            // NOTE:
+            // Email теперь синхронизируется ТОЛЬКО после подтвержденной смены почты в Supabase Auth.
+            // Здесь не обновляем, чтобы не записать неподтвержденное значение в `profiles.email`.
             return
         }
         
@@ -79,6 +79,10 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
         try await update(uid: uid, payload: payload)
     }
     
+    /// ВАЖНО:
+    /// - Этот метод обновляет только поле `profiles.email` в Postgres.
+    /// - Для реальной смены почты у пользователя используйте `requestEmailChange(newEmail:redirectURL:)`,
+    ///   а затем после подтверждения вызовите `syncProfileEmailFromAuth(uid:)`.
     func updateEmail(uid: String, email: String) async throws {
         let payload = ProfileUpdatePayload(name: nil, email: email, phone: nil)
         try await update(uid: uid, payload: payload)
@@ -95,6 +99,39 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
             .update(payload)
             .eq("id", value: uid)
             .execute()
+    }
+    
+    // MARK: - Email Change (Supabase Auth)
+    
+    /// Запрашивает смену email у текущего авторизованного пользователя в Supabase Auth.
+    /// Supabase отправит письмо(а) для подтверждения смены почты.
+    ///
+    /// После подтверждения (через ваш `email-change.html`) вызывайте `syncProfileEmailFromAuth(uid:)`
+    /// чтобы синхронизировать `profiles.email` с актуальным email из Auth.
+    func requestEmailChange(
+        newEmail: String,
+        redirectURL: URL?
+    ) async throws {
+        try await supabase.auth.update(
+            user: UserAttributes(email: newEmail),
+            redirectTo: redirectURL
+        )
+    }
+    
+    /// Синхронизирует `profiles.email` с актуальным email из Supabase Auth.
+    /// Вызывать после того, как пользователь подтвердил смену почты.
+    func syncProfileEmailFromAuth(uid: String) async throws {
+        _ = try? await supabase.auth.refreshSession()
+        
+        let user = try await supabase.auth.user()
+        let authEmail = (user.email ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !authEmail.isEmpty else { return }
+        
+        let current = try await fetchProfile(uid: uid)
+        let dbEmail = (current?.email ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard dbEmail != authEmail else { return }
+        
+        try await updateEmail(uid: uid, email: authEmail)
     }
     
     // MARK: - Realtime

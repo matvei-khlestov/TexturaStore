@@ -41,4 +41,18 @@ final class ProfileEditScreenFactory: ProfileEditScreenBuilding {
             )
         )
     }
+    
+    func makeEditEmailView(
+        viewModel: any EditEmailViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onFinish: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            EditEmailView(
+                viewModel: viewModel,
+                onBack: onBack,
+                onFinish: onFinish
+            )
+        )
+    }
 }

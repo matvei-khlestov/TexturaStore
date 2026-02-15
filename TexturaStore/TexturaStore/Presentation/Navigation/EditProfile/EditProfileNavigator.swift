@@ -16,6 +16,7 @@ final class EditProfileNavigator: EditProfileNavigating {
     private let authService: AuthServiceProtocol
     private let makeEditProfileViewModel: (String) -> any EditProfileViewModelProtocol
     private let makeEditNameViewModel: (String) -> any EditNameViewModelProtocol
+    private let makeEditEmailViewModel: (String) -> any EditEmailViewModelProtocol
     
     // MARK: - Init
     
@@ -23,12 +24,14 @@ final class EditProfileNavigator: EditProfileNavigating {
         profileEditScreenFactory: any ProfileEditScreenBuilding,
         authService: AuthServiceProtocol,
         makeEditProfileViewModel: @escaping (String) -> any EditProfileViewModelProtocol,
-        makeEditNameViewModel: @escaping (String) -> any EditNameViewModelProtocol
+        makeEditNameViewModel: @escaping (String) -> any EditNameViewModelProtocol,
+        makeEditEmailViewModel: @escaping (String) -> any EditEmailViewModelProtocol
     ) {
         self.profileEditScreenFactory = profileEditScreenFactory
         self.authService = authService
         self.makeEditProfileViewModel = makeEditProfileViewModel
         self.makeEditNameViewModel = makeEditNameViewModel
+        self.makeEditEmailViewModel = makeEditEmailViewModel
     }
     
     // MARK: - Screens
@@ -70,6 +73,16 @@ final class EditProfileNavigator: EditProfileNavigating {
             let vm = makeEditNameViewModel(userId)
             
             return profileEditScreenFactory.makeEditNameView(
+                viewModel: vm,
+                onBack: onBack,
+                onFinish: onFinish
+            )
+            
+        case .editEmail:
+            let userId = authService.currentUserId ?? ""
+            let vm = makeEditEmailViewModel(userId)
+            
+            return profileEditScreenFactory.makeEditEmailView(
                 viewModel: vm,
                 onBack: onBack,
                 onFinish: onFinish

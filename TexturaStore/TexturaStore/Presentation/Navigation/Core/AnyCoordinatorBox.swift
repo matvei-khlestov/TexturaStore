@@ -23,17 +23,6 @@ extension Coordinator {
         childCoordinators.append(AnyCoordinatorBox(coordinator))
     }
     
-    @discardableResult
-    func storeChildAndReturnID<C: Coordinator>(_ coordinator: C) -> UUID {
-        let box = AnyCoordinatorBox(coordinator)
-        childCoordinators.append(box)
-        return box.id
-    }
-    
-    func removeChild(id: UUID) {
-        childCoordinators.removeAll { $0.id == id }
-    }
-    
     func removeAllChildren() {
         childCoordinators.removeAll()
     }

@@ -17,7 +17,8 @@ extension Container {
                 profileEditScreenFactory: self.profileEditScreenFactory(),
                 authService: self.authService(),
                 makeEditProfileViewModel: self.editProfileViewModel(),
-                makeEditNameViewModel: self.editNameViewModel()
+                makeEditNameViewModel: self.editNameViewModel(),
+                makeEditEmailViewModel: self.editEmailViewModel()
             )
         }
         .scope(.singleton)
