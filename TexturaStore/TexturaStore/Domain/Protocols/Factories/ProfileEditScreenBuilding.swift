@@ -16,4 +16,10 @@ protocol ProfileEditScreenBuilding {
         onEditPhone: (() -> Void)?,
         onBack: @escaping () -> Void
     ) -> AnyView
+    
+    func makeEditNameView(
+        viewModel: any EditNameViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onFinish: @escaping () -> Void
+    ) -> AnyView
 }

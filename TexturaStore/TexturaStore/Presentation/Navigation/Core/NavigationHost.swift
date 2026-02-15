@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct NavigationHost<
-    StackRoute: RouteIdentifiable,
-    SheetRoute: RouteIdentifiable,
-    FullScreenRoute: RouteIdentifiable,
+    StackRoute: StackRoutable,
+    SheetRoute: ModalRoutable,
+    FullScreenRoute: ModalRoutable,
     Root: View,
     StackDestination: View,
     SheetDestination: View,
@@ -80,9 +80,9 @@ private extension View {
 
     @ViewBuilder
     func applySheetIfNeeded<
-        StackRoute: RouteIdentifiable,
-        SheetRoute: RouteIdentifiable,
-        FullScreenRoute: RouteIdentifiable,
+        StackRoute: StackRoutable,
+        SheetRoute: ModalRoutable,
+        FullScreenRoute: ModalRoutable,
         SheetDestination: View
     >(
         router: AppRouter<StackRoute, SheetRoute, FullScreenRoute>,
@@ -104,9 +104,9 @@ private extension View {
 
     @ViewBuilder
     func applyFullScreenIfNeeded<
-        StackRoute: RouteIdentifiable,
-        SheetRoute: RouteIdentifiable,
-        FullScreenRoute: RouteIdentifiable,
+        StackRoute: StackRoutable,
+        SheetRoute: ModalRoutable,
+        FullScreenRoute: ModalRoutable,
         FullScreenDestination: View
     >(
         router: AppRouter<StackRoute, SheetRoute, FullScreenRoute>,
@@ -130,7 +130,7 @@ private extension View {
 // MARK: - iOS 15 stack emulation
 
 private struct LegacyNavigationStack<
-    StackRoute: RouteIdentifiable,
+    StackRoute: StackRoutable,
     Root: View,
     Destination: View
 >: View {
@@ -148,7 +148,7 @@ private struct LegacyNavigationStack<
 }
 
 private struct LegacyPushLink<
-    StackRoute: RouteIdentifiable,
+    StackRoute: StackRoutable,
     Destination: View
 >: View {
 
@@ -176,7 +176,7 @@ private struct LegacyPushLink<
 }
 
 private struct LegacyLevel<
-    StackRoute: RouteIdentifiable,
+    StackRoute: StackRoutable,
     Destination: View
 >: View {
 

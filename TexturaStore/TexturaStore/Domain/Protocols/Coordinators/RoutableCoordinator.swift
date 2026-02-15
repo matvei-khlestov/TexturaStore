@@ -10,9 +10,9 @@ import SwiftUI
 @MainActor
 protocol RoutableCoordinator: Coordinator, ObservableObject {
     
-    associatedtype StackRoute: RouteIdentifiable
-    associatedtype SheetRoute: RouteIdentifiable = NoRoute
-    associatedtype FullScreenRoute: RouteIdentifiable = NoRoute
+    associatedtype StackRoute: StackRoutable
+    associatedtype SheetRoute: ModalRoutable = NoRoute
+    associatedtype FullScreenRoute: ModalRoutable = NoRoute
     
     var router: AppRouter<StackRoute, SheetRoute, FullScreenRoute> { get }
     
@@ -29,18 +29,10 @@ extension RoutableCoordinator {
         AnyView(
             NavigationHost(
                 router: router,
-                root: { [self] in
-                    self.makeRoot()
-                },
-                stackDestination: { [self] route in
-                    self.buildStack(route)
-                },
-                sheetDestination: { [self] route in
-                    self.buildSheet(route)
-                },
-                fullScreenDestination: { [self] route in
-                    self.buildFullScreen(route)
-                }
+                root: { self.makeRoot() },
+                stackDestination: { self.buildStack($0) },
+                sheetDestination: { self.buildSheet($0) },
+                fullScreenDestination: { self.buildFullScreen($0) }
             )
         )
     }

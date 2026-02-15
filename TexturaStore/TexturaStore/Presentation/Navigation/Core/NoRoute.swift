@@ -9,6 +9,6 @@ import Foundation
 
 /// Маркер “маршруты не используются”.
 /// Нужен, чтобы в coordinator можно было “отключить” sheet/fullScreen и не тащить пустые enum’ы.
-struct NoRoute: RouteIdentifiable {
-    let id: UUID = UUID()
+struct NoRoute: ModalRoutable {
+    let id: Int = 0
 }

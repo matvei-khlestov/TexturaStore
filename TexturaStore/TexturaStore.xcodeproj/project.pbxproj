@@ -169,8 +169,16 @@
 		A0E3B8A62F40B79C0038E3BB /* ProfileEditScreenBuilding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A52F40B79C0038E3BB /* ProfileEditScreenBuilding.swift */; };
 		A0E3B8A82F40B7C20038E3BB /* ProfileEditScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A72F40B7C20038E3BB /* ProfileEditScreenFactory.swift */; };
 		A0E3B8AA2F40BA470038E3BB /* ProfileEditCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8A92F40BA470038E3BB /* ProfileEditCoordinating.swift */; };
-		A0E3B8AD2F40BA920038E3BB /* ProfileEditCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */; };
-		A0E3B8AF2F40BB240038E3BB /* ProfileEditRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */; };
+		A0E3B8B32F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8B22F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift */; };
+		A0E3B8B52F4107F20038E3BB /* EditNameViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */; };
+		A0E3B8B92F41089E0038E3BB /* EditNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8B82F41089E0038E3BB /* EditNameViewModel.swift */; };
+		A0E3B8BF2F410D690038E3BB /* BaseEditFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8BE2F410D690038E3BB /* BaseEditFieldView.swift */; };
+		A0E3B8C12F410DAC0038E3BB /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */; };
+		A0E3B8C42F41290E0038E3BB /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C32F41290E0038E3BB /* Routes.swift */; };
+		A0E3B8C62F41431B0038E3BB /* EditProfileRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C52F41431B0038E3BB /* EditProfileRoute.swift */; };
+		A0E3B8C82F4143770038E3BB /* EditProfileNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8C72F4143770038E3BB /* EditProfileNavigator.swift */; };
+		A0E3B8CB2F4143E20038E3BB /* EditProfileNavigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */; };
+		A0E3B8CD2F4144C80038E3BB /* Container+Navigators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E3B8CC2F4144C80038E3BB /* Container+Navigators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,8 +358,16 @@
 		A0E3B8A52F40B79C0038E3BB /* ProfileEditScreenBuilding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditScreenBuilding.swift; sourceTree = "<group>"; };
 		A0E3B8A72F40B7C20038E3BB /* ProfileEditScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditScreenFactory.swift; sourceTree = "<group>"; };
 		A0E3B8A92F40BA470038E3BB /* ProfileEditCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCoordinating.swift; sourceTree = "<group>"; };
-		A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditCoordinator.swift; sourceTree = "<group>"; };
-		A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditRoute.swift; sourceTree = "<group>"; };
+		A0E3B8B22F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditFieldViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewModelProtocol.swift; sourceTree = "<group>"; };
+		A0E3B8B82F41089E0038E3BB /* EditNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewModel.swift; sourceTree = "<group>"; };
+		A0E3B8BE2F410D690038E3BB /* BaseEditFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditFieldView.swift; sourceTree = "<group>"; };
+		A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
+		A0E3B8C32F41290E0038E3BB /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		A0E3B8C52F41431B0038E3BB /* EditProfileRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRoute.swift; sourceTree = "<group>"; };
+		A0E3B8C72F4143770038E3BB /* EditProfileNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileNavigator.swift; sourceTree = "<group>"; };
+		A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileNavigating.swift; sourceTree = "<group>"; };
+		A0E3B8CC2F4144C80038E3BB /* Container+Navigators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Navigators.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,6 +678,8 @@
 				A0E3B7782F3120000038E3BB /* ViewModels */,
 				A0E3B7712F311D7B0038E3BB /* Validator */,
 				A0D250E42F2E7AEE00C6B040 /* Coordinators */,
+				A0E3B8C92F4143BC0038E3BB /* Navigators */,
+				A0E3B8C22F4128DE0038E3BB /* Routers */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -883,6 +901,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D2513D2F2F79AE00C6B040 /* Container+Coordinators.swift */,
+				A0E3B8CC2F4144C80038E3BB /* Container+Navigators.swift */,
 				A0D2513F2F2F7E5B00C6B040 /* Container+Factories.swift */,
 				A0E3B79E2F3144170038E3BB /* Container+ViewModels.swift */,
 				A0E3B7A02F3144C70038E3BB /* Container+Utils.swift */,
@@ -998,6 +1017,8 @@
 				A0E3B8042F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift */,
 				A0E3B8832F3E553F0038E3BB /* SettingsViewModelProtocol.swift */,
 				A0E3B8982F40AC890038E3BB /* EditProfileViewModelProtocol.swift */,
+				A0E3B8B22F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift */,
+				A0E3B8B42F4107F20038E3BB /* EditNameViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1457,9 +1478,9 @@
 		A0E3B89A2F40ACBE0038E3BB /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3B89D2F40B1C50038E3BB /* ViewModel */,
-				A0E3B89E2F40B1DF0038E3BB /* View */,
-				A0E3B8A12F40B21C0038E3BB /* Row */,
+				A0E3B8B62F41085A0038E3BB /* Main */,
+				A0E3B8BD2F410D550038E3BB /* Base */,
+				A0E3B8B72F41086B0038E3BB /* EditName */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1491,10 +1512,69 @@
 		A0E3B8AB2F40BA6F0038E3BB /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
-				A0E3B8AE2F40BB240038E3BB /* ProfileEditRoute.swift */,
-				A0E3B8AC2F40BA920038E3BB /* ProfileEditCoordinator.swift */,
+				A0E3B8C52F41431B0038E3BB /* EditProfileRoute.swift */,
+				A0E3B8C72F4143770038E3BB /* EditProfileNavigator.swift */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		A0E3B8B62F41085A0038E3BB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B89D2F40B1C50038E3BB /* ViewModel */,
+				A0E3B89E2F40B1DF0038E3BB /* View */,
+				A0E3B8A12F40B21C0038E3BB /* Row */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A0E3B8B72F41086B0038E3BB /* EditName */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8BC2F4108E90038E3BB /* View */,
+				A0E3B8BB2F4108AC0038E3BB /* ViewModel */,
+			);
+			path = EditName;
+			sourceTree = "<group>";
+		};
+		A0E3B8BB2F4108AC0038E3BB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8B82F41089E0038E3BB /* EditNameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A0E3B8BC2F4108E90038E3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8C02F410DAC0038E3BB /* EditNameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0E3B8BD2F410D550038E3BB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8BE2F410D690038E3BB /* BaseEditFieldView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		A0E3B8C22F4128DE0038E3BB /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8C32F41290E0038E3BB /* Routes.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		A0E3B8C92F4143BC0038E3BB /* Navigators */ = {
+			isa = PBXGroup;
+			children = (
+				A0E3B8CA2F4143E20038E3BB /* EditProfileNavigating.swift */,
+			);
+			path = Navigators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1655,7 +1735,6 @@
 				A0E3B83F2F38B3180038E3BB /* CDProfile+CoreDataClass.swift in Sources */,
 				A0E3B8402F38B3180038E3BB /* CDProfile+CoreDataProperties.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
-				A0E3B8AD2F40BA920038E3BB /* ProfileEditCoordinator.swift in Sources */,
 				A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */,
 				A0E3B8242F38AA0E0038E3BB /* BaseCoreDataStore.swift in Sources */,
 				A0E3B7FC2F367B1A0038E3BB /* AuthSessionStoringProtocol.swift in Sources */,
@@ -1673,6 +1752,7 @@
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */,
+				A0E3B8B32F4107860038E3BB /* BaseEditFieldViewModelProtocol.swift in Sources */,
 				A0E3B7A12F3144C70038E3BB /* Container+Utils.swift in Sources */,
 				A0E3B7C72F32664E0038E3BB /* PrivacyPolicyScreenBuilding.swift in Sources */,
 				A0E3B79D2F313BF40038E3BB /* SignUpView.swift in Sources */,
@@ -1711,6 +1791,8 @@
 				A021D36A2F2E68FB00AF94A1 /* 21.swift in Sources */,
 				A0E3B7B72F3244C20038E3BB /* RouteIdentifiable.swift in Sources */,
 				A0E3B77C2F3120B40038E3BB /* SignInViewModel.swift in Sources */,
+				A0E3B8BF2F410D690038E3BB /* BaseEditFieldView.swift in Sources */,
+				A0E3B8CB2F4143E20038E3BB /* EditProfileNavigating.swift in Sources */,
 				A021D3542F2E683300AF94A1 /* 12.swift in Sources */,
 				A0E3B7992F313AB70038E3BB /* SignUpViewModelProtocol.swift in Sources */,
 				A0E3B78C2F312C590038E3BB /* UnderlinedButton.swift in Sources */,
@@ -1756,6 +1838,8 @@
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
 				A0E3B8362F38AEDF0038E3BB /* ProfileFRCPublisher.swift in Sources */,
 				A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */,
+				A0E3B8C12F410DAC0038E3BB /* EditNameView.swift in Sources */,
+				A0E3B8B52F4107F20038E3BB /* EditNameViewModelProtocol.swift in Sources */,
 				A0E3B87D2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
@@ -1770,8 +1854,10 @@
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
 				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileUserView.swift in Sources */,
+				A0E3B8B92F41089E0038E3BB /* EditNameViewModel.swift in Sources */,
 				A021D3642F2E68D100AF94A1 /* 18.swift in Sources */,
 				A0E3B7ED2F33C37A0038E3BB /* Container+Services.swift in Sources */,
+				A0E3B8CD2F4144C80038E3BB /* Container+Navigators.swift in Sources */,
 				A0D250F82F2E7CA200C6B040 /* MainTabCoordinator.swift in Sources */,
 				A0E3B8A82F40B7C20038E3BB /* ProfileEditScreenFactory.swift in Sources */,
 				A0E3B81B2F37EC0A0038E3BB /* ProfileStoreProtocol.swift in Sources */,
@@ -1783,20 +1869,22 @@
 				A0E3B7752F311DD40038E3BB /* AuthField.swift in Sources */,
 				A0E3B87B2F3E53C70038E3BB /* SettingsStorageProtocol.swift in Sources */,
 				A0D2513E2F2F79AE00C6B040 /* Container+Coordinators.swift in Sources */,
+				A0E3B8C82F4143770038E3BB /* EditProfileNavigator.swift in Sources */,
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A0E3B85A2F3933120038E3BB /* ProfileRoute.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
 				A0E3B8962F3E5EAA0038E3BB /* Container+Managers.swift in Sources */,
 				A0E3B8072F369AE90038E3BB /* ProfileUserViewModel.swift in Sources */,
-				A0E3B8AF2F40BB240038E3BB /* ProfileEditRoute.swift in Sources */,
 				A0E3B7A42F31FD0E0038E3BB /* AuthScreenBuilding.swift in Sources */,
 				A0E3B7D12F3288790038E3BB /* ResetPasswordViewModelProtocol.swift in Sources */,
+				A0E3B8C62F41431B0038E3BB /* EditProfileRoute.swift in Sources */,
 				A0E3B7C52F3264700038E3BB /* AuthRoute.swift in Sources */,
 				A0E3B77F2F3123290038E3BB /* PhoneFormatter.swift in Sources */,
 				A0D250F22F2E7C0F00C6B040 /* MainTab.swift in Sources */,
 				A0D251562F2FACD800C6B040 /* MainTabRootView.swift in Sources */,
 				A0E3B7932F3130740038E3BB /* SignInView.swift in Sources */,
 				A0E3B8722F3E132A0038E3BB /* AboutTexts.swift in Sources */,
+				A0E3B8C42F41290E0038E3BB /* Routes.swift in Sources */,
 				A0E3B8182F37EAF70038E3BB /* SupabaseProfileStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,6 +32,8 @@ extension Container {
         .scope(.singleton)
     }
     
+    // MARK: - Profile
+    
     var profileCoordinator: Factory<any ProfileCoordinating> {
         Factory(self) { @MainActor in
             ProfileCoordinator(
@@ -40,24 +42,12 @@ extension Container {
                 authService: self.authService(),
                 makeProfileViewModel: self.profileViewModel(),
                 settingsViewModel: self.settingsViewModel(),
-                profileEditCoordinator: self.profileEditCoordinator()
+                editProfileNavigator: self.editProfileNavigator()
             )
         }
         .scope(.singleton)
     }
     
-    // MARK: - Profile Edit
-    
-    var profileEditCoordinator: Factory<any ProfileEditCoordinating> {
-        Factory(self) { @MainActor in
-            ProfileEditCoordinator(
-                profileEditScreenFactory: self.profileEditScreenFactory(),
-                authService: self.authService(),
-                makeEditProfileViewModel: self.editProfileViewModel()
-            )
-        }
-        .scope(.singleton)
-    }
     
     // MARK: - Auth
     
