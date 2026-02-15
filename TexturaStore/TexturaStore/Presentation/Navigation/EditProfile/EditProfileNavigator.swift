@@ -17,6 +17,7 @@ final class EditProfileNavigator: EditProfileNavigating {
     private let makeEditProfileViewModel: (String) -> any EditProfileViewModelProtocol
     private let makeEditNameViewModel: (String) -> any EditNameViewModelProtocol
     private let makeEditEmailViewModel: (String) -> any EditEmailViewModelProtocol
+    private let makeEditPhoneViewModel: (String) -> any EditPhoneViewModelProtocol
     
     // MARK: - Init
     
@@ -25,13 +26,15 @@ final class EditProfileNavigator: EditProfileNavigating {
         authService: AuthServiceProtocol,
         makeEditProfileViewModel: @escaping (String) -> any EditProfileViewModelProtocol,
         makeEditNameViewModel: @escaping (String) -> any EditNameViewModelProtocol,
-        makeEditEmailViewModel: @escaping (String) -> any EditEmailViewModelProtocol
+        makeEditEmailViewModel: @escaping (String) -> any EditEmailViewModelProtocol,
+        makeEditPhoneViewModel: @escaping (String) -> any EditPhoneViewModelProtocol
     ) {
         self.profileEditScreenFactory = profileEditScreenFactory
         self.authService = authService
         self.makeEditProfileViewModel = makeEditProfileViewModel
         self.makeEditNameViewModel = makeEditNameViewModel
         self.makeEditEmailViewModel = makeEditEmailViewModel
+        self.makeEditPhoneViewModel = makeEditPhoneViewModel
     }
     
     // MARK: - Screens
@@ -83,6 +86,16 @@ final class EditProfileNavigator: EditProfileNavigating {
             let vm = makeEditEmailViewModel(userId)
             
             return profileEditScreenFactory.makeEditEmailView(
+                viewModel: vm,
+                onBack: onBack,
+                onFinish: onFinish
+            )
+            
+        case .editPhone:
+            let userId = authService.currentUserId ?? ""
+            let vm = makeEditPhoneViewModel(userId)
+            
+            return profileEditScreenFactory.makeEditPhoneView(
                 viewModel: vm,
                 onBack: onBack,
                 onFinish: onFinish

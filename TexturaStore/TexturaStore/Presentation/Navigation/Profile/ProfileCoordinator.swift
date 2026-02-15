@@ -130,7 +130,7 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
             return editProfileNavigator.makeRoot(
                 onEditName: { [weak self] in self?.router.push(.edit(.editName)) },
                 onEditEmail: { [weak self] in self?.router.push(.edit(.editEmail)) },
-                onEditPhone: { /* позже */ },
+                onEditPhone: { [weak self] in self?.router.push(.edit(.editPhone)) },
                 onBack: { [weak self] in self?.router.pop() }
             )
             
@@ -144,6 +144,13 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
         case .editEmail:
             return editProfileNavigator.makeDestination(
                 route: .editEmail,
+                onBack: { [weak self] in self?.router.pop() },
+                onFinish: { [weak self] in self?.router.pop() }
+            )
+            
+        case .editPhone:
+            return editProfileNavigator.makeDestination(
+                route: .editPhone,
                 onBack: { [weak self] in self?.router.pop() },
                 onFinish: { [weak self] in self?.router.pop() }
             )

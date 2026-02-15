@@ -96,6 +96,19 @@ extension Container {
         .scope(.shared)
     }
     
+    var editPhoneViewModel: Factory<(String) -> any EditPhoneViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                EditPhoneViewModel(
+                    profileRepository: self.makeProfileRepository(userId),
+                    validator: self.formValidator(),
+                    userId: userId
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
     // MARK: - Settings
     
     var settingsViewModel: Factory<any SettingsViewModelProtocol> {

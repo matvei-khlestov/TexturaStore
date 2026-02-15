@@ -55,4 +55,18 @@ final class ProfileEditScreenFactory: ProfileEditScreenBuilding {
             )
         )
     }
+    
+    func makeEditPhoneView(
+        viewModel: any EditPhoneViewModelProtocol,
+        onBack: @escaping () -> Void,
+        onFinish: @escaping () -> Void
+    ) -> AnyView {
+        AnyView(
+            EditPhoneView(
+                viewModel: viewModel,
+                onBack: onBack,
+                onFinish: onFinish
+            )
+        )
+    }
 }

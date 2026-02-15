@@ -32,9 +32,6 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
             if existing.name != name {
                 try await updateName(uid: uid, name: name)
             }
-            // NOTE:
-            // Email теперь синхронизируется ТОЛЬКО после подтвержденной смены почты в Supabase Auth.
-            // Здесь не обновляем, чтобы не записать неподтвержденное значение в `profiles.email`.
             return
         }
         
@@ -77,12 +74,9 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
     func updateName(uid: String, name: String) async throws {
         let payload = ProfileUpdatePayload(name: name, email: nil, phone: nil)
         try await update(uid: uid, payload: payload)
+        try await updateNameInAuthMetadata(name: name)
     }
     
-    /// ВАЖНО:
-    /// - Этот метод обновляет только поле `profiles.email` в Postgres.
-    /// - Для реальной смены почты у пользователя используйте `requestEmailChange(newEmail:redirectURL:)`,
-    ///   а затем после подтверждения вызовите `syncProfileEmailFromAuth(uid:)`.
     func updateEmail(uid: String, email: String) async throws {
         let payload = ProfileUpdatePayload(name: nil, email: email, phone: nil)
         try await update(uid: uid, payload: payload)
@@ -91,6 +85,7 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
     func updatePhone(uid: String, phone: String) async throws {
         let payload = ProfileUpdatePayload(name: nil, email: nil, phone: phone)
         try await update(uid: uid, payload: payload)
+        try await updatePhoneInAuthMetadata(phoneE164: phone)
     }
     
     private func update(uid: String, payload: ProfileUpdatePayload) async throws {
@@ -99,6 +94,28 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
             .update(payload)
             .eq("id", value: uid)
             .execute()
+    }
+    
+    // MARK: - Auth metadata
+    
+    private func updatePhoneInAuthMetadata(phoneE164: String) async throws {
+        let trimmed = phoneE164.trimmingCharacters(in: .whitespacesAndNewlines)
+        let attrs = UserAttributes(
+            data: [
+                "phone": .string(trimmed)
+            ]
+        )
+        try await supabase.auth.update(user: attrs)
+    }
+    
+    private func updateNameInAuthMetadata(name: String) async throws {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let attrs = UserAttributes(
+            data: [
+                "name": .string(trimmed)
+            ]
+        )
+        try await supabase.auth.update(user: attrs)
     }
     
     // MARK: - Email Change (Supabase Auth)
@@ -245,10 +262,6 @@ private extension SupabaseProfileStore {
         try Self.decoder.decode(ProfileDTO.self, from: data)
     }
     
-    /// Исправлено под текущий `ProfileDTO`:
-    /// - `id` -> `userId: String`
-    /// - `created_at` не нужен (в DTO его нет)
-    /// - `updated_at` парсим в `Date`
     func decodeProfileFromRecord(_ record: [String: Any]) -> ProfileDTO? {
         guard
             let userId = Self.string(from: record["id"]),

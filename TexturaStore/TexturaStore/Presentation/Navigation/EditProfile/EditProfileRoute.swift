@@ -12,4 +12,5 @@ enum EditProfileRoute: @MainActor StackRoutable {
     case root
     case editName
     case editEmail
+    case editPhone
 }

@@ -18,7 +18,8 @@ extension Container {
                 authService: self.authService(),
                 makeEditProfileViewModel: self.editProfileViewModel(),
                 makeEditNameViewModel: self.editNameViewModel(),
-                makeEditEmailViewModel: self.editEmailViewModel()
+                makeEditEmailViewModel: self.editEmailViewModel(),
+                makeEditPhoneViewModel: self.editPhoneViewModel()
             )
         }
         .scope(.singleton)
