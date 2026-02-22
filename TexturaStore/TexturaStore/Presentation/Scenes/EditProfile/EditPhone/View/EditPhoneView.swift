@@ -36,7 +36,7 @@ struct EditPhoneView: View {
         BaseEditFieldView(
             viewModel: viewModel,
             fieldKind: .phone,
-            navTitle: "Изменить номер",
+            navTitle: L10n.Profile.EditPhone.title,
             onBack: onBack,
             onFinish: onFinish
         )

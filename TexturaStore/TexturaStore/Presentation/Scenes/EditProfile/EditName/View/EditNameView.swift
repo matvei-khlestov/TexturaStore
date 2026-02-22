@@ -28,7 +28,7 @@ struct EditNameView: View {
         BaseEditFieldView(
             viewModel: viewModel,
             fieldKind: .name,
-            navTitle: "Изменить имя",
+            navTitle: L10n.Profile.EditName.title,
             onBack: onBack,
             onFinish: onFinish
         )

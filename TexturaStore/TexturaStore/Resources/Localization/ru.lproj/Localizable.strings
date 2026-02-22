@@ -80,6 +80,47 @@
 "common.error.title" = "Ошибка";
 "common.ok" = "OK";
 
+/* FavoritesView */
+
+"favorites.navigation.title" = "Избранное";
+"favorites.emptyState" = "Пока нет избранных товаров";
+
+"favorites.clear.title" = "Очистить";
+"favorites.clear.confirm.title" = "Очистить избранное?";
+
+"favorites.swipe.delete" = "Удалить";
+
+"favorites.cart.in" = "В корзине";
+"favorites.cart.add" = "В корзину";
+
+/* CartView */
+
+"cart.navigation.title" = "Корзина";
+"cart.emptyState" = "Ваша корзина пуста";
+
+"cart.checkout.title" = "Оформить заказ";
+
+"cart.clear.title" = "Очистить";
+"cart.clear.confirm.title" = "Очистить корзину?";
+
+"cart.swipe.delete" = "Удалить";
+
+/* CatalogView */
+
+"catalog.navigation.title" = "Каталог";
+"catalog.search.placeholder" = "Поиск мебели";
+
+"catalog.products.title" = "Все товары";
+"catalog.filters.title" = "Фильтры";
+
+"catalog.category.products.count" = "%d товаров";
+
+"catalog.product.favorite.add" = "Добавить в избранное";
+"catalog.product.favorite.remove" = "Убрать из избранного";
+
+"catalog.product.cart.in" = "В корзине";
+"catalog.product.cart.add" = "В корзину";
+
 /* Profile */
 "profile.logout.title" = "Выйти";
 "profile.logout.confirm" = "Выйти из аккаунта?";
@@ -94,6 +135,36 @@
 "profile.menu.about" = "О нас";
 "profile.menu.contact" = "Связаться с нами";
 "profile.menu.privacy" = "Политика конфиденциальности";
+
+/* Profile - Edit */
+"profile.edit.row.name" = "Имя";
+"profile.edit.row.email" = "Почта";
+"profile.edit.row.phone" = "Телефон";
+
+/* Profile - Edit Screen */
+"profile.edit.title" = "Редактирование профиля";
+"profile.edit.changePhoto" = "Изменить фото";
+
+/* Profile - Edit - PhotoPicker */
+"profile.edit.photoPicker.unableToLoadImage" = "Невозможно загрузить изображение.";
+"profile.edit.photoPicker.invalidImageObject" = "Получен некорректный объект изображения.";
+
+/* Profile - Edit Field (BaseEditFieldView) */
+"profile.editField.submit" = "Изменить";
+
+"profile.editField.email.success.title" = "Проверьте почту";
+"profile.editField.email.success.message" = "Мы отправили письмо для подтверждения смены e-mail на старую и новую почту.";
+
+"profile.editField.name.success.title" = "Готово";
+"profile.editField.name.success.message" = "Имя успешно изменено.";
+
+"profile.editField.phone.success.title" = "Готово";
+"profile.editField.phone.success.message" = "Номер телефона успешно изменён.";
+
+/* Profile - Edit Field Screens */
+"profile.editName.title" = "Изменить имя";
+"profile.editEmail.title" = "Изменить почту";
+"profile.editPhone.title" = "Изменить номер";
 
 /* Privacy Policy */
 "privacyPolicy.lastUpdated" = "Обновлено: 17 сентября 2025";

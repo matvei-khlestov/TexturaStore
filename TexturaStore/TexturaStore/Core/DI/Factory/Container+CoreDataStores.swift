@@ -39,4 +39,29 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    var catalogLocalStore: Factory<any CatalogLocalStore> {
+        Factory(self) { @MainActor in
+            CoreDataCatalogStore(container: self.coreDataContainer())
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Cart
+    
+    var cartLocalStore: Factory<any CartLocalStore> {
+        Factory(self) { @MainActor in
+            CoreDataCartStore(container: self.coreDataContainer())
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Favorites
+    
+    var favoritesLocalStore: Factory<any FavoritesLocalStore> {
+        Factory(self) { @MainActor in
+            CoreDataFavoritesStore(container: self.coreDataContainer())
+        }
+        .scope(.singleton)
+    }
 }

@@ -51,6 +51,7 @@ struct EditProfileView: View {
         enum Avatar {
             static let size: CGFloat = 112
             static let cornerRadius: CGFloat = 56
+            static let placeholderPadding: CGFloat = 18
         }
         enum Row {
             static let height: CGFloat = 65
@@ -63,19 +64,10 @@ struct EditProfileView: View {
         }
     }
     
-    // MARK: - Texts
-    
-    private enum Texts {
-        static let navigationTitle = "Редактирование профиля"
-        static let changePhotoButtonTitle = "Изменить фото"
-        static let errorTitle = "Ошибка"
-        static let ok = "Ок"
-    }
-    
     // MARK: - Symbols
     
     private enum Symbols {
-        static let avatarPlaceholder = "person.crop.circle.fill"
+        static let avatarPlaceholder = "person.crop.circle"
         static let chevron = "chevron.right"
     }
     
@@ -117,7 +109,7 @@ struct EditProfileView: View {
             content
         }
         .background(Color(.systemBackground))
-        .navigationTitle(Texts.navigationTitle)
+        .navigationTitle(L10n.Profile.Edit.title)
         .navigationBarTitleDisplayMode(.inline)
         .brandBackButton {
             onBack?()
@@ -132,8 +124,8 @@ struct EditProfileView: View {
             }
             .ignoresSafeArea()
         }
-        .alert(Texts.errorTitle, isPresented: $isErrorAlertPresented) {
-            Button(Texts.ok, role: .cancel) {}
+        .alert(L10n.Common.Error.title, isPresented: $isErrorAlertPresented) {
+            Button(L10n.Common.ok, role: .cancel) {}
         } message: {
             Text(errorAlertMessage ?? "")
         }
@@ -161,35 +153,40 @@ struct EditProfileView: View {
     private var avatarBlock: some View {
         VStack(spacing: Metrics.Spacing.verticalStack) {
             
-            Image(uiImage: currentAvatarImage)
-                .resizable()
-                .scaledToFill()
-                .frame(width: Metrics.Avatar.size, height: Metrics.Avatar.size)
-                .clipShape(
-                    RoundedRectangle(
-                        cornerRadius: Metrics.Avatar.cornerRadius,
-                        style: .continuous
-                    )
+            Group {
+                if let avatarImage {
+                    Image(uiImage: avatarImage)
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    Image(systemName: Symbols.avatarPlaceholder)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(Color(.tertiaryLabel))
+                        .padding(Metrics.Avatar.placeholderPadding)
+                        .background(Color(.secondarySystemBackground))
+                }
+            }
+            .frame(width: Metrics.Avatar.size, height: Metrics.Avatar.size)
+            .clipShape(
+                RoundedRectangle(
+                    cornerRadius: Metrics.Avatar.cornerRadius,
+                    style: .continuous
                 )
-                .clipped()
-                .foregroundStyle(Color(.tertiaryLabel))
-                .accessibilityIdentifier("editProfile.avatar")
+            )
+            .clipped()
+            .accessibilityIdentifier("editProfile.avatar")
             
             Button {
                 isPhotoPickerPresented = true
             } label: {
-                Text(Texts.changePhotoButtonTitle)
+                Text(L10n.Profile.Edit.changePhoto)
             }
             .buttonStyle(.plain)
             .foregroundStyle(Color.accentColor)
             .accessibilityIdentifier("editProfile.changePhoto")
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    private var currentAvatarImage: UIImage {
-        if let avatarImage { return avatarImage }
-        return UIImage(systemName: Symbols.avatarPlaceholder) ?? UIImage()
     }
     
     // MARK: - Rows
@@ -372,7 +369,7 @@ private struct PhotoPicker: UIViewControllerRepresentable {
                 onFinish(.failure(NSError(
                     domain: "PhotoPicker",
                     code: -1,
-                    userInfo: [NSLocalizedDescriptionKey: "Невозможно загрузить изображение."]
+                    userInfo: [NSLocalizedDescriptionKey: L10n.Profile.Edit.PhotoPicker.unableToLoadImage]
                 )))
                 return
             }
@@ -386,7 +383,7 @@ private struct PhotoPicker: UIViewControllerRepresentable {
                     self.onFinish(.failure(NSError(
                         domain: "PhotoPicker",
                         code: -2,
-                        userInfo: [NSLocalizedDescriptionKey: "Получен некорректный объект изображения."]
+                        userInfo: [NSLocalizedDescriptionKey: L10n.Profile.Edit.PhotoPicker.invalidImageObject]
                     )))
                 }
             }

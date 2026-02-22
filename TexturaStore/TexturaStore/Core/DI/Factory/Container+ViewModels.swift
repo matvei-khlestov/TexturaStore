@@ -119,4 +119,48 @@ extension Container {
         }
         .scope(.shared)
     }
+    
+    // MARK: - Catalog
+    
+    var makeCatalogViewModel: Factory<(String) -> any CatalogViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                CatalogViewModel(
+                    repository: self.catalogRepository(),
+                    cartRepository: self.makeCartRepository(userId),
+                    favoritesRepository: self.makeFavoritesRepository(userId),
+                    priceFormatter: self.priceFormatter()
+                )
+            }
+        }
+    }
+    
+    // MARK: - Favorites
+    
+    var makeFavoritesViewModel: Factory<(String) -> any FavoritesViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                FavoritesViewModel(
+                    favoritesRepository: self.makeFavoritesRepository(userId),
+                    cartRepository: self.makeCartRepository(userId),
+                    priceFormatter: self.priceFormatter(),
+                    notificationService: self.localNotificationService()
+                )
+            }
+        }
+    }
+    
+    // MARK: - Cart
+    
+    var makeCartViewModel: Factory<(String) -> any CartViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                CartViewModel(
+                    cartRepository: self.makeCartRepository(userId),
+                    priceFormatter: self.priceFormatter(),
+                    notificationService: self.localNotificationService()
+                )
+            }
+        }
+    }
 }

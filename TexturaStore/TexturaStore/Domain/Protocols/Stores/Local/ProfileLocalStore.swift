@@ -24,8 +24,8 @@ protocol ProfileLocalStore: AnyObject {
     
     /// Наблюдает за изменениями профиля пользователя.
     /// - Parameter userId: Идентификатор пользователя.
-    /// - Returns: Паблишер, эмитирующий `UserProfile?` при изменениях.
-    func observeProfile(userId: String) -> AnyPublisher<UserProfile?, Never>
+    /// - Returns: Паблишер, эмитирующий `Profile?` при изменениях.
+    func observeProfile(userId: String) -> AnyPublisher<Profile?, Never>
     
     /// Добавляет или обновляет профиль пользователя в локальном хранилище.
     /// - Parameter dto: DTO с данными профиля.

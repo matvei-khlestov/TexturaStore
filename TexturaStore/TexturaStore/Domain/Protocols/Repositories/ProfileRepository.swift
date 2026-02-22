@@ -33,8 +33,8 @@ protocol ProfileRepository: AnyObject {
     // MARK: - Streams
     
     /// Наблюдает за локальным состоянием профиля пользователя.
-    /// - Returns: Паблишер, эмитирующий объект `UserProfile?` при изменениях.
-    func observeProfile() -> AnyPublisher<UserProfile?, Never>
+    /// - Returns: Паблишер, эмитирующий объект `Profile?` при изменениях.
+    func observeProfile() -> AnyPublisher<Profile?, Never>
     
     // MARK: - Commands
     

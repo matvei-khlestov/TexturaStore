@@ -18,8 +18,6 @@ final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
     
     override init(container: NSPersistentContainer) {
         super.init(container: container)
-        
-        // ✅ чтобы изменения из bg-контекста прилетали в viewContext (FRC увидит апдейты)
         viewContext.automaticallyMergesChangesFromParent = true
         viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         bg.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -27,14 +25,13 @@ final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
     
     // MARK: - Normalize
     
-    /// Приводим uid к единому виду, чтобы не было багов из-за разного регистра
     private func normalized(_ userId: String) -> String {
         userId.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
     
     // MARK: - ProfileLocalStore
     
-    func observeProfile(userId: String) -> AnyPublisher<UserProfile?, Never> {
+    func observeProfile(userId: String) -> AnyPublisher<Profile?, Never> {
         let uid = normalized(userId)
         
         if let stream = profileStreams[uid] {
@@ -62,11 +59,8 @@ final class CoreDataProfileStore: BaseCoreDataStore, ProfileLocalStore {
                 
                 let entity = existing ?? CDProfile(context: self.bg)
                 
-                // ✅ всегда сохраняем нормализованный userId
                 if existing == nil { entity.userId = uid }
                 
-                // ⚠️ ВАЖНО: entity.apply(dto:) может снова записать dto.userId в userId
-                // поэтому ещё раз фиксируем userId после apply.
                 entity.apply(dto: dto)
                 entity.userId = uid
                 

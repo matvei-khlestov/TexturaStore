@@ -22,7 +22,7 @@ import Foundation
 /// - `updatedAt`: дата последнего обновления данных.
 ///
 /// Особенности реализации:
-/// - метод `toEntity()` преобразует DTO в доменную модель `UserProfile`;
+/// - метод `toEntity()` преобразует DTO в доменную модель `Profile`;
 /// - `Equatable` используется для эффективных сравнений и предотвращения лишних апдейтов.
 struct ProfileDTO: Decodable, Equatable {
     
@@ -32,7 +32,7 @@ struct ProfileDTO: Decodable, Equatable {
     let phone: String
     let updatedAt: Date
     
-    func toEntity() -> UserProfile {
+    func toEntity() -> Profile {
         .init(
             userId: userId,
             name: name,

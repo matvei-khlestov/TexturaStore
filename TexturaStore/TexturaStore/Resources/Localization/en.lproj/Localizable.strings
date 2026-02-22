@@ -80,6 +80,47 @@
 "common.error.title" = "Error";
 "common.ok" = "OK";
 
+/* FavoritesView */
+
+"favorites.navigation.title" = "Favorites";
+"favorites.emptyState" = "No favorites yet";
+
+"favorites.clear.title" = "Clear";
+"favorites.clear.confirm.title" = "Clear favorites?";
+
+"favorites.swipe.delete" = "Delete";
+
+"favorites.cart.in" = "In cart";
+"favorites.cart.add" = "Add to cart";
+
+/* CartView */
+
+"cart.navigation.title" = "Cart";
+"cart.emptyState" = "Your cart is empty";
+
+"cart.checkout.title" = "Checkout";
+
+"cart.clear.title" = "Clear";
+"cart.clear.confirm.title" = "Clear cart?";
+
+"cart.swipe.delete" = "Delete";
+
+/* CatalogView */
+
+"catalog.navigation.title" = "Catalog";
+"catalog.search.placeholder" = "Furniture search";
+
+"catalog.products.title" = "All products";
+"catalog.filters.title" = "Filters";
+
+"catalog.category.products.count" = "%d products";
+
+"catalog.product.favorite.add" = "Add to favorites";
+"catalog.product.favorite.remove" = "Remove from favorites";
+
+"catalog.product.cart.in" = "In cart";
+"catalog.product.cart.add" = "Add to cart";
+
 /* Profile */
 "profile.logout.title" = "Log Out";
 "profile.logout.confirm" = "Log out of your account?";
@@ -94,6 +135,36 @@
 "profile.menu.about" = "About Us";
 "profile.menu.contact" = "Contact Us";
 "profile.menu.privacy" = "Privacy Policy";
+
+/* Profile - Edit */
+"profile.edit.row.name" = "Name";
+"profile.edit.row.email" = "E-mail";
+"profile.edit.row.phone" = "Phone";
+
+/* Profile - Edit Screen */
+"profile.edit.title" = "Edit Profile";
+"profile.edit.changePhoto" = "Change photo";
+
+/* Profile - Edit - PhotoPicker */
+"profile.edit.photoPicker.unableToLoadImage" = "Unable to load image.";
+"profile.edit.photoPicker.invalidImageObject" = "Invalid image object.";
+
+/* Profile - Edit Field (BaseEditFieldView) */
+"profile.editField.submit" = "Change";
+
+"profile.editField.email.success.title" = "Check your email";
+"profile.editField.email.success.message" = "We sent an email to confirm changing your e-mail to both your old and new address.";
+
+"profile.editField.name.success.title" = "Done";
+"profile.editField.name.success.message" = "Name successfully changed.";
+
+"profile.editField.phone.success.title" = "Done";
+"profile.editField.phone.success.message" = "Phone number successfully changed.";
+
+/* Profile - Edit Field Screens */
+"profile.editName.title" = "Change name";
+"profile.editEmail.title" = "Change e-mail";
+"profile.editPhone.title" = "Change phone number";
 
 /* Privacy Policy */
 "privacyPolicy.lastUpdated" = "Updated: September 17, 2025";
