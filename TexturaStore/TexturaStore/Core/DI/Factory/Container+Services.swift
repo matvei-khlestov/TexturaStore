@@ -71,4 +71,13 @@ extension Container {
             self.settingsService()
         }
     }
+    
+    // MARK: - Local Notifications
+
+    var localNotificationService: Factory<LocalNotificationService> {
+        Factory(self) { @MainActor in
+            LocalNotificationService.shared
+        }
+        .scope(.singleton)
+    }
 }

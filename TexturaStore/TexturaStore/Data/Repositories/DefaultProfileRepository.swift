@@ -50,7 +50,7 @@ final class DefaultProfileRepository: ProfileRepository {
     // MARK: - State
     
     private var bag = Set<AnyCancellable>()
-    private let subject = CurrentValueSubject<UserProfile?, Never>(nil)
+    private let subject = CurrentValueSubject<Profile?, Never>(nil)
     
     // MARK: - Init
     
@@ -68,7 +68,7 @@ final class DefaultProfileRepository: ProfileRepository {
     
     // MARK: - Public API
     
-    func observeProfile() -> AnyPublisher<UserProfile?, Never> {
+    func observeProfile() -> AnyPublisher<Profile?, Never> {
         subject.eraseToAnyPublisher()
     }
     

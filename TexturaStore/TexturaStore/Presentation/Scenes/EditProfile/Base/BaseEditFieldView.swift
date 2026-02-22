@@ -60,19 +60,6 @@ struct BaseEditFieldView: View {
         }
     }
     
-    private enum Texts {
-        static let submitButtonTitle = "Изменить"
-        
-        static let emailSuccessTitle = "Проверьте почту"
-        static let emailSuccessMessage = "Мы отправили письмо для подтверждения смены e-mail на старую и новую почту."
-        
-        static let nameSuccessTitle = "Готово"
-        static let nameSuccessMessage = "Имя успешно изменено."
-        
-        static let phoneSuccessTitle = "Готово"
-        static let phoneSuccessMessage = "Номер телефона успешно изменён."
-    }
-    
     // MARK: - Init
     
     init(
@@ -107,7 +94,7 @@ struct BaseEditFieldView: View {
             
             BrandedButton(
                 style: .submit,
-                title: Texts.submitButtonTitle,
+                title: L10n.Profile.EditField.submit,
                 isEnabled: isSubmitEnabled,
                 action: submitTapped
             )
@@ -129,13 +116,13 @@ struct BaseEditFieldView: View {
         .onReceive(viewModel.isSubmitEnabled.receive(on: RunLoop.main)) { enabled in
             isSubmitEnabled = enabled
         }
-        .alert("Ошибка", isPresented: $isPresentingError) {
-            Button("Ок", role: .cancel) {}
+        .alert(L10n.Common.Error.title, isPresented: $isPresentingError) {
+            Button(L10n.Common.ok, role: .cancel) {}
         } message: {
             Text(errorMessage)
         }
         .alert(successTitle, isPresented: $isPresentingSuccess) {
-            Button("Ок", role: .cancel) {
+            Button(L10n.Common.ok, role: .cancel) {
                 onFinish?()
             }
         } message: {
@@ -166,18 +153,18 @@ struct BaseEditFieldView: View {
                 
                 switch fieldKind {
                 case .email:
-                    successTitle = Texts.emailSuccessTitle
-                    successMessage = Texts.emailSuccessMessage
+                    successTitle = L10n.Profile.EditField.Email.Success.title
+                    successMessage = L10n.Profile.EditField.Email.Success.message
                     isPresentingSuccess = true
                     
                 case .name:
-                    successTitle = Texts.nameSuccessTitle
-                    successMessage = Texts.nameSuccessMessage
+                    successTitle = L10n.Profile.EditField.Name.Success.title
+                    successMessage = L10n.Profile.EditField.Name.Success.message
                     isPresentingSuccess = true
                     
                 case .phone:
-                    successTitle = Texts.phoneSuccessTitle
-                    successMessage = Texts.phoneSuccessMessage
+                    successTitle = L10n.Profile.EditField.Phone.Success.title
+                    successMessage = L10n.Profile.EditField.Phone.Success.message
                     isPresentingSuccess = true
                     
                 default:

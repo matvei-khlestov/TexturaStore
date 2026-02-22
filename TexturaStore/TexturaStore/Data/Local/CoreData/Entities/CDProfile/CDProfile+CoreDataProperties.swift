@@ -26,6 +26,4 @@ extension CDProfile {
 
 }
 
-extension CDProfile : Identifiable {
-
-}
+extension CDProfile : Identifiable {}

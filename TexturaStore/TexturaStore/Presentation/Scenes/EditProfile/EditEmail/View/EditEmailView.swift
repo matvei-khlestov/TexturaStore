@@ -28,7 +28,7 @@ struct EditEmailView: View {
         BaseEditFieldView(
             viewModel: viewModel,
             fieldKind: .email,
-            navTitle: "Изменить почту",
+            navTitle: L10n.Profile.EditEmail.title,
             onBack: onBack,
             onFinish: onFinish
         )

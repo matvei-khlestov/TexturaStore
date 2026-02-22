@@ -13,21 +13,33 @@ extension Container {
     
     var catalogCoordinator: Factory<any CatalogCoordinating> {
         Factory(self) { @MainActor in
-            CatalogCoordinator()
+            CatalogCoordinator(
+                catalogScreenFactory: self.catalogScreenFactory(),
+                authService: self.authService(),
+                makeCatalogViewModel: self.makeCatalogViewModel()
+            )
         }
         .scope(.singleton)
     }
     
     var favoritesCoordinator: Factory<any FavoritesCoordinating> {
         Factory(self) { @MainActor in
-            FavoritesCoordinator()
+            FavoritesCoordinator(
+                favoritesScreenFactory: self.favoritesScreenFactory(),
+                authService: self.authService(),
+                makeFavoritesViewModel: self.makeFavoritesViewModel()
+            )
         }
         .scope(.singleton)
     }
     
     var cartCoordinator: Factory<any CartCoordinating> {
         Factory(self) { @MainActor in
-            CartCoordinator()
+            CartCoordinator(
+                cartScreenFactory: self.cartScreenFactory(),
+                authService: self.authService(),
+                makeCartViewModel: self.makeCartViewModel()
+            )
         }
         .scope(.singleton)
     }

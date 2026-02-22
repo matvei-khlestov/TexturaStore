@@ -164,6 +164,98 @@ internal enum L10n {
       }
     }
   }
+  internal enum Cart {
+    /// Your cart is empty
+    internal static var emptyState: String {
+      return L10n.tr("Localizable", "cart.emptyState", fallback: "Your cart is empty")
+    }
+    internal enum Checkout {
+      /// Checkout
+      internal static var title: String {
+        return L10n.tr("Localizable", "cart.checkout.title", fallback: "Checkout")
+      }
+    }
+    internal enum Clear {
+      /// Clear
+      internal static var title: String {
+        return L10n.tr("Localizable", "cart.clear.title", fallback: "Clear")
+      }
+      internal enum Confirm {
+        /// Clear cart?
+        internal static var title: String {
+          return L10n.tr("Localizable", "cart.clear.confirm.title", fallback: "Clear cart?")
+        }
+      }
+    }
+    internal enum Navigation {
+      /// CartView
+      internal static var title: String {
+        return L10n.tr("Localizable", "cart.navigation.title", fallback: "Cart")
+      }
+    }
+    internal enum Swipe {
+      /// Delete
+      internal static var delete: String {
+        return L10n.tr("Localizable", "cart.swipe.delete", fallback: "Delete")
+      }
+    }
+  }
+  internal enum Catalog {
+    internal enum Category {
+      internal enum Products {
+        /// %d products
+        internal static func count(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "catalog.category.products.count", p1, fallback: "%d products")
+        }
+      }
+    }
+    internal enum Filters {
+      /// Filters
+      internal static var title: String {
+        return L10n.tr("Localizable", "catalog.filters.title", fallback: "Filters")
+      }
+    }
+    internal enum Navigation {
+      /// CatalogView
+      internal static var title: String {
+        return L10n.tr("Localizable", "catalog.navigation.title", fallback: "Catalog")
+      }
+    }
+    internal enum Product {
+      internal enum Cart {
+        /// Add to cart
+        internal static var add: String {
+          return L10n.tr("Localizable", "catalog.product.cart.add", fallback: "Add to cart")
+        }
+        /// In cart
+        internal static var `in`: String {
+          return L10n.tr("Localizable", "catalog.product.cart.in", fallback: "In cart")
+        }
+      }
+      internal enum Favorite {
+        /// Add to favorites
+        internal static var add: String {
+          return L10n.tr("Localizable", "catalog.product.favorite.add", fallback: "Add to favorites")
+        }
+        /// Remove from favorites
+        internal static var remove: String {
+          return L10n.tr("Localizable", "catalog.product.favorite.remove", fallback: "Remove from favorites")
+        }
+      }
+    }
+    internal enum Products {
+      /// All products
+      internal static var title: String {
+        return L10n.tr("Localizable", "catalog.products.title", fallback: "All products")
+      }
+    }
+    internal enum Search {
+      /// Furniture search
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "catalog.search.placeholder", fallback: "Furniture search")
+      }
+    }
+  }
   internal enum Common {
     /// OK
     internal static var ok: String {
@@ -253,6 +345,46 @@ internal enum L10n {
         internal static var title: String {
           return L10n.tr("Localizable", "contact.url.openFailed.title", fallback: "Unable to open link")
         }
+      }
+    }
+  }
+  internal enum Favorites {
+    /// No favorites yet
+    internal static var emptyState: String {
+      return L10n.tr("Localizable", "favorites.emptyState", fallback: "No favorites yet")
+    }
+    internal enum Cart {
+      /// Add to cart
+      internal static var add: String {
+        return L10n.tr("Localizable", "favorites.cart.add", fallback: "Add to cart")
+      }
+      /// In cart
+      internal static var `in`: String {
+        return L10n.tr("Localizable", "favorites.cart.in", fallback: "In cart")
+      }
+    }
+    internal enum Clear {
+      /// Clear
+      internal static var title: String {
+        return L10n.tr("Localizable", "favorites.clear.title", fallback: "Clear")
+      }
+      internal enum Confirm {
+        /// Clear favorites?
+        internal static var title: String {
+          return L10n.tr("Localizable", "favorites.clear.confirm.title", fallback: "Clear favorites?")
+        }
+      }
+    }
+    internal enum Navigation {
+      /// FavoritesView
+      internal static var title: String {
+        return L10n.tr("Localizable", "favorites.navigation.title", fallback: "Favorites")
+      }
+    }
+    internal enum Swipe {
+      /// Delete
+      internal static var delete: String {
+        return L10n.tr("Localizable", "favorites.swipe.delete", fallback: "Delete")
       }
     }
   }
@@ -374,6 +506,100 @@ internal enum L10n {
       /// Delete Account
       internal static var title: String {
         return L10n.tr("Localizable", "profile.delete.title", fallback: "Delete Account")
+      }
+    }
+    internal enum Edit {
+      /// Change photo
+      internal static var changePhoto: String {
+        return L10n.tr("Localizable", "profile.edit.changePhoto", fallback: "Change photo")
+      }
+      /// Profile - Edit Screen
+      internal static var title: String {
+        return L10n.tr("Localizable", "profile.edit.title", fallback: "Edit Profile")
+      }
+      internal enum PhotoPicker {
+        /// Invalid image object.
+        internal static var invalidImageObject: String {
+          return L10n.tr("Localizable", "profile.edit.photoPicker.invalidImageObject", fallback: "Invalid image object.")
+        }
+        /// Profile - Edit - PhotoPicker
+        internal static var unableToLoadImage: String {
+          return L10n.tr("Localizable", "profile.edit.photoPicker.unableToLoadImage", fallback: "Unable to load image.")
+        }
+      }
+      internal enum Row {
+        /// E-mail
+        internal static var email: String {
+          return L10n.tr("Localizable", "profile.edit.row.email", fallback: "E-mail")
+        }
+        /// Profile - Edit
+        internal static var name: String {
+          return L10n.tr("Localizable", "profile.edit.row.name", fallback: "Name")
+        }
+        /// Phone
+        internal static var phone: String {
+          return L10n.tr("Localizable", "profile.edit.row.phone", fallback: "Phone")
+        }
+      }
+    }
+    internal enum EditEmail {
+      /// Change e-mail
+      internal static var title: String {
+        return L10n.tr("Localizable", "profile.editEmail.title", fallback: "Change e-mail")
+      }
+    }
+    internal enum EditField {
+      /// Profile - Edit Field (BaseEditFieldView)
+      internal static var submit: String {
+        return L10n.tr("Localizable", "profile.editField.submit", fallback: "Change")
+      }
+      internal enum Email {
+        internal enum Success {
+          /// We sent an email to confirm changing your e-mail to both your old and new address.
+          internal static var message: String {
+            return L10n.tr("Localizable", "profile.editField.email.success.message", fallback: "We sent an email to confirm changing your e-mail to both your old and new address.")
+          }
+          /// Check your email
+          internal static var title: String {
+            return L10n.tr("Localizable", "profile.editField.email.success.title", fallback: "Check your email")
+          }
+        }
+      }
+      internal enum Name {
+        internal enum Success {
+          /// Name successfully changed.
+          internal static var message: String {
+            return L10n.tr("Localizable", "profile.editField.name.success.message", fallback: "Name successfully changed.")
+          }
+          /// Done
+          internal static var title: String {
+            return L10n.tr("Localizable", "profile.editField.name.success.title", fallback: "Done")
+          }
+        }
+      }
+      internal enum Phone {
+        internal enum Success {
+          /// Phone number successfully changed.
+          internal static var message: String {
+            return L10n.tr("Localizable", "profile.editField.phone.success.message", fallback: "Phone number successfully changed.")
+          }
+          /// Done
+          internal static var title: String {
+            return L10n.tr("Localizable", "profile.editField.phone.success.title", fallback: "Done")
+          }
+        }
+      }
+    }
+    internal enum EditName {
+      /// Profile - Edit Field Screens
+      internal static var title: String {
+        return L10n.tr("Localizable", "profile.editName.title", fallback: "Change name")
+      }
+    }
+    internal enum EditPhone {
+      /// Change phone number
+      internal static var title: String {
+        return L10n.tr("Localizable", "profile.editPhone.title", fallback: "Change phone number")
       }
     }
     internal enum Error {

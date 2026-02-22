@@ -22,9 +22,9 @@ enum EditProfileRow: Int, CaseIterable {
     
     var title: String {
         switch self {
-        case .name:  "Имя"
-        case .email: "Почта"
-        case .phone: "Телефон"
+        case .name:  L10n.Profile.Edit.Row.name
+        case .email: L10n.Profile.Edit.Row.email
+        case .phone: L10n.Profile.Edit.Row.phone
         }
     }
     

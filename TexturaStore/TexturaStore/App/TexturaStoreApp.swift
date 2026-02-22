@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import FactoryKit
+import UserNotifications
 
 @main
 struct TexturaStoreApp: App {
@@ -17,6 +18,8 @@ struct TexturaStoreApp: App {
     @StateObject private var localization = LocalizationManager.shared
     @StateObject private var settingsService = Container.shared.settingsService()
 
+    @State private var didSetupNotifications = false
+
     var body: some Scene {
         WindowGroup {
             AppRootView(coordinator: makeAppCoordinator())
@@ -25,8 +28,10 @@ struct TexturaStoreApp: App {
                 .environmentObject(settingsService)
                 .environment(\.locale, localization.locale)
                 .preferredColorScheme(settingsService.preferredColorScheme)
-                // ✅ Вот “перезагрузка приложения” после смены языка
                 .id(localization.reloadToken)
+                .onAppear {
+                    setupNotificationsIfNeeded()
+                }
         }
     }
 
@@ -36,5 +41,36 @@ struct TexturaStoreApp: App {
             fatalError("Container.appCoordinator must return AppCoordinator")
         }
         return app
+    }
+}
+
+// MARK: - Notifications
+
+private extension TexturaStoreApp {
+
+    func setupNotificationsIfNeeded() {
+        guard !didSetupNotifications else { return }
+        didSetupNotifications = true
+
+        let notifications = LocalNotificationService.shared
+
+        notifications.registerCategories([
+            LocalNotificationFactory.favoritesCategory(),
+            LocalNotificationFactory.cartCategory(),
+            LocalNotificationFactory.checkoutCategory()
+        ])
+
+        notifications.getSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                notifications.requestAuthorization { granted in
+                    #if DEBUG
+                    print("🔔 Notifications granted:", granted)
+                    #endif
+                }
+            default:
+                break
+            }
+        }
     }
 }

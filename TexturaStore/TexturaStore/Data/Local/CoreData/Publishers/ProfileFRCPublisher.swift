@@ -14,7 +14,7 @@ import Combine
 /// Используется для:
 /// - получения актуальных данных профиля пользователя из локального хранилища;
 /// - автоматического обновления UI при изменении данных в Core Data;
-/// - интеграции реактивного потока (`AnyPublisher<UserProfile?, Never>`) с Combine.
+/// - интеграции реактивного потока (`AnyPublisher<Profile?, Never>`) с Combine.
 ///
 /// Реализует делегат `NSFetchedResultsControllerDelegate` для отслеживания изменений данных.
 
@@ -23,10 +23,10 @@ final class ProfileFRCPublisher: NSObject, NSFetchedResultsControllerDelegate {
     // MARK: - Output
     
     /// Паблишер, который передаёт текущее состояние профиля пользователя.
-    private let subject = CurrentValueSubject<UserProfile?, Never>(nil)
+    private let subject = CurrentValueSubject<Profile?, Never>(nil)
     
     /// Возвращает Combine-поток с профилем пользователя.
-    func publisher() -> AnyPublisher<UserProfile?, Never> { subject.eraseToAnyPublisher() }
+    func publisher() -> AnyPublisher<Profile?, Never> { subject.eraseToAnyPublisher() }
     
     // MARK: - FRC
     
@@ -64,7 +64,7 @@ final class ProfileFRCPublisher: NSObject, NSFetchedResultsControllerDelegate {
             guard let self else { return }
             do {
                 try self.frc.performFetch()
-                self.subject.send(UserProfile(cd: self.frc.fetchedObjects?.first))
+                self.subject.send(Profile(cd: self.frc.fetchedObjects?.first))
             } catch {
                 self.subject.send(nil)
             }
@@ -80,6 +80,6 @@ final class ProfileFRCPublisher: NSObject, NSFetchedResultsControllerDelegate {
     /// Обрабатывает изменения данных профиля в Core Data и обновляет паблишер.
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         let objects = controller.fetchedObjects as? [CDProfile]
-        subject.send(UserProfile(cd: objects?.first))
+        subject.send(Profile(cd: objects?.first))
     }
 }

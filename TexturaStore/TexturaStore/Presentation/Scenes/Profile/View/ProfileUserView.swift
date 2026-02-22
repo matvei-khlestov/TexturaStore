@@ -13,7 +13,20 @@
 //
 
 import SwiftUI
+import Combine
 
+/// Экран `ProfileUserView` отображает профиль пользователя и меню разделов.
+///
+/// Отвечает за:
+/// - отображение аватара, имени и e-mail пользователя;
+/// - отображение пунктов меню профиля (`ProfileUserRow`) и обработку нажатий;
+/// - выполнение действий аккаунта: выход и удаление (через `ProfileUserViewModelProtocol`);
+/// - показ подтверждающих диалогов и обработку ошибок.
+///
+/// Особенности:
+/// - View не содержит бизнес-логики и не модифицирует состояние профиля напрямую;
+/// - данные UI синхронизируются с ViewModel через Combine (`.onReceive`);
+/// - аватар загружается из локального хранилища через `viewModel.loadAvatarData()`.
 struct ProfileUserView: View {
     
     // MARK: - Callbacks
@@ -27,12 +40,14 @@ struct ProfileUserView: View {
     var onLogoutTap:        (() -> Void)?
     var onDeleteAccountTap: (() -> Void)?
     
-    // MARK: - ViewModel
+    // MARK: - Deps
     
-    @StateObject private var adapter: ProfileAdapter
+    private let viewModel: ProfileUserViewModelProtocol
     
     // MARK: - UI State
     
+    @State private var userName: String = "—"
+    @State private var userEmail: String = "—"
     @State private var avatarImage: Image? = nil
     
     @State private var showLogoutConfirm: Bool = false
@@ -53,8 +68,7 @@ struct ProfileUserView: View {
         onLogoutTap: (() -> Void)? = nil,
         onDeleteAccountTap: (() -> Void)? = nil
     ) {
-        _adapter = StateObject(wrappedValue: ProfileAdapter(viewModel: viewModel))
-        
+        self.viewModel = viewModel
         self.onEditProfileTap = onEditProfileTap
         self.onOrdersTap = onOrdersTap
         self.onSettingsTap = onSettingsTap
@@ -71,64 +85,25 @@ struct ProfileUserView: View {
         ScrollView {
             VStack(spacing: 20) {
                 
-                // Header
-                VStack(spacing: 12) {
-                    avatarView
-                    Text(adapter.userName)
-                        .font(.system(size: 22, weight: .semibold))
-                        .multilineTextAlignment(.center)
-                    
-                    Text(adapter.userEmail)
-                        .font(.system(size: 15, weight: .regular))
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(.top, 24)
-                .padding(.horizontal, 16)
+                headerBlock
+                    .padding(.top, 24)
+                    .padding(.horizontal, 16)
                 
-                // Rows (меню профиля)
-                VStack(spacing: 8) {
-                    ForEach(adapter.rows, id: \.self) { row in
-                        ProfileRowView(title: row.title, systemImage: row.systemImage)
-                            .contentShape(Rectangle())
-                            .onTapGesture { handleRowTap(row) }
-                        
-                        Divider().padding(.leading, 16)
-                    }
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(Color(.secondarySystemBackground))
-                )
-                .padding(.horizontal, 16)
+                rowsBlock
+                    .padding(.horizontal, 16)
                 
-                // Actions
-                VStack(spacing: 12) {
-                    Button {
-                        showLogoutConfirm = true
-                    } label: {
-                        Label(L10n.Profile.Logout.title, systemImage: "rectangle.portrait.and.arrow.right")
-                            .frame(maxWidth: .infinity, minHeight: 48)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    
-                    Button(role: .destructive) {
-                        showDeleteConfirm = true
-                    } label: {
-                        Text(L10n.Profile.Delete.title)
-                            .frame(maxWidth: .infinity, minHeight: 44)
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 24)
+                actionsBlock
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 24)
             }
         }
         .navigationTitle(L10n.Screen.Profile.title)
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
-            loadAvatarIfNeeded()
+            loadAvatar()
         }
+        .onReceive(viewModel.userNamePublisher.removeDuplicates()) { userName = $0 }
+        .onReceive(viewModel.userEmailPublisher.removeDuplicates()) { userEmail = $0 }
         .confirmationDialog(
             L10n.Profile.Logout.confirm,
             isPresented: $showLogoutConfirm,
@@ -163,9 +138,60 @@ struct ProfileUserView: View {
     }
 }
 
-// MARK: - UI parts
+// MARK: - UI blocks
 
 private extension ProfileUserView {
+    
+    var headerBlock: some View {
+        VStack(spacing: 12) {
+            avatarView
+            
+            Text(userName)
+                .font(.system(size: 22, weight: .semibold))
+                .multilineTextAlignment(.center)
+            
+            Text(userEmail)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+    }
+    
+    var rowsBlock: some View {
+        VStack(spacing: 8) {
+            ForEach(viewModel.rows, id: \.self) { row in
+                ProfileRowView(title: row.title, systemImage: row.systemImage)
+                    .contentShape(Rectangle())
+                    .onTapGesture { handleRowTap(row) }
+                
+                Divider().padding(.leading, 16)
+            }
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+    }
+    
+    var actionsBlock: some View {
+        VStack(spacing: 12) {
+            Button {
+                showLogoutConfirm = true
+            } label: {
+                Label(L10n.Profile.Logout.title, systemImage: "rectangle.portrait.and.arrow.right")
+                    .frame(maxWidth: .infinity, minHeight: 48)
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Button(role: .destructive) {
+                showDeleteConfirm = true
+            } label: {
+                Text(L10n.Profile.Delete.title)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+            }
+            .buttonStyle(.bordered)
+        }
+    }
     
     var avatarView: some View {
         Group {
@@ -200,8 +226,8 @@ private extension ProfileUserView {
         }
     }
     
-    func loadAvatarIfNeeded() {
-        guard let data = adapter.viewModel.loadAvatarData(),
+    func loadAvatar() {
+        guard let data = viewModel.loadAvatarData(),
               let uiImage = UIImage(data: data) else {
             avatarImage = nil
             return
@@ -211,7 +237,7 @@ private extension ProfileUserView {
     
     func logout() async {
         do {
-            try await adapter.viewModel.logout()
+            try await viewModel.logout()
             onLogoutTap?()
         } catch {
             errorMessage = error.localizedDescription
@@ -220,7 +246,7 @@ private extension ProfileUserView {
     
     func deleteAccount() async {
         do {
-            try await adapter.viewModel.deleteAccount()
+            try await viewModel.deleteAccount()
             onDeleteAccountTap?()
         } catch {
             errorMessage = error.localizedDescription

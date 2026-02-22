@@ -54,4 +54,31 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Catalog
+    
+    var catalogScreenFactory: Factory<any CatalogScreenBuilding> {
+        Factory(self) { @MainActor in
+            CatalogScreenFactory()
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Favorites
+    
+    var favoritesScreenFactory: Factory<any FavoritesScreenBuilding> {
+        Factory(self) { @MainActor in
+            FavoritesScreenFactory()
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Cart
+    
+    var cartScreenFactory: Factory<any CartScreenBuilding> {
+        Factory(self) { @MainActor in
+            CartScreenFactory()
+        }
+        .scope(.singleton)
+    }
 }

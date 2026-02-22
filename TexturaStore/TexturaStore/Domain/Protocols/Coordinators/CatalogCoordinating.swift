@@ -5,7 +5,15 @@
 //  Created by Matvei Khlestov on 01.02.2026.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor
-protocol CatalogCoordinating: Coordinator { }
+protocol CatalogCoordinating: Coordinator {
+    var router: AppRouter<CatalogRoute, NoRoute, NoRoute> { get }
+    
+    func makeRoot() -> AnyView
+    func buildStack(_ route: CatalogRoute) -> AnyView
+    
+    func start()
+    func finish()
+}

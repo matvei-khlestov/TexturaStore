@@ -11,7 +11,4 @@ public import CoreData
 
 public typealias CDProfileCoreDataClassSet = NSSet
 
-
-public class CDProfile: NSManagedObject {
-
-}
+public class CDProfile: NSManagedObject {}

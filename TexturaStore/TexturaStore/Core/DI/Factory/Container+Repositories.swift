@@ -12,12 +12,51 @@ extension Container {
     
     // MARK: - Profile Repository Factory
     
-    /// Создаёт ProfileRepository под конкретного пользователя
     var makeProfileRepository: (String) -> ProfileRepository {
         { userId in
             DefaultProfileRepository(
                 remote: self.profileStore(),
                 local: self.profileLocalStore(),
+                userId: userId
+            )
+        }
+    }
+    
+    // MARK: - Catalog Repository
+    
+    var catalogRepository: Factory<any CatalogRepository> {
+        Factory(self) { @MainActor in
+            DefaultCatalogRepository(
+                remote: self.catalogStore(),
+                local: self.catalogLocalStore()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Cart Repository Factory
+    
+    /// Создаёт CartRepository под конкретного пользователя.
+    var makeCartRepository: (String) -> CartRepository {
+        { userId in
+            DefaultCartRepository(
+                remote: self.cartStore(),
+                local: self.cartLocalStore(),
+                catalog: self.catalogLocalStore(),
+                userId: userId
+            )
+        }
+    }
+    
+    // MARK: - Favorites Repository Factory
+    
+    /// Создаёт FavoritesRepository под конкретного пользователя.
+    var makeFavoritesRepository: (String) -> FavoritesRepository {
+        { userId in
+            DefaultFavoritesRepository(
+                remote: self.favoritesStore(),
+                local: self.favoritesLocalStore(),
+                catalog: self.catalogLocalStore(),
                 userId: userId
             )
         }
