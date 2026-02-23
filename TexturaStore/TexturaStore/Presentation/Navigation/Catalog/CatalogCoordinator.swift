@@ -29,16 +29,20 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     private let authService: any AuthServiceProtocol
     private let makeCatalogViewModel: (String) -> any CatalogViewModelProtocol
     
+    private let productDetailsNavigator: any ProductDetailsNavigating
+    
     // MARK: - Init
     
     init(
         catalogScreenFactory: any CatalogScreenBuilding,
         authService: any AuthServiceProtocol,
-        makeCatalogViewModel: @escaping (String) -> any CatalogViewModelProtocol
+        makeCatalogViewModel: @escaping (String) -> any CatalogViewModelProtocol,
+        productDetailsNavigator: any ProductDetailsNavigating
     ) {
         self.catalogScreenFactory = catalogScreenFactory
         self.authService = authService
         self.makeCatalogViewModel = makeCatalogViewModel
+        self.productDetailsNavigator = productDetailsNavigator
     }
     
     // MARK: - Coordinator Lifecycle
@@ -60,16 +64,38 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
         
         return catalogScreenFactory.makeCatalogView(
             viewModel: viewModel,
-            onSelectProduct: { _ in },
-            onFilterTap: { _ in },
-            onSelectCategory: { _ in }
+            onSelectProduct: { [weak self] product in
+                self?.router.push(.productDetails(.root(productId: product.id)))
+            },
+            onFilterTap: { _ in
+                // фильтры подключишь позже
+            },
+            onSelectCategory: { _ in
+                // категории подключишь позже
+            }
         )
     }
     
     func buildStack(_ route: CatalogRoute) -> AnyView {
         switch route {
+            
         case .root:
             return makeRoot()
+            
+        case .productDetails(let detailsRoute):
+            return buildProductDetailsRoute(detailsRoute)
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func buildProductDetailsRoute(_ route: ProductDetailsRoute) -> AnyView {
+        switch route {
+        case .root:
+            return productDetailsNavigator.makeDestination(
+                route: route,
+                onBack: { [weak self] in self?.router.pop() }
+            )
         }
     }
 }

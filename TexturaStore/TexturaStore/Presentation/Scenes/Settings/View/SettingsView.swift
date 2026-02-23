@@ -9,23 +9,23 @@ import SwiftUI
 import Combine
 
 struct SettingsView: View {
-
+    
     // MARK: - Callbacks
-
+    
     var onBack: (() -> Void)?
-
+    
     // MARK: - Dependencies
-
+    
     private let viewModel: any SettingsViewModelProtocol
-
+    
     // MARK: - State (UI)
-
+    
     @State private var selectedLanguage: AppLanguage = .ru
     @State private var selectedTheme: AppTheme = .system
     @State private var bag = Set<AnyCancellable>()
-
+    
     // MARK: - Init
-
+    
     init(
         viewModel: any SettingsViewModelProtocol,
         onBack: (() -> Void)? = nil
@@ -33,9 +33,9 @@ struct SettingsView: View {
         self.viewModel = viewModel
         self.onBack = onBack
     }
-
+    
     // MARK: - Body
-
+    
     var body: some View {
         List {
             languageSection
@@ -46,8 +46,12 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .brandBackButton { onBack?() }
         .onAppear {
+            TabBarVisibilityController.setHidden(true)
             syncFromViewModel()
             bindIfNeeded()
+        }
+        .onDisappear {
+            TabBarVisibilityController.setHidden(false)
         }
     }
 }
@@ -55,7 +59,7 @@ struct SettingsView: View {
 // MARK: - Sections
 
 private extension SettingsView {
-
+    
     var languageSection: some View {
         Section {
             Picker("", selection: $selectedLanguage) {
@@ -74,7 +78,7 @@ private extension SettingsView {
             Text(L10n.Settings.Language.footer)
         }
     }
-
+    
     var appearanceSection: some View {
         Section {
             Picker("", selection: $selectedTheme) {
@@ -98,44 +102,27 @@ private extension SettingsView {
 // MARK: - Bindings
 
 private extension SettingsView {
-
+    
     func syncFromViewModel() {
         selectedLanguage = viewModel.currentLanguage
         selectedTheme = viewModel.currentTheme
     }
-
+    
     func bindIfNeeded() {
         guard bag.isEmpty else { return }
-
+        
         viewModel.language
             .receive(on: RunLoop.main)
             .sink { value in
                 selectedLanguage = value
             }
             .store(in: &bag)
-
+        
         viewModel.theme
             .receive(on: RunLoop.main)
             .sink { value in
                 selectedTheme = value
             }
             .store(in: &bag)
-    }
-}
-
-// MARK: - Preview
-
-#Preview {
-    if #available(iOS 16.0, *) {
-        let storage = UserDefaultsSettingsStorage(userDefaults: .standard)
-        let service = SettingsService(storage: storage)
-
-        NavigationStack {
-            SettingsView(
-                viewModel: SettingsViewModel(service: service),
-                onBack: {}
-            )
-        }
-        .preferredColorScheme(service.preferredColorScheme)
     }
 }

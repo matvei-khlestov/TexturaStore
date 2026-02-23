@@ -29,16 +29,20 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
     private let authService: any AuthServiceProtocol
     private let makeCartViewModel: (String) -> any CartViewModelProtocol
     
+    private let productDetailsNavigator: any ProductDetailsNavigating
+    
     // MARK: - Init
     
     init(
         cartScreenFactory: any CartScreenBuilding,
         authService: any AuthServiceProtocol,
-        makeCartViewModel: @escaping (String) -> any CartViewModelProtocol
+        makeCartViewModel: @escaping (String) -> any CartViewModelProtocol,
+        productDetailsNavigator: any ProductDetailsNavigating
     ) {
         self.cartScreenFactory = cartScreenFactory
         self.authService = authService
         self.makeCartViewModel = makeCartViewModel
+        self.productDetailsNavigator = productDetailsNavigator
     }
     
     // MARK: - Coordinator Lifecycle
@@ -61,19 +65,39 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
         return cartScreenFactory.makeCartView(
             viewModel: viewModel,
             onCheckout: { [weak self] in
-                // навигацию на checkout добавишь позже
+                // checkout подключишь позже
                 _ = self
             },
-            onSelectProductId: { _ in
-                // навигацию на детали добавишь позже
+            onSelectProductId: { [weak self] productId in
+                self?.router.push(.productDetails(.root(productId: productId)))
             }
         )
     }
     
     func buildStack(_ route: CartRoute) -> AnyView {
         switch route {
+            
         case .root:
             return makeRoot()
+            
+        case .productDetails(let detailsRoute):
+            return buildProductDetailsRoute(detailsRoute)
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func buildProductDetailsRoute(
+        _ route: ProductDetailsRoute
+    ) -> AnyView {
+        switch route {
+        case .root:
+            return productDetailsNavigator.makeDestination(
+                route: route,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
         }
     }
 }

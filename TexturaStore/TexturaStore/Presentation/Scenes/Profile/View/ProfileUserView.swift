@@ -82,7 +82,7 @@ struct ProfileUserView: View {
     // MARK: - Body
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 20) {
                 
                 headerBlock

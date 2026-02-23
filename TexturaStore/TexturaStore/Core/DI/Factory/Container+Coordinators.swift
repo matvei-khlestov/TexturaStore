@@ -16,7 +16,8 @@ extension Container {
             CatalogCoordinator(
                 catalogScreenFactory: self.catalogScreenFactory(),
                 authService: self.authService(),
-                makeCatalogViewModel: self.makeCatalogViewModel()
+                makeCatalogViewModel: self.makeCatalogViewModel(),
+                productDetailsNavigator: self.productDetailsNavigator()
             )
         }
         .scope(.singleton)
@@ -27,7 +28,8 @@ extension Container {
             FavoritesCoordinator(
                 favoritesScreenFactory: self.favoritesScreenFactory(),
                 authService: self.authService(),
-                makeFavoritesViewModel: self.makeFavoritesViewModel()
+                makeFavoritesViewModel: self.makeFavoritesViewModel(),
+                productDetailsNavigator: self.productDetailsNavigator()
             )
         }
         .scope(.singleton)
@@ -38,7 +40,8 @@ extension Container {
             CartCoordinator(
                 cartScreenFactory: self.cartScreenFactory(),
                 authService: self.authService(),
-                makeCartViewModel: self.makeCartViewModel()
+                makeCartViewModel: self.makeCartViewModel(),
+                productDetailsNavigator: self.productDetailsNavigator()
             )
         }
         .scope(.singleton)

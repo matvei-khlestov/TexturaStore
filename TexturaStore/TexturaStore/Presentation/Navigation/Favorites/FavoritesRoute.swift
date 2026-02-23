@@ -10,4 +10,5 @@ import Foundation
 @MainActor
 enum FavoritesRoute: @MainActor StackRoutable {
     case root
+    case productDetails(ProductDetailsRoute)
 }

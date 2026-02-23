@@ -29,16 +29,20 @@ final class FavoritesCoordinator: FavoritesCoordinating, @MainActor RoutableCoor
     private let authService: any AuthServiceProtocol
     private let makeFavoritesViewModel: (String) -> any FavoritesViewModelProtocol
     
+    private let productDetailsNavigator: any ProductDetailsNavigating
+    
     // MARK: - Init
     
     init(
         favoritesScreenFactory: any FavoritesScreenBuilding,
         authService: any AuthServiceProtocol,
-        makeFavoritesViewModel: @escaping (String) -> any FavoritesViewModelProtocol
+        makeFavoritesViewModel: @escaping (String) -> any FavoritesViewModelProtocol,
+        productDetailsNavigator: any ProductDetailsNavigating
     ) {
         self.favoritesScreenFactory = favoritesScreenFactory
         self.authService = authService
         self.makeFavoritesViewModel = makeFavoritesViewModel
+        self.productDetailsNavigator = productDetailsNavigator
     }
     
     // MARK: - Coordinator Lifecycle
@@ -60,16 +64,36 @@ final class FavoritesCoordinator: FavoritesCoordinating, @MainActor RoutableCoor
         
         return favoritesScreenFactory.makeFavoritesView(
             viewModel: viewModel,
-            onSelectProduct: { _ in
-                // навигацию на детали добавишь позже
+            onSelectProduct: { [weak self] productId in
+                self?.router.push(.productDetails(.root(productId: productId)))
             }
         )
     }
     
     func buildStack(_ route: FavoritesRoute) -> AnyView {
         switch route {
+            
         case .root:
             return makeRoot()
+            
+        case .productDetails(let detailsRoute):
+            return buildProductDetailsRoute(detailsRoute)
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func buildProductDetailsRoute(
+        _ route: ProductDetailsRoute
+    ) -> AnyView {
+        switch route {
+        case .root:
+            return productDetailsNavigator.makeDestination(
+                route: route,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
         }
     }
 }
