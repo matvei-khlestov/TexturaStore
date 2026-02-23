@@ -63,6 +63,12 @@ struct PrivacyPolicyView: View {
         .brandBackButton {
             onBack?()
         }
+        .onAppear {
+            TabBarVisibilityController.setHidden(true)
+        }
+        .onDisappear {
+            TabBarVisibilityController.setHidden(false)
+        }
         .accessibilityIdentifier("privacy.screen")
     }
     

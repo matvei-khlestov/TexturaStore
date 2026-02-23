@@ -60,6 +60,12 @@ struct ContactUsView: View {
         .brandBackButton {
             onBack?()
         }
+        .onAppear {
+            TabBarVisibilityController.setHidden(true)
+        }
+        .onDisappear {
+            TabBarVisibilityController.setHidden(false)
+        }
         .alert(alertTitle, isPresented: $isAlertPresented) {
             Button(L10n.Common.ok, role: .cancel) {}
         } message: {

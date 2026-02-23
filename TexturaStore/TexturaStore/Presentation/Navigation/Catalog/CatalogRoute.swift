@@ -10,4 +10,5 @@ import Foundation
 @MainActor
 enum CatalogRoute: @MainActor StackRoutable {
     case root
+    case productDetails(ProductDetailsRoute)
 }

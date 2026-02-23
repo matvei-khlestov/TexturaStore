@@ -24,4 +24,17 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Product Details
+    
+    var productDetailsNavigator: Factory<any ProductDetailsNavigating> {
+        Factory(self) { @MainActor in
+            ProductDetailsNavigator(
+                productDetailsScreenFactory: self.productDetailsScreenFactory(),
+                authService: self.authService(),
+                makeProductDetailsViewModel: self.makeProductDetailsViewModel()
+            )
+        }
+        .scope(.singleton)
+    }
 }

@@ -497,6 +497,42 @@ internal enum L10n {
       return L10n.tr("Localizable", "privacyPolicy.lastUpdated", fallback: "Updated: September 17, 2025")
     }
   }
+  internal enum ProductDetails {
+    /// Back
+    internal static var back: String {
+      return L10n.tr("Localizable", "productDetails.back", fallback: "Back")
+    }
+    /// Loading...
+    internal static var loading: String {
+      return L10n.tr("Localizable", "productDetails.loading", fallback: "Loading...")
+    }
+    internal enum Cart {
+      /// Add to cart
+      internal static var add: String {
+        return L10n.tr("Localizable", "productDetails.cart.add", fallback: "Add to cart")
+      }
+      /// In cart
+      internal static var `in`: String {
+        return L10n.tr("Localizable", "productDetails.cart.in", fallback: "In cart")
+      }
+    }
+    internal enum Favorite {
+      /// Add to favorites
+      internal static var add: String {
+        return L10n.tr("Localizable", "productDetails.favorite.add", fallback: "Add to favorites")
+      }
+      /// Remove from favorites
+      internal static var remove: String {
+        return L10n.tr("Localizable", "productDetails.favorite.remove", fallback: "Remove from favorites")
+      }
+    }
+    internal enum Navigation {
+      /// Product Details
+      internal static var title: String {
+        return L10n.tr("Localizable", "productDetails.navigation.title", fallback: "Product details")
+      }
+    }
+  }
   internal enum Profile {
     internal enum Delete {
       /// Delete your account?

@@ -135,6 +135,22 @@ extension Container {
         }
     }
     
+    // MARK: - Product details
+    
+    var makeProductDetailsViewModel: Factory<(String, String) -> any ProductDetailsViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId, productId in
+                ProductDetailsViewModel(
+                    productId: productId,
+                    favoritesRepository: self.makeFavoritesRepository(userId),
+                    cartRepository: self.makeCartRepository(userId),
+                    catalogRepository: self.catalogRepository(),
+                    priceFormatter: self.priceFormatter()
+                )
+            }
+        }
+    }
+    
     // MARK: - Favorites
     
     var makeFavoritesViewModel: Factory<(String) -> any FavoritesViewModelProtocol> {

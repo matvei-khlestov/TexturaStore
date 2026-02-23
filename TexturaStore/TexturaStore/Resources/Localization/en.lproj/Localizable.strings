@@ -121,6 +121,15 @@
 "catalog.product.cart.in" = "In cart";
 "catalog.product.cart.add" = "Add to cart";
 
+/* Product Details */
+"productDetails.navigation.title" = "Product details";
+"productDetails.loading" = "Loading...";
+"productDetails.cart.in" = "In cart";
+"productDetails.cart.add" = "Add to cart";
+"productDetails.favorite.add" = "Add to favorites";
+"productDetails.favorite.remove" = "Remove from favorites";
+"productDetails.back" = "Back";
+
 /* Profile */
 "profile.logout.title" = "Log Out";
 "profile.logout.confirm" = "Log out of your account?";

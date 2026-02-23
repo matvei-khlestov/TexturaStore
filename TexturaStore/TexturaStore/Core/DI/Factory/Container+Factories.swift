@@ -64,6 +64,15 @@ extension Container {
         .scope(.singleton)
     }
     
+    // MARK: - Product Details
+    
+    var productDetailsScreenFactory: Factory<any ProductDetailsScreenBuilding> {
+        Factory(self) { @MainActor in
+            ProductDetailsScreenFactory()
+        }
+        .scope(.singleton)
+    }
+    
     // MARK: - Favorites
     
     var favoritesScreenFactory: Factory<any FavoritesScreenBuilding> {

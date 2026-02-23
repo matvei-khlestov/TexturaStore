@@ -121,6 +121,15 @@
 "catalog.product.cart.in" = "В корзине";
 "catalog.product.cart.add" = "В корзину";
 
+/* Product Details */
+"productDetails.navigation.title" = "Детали товара";
+"productDetails.loading" = "Загрузка...";
+"productDetails.cart.in" = "В корзине";
+"productDetails.cart.add" = "В корзину";
+"productDetails.favorite.add" = "Добавить в избранное";
+"productDetails.favorite.remove" = "Убрать из избранного";
+"productDetails.back" = "Назад";
+
 /* Profile */
 "profile.logout.title" = "Выйти";
 "profile.logout.confirm" = "Выйти из аккаунта?";
