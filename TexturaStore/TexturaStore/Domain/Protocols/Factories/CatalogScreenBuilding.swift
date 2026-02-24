@@ -11,6 +11,8 @@ import SwiftUI
 protocol CatalogScreenBuilding {
     func makeCatalogView(
         viewModel: CatalogViewModelProtocol,
+        languageProvider: any LanguageProviding,
+        localizer: (any CatalogLocalizing)?,
         onSelectProduct: ((Product) -> Void)?,
         onFilterTap: ((FilterState) -> Void)?,
         onSelectCategory: ((Category) -> Void)?

@@ -64,6 +64,15 @@ extension Container {
         .scope(.singleton)
     }
     
+    // MARK: - Category Products
+    
+    var categoryProductsScreenFactory: Factory<any CategoryProductsScreenBuilding> {
+        Factory(self) { @MainActor in
+            CategoryProductsScreenFactory()
+        }
+        .scope(.singleton)
+    }
+    
     // MARK: - Product Details
     
     var productDetailsScreenFactory: Factory<any ProductDetailsScreenBuilding> {

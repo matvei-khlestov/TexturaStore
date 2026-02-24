@@ -37,4 +37,18 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Category Products
+
+    var categoryProductsNavigator: Factory<any CategoryProductsNavigating> {
+        Factory(self) { @MainActor in
+            CategoryProductsNavigator(
+                categoryProductsScreenFactory: self.categoryProductsScreenFactory(),
+                authService: self.authService(),
+                makeCategoryProductsViewModel: self.makeCategoryProductsViewModel(),
+                languageProvider: self.languageProvider()
+            )
+        }
+        .scope(.singleton)
+    }
 }
