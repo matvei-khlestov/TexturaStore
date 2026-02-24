@@ -1,31 +1,32 @@
 //
-//  CatalogScreenFactory.swift
+//  CategoryProductsScreenFactory.swift
 //  TexturaStore
 //
-//  Created by Matvei Khlestov on 21.02.2026.
+//  Created by Matvei Khlestov on 24.02.2026.
 //
+
 
 import SwiftUI
 
 @MainActor
-final class CatalogScreenFactory: CatalogScreenBuilding {
-    
-    func makeCatalogView(
-        viewModel: CatalogViewModelProtocol,
+final class CategoryProductsScreenFactory: CategoryProductsScreenBuilding {
+
+    func makeCategoryProductsView(
+        title: String,
+        viewModel: CategoryProductsViewModelProtocol,
         languageProvider: any LanguageProviding,
         localizer: (any CatalogLocalizing)?,
         onSelectProduct: ((Product) -> Void)?,
-        onFilterTap: ((FilterState) -> Void)?,
-        onSelectCategory: ((Category) -> Void)?
+        onBack: (() -> Void)?
     ) -> AnyView {
         AnyView(
-            CatalogView(
+            CategoryProductsView(
+                title: title,
                 viewModel: viewModel,
                 languageProvider: languageProvider,
                 localizer: localizer,
                 onSelectProduct: onSelectProduct,
-                onFilterTap: onFilterTap,
-                onSelectCategory: onSelectCategory
+                onBack: onBack
             )
         )
     }

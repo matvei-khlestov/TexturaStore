@@ -29,7 +29,13 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     private let authService: any AuthServiceProtocol
     private let makeCatalogViewModel: (String) -> any CatalogViewModelProtocol
     
+    private let categoryProductsNavigator: any CategoryProductsNavigating
     private let productDetailsNavigator: any ProductDetailsNavigating
+    
+    // MARK: - Localization
+    
+    private let languageProvider: any LanguageProviding
+    private let localizer: any CatalogLocalizing
     
     // MARK: - Init
     
@@ -37,15 +43,22 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
         catalogScreenFactory: any CatalogScreenBuilding,
         authService: any AuthServiceProtocol,
         makeCatalogViewModel: @escaping (String) -> any CatalogViewModelProtocol,
-        productDetailsNavigator: any ProductDetailsNavigating
+        categoryProductsNavigator: any CategoryProductsNavigating,
+        productDetailsNavigator: any ProductDetailsNavigating,
+        languageProvider: any LanguageProviding,
+        localizer: (any CatalogLocalizing)? = nil
     ) {
         self.catalogScreenFactory = catalogScreenFactory
         self.authService = authService
         self.makeCatalogViewModel = makeCatalogViewModel
+        self.categoryProductsNavigator = categoryProductsNavigator
         self.productDetailsNavigator = productDetailsNavigator
+        
+        self.languageProvider = languageProvider
+        self.localizer = localizer ?? DefaultCatalogLocalizer(languageProvider: languageProvider)
     }
     
-    // MARK: - Coordinator Lifecycle
+    // MARK: - Lifecycle
     
     func start() {
         router.resetAll()
@@ -56,7 +69,7 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
         removeAllChildren()
     }
     
-    // MARK: - RoutableCoordinator
+    // MARK: - Root
     
     func makeRoot() -> AnyView {
         let userId = authService.currentUserId ?? ""
@@ -64,30 +77,55 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
         
         return catalogScreenFactory.makeCatalogView(
             viewModel: viewModel,
+            languageProvider: languageProvider,
+            localizer: localizer,
             onSelectProduct: { [weak self] product in
                 self?.router.push(.productDetails(.root(productId: product.id)))
             },
             onFilterTap: { _ in
-                // фильтры подключишь позже
+                // filters later
             },
-            onSelectCategory: { _ in
-                // категории подключишь позже
+            onSelectCategory: { [weak self] category in
+                guard let self else { return }
+                let title = self.localizer.categoryTitle(category)
+                self.router.push(.categoryProducts(.root(
+                    categoryId: category.id,
+                    title: title
+                )))
             }
         )
     }
     
+    // MARK: - Stack
+    
     func buildStack(_ route: CatalogRoute) -> AnyView {
         switch route {
-            
         case .root:
             return makeRoot()
             
-        case .productDetails(let detailsRoute):
-            return buildProductDetailsRoute(detailsRoute)
+        case .categoryProducts(let route):
+            return buildCategoryProductsRoute(route)
+            
+        case .productDetails(let route):
+            return buildProductDetailsRoute(route)
         }
     }
     
-    // MARK: - Private
+    // MARK: - Builders
+    
+    private func buildCategoryProductsRoute(_ route: CategoryProductsRoute) -> AnyView {
+        switch route {
+        case .root(let categoryId, let title):
+            return categoryProductsNavigator.makeRoot(
+                categoryId: categoryId,
+                title: title,
+                onBack: { [weak self] in self?.router.pop() },
+                onSelectProduct: { [weak self] product in
+                    self?.router.push(.productDetails(.root(productId: product.id)))
+                }
+            )
+        }
+    }
     
     private func buildProductDetailsRoute(_ route: ProductDetailsRoute) -> AnyView {
         switch route {

@@ -1,47 +1,43 @@
 //
-//  CatalogView.swift
+//  CategoryProductsView.swift
 //  TexturaStore
 //
-//  Created by Matvei Khlestov on 21.02.2026.
+//  Created by Matvei Khlestov on 24.02.2026.
 //
 
 import SwiftUI
 import Combine
 import Kingfisher
 
-/// Экран каталога.
+/// Экран товаров выбранной категории.
 ///
 /// Отображает:
-/// - список категорий в горизонтальном скролле;
 /// - сетку товаров с изображением, названием, брендом и ценой;
-/// - хедер секции товаров с кнопкой фильтров и бейджем активных фильтров;
-/// - поиск по каталогу через `searchable`.
+/// - поиск по товарам выбранной категории через `searchable`.
 ///
 /// Взаимодействия:
-/// - выбор категории (`onSelectCategory`);
 /// - выбор товара (`onSelectProduct`);
-/// - открытие фильтров (`onFilterTap`);
+/// - возврат назад (`onBack`);
 /// - добавление/удаление товара в корзину и переключение избранного.
 ///
 /// Реактивность:
-/// - состояние категорий/товаров/счётчика фильтров и списков ID корзины/избранного
-///   обновляется через паблишеры ViewModel;
+/// - состояние товаров и списков ID корзины/избранного обновляется через паблишеры ViewModel;
 /// - подписки выполнены через `.onReceive` без хранения `AnyCancellable` во View.
 ///
 /// Особенности:
 /// - View отвечает только за отображение и прокидывание действий наружу;
 /// - бизнес-логика и работа с данными остаются внутри ViewModel и репозиториев.
-struct CatalogView: View {
+struct CategoryProductsView: View {
     
-    // MARK: - Callbacks
+    // MARK: - Callbacks (navigation-only)
     
     var onSelectProduct: ((Product) -> Void)?
-    var onFilterTap: ((FilterState) -> Void)?
-    var onSelectCategory: ((Category) -> Void)?
+    var onBack: (() -> Void)?
     
     // MARK: - Deps
     
-    private let viewModel: CatalogViewModelProtocol
+    private let title: String
+    private let viewModel: CategoryProductsViewModelProtocol
     
     private let localizer: CatalogLocalizing
     private let languagePublisher: AnyPublisher<AppLanguage, Never>
@@ -49,9 +45,7 @@ struct CatalogView: View {
     // MARK: - State
     
     @State private var queryText: String = ""
-    @State private var categories: [Category] = []
     @State private var products: [Product] = []
-    @State private var activeFiltersCount: Int = 0
     
     @State private var inCartIds: Set<String> = []
     @State private var favoriteIds: Set<String> = []
@@ -61,18 +55,18 @@ struct CatalogView: View {
     // MARK: - Init
     
     init(
-        viewModel: CatalogViewModelProtocol,
+        title: String,
+        viewModel: CategoryProductsViewModelProtocol,
         languageProvider: any LanguageProviding,
         localizer: (any CatalogLocalizing)? = nil,
         onSelectProduct: ((Product) -> Void)? = nil,
-        onFilterTap: ((FilterState) -> Void)? = nil,
-        onSelectCategory: ((Category) -> Void)? = nil
+        onBack: (() -> Void)? = nil
     ) {
+        self.title = title
         self.viewModel = viewModel
         self.onSelectProduct = onSelectProduct
-        self.onFilterTap = onFilterTap
-        self.onSelectCategory = onSelectCategory
-        
+        self.onBack = onBack
+
         self.languagePublisher = languageProvider.languagePublisher
         self.localizer = localizer ?? DefaultCatalogLocalizer(languageProvider: languageProvider)
         _language = State(initialValue: languageProvider.currentLanguage)
@@ -83,35 +77,6 @@ struct CatalogView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: Metrics.Categories.interGroupSpacing) {
-                        ForEach(categories, id: \.id) { category in
-                            CategoryItemView(
-                                title: localizer.categoryTitle(category),
-                                imageURL: category.imageURL,
-                                count: viewModel.productCount(in: category.id)
-                            )
-                            .onTapGesture {
-                                onSelectCategory?(category)
-                            }
-                        }
-                    }
-                    .padding(.top, Metrics.Categories.insetsTop)
-                    .padding(.bottom, Metrics.Categories.insetsBottom)
-                    .padding(.horizontal, Metrics.Categories.insetsHorizontal)
-                }
-                
-                CatalogProductsHeaderView(
-                    count: activeFiltersCount,
-                    onFilterTap: {
-                        onFilterTap?(viewModel.currentState)
-                    }
-                )
-                .padding(.horizontal, Metrics.Header.insetsHorizontal)
-                .padding(.top, Metrics.Header.insetsTop)
-                .padding(.bottom, Metrics.Header.insetsBottom)
-                
                 ProductsGridView(
                     products: products,
                     minColumnWidth: Metrics.Products.minColumnWidth,
@@ -138,8 +103,11 @@ struct CatalogView: View {
             }
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle(L10n.Catalog.Navigation.title)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(title)
+        .brandBackButton {
+            onBack?()
+        }
         .searchable(
             text: $queryText,
             placement: .navigationBarDrawer(displayMode: .always),
@@ -152,14 +120,8 @@ struct CatalogView: View {
         .onChange(of: queryText) { newValue in
             viewModel.query = newValue
         }
-        .onReceive(viewModel.categoriesPublisher) {
-            categories = $0
-        }
         .onReceive(viewModel.productsPublisher) {
             products = $0
-        }
-        .onReceive(viewModel.activeFiltersCountPublisher) {
-            activeFiltersCount = $0
         }
         .onReceive(viewModel.inCartIdsPublisher.removeDuplicates()) {
             inCartIds = $0
@@ -175,29 +137,13 @@ struct CatalogView: View {
 
 // MARK: - Metrics
 
-private extension CatalogView {
+private extension CategoryProductsView {
     
     enum Metrics {
-        enum Categories {
-            static let insetsHorizontal: CGFloat = 12
-            static let insetsTop: CGFloat = 12
-            static let insetsBottom: CGFloat = 8
-            static let interGroupSpacing: CGFloat = 12
-            
-            static let itemWidth: CGFloat = 88
-            static let imageSide: CGFloat = 64
-        }
-        
-        enum Header {
-            static let insetsHorizontal: CGFloat = 16
-            static let insetsTop: CGFloat = 25
-            static let insetsBottom: CGFloat = 15
-        }
-        
         enum Products {
             static let rowSpacing: CGFloat = 1
             static let insetsHorizontal: CGFloat = 8
-            static let insetsTop: CGFloat = 0
+            static let insetsTop: CGFloat = 8
             static let insetsBottom: CGFloat = 16
             static let minColumnWidth: CGFloat = 170
         }

@@ -17,7 +17,9 @@ extension Container {
                 catalogScreenFactory: self.catalogScreenFactory(),
                 authService: self.authService(),
                 makeCatalogViewModel: self.makeCatalogViewModel(),
-                productDetailsNavigator: self.productDetailsNavigator()
+                categoryProductsNavigator: self.categoryProductsNavigator(),
+                productDetailsNavigator: self.productDetailsNavigator(),
+                languageProvider: self.languageProvider()
             )
         }
         .scope(.singleton)
