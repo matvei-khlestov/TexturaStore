@@ -10,6 +10,8 @@ import SwiftUI
 @MainActor
 final class CatalogScreenFactory: CatalogScreenBuilding {
     
+    // MARK: - Catalog
+    
     func makeCatalogView(
         viewModel: CatalogViewModelProtocol,
         languageProvider: any LanguageProviding,
@@ -26,6 +28,28 @@ final class CatalogScreenFactory: CatalogScreenBuilding {
                 onSelectProduct: onSelectProduct,
                 onFilterTap: onFilterTap,
                 onSelectCategory: onSelectCategory
+            )
+        )
+    }
+    
+    // MARK: - Catalog Filter
+    
+    func makeCatalogFilterView(
+        viewModel: any CatalogFilterViewModelProtocol,
+        initialState: FilterState,
+        languageProvider: any LanguageProviding,
+        localizer: (any CatalogLocalizing)?,
+        onBack: (() -> Void)?,
+        onApply: ((FilterState) -> Void)?
+    ) -> AnyView {
+        AnyView(
+            CatalogFilterView(
+                viewModel: viewModel,
+                initialState: initialState,
+                languageProvider: languageProvider,
+                localizer: localizer,
+                onBack: onBack,
+                onApply: onApply
             )
         )
     }

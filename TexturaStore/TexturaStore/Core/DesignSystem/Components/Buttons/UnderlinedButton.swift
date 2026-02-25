@@ -79,7 +79,7 @@ struct UnderlinedButton: View {
 
     private var attributedText: AttributedString {
         var attributed = AttributedString(text)
-        attributed.foregroundColor = Color.brandPrimary
+        attributed.foregroundColor = Color.brand
         attributed.underlineStyle = .single
         return attributed
     }

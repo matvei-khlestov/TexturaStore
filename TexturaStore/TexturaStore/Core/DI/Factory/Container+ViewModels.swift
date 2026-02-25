@@ -135,6 +135,17 @@ extension Container {
         }
     }
     
+    // MARK: - Catalog filter
+    
+    var catalogFilterViewModel: Factory<any CatalogFilterViewModelProtocol> {
+        Factory(self) { @MainActor in
+            CatalogFilterViewModel(
+                repository: self.catalogRepository()
+            )
+        }
+        .scope(.shared)
+    }
+    
     // MARK: - Category products
     
     var makeCategoryProductsViewModel: Factory<(String, String) -> any CategoryProductsViewModelProtocol> {

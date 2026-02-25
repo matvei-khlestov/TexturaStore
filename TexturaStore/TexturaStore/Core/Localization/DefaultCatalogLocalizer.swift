@@ -32,4 +32,13 @@ struct DefaultCatalogLocalizer: CatalogLocalizing {
             return product.nameEn
         }
     }
+    
+    func colorTitle(_ color: ProductColor) -> String {
+        switch languageProvider.currentLanguage {
+        case .ru:
+            return color.nameRu
+        case .en:
+            return color.nameEn
+        }
+    }
 }

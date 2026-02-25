@@ -12,7 +12,11 @@ final class LocalizationLanguageProvider: LanguageProviding {
     
     private let manager: LocalizationManager
     
-    init(manager: LocalizationManager = .shared) {
+    init() {
+        self.manager = .shared
+    }
+    
+    init(manager: LocalizationManager) {
         self.manager = manager
     }
     
