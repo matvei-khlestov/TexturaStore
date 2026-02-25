@@ -17,6 +17,7 @@ extension Container {
                 catalogScreenFactory: self.catalogScreenFactory(),
                 authService: self.authService(),
                 makeCatalogViewModel: self.makeCatalogViewModel(),
+                makeCatalogFilterViewModel: { self.catalogFilterViewModel() },
                 categoryProductsNavigator: self.categoryProductsNavigator(),
                 productDetailsNavigator: self.productDetailsNavigator(),
                 languageProvider: self.languageProvider()

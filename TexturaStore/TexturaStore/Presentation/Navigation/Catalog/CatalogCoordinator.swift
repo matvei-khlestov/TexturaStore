@@ -29,6 +29,8 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     private let authService: any AuthServiceProtocol
     private let makeCatalogViewModel: (String) -> any CatalogViewModelProtocol
     
+    private let makeCatalogFilterViewModel: () -> any CatalogFilterViewModelProtocol
+    
     private let categoryProductsNavigator: any CategoryProductsNavigating
     private let productDetailsNavigator: any ProductDetailsNavigating
     
@@ -37,12 +39,18 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     private let languageProvider: any LanguageProviding
     private let localizer: any CatalogLocalizing
     
+    // MARK: - Stored
+    
+    private var catalogViewModel: (any CatalogViewModelProtocol)?
+    private var lastKnownFilterState: FilterState = .init()
+    
     // MARK: - Init
     
     init(
         catalogScreenFactory: any CatalogScreenBuilding,
         authService: any AuthServiceProtocol,
         makeCatalogViewModel: @escaping (String) -> any CatalogViewModelProtocol,
+        makeCatalogFilterViewModel: @escaping () -> any CatalogFilterViewModelProtocol,
         categoryProductsNavigator: any CategoryProductsNavigating,
         productDetailsNavigator: any ProductDetailsNavigating,
         languageProvider: any LanguageProviding,
@@ -51,6 +59,9 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
         self.catalogScreenFactory = catalogScreenFactory
         self.authService = authService
         self.makeCatalogViewModel = makeCatalogViewModel
+        
+        self.makeCatalogFilterViewModel = makeCatalogFilterViewModel
+        
         self.categoryProductsNavigator = categoryProductsNavigator
         self.productDetailsNavigator = productDetailsNavigator
         
@@ -67,13 +78,23 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     func finish() {
         router.resetAll()
         removeAllChildren()
+        catalogViewModel = nil
+        lastKnownFilterState = .init()
     }
     
     // MARK: - Root
     
     func makeRoot() -> AnyView {
-        let userId = authService.currentUserId ?? ""
-        let viewModel = makeCatalogViewModel(userId)
+        let viewModel: any CatalogViewModelProtocol
+        
+        if let cached = catalogViewModel {
+            viewModel = cached
+        } else {
+            let userId = authService.currentUserId ?? ""
+            let created = makeCatalogViewModel(userId)
+            catalogViewModel = created
+            viewModel = created
+        }
         
         return catalogScreenFactory.makeCatalogView(
             viewModel: viewModel,
@@ -82,8 +103,8 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
             onSelectProduct: { [weak self] product in
                 self?.router.push(.productDetails(.root(productId: product.id)))
             },
-            onFilterTap: { _ in
-                // filters later
+            onFilterTap: { [weak self] _ in
+                self?.router.push(.filter)
             },
             onSelectCategory: { [weak self] category in
                 guard let self else { return }
@@ -108,6 +129,9 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
             
         case .productDetails(let route):
             return buildProductDetailsRoute(route)
+            
+        case .filter:
+            return buildFilterRoute()
         }
     }
     
@@ -135,5 +159,47 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
                 onBack: { [weak self] in self?.router.pop() }
             )
         }
+    }
+    
+    // MARK: - Filter
+    
+    private func buildFilterRoute() -> AnyView {
+        guard let catalogVM = catalogViewModel else {
+            let filterVM = makeCatalogFilterViewModel()
+            return catalogScreenFactory.makeCatalogFilterView(
+                viewModel: filterVM,
+                initialState: lastKnownFilterState,
+                languageProvider: languageProvider,
+                localizer: localizer,
+                onBack: { [weak self] in self?.router.pop() },
+                onApply: { [weak self] state in
+                    self?.lastKnownFilterState = state
+                    self?.router.pop()
+                }
+            )
+        }
+        
+        // initialState берём из текущего состояния каталога
+        let initialState = catalogVM.currentState
+        lastKnownFilterState = initialState
+        
+        let filterVM = makeCatalogFilterViewModel()
+        
+        return catalogScreenFactory.makeCatalogFilterView(
+            viewModel: filterVM,
+            initialState: initialState,
+            languageProvider: languageProvider,
+            localizer: localizer,
+            onBack: { [weak self] in
+                self?.router.pop()
+            },
+            onApply: { [weak self] state in
+                guard let self else { return }
+                
+                self.lastKnownFilterState = state
+                catalogVM.applyFilters(state)
+                self.router.pop()
+            }
+        )
     }
 }

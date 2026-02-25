@@ -12,4 +12,5 @@ enum CatalogRoute: @MainActor StackRoutable {
     case root
     case categoryProducts(CategoryProductsRoute)
     case productDetails(ProductDetailsRoute)
+    case filter
 }

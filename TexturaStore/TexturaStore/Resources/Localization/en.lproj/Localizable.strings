@@ -121,6 +121,27 @@
 "catalog.product.cart.in" = "In cart";
 "catalog.product.cart.add" = "Add to cart";
 
+/* CatalogFilterView */
+
+"catalog.filter.navigation.title" = "Filter";
+"catalog.filter.reset" = "Reset";
+
+"catalog.filter.header.categories" = "Categories";
+"catalog.filter.header.brands" = "Brands";
+"catalog.filter.header.colors" = "Colors";
+"catalog.filter.header.price" = "Price";
+
+"catalog.filter.price.min" = "Min. price";
+"catalog.filter.price.max" = "Max. price";
+
+/* FilterBottomBarView */
+
+"filter.bottomBar.title.found" = "Found %d products";
+"filter.bottomBar.title.empty" = "No filters selected";
+
+"filter.bottomBar.button.showCount" = "Show (%d)";
+"filter.bottomBar.button.showAll" = "Show all products";
+
 /* Product Details */
 "productDetails.navigation.title" = "Product details";
 "productDetails.loading" = "Loading...";

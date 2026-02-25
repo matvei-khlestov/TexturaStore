@@ -121,6 +121,27 @@
 "catalog.product.cart.in" = "В корзине";
 "catalog.product.cart.add" = "В корзину";
 
+/* CatalogFilterView */
+
+"catalog.filter.navigation.title" = "Фильтр";
+"catalog.filter.reset" = "Сбросить";
+
+"catalog.filter.header.categories" = "Категории";
+"catalog.filter.header.brands" = "Бренды";
+"catalog.filter.header.colors" = "Цвета";
+"catalog.filter.header.price" = "Цена";
+
+"catalog.filter.price.min" = "Мин. цена";
+"catalog.filter.price.max" = "Макс. цена";
+
+/* FilterBottomBarView */
+
+"filter.bottomBar.title.found" = "Нашлось %d товаров";
+"filter.bottomBar.title.empty" = "Фильтры не установлены";
+
+"filter.bottomBar.button.showCount" = "Показать (%d)";
+"filter.bottomBar.button.showAll" = "Показать все товары";
+
 /* Product Details */
 "productDetails.navigation.title" = "Детали товара";
 "productDetails.loading" = "Загрузка...";

@@ -209,6 +209,46 @@ internal enum L10n {
         }
       }
     }
+    internal enum Filter {
+      /// Reset
+      internal static var reset: String {
+        return L10n.tr("Localizable", "catalog.filter.reset", fallback: "Reset")
+      }
+      internal enum Header {
+        /// Brands
+        internal static var brands: String {
+          return L10n.tr("Localizable", "catalog.filter.header.brands", fallback: "Brands")
+        }
+        /// Categories
+        internal static var categories: String {
+          return L10n.tr("Localizable", "catalog.filter.header.categories", fallback: "Categories")
+        }
+        /// Colors
+        internal static var colors: String {
+          return L10n.tr("Localizable", "catalog.filter.header.colors", fallback: "Colors")
+        }
+        /// Price
+        internal static var price: String {
+          return L10n.tr("Localizable", "catalog.filter.header.price", fallback: "Price")
+        }
+      }
+      internal enum Navigation {
+        /// CatalogFilterView
+        internal static var title: String {
+          return L10n.tr("Localizable", "catalog.filter.navigation.title", fallback: "Filter")
+        }
+      }
+      internal enum Price {
+        /// Max. price
+        internal static var max: String {
+          return L10n.tr("Localizable", "catalog.filter.price.max", fallback: "Max. price")
+        }
+        /// Min. price
+        internal static var min: String {
+          return L10n.tr("Localizable", "catalog.filter.price.min", fallback: "Min. price")
+        }
+      }
+    }
     internal enum Filters {
       /// Filters
       internal static var title: String {
@@ -385,6 +425,30 @@ internal enum L10n {
       /// Delete
       internal static var delete: String {
         return L10n.tr("Localizable", "favorites.swipe.delete", fallback: "Delete")
+      }
+    }
+  }
+  internal enum Filter {
+    internal enum BottomBar {
+      internal enum Button {
+        /// Show all products
+        internal static var showAll: String {
+          return L10n.tr("Localizable", "filter.bottomBar.button.showAll", fallback: "Show all products")
+        }
+        /// Show (%d)
+        internal static func showCount(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "filter.bottomBar.button.showCount", p1, fallback: "Show (%d)")
+        }
+      }
+      internal enum Title {
+        /// No filters selected
+        internal static var empty: String {
+          return L10n.tr("Localizable", "filter.bottomBar.title.empty", fallback: "No filters selected")
+        }
+        /// FilterBottomBarView
+        internal static func found(_ p1: Int) -> String {
+          return L10n.tr("Localizable", "filter.bottomBar.title.found", p1, fallback: "Found %d products")
+        }
       }
     }
   }
