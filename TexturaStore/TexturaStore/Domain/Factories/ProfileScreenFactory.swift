@@ -36,6 +36,22 @@ final class ProfileScreenFactory: ProfileScreenBuilding {
         )
     }
     
+    func makeOrdersView(
+        viewModel: OrdersViewModelProtocol,
+        languageProvider: any LanguageProviding,
+        localizer: (any OrdersLocalizing)?,
+        onBack: (() -> Void)?
+    ) -> AnyView {
+        AnyView(
+            OrdersView(
+                viewModel: viewModel,
+                languageProvider: languageProvider,
+                localizer: localizer,
+                onBack: onBack
+            )
+        )
+    }
+    
     func makeContactUsView(
         onBack: @escaping () -> Void
     ) -> AnyView {

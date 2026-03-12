@@ -10,6 +10,7 @@ import Foundation
 @MainActor
 enum ProfileRoute: @MainActor StackRoutable {
     case root
+    case orders
     case settings
     case about
     case contactUs

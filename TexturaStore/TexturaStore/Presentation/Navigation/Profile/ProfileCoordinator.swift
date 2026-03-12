@@ -25,7 +25,6 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
     
     // MARK: - Callbacks
     
-    var onOrdersTap:     (() -> Void)?
     var onLogout:        (() -> Void)?
     var onDeleteAccount: (() -> Void)?
     
@@ -35,6 +34,8 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
     private let privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding
     private let authService: AuthServiceProtocol
     private let makeProfileViewModel: (String) -> any ProfileUserViewModelProtocol
+    private let makeOrdersViewModel: (String) -> OrdersViewModelProtocol
+    private let languageProvider: any LanguageProviding
     private let settingsViewModel: any SettingsViewModelProtocol
     
     private let editProfileNavigator: any EditProfileNavigating
@@ -46,6 +47,8 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
         privacyPolicyScreenFactory: any PrivacyPolicyScreenBuilding,
         authService: AuthServiceProtocol,
         makeProfileViewModel: @escaping (String) -> any ProfileUserViewModelProtocol,
+        makeOrdersViewModel: @escaping (String) -> OrdersViewModelProtocol,
+        languageProvider: any LanguageProviding,
         settingsViewModel: any SettingsViewModelProtocol,
         editProfileNavigator: any EditProfileNavigating
     ) {
@@ -53,6 +56,8 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
         self.privacyPolicyScreenFactory = privacyPolicyScreenFactory
         self.authService = authService
         self.makeProfileViewModel = makeProfileViewModel
+        self.makeOrdersViewModel = makeOrdersViewModel
+        self.languageProvider = languageProvider
         self.settingsViewModel = settingsViewModel
         self.editProfileNavigator = editProfileNavigator
     }
@@ -79,13 +84,27 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
             onEditProfileTap: { [weak self] in
                 self?.router.push(.edit(.root))
             },
-            onOrdersTap: { [weak self] in self?.onOrdersTap?() },
-            onSettingsTap: { [weak self] in self?.router.push(.settings) },
-            onAboutTap: { [weak self] in self?.router.push(.about) },
-            onContactTap: { [weak self] in self?.router.push(.contactUs) },
-            onPrivacyTap: { [weak self] in self?.router.push(.privacyPolicy) },
-            onLogoutTap: { [weak self] in self?.onLogout?() },
-            onDeleteAccountTap: { [weak self] in self?.onDeleteAccount?() }
+            onOrdersTap: { [weak self] in
+                self?.router.push(.orders)
+            },
+            onSettingsTap: { [weak self] in
+                self?.router.push(.settings)
+            },
+            onAboutTap: { [weak self] in
+                self?.router.push(.about)
+            },
+            onContactTap: { [weak self] in
+                self?.router.push(.contactUs)
+            },
+            onPrivacyTap: { [weak self] in
+                self?.router.push(.privacyPolicy)
+            },
+            onLogoutTap: { [weak self] in
+                self?.onLogout?()
+            },
+            onDeleteAccountTap: { [weak self] in
+                self?.onDeleteAccount?()
+            }
         )
     }
     
@@ -95,25 +114,46 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
         case .root:
             return makeRoot()
             
+        case .orders:
+            let userId = authService.currentUserId ?? ""
+            let ordersViewModel = makeOrdersViewModel(userId)
+            
+            return profileScreenFactory.makeOrdersView(
+                viewModel: ordersViewModel,
+                languageProvider: languageProvider,
+                localizer: nil,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
+            )
+            
         case .privacyPolicy:
             return privacyPolicyScreenFactory.makePrivacyPolicyView(
-                onBack: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .contactUs:
             return profileScreenFactory.makeContactUsView(
-                onBack: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .about:
             return profileScreenFactory.makeAboutView(
-                onBack: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .settings:
             return profileScreenFactory.makeSettingsView(
                 viewModel: settingsViewModel,
-                onBack: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .edit(let editRoute):
@@ -128,31 +168,51 @@ final class ProfileCoordinator: ProfileCoordinating, @MainActor RoutableCoordina
             
         case .root:
             return editProfileNavigator.makeRoot(
-                onEditName: { [weak self] in self?.router.push(.edit(.editName)) },
-                onEditEmail: { [weak self] in self?.router.push(.edit(.editEmail)) },
-                onEditPhone: { [weak self] in self?.router.push(.edit(.editPhone)) },
-                onBack: { [weak self] in self?.router.pop() }
+                onEditName: { [weak self] in
+                    self?.router.push(.edit(.editName))
+                },
+                onEditEmail: { [weak self] in
+                    self?.router.push(.edit(.editEmail))
+                },
+                onEditPhone: { [weak self] in
+                    self?.router.push(.edit(.editPhone))
+                },
+                onBack: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .editName:
             return editProfileNavigator.makeDestination(
                 route: .editName,
-                onBack: { [weak self] in self?.router.pop() },
-                onFinish: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onFinish: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .editEmail:
             return editProfileNavigator.makeDestination(
                 route: .editEmail,
-                onBack: { [weak self] in self?.router.pop() },
-                onFinish: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onFinish: { [weak self] in
+                    self?.router.pop()
+                }
             )
             
         case .editPhone:
             return editProfileNavigator.makeDestination(
                 route: .editPhone,
-                onBack: { [weak self] in self?.router.pop() },
-                onFinish: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onFinish: { [weak self] in
+                    self?.router.pop()
+                }
             )
         }
     }

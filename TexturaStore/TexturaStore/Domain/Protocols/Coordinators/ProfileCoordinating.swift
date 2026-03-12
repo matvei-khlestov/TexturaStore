@@ -11,7 +11,6 @@ import SwiftUI
 protocol ProfileCoordinating: Coordinator {
     var router: AppRouter<ProfileRoute, NoRoute, NoRoute> { get }
 
-    var onOrdersTap:     (() -> Void)? { get set }
     var onLogout:        (() -> Void)? { get set }
     var onDeleteAccount: (() -> Void)? { get set }
 

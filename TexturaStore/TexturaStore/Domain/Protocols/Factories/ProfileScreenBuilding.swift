@@ -21,6 +21,13 @@ protocol ProfileScreenBuilding {
         onDeleteAccountTap: @escaping () -> Void
     ) -> AnyView
     
+    func makeOrdersView(
+        viewModel: OrdersViewModelProtocol,
+        languageProvider: any LanguageProviding,
+        localizer: (any OrdersLocalizing)?,
+        onBack: (() -> Void)?
+    ) -> AnyView
+    
     func makeContactUsView(
         onBack: @escaping () -> Void
     ) -> AnyView

@@ -15,8 +15,7 @@ import Combine
 /// Описывает публичные паблишеры, состояние и интенты,
 /// используемые во `CartView`
 /// для биндинга UI и реакции на действия пользователя.
-
-protocol CartViewModelProtocol {
+protocol CartViewModelProtocol: AnyObject {
     
     // MARK: - Publishers
     
@@ -27,6 +26,9 @@ protocol CartViewModelProtocol {
     
     /// Текущий список товаров в корзине.
     var cartItems: [CartItem] { get }
+    
+    /// Снимок текущих позиций корзины.
+    var itemsSnapshot: [CartItem] { get }
     
     /// Количество уникальных позиций.
     var count: Int { get }

@@ -53,4 +53,15 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Orders
+    
+    var ordersStore: Factory<any OrdersStoreProtocol> {
+        Factory(self) { @MainActor in
+            SupabaseOrdersStore(
+                supabase: self.supabaseClient()
+            )
+        }
+        .scope(.singleton)
+    }
 }

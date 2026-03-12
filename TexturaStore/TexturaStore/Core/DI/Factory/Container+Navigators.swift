@@ -39,7 +39,7 @@ extension Container {
     }
     
     // MARK: - Category Products
-
+    
     var categoryProductsNavigator: Factory<any CategoryProductsNavigating> {
         Factory(self) { @MainActor in
             CategoryProductsNavigator(
@@ -47,6 +47,23 @@ extension Container {
                 authService: self.authService(),
                 makeCategoryProductsViewModel: self.makeCategoryProductsViewModel(),
                 languageProvider: self.languageProvider()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Checkout
+    
+    var checkoutNavigator: Factory<any CheckoutNavigating> {
+        Factory(self) { @MainActor in
+            CheckoutNavigator(
+                checkoutScreenFactory: self.checkoutScreenFactory(),
+                authService: self.authService(),
+                makeCheckoutViewModel: self.makeCheckoutViewModel(),
+                makeAddressInputSheetViewModel: self.makeAddressInputSheetViewModel(),
+                makePhoneInputSheetViewModel: self.makePhoneInputSheetViewModel(),
+                makeCommentInputSheetViewModel: self.makeCommentInputSheetViewModel(),
+                phoneFormatter: self.phoneFormatter()
             )
         }
         .scope(.singleton)
