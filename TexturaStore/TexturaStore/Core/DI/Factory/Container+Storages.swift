@@ -29,4 +29,13 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Checkout
+    
+    var checkoutStorage: Factory<any CheckoutStoringProtocol> {
+        Factory(self) { @MainActor in
+            CheckoutStorage.shared
+        }
+        .scope(.singleton)
+    }
 }

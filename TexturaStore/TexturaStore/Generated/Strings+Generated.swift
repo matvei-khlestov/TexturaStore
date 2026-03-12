@@ -58,6 +58,118 @@ internal enum L10n {
       }
     }
   }
+  internal enum Address {
+    internal enum Value {
+      internal enum Apartment {
+        /// apt.
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.apartment.prefix", fallback: "apt.")
+        }
+      }
+      internal enum City {
+        /// Address Input Sheet Value
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.city.prefix", fallback: "city")
+        }
+      }
+      internal enum Floor {
+        /// floor
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.floor.prefix", fallback: "floor")
+        }
+      }
+      internal enum House {
+        /// house
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.house.prefix", fallback: "house")
+        }
+      }
+      internal enum Intercom {
+        /// intercom:
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.intercom.prefix", fallback: "intercom:")
+        }
+      }
+      internal enum Street {
+        /// st.
+        internal static var `prefix`: String {
+          return L10n.tr("Localizable", "address.value.street.prefix", fallback: "st.")
+        }
+      }
+    }
+  }
+  internal enum AddressInput {
+    /// Save address
+    internal static var save: String {
+      return L10n.tr("Localizable", "addressInput.save", fallback: "Save address")
+    }
+    internal enum Apartment {
+      /// Enter apartment
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.apartment.placeholder", fallback: "Enter apartment")
+      }
+      /// Apartment
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.apartment.title", fallback: "Apartment")
+      }
+    }
+    internal enum City {
+      /// Enter city
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.city.placeholder", fallback: "Enter city")
+      }
+      /// City
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.city.title", fallback: "City")
+      }
+    }
+    internal enum Floor {
+      /// Enter floor
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.floor.placeholder", fallback: "Enter floor")
+      }
+      /// Floor
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.floor.title", fallback: "Floor")
+      }
+    }
+    internal enum House {
+      /// Enter house number
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.house.placeholder", fallback: "Enter house number")
+      }
+      /// House
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.house.title", fallback: "House")
+      }
+    }
+    internal enum Intercom {
+      /// Enter intercom code
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.intercom.placeholder", fallback: "Enter intercom code")
+      }
+      /// Intercom code
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.intercom.title", fallback: "Intercom code")
+      }
+    }
+    internal enum Navigation {
+      /// Address Input Sheet
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.navigation.title", fallback: "Delivery address")
+      }
+    }
+    internal enum Street {
+      /// Enter street
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addressInput.street.placeholder", fallback: "Enter street")
+      }
+      /// Street
+      internal static var title: String {
+        return L10n.tr("Localizable", "addressInput.street.title", fallback: "Street")
+      }
+    }
+  }
   internal enum Auth {
     internal enum Reset {
       /// Back to Sign In
@@ -296,6 +408,116 @@ internal enum L10n {
       }
     }
   }
+  internal enum Checkout {
+    internal enum Comment {
+      /// Leave a comment
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "checkout.comment.placeholder", fallback: "Leave a comment")
+      }
+    }
+    internal enum Delivery {
+      /// Delivery 0 ₽
+      internal static var cost: String {
+        return L10n.tr("Localizable", "checkout.delivery.cost", fallback: "Delivery 0 ₽")
+      }
+      /// Free
+      internal static var free: String {
+        return L10n.tr("Localizable", "checkout.delivery.free", fallback: "Free")
+      }
+      /// Delivery
+      internal static var title: String {
+        return L10n.tr("Localizable", "checkout.delivery.title", fallback: "Delivery")
+      }
+      /// Within 5 business days
+      internal static var whenCourier: String {
+        return L10n.tr("Localizable", "checkout.delivery.whenCourier", fallback: "Within 5 business days")
+      }
+      /// The day after tomorrow
+      internal static var whenPickup: String {
+        return L10n.tr("Localizable", "checkout.delivery.whenPickup", fallback: "The day after tomorrow")
+      }
+      internal enum Address {
+        /// Enter delivery address
+        internal static var placeholder: String {
+          return L10n.tr("Localizable", "checkout.delivery.address.placeholder", fallback: "Enter delivery address")
+        }
+      }
+      internal enum Store {
+        /// Delivery Vemora Store
+        internal static var title: String {
+          return L10n.tr("Localizable", "checkout.delivery.store.title", fallback: "Delivery Vemora Store")
+        }
+      }
+    }
+    internal enum Navigation {
+      /// Checkout
+      internal static var title: String {
+        return L10n.tr("Localizable", "checkout.navigation.title", fallback: "Checkout")
+      }
+    }
+    internal enum Order {
+      /// Place order
+      internal static var button: String {
+        return L10n.tr("Localizable", "checkout.order.button", fallback: "Place order")
+      }
+    }
+    internal enum Payment {
+      /// Pay on delivery
+      internal static var method: String {
+        return L10n.tr("Localizable", "checkout.payment.method", fallback: "Pay on delivery")
+      }
+      /// How to pay for the order?
+      internal static var title: String {
+        return L10n.tr("Localizable", "checkout.payment.title", fallback: "How to pay for the order?")
+      }
+    }
+    internal enum Phone {
+      /// Enter phone number
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "checkout.phone.placeholder", fallback: "Enter phone number")
+      }
+    }
+    internal enum Pickup {
+      internal enum Address {
+        /// Moscow, Khodynsky Boulevard 4
+        internal static var example: String {
+          return L10n.tr("Localizable", "checkout.pickup.address.example", fallback: "Moscow, Khodynsky Boulevard 4")
+        }
+      }
+    }
+    internal enum Segment {
+      /// Delivery
+      internal static var delivery: String {
+        return L10n.tr("Localizable", "checkout.segment.delivery", fallback: "Delivery")
+      }
+      /// Pickup
+      internal static var pickup: String {
+        return L10n.tr("Localizable", "checkout.segment.pickup", fallback: "Pickup")
+      }
+    }
+    internal enum Total {
+      /// Total
+      internal static var title: String {
+        return L10n.tr("Localizable", "checkout.total.title", fallback: "Total")
+      }
+    }
+  }
+  internal enum CommentInput {
+    /// Write instructions for the courier…
+    internal static var placeholder: String {
+      return L10n.tr("Localizable", "commentInput.placeholder", fallback: "Write instructions for the courier…")
+    }
+    /// Save
+    internal static var save: String {
+      return L10n.tr("Localizable", "commentInput.save", fallback: "Save")
+    }
+    internal enum Navigation {
+      /// Comment Input Sheet
+      internal static var title: String {
+        return L10n.tr("Localizable", "commentInput.navigation.title", fallback: "Order comment")
+      }
+    }
+  }
   internal enum Common {
     /// OK
     internal static var ok: String {
@@ -493,6 +715,68 @@ internal enum L10n {
         internal static var title: String {
           return L10n.tr("Localizable", "form.field.phone.title", fallback: "Phone")
         }
+      }
+    }
+  }
+  internal enum Orders {
+    internal enum Item {
+      /// Orders Item
+      internal static var addressPrefix: String {
+        return L10n.tr("Localizable", "orders.item.addressPrefix", fallback: "Address: ")
+      }
+      /// Created at: 
+      internal static var datePrefix: String {
+        return L10n.tr("Localizable", "orders.item.datePrefix", fallback: "Created at: ")
+      }
+      /// Payment: 
+      internal static var paymentPrefix: String {
+        return L10n.tr("Localizable", "orders.item.paymentPrefix", fallback: "Payment: ")
+      }
+    }
+    internal enum Navigation {
+      /// Orders
+      internal static var title: String {
+        return L10n.tr("Localizable", "orders.navigation.title", fallback: "My Orders")
+      }
+    }
+    internal enum Section {
+      /// Order
+      internal static var headerPrefix: String {
+        return L10n.tr("Localizable", "orders.section.headerPrefix", fallback: "Order")
+      }
+    }
+    internal enum Status {
+      /// Order Status
+      internal static var assembling: String {
+        return L10n.tr("Localizable", "orders.status.assembling", fallback: "Assembling")
+      }
+      /// Cancelled
+      internal static var cancelled: String {
+        return L10n.tr("Localizable", "orders.status.cancelled", fallback: "Cancelled")
+      }
+      /// Delivered
+      internal static var delivered: String {
+        return L10n.tr("Localizable", "orders.status.delivered", fallback: "Delivered")
+      }
+      /// Out for delivery
+      internal static var delivering: String {
+        return L10n.tr("Localizable", "orders.status.delivering", fallback: "Out for delivery")
+      }
+      /// Ready for pickup
+      internal static var ready: String {
+        return L10n.tr("Localizable", "orders.status.ready", fallback: "Ready for pickup")
+      }
+    }
+  }
+  internal enum PhoneInput {
+    /// Save
+    internal static var save: String {
+      return L10n.tr("Localizable", "phoneInput.save", fallback: "Save")
+    }
+    internal enum Navigation {
+      /// Phone Input Sheet
+      internal static var title: String {
+        return L10n.tr("Localizable", "phoneInput.navigation.title", fallback: "Recipient phone number")
       }
     }
   }

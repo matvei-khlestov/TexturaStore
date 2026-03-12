@@ -251,3 +251,87 @@
 "settings.theme.light" = "Светлая";
 "settings.theme.dark" = "Тёмная";
 "settings.theme.system" = "Системная";
+
+/* Orders */
+"orders.navigation.title" = "Мои заказы";
+"orders.section.headerPrefix" = "Заказ";
+
+/* Orders Item */
+"orders.item.addressPrefix" = "Адрес: ";
+"orders.item.datePrefix" = "Дата создания: ";
+"orders.item.paymentPrefix" = "Оплата: ";
+
+/* Order Status */
+"orders.status.assembling" = "На сборке";
+"orders.status.ready" = "Готов к выдаче";
+"orders.status.delivering" = "В доставке";
+"orders.status.delivered" = "Доставлен";
+"orders.status.cancelled" = "Отменён";
+
+/* Checkout */
+
+"checkout.navigation.title" = "Оформление заказа";
+
+"checkout.segment.pickup" = "Самовывоз";
+"checkout.segment.delivery" = "Доставка";
+
+"checkout.total.title" = "Итого";
+"checkout.delivery.title" = "Доставка";
+"checkout.delivery.free" = "Бесплатно";
+
+"checkout.delivery.whenPickup" = "Послезавтра";
+"checkout.delivery.whenCourier" = "В течение 5 рабочих дней";
+
+"checkout.delivery.cost" = "Доставка 0 ₽";
+
+"checkout.order.button" = "Заказать";
+
+"checkout.pickup.address.example" = "Москва, Ходынский бульвар 4";
+
+"checkout.payment.title" = "Как оплатить заказ?";
+"checkout.payment.method" = "При получении";
+
+"checkout.delivery.address.placeholder" = "Указать адрес доставки";
+"checkout.phone.placeholder" = "Указать номер телефона";
+"checkout.comment.placeholder" = "Оставить комментарий";
+
+"checkout.delivery.store.title" = "Доставка Vemora Store";
+
+/* Address Input Sheet Value */
+"address.value.city.prefix" = "г.";
+"address.value.street.prefix" = "ул.";
+"address.value.house.prefix" = "д.";
+"address.value.apartment.prefix" = "кв.";
+"address.value.floor.prefix" = "эт.";
+"address.value.intercom.prefix" = "домофон:";
+
+/* Address Input Sheet */
+"addressInput.navigation.title" = "Адрес доставки";
+"addressInput.save" = "Сохранить адрес";
+
+"addressInput.city.title" = "Город";
+"addressInput.city.placeholder" = "Введите город";
+
+"addressInput.street.title" = "Улица";
+"addressInput.street.placeholder" = "Введите улицу";
+
+"addressInput.house.title" = "Дом";
+"addressInput.house.placeholder" = "Введите номер дома";
+
+"addressInput.apartment.title" = "Квартира";
+"addressInput.apartment.placeholder" = "Введите квартиру";
+
+"addressInput.floor.title" = "Этаж";
+"addressInput.floor.placeholder" = "Введите этаж";
+
+"addressInput.intercom.title" = "Код домофона";
+"addressInput.intercom.placeholder" = "Введите код домофона";
+
+/* Phone Input Sheet */
+"phoneInput.navigation.title" = "Укажите номер получателя";
+"phoneInput.save" = "Сохранить";
+
+/* Comment Input Sheet */
+"commentInput.navigation.title" = "Комментарий к заказу";
+"commentInput.placeholder" = "Напишите пожелания курьеру…";
+"commentInput.save" = "Сохранить";

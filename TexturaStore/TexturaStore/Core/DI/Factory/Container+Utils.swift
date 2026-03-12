@@ -24,4 +24,11 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    var phoneFormatter: Factory<any PhoneFormattingProtocol> {
+        Factory(self) { @MainActor in
+            PhoneFormatter()
+        }
+        .scope(.singleton)
+    }
 }

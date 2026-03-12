@@ -251,3 +251,87 @@
 "settings.theme.light" = "Light";
 "settings.theme.dark" = "Dark";
 "settings.theme.system" = "System";
+
+/* Orders */
+"orders.navigation.title" = "My Orders";
+"orders.section.headerPrefix" = "Order";
+
+/* Orders Item */
+"orders.item.addressPrefix" = "Address: ";
+"orders.item.datePrefix" = "Created at: ";
+"orders.item.paymentPrefix" = "Payment: ";
+
+/* Order Status */
+"orders.status.assembling" = "Assembling";
+"orders.status.ready" = "Ready for pickup";
+"orders.status.delivering" = "Out for delivery";
+"orders.status.delivered" = "Delivered";
+"orders.status.cancelled" = "Cancelled";
+
+/* Checkout */
+
+"checkout.navigation.title" = "Checkout";
+
+"checkout.segment.pickup" = "Pickup";
+"checkout.segment.delivery" = "Delivery";
+
+"checkout.total.title" = "Total";
+"checkout.delivery.title" = "Delivery";
+"checkout.delivery.free" = "Free";
+
+"checkout.delivery.whenPickup" = "The day after tomorrow";
+"checkout.delivery.whenCourier" = "Within 5 business days";
+
+"checkout.delivery.cost" = "Delivery 0 ₽";
+
+"checkout.order.button" = "Place order";
+
+"checkout.pickup.address.example" = "Moscow, Khodynsky Boulevard 4";
+
+"checkout.payment.title" = "How to pay for the order?";
+"checkout.payment.method" = "Pay on delivery";
+
+"checkout.delivery.address.placeholder" = "Enter delivery address";
+"checkout.phone.placeholder" = "Enter phone number";
+"checkout.comment.placeholder" = "Leave a comment";
+
+"checkout.delivery.store.title" = "Delivery Vemora Store";
+
+/* Address Input Sheet Value */
+"address.value.city.prefix" = "city";
+"address.value.street.prefix" = "st.";
+"address.value.house.prefix" = "house";
+"address.value.apartment.prefix" = "apt.";
+"address.value.floor.prefix" = "floor";
+"address.value.intercom.prefix" = "intercom:";
+
+/* Address Input Sheet */
+"addressInput.navigation.title" = "Delivery address";
+"addressInput.save" = "Save address";
+
+"addressInput.city.title" = "City";
+"addressInput.city.placeholder" = "Enter city";
+
+"addressInput.street.title" = "Street";
+"addressInput.street.placeholder" = "Enter street";
+
+"addressInput.house.title" = "House";
+"addressInput.house.placeholder" = "Enter house number";
+
+"addressInput.apartment.title" = "Apartment";
+"addressInput.apartment.placeholder" = "Enter apartment";
+
+"addressInput.floor.title" = "Floor";
+"addressInput.floor.placeholder" = "Enter floor";
+
+"addressInput.intercom.title" = "Intercom code";
+"addressInput.intercom.placeholder" = "Enter intercom code";
+
+/* Phone Input Sheet */
+"phoneInput.navigation.title" = "Recipient phone number";
+"phoneInput.save" = "Save";
+
+/* Comment Input Sheet */
+"commentInput.navigation.title" = "Order comment";
+"commentInput.placeholder" = "Write instructions for the courier…";
+"commentInput.save" = "Save";

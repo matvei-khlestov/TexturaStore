@@ -24,7 +24,6 @@ import UserNotifications
 /// Реактивность:
 /// - Обновления состояния доставляются на главный поток, подписки управляются через Combine;
 /// - Напоминание автоматически отменяется, когда корзина становится пустой.
-
 final class CartViewModel: ObservableObject, CartViewModelProtocol {
     
     // MARK: - Deps
@@ -36,8 +35,13 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
     // MARK: - State
     
     @Published private(set) var cartItems: [CartItem] = []
+    
     var cartItemsPublisher: AnyPublisher<[CartItem], Never> {
         $cartItems.eraseToAnyPublisher()
+    }
+    
+    var itemsSnapshot: [CartItem] {
+        cartItems
     }
     
     private var cancellables = Set<AnyCancellable>()
@@ -55,6 +59,8 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
         bind()
     }
     
+    // MARK: - Binding
+    
     private func bind() {
         repo.observeItems()
             .receive(on: DispatchQueue.main)
@@ -64,7 +70,9 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
             .store(in: &cancellables)
         
         $cartItems
-            .map { items in items.reduce(0) { $0 + $1.quantity } }
+            .map { items in
+                items.reduce(0) { $0 + $1.quantity }
+            }
             .removeDuplicates()
             .sink { [weak self] total in
                 guard let self else { return }
@@ -97,6 +105,7 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
     
     func setQuantity(for productId: String, quantity: Int) {
         let newQty = max(1, quantity)
+        
         Task {
             try? await repo.setQuantity(
                 productId: productId,
@@ -115,6 +124,7 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
         let current = cartItems.first(where: {
             $0.productId == productId
         })?.quantity ?? 0
+        
         Task {
             try? await repo.setQuantity(
                 productId: productId,
@@ -129,6 +139,7 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
         })?.quantity ?? 0
         
         let newQty = max(1, current - 1)
+        
         Task {
             try? await repo.setQuantity(
                 productId: productId,
@@ -153,6 +164,7 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
         Task {
             try? await repo.clear()
         }
+        
         cartItems.removeAll()
         cancelCartReminder()
     }
@@ -167,7 +179,6 @@ final class CartViewModel: ObservableObject, CartViewModelProtocol {
 private extension CartViewModel {
     
     func scheduleCartReminder() {
-        
         let after: TimeInterval = 2 * 60 * 60
         
         _ = notifications.schedule(

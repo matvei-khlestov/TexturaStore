@@ -61,4 +61,17 @@ extension Container {
             )
         }
     }
+    
+    // MARK: - Orders Repository Factory
+    
+    /// Создаёт OrdersRepository под конкретного пользователя.
+    var makeOrdersRepository: (String) -> OrdersRepository {
+        { userId in
+            DefaultOrdersRepository(
+                remote: self.ordersStore(),
+                local: self.ordersLocalStore(),
+                userId: userId
+            )
+        }
+    }
 }

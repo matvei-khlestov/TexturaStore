@@ -64,4 +64,13 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Orders
+    
+    var ordersLocalStore: Factory<any OrdersLocalStore> {
+        Factory(self) { @MainActor in
+            CoreDataOrdersStore(container: self.coreDataContainer())
+        }
+        .scope(.singleton)
+    }
 }

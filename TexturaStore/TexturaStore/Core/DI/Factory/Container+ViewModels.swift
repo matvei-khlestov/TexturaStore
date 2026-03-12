@@ -206,4 +206,73 @@ extension Container {
             }
         }
     }
+    
+    // MARK: - Checkout
+    
+    var makeCheckoutViewModel: Factory<(String, [CartItem]) -> any CheckoutViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId, snapshotItems in
+                CheckoutViewModel(
+                    cartRepository: self.makeCartRepository(userId),
+                    ordersRepository: self.makeOrdersRepository(userId),
+                    phoneFormatter: self.phoneFormatter(),
+                    priceFormatter: self.priceFormatter(),
+                    snapshotItems: snapshotItems,
+                    storage: self.checkoutStorage(),
+                    currentUserId: userId,
+                    notifier: self.localNotificationService()
+                )
+            }
+        }
+    }
+    
+    // MARK: - Checkout sheets
+    
+    var makeAddressInputSheetViewModel: Factory<(AddressInputSheetValue?) -> any AddressInputSheetViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { initialAddress in
+                AddressInputSheetViewModel(
+                    initialAddress: initialAddress
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
+    var makePhoneInputSheetViewModel: Factory<(String?) -> any PhoneInputSheetViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { initialPhone in
+                PhoneInputSheetViewModel(
+                    initialPhone: initialPhone,
+                    validator: self.formValidator()
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
+    var makeCommentInputSheetViewModel: Factory<(String?) -> any CommentInputSheetViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { initialComment in
+                CommentInputSheetViewModel(
+                    initialComment: initialComment,
+                    validator: self.formValidator()
+                )
+            }
+        }
+        .scope(.shared)
+    }
+    
+    // MARK: - Orders
+
+    var makeOrdersViewModel: Factory<(String) -> OrdersViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { userId in
+                OrdersViewModel(
+                    repository: self.makeOrdersRepository(userId),
+                    priceFormatter: self.priceFormatter()
+                )
+            }
+        }
+    }
 }

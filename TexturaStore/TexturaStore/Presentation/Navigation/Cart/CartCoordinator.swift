@@ -30,6 +30,7 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
     private let makeCartViewModel: (String) -> any CartViewModelProtocol
     
     private let productDetailsNavigator: any ProductDetailsNavigating
+    private let checkoutNavigator: any CheckoutNavigating
     
     // MARK: - Init
     
@@ -37,12 +38,14 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
         cartScreenFactory: any CartScreenBuilding,
         authService: any AuthServiceProtocol,
         makeCartViewModel: @escaping (String) -> any CartViewModelProtocol,
-        productDetailsNavigator: any ProductDetailsNavigating
+        productDetailsNavigator: any ProductDetailsNavigating,
+        checkoutNavigator: any CheckoutNavigating
     ) {
         self.cartScreenFactory = cartScreenFactory
         self.authService = authService
         self.makeCartViewModel = makeCartViewModel
         self.productDetailsNavigator = productDetailsNavigator
+        self.checkoutNavigator = checkoutNavigator
     }
     
     // MARK: - Coordinator Lifecycle
@@ -64,9 +67,9 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
         
         return cartScreenFactory.makeCartView(
             viewModel: viewModel,
-            onCheckout: { [weak self] in
-                // checkout подключишь позже
-                _ = self
+            onCheckout: { [weak self, weak viewModel] in
+                guard let self, let viewModel else { return }
+                router.push(.checkout(.root, snapshotItems: viewModel.itemsSnapshot))
             },
             onSelectProductId: { [weak self] productId in
                 self?.router.push(.productDetails(.root(productId: productId)))
@@ -82,6 +85,12 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
             
         case .productDetails(let detailsRoute):
             return buildProductDetailsRoute(detailsRoute)
+            
+        case .checkout(let checkoutRoute, let snapshotItems):
+            return buildCheckoutRoute(
+                checkoutRoute,
+                snapshotItems: snapshotItems
+            )
         }
     }
     
@@ -99,5 +108,24 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
                 }
             )
         }
+    }
+    
+    private func buildCheckoutRoute(
+        _ route: CheckoutRoute,
+        snapshotItems: [CartItem]
+    ) -> AnyView {
+        checkoutNavigator.makeDestination(
+            route: route,
+            snapshotItems: snapshotItems,
+            onBack: { [weak self] in
+                self?.router.pop()
+            },
+            onFinish: { [weak self] in
+                self?.router.push(.checkout(.success, snapshotItems: snapshotItems))
+            },
+            onViewCatalog: { [weak self] in
+                self?.router.popToRoot()
+            }
+        )
     }
 }

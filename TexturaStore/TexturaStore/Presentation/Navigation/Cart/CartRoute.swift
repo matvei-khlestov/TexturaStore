@@ -11,4 +11,5 @@ import Foundation
 enum CartRoute: @MainActor StackRoutable {
     case root
     case productDetails(ProductDetailsRoute)
+    case checkout(CheckoutRoute, snapshotItems: [CartItem])
 }

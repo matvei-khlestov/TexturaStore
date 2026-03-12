@@ -44,7 +44,8 @@ extension Container {
                 cartScreenFactory: self.cartScreenFactory(),
                 authService: self.authService(),
                 makeCartViewModel: self.makeCartViewModel(),
-                productDetailsNavigator: self.productDetailsNavigator()
+                productDetailsNavigator: self.productDetailsNavigator(),
+                checkoutNavigator: self.checkoutNavigator()
             )
         }
         .scope(.singleton)
@@ -59,13 +60,14 @@ extension Container {
                 privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
                 authService: self.authService(),
                 makeProfileViewModel: self.profileViewModel(),
+                makeOrdersViewModel: self.makeOrdersViewModel(),
+                languageProvider: self.languageProvider(),
                 settingsViewModel: self.settingsViewModel(),
                 editProfileNavigator: self.editProfileNavigator()
             )
         }
         .scope(.singleton)
     }
-    
     
     // MARK: - Auth
     

@@ -99,4 +99,13 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Checkout
+    
+    var checkoutScreenFactory: Factory<any CheckoutScreenBuilding> {
+        Factory(self) { @MainActor in
+            CheckoutScreenFactory()
+        }
+        .scope(.singleton)
+    }
 }
