@@ -200,7 +200,7 @@ private extension FormTextView {
             static let text: UIColor = .label
             static let placeholder: UIColor = .secondaryLabel
             static let error: UIColor = .systemRed
-            static let borderNormal: CGColor = UIColor.secondarySystemFill.cgColor
+            static let borderNormal: CGColor = UIColor.systemGray.cgColor
             static let borderError: CGColor = UIColor.systemRed.withAlphaComponent(0.6).cgColor
         }
     }

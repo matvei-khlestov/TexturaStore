@@ -32,7 +32,9 @@ extension Container {
             ProductDetailsNavigator(
                 productDetailsScreenFactory: self.productDetailsScreenFactory(),
                 authService: self.authService(),
-                makeProductDetailsViewModel: self.makeProductDetailsViewModel()
+                makeProductDetailsViewModel: self.makeProductDetailsViewModel(),
+                makeReviewsListViewModel: self.makeReviewsListViewModel(),
+                makeAddReviewViewModel: self.makeAddReviewViewModel()
             )
         }
         .scope(.singleton)

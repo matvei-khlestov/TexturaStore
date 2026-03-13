@@ -11,6 +11,7 @@ struct ProductsGridView: View {
     
     let products: [Product]
     let minColumnWidth: CGFloat
+    let columnSpacing: CGFloat
     let rowSpacing: CGFloat
     
     let isInCart: (String) -> Bool
@@ -23,7 +24,9 @@ struct ProductsGridView: View {
     let onToggleFavorite: (Product) -> Void
     
     var body: some View {
-        let columns = [GridItem(.adaptive(minimum: minColumnWidth), spacing: rowSpacing)]
+        let columns = [
+            GridItem(.adaptive(minimum: minColumnWidth), spacing: columnSpacing)
+        ]
         
         LazyVGrid(columns: columns, spacing: rowSpacing) {
             ForEach(products, id: \.id) { product in

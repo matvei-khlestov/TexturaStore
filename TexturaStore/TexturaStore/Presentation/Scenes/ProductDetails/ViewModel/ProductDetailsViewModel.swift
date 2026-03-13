@@ -14,9 +14,11 @@ import Combine
 /// - Подписывается на `CatalogRepository` и публикует `product`;
 /// - Отслеживает состояние в корзине и избранном
 ///   через `CartRepository` и `FavoritesRepository`;
+/// - Подписывается на `ReviewsRepository` и публикует список отзывов;
+/// - Вычисляет, может ли текущий пользователь оставить отзыв;
 /// - Форматирует цену через `PriceFormattingProtocol`;
 /// - Предоставляет паблишеры: `productPublisher`,
-///   `isInCartPublisher`, `isFavoritePublisher`.
+///   `isInCartPublisher`, `isFavoritePublisher`, `reviewsPublisher`.
 ///
 /// Действия:
 /// - Тоггл/добавление/удаление из избранного;
@@ -25,16 +27,18 @@ import Combine
 ///
 /// Реактивность:
 /// - Обновления доставляются на главный поток;
-/// - Состояния `isInCart` и `favoriteState` дедуплицируются.
+/// - Состояния `isInCart`, `favoriteState` и `canWriteReviewState` дедуплицируются.
 ///
 /// Примечание по локализации:
 /// - Локализация (nameRu/nameEn, descriptionRu/descriptionEn) выполняется во View.
 final class ProductDetailsViewModel: ObservableObject, ProductDetailsViewModelProtocol {
     
     private let productId: String
+    private let currentUserId: String
     private let favoritesRepository: FavoritesRepository
     private let cartRepository: CartRepository
     private let catalogRepository: CatalogRepository
+    private let reviewsRepository: ReviewsRepository
     private let priceFormatter: PriceFormattingProtocol
     
     private var cancellables = Set<AnyCancellable>()
@@ -42,44 +46,32 @@ final class ProductDetailsViewModel: ObservableObject, ProductDetailsViewModelPr
     @Published private(set) var product: Product?
     @Published private var isInCart: Bool = false
     @Published private var favoriteState: Bool = false
+    @Published private var reviewsState: [ProductReview] = []
+    @Published private var canWriteReviewState: Bool = true
     
     // MARK: - Init
     
     init(
         productId: String,
+        currentUserId: String,
         favoritesRepository: FavoritesRepository,
         cartRepository: CartRepository,
         catalogRepository: CatalogRepository,
+        reviewsRepository: ReviewsRepository,
         priceFormatter: PriceFormattingProtocol
     ) {
         self.productId = productId
+        self.currentUserId = currentUserId
         self.favoritesRepository = favoritesRepository
         self.cartRepository = cartRepository
         self.catalogRepository = catalogRepository
+        self.reviewsRepository = reviewsRepository
         self.priceFormatter = priceFormatter
         
-        catalogRepository.observeProduct(id: productId)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] product in
-                self?.product = product
-            }
-            .store(in: &cancellables)
-        
-        cartRepository.observeItems()
-            .map { items in
-                items.contains(where: {
-                    $0.productId == productId && $0.quantity > 0
-                })
-            }
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .assign(to: &self.$isInCart)
-        
-        favoritesRepository.observeIds()
-            .map { ids in ids.contains(productId) }
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .assign(to: &self.$favoriteState)
+        bindProduct()
+        bindCart()
+        bindFavorites()
+        bindReviews()
     }
     
     // MARK: - Outputs
@@ -94,6 +86,22 @@ final class ProductDetailsViewModel: ObservableObject, ProductDetailsViewModelPr
     
     var isFavoritePublisher: AnyPublisher<Bool, Never> {
         $favoriteState.eraseToAnyPublisher()
+    }
+    
+    var reviewsPublisher: AnyPublisher<[ProductReview], Never> {
+        $reviewsState.eraseToAnyPublisher()
+    }
+    
+    var canWriteReviewPublisher: AnyPublisher<Bool, Never> {
+        $canWriteReviewState.eraseToAnyPublisher()
+    }
+    
+    var reviews: [ProductReview] {
+        reviewsState
+    }
+    
+    var canWriteReview: Bool {
+        canWriteReviewState
     }
     
     var priceText: String {
@@ -158,6 +166,50 @@ final class ProductDetailsViewModel: ObservableObject, ProductDetailsViewModelPr
         Task {
             try? await cartRepository.remove(productId: productId)
         }
+    }
+    
+    // MARK: - Bindings
+    
+    private func bindProduct() {
+        catalogRepository.observeProduct(id: productId)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] product in
+                self?.product = product
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func bindCart() {
+        cartRepository.observeItems()
+            .map { [productId] items in
+                items.contains(where: {
+                    $0.productId == productId && $0.quantity > 0
+                })
+            }
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &self.$isInCart)
+    }
+    
+    private func bindFavorites() {
+        favoritesRepository.observeIds()
+            .map { [productId] ids in ids.contains(productId) }
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &self.$favoriteState)
+    }
+    
+    private func bindReviews() {
+        reviewsRepository.observeReviews()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] reviews in
+                guard let self else { return }
+                self.reviewsState = reviews
+                self.canWriteReviewState = !reviews.contains(where: {
+                    $0.userId == self.currentUserId
+                })
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Price

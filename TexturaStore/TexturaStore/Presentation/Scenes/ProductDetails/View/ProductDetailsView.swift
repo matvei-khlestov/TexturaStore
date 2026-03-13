@@ -16,7 +16,8 @@ import Kingfisher
 /// - биндинг к `ProductDetailsViewModelProtocol` через Combine-паблишеры;
 /// - локализацию полей товара (nameRu/nameEn, descriptionRu/descriptionEn) во View
 ///   через `LanguageProviding` и `CatalogLocalizing`;
-/// - обработку действий: избранное / корзина с haptic-откликом.
+/// - обработку действий: избранное / корзина с haptic-откликом;
+/// - отображение отзывов товара, полученных из `ProductDetailsViewModelProtocol`.
 ///
 /// SwiftGen не используется.
 struct ProductDetailsView: View {
@@ -24,6 +25,8 @@ struct ProductDetailsView: View {
     // MARK: - Callbacks
     
     var onBack: (() -> Void)?
+    var onOpenReviews: (() -> Void)?
+    var onWriteReview: (() -> Void)?
     
     // MARK: - Deps
     
@@ -42,6 +45,8 @@ struct ProductDetailsView: View {
     @State private var isFavorite: Bool
     @State private var priceText: String
     @State private var language: AppLanguage
+    @State private var reviews: [ProductReview]
+    @State private var canWriteReview: Bool
     
     // MARK: - Init
     
@@ -49,10 +54,14 @@ struct ProductDetailsView: View {
         viewModel: ProductDetailsViewModelProtocol,
         languageProvider: LanguageProviding = LocalizationLanguageProvider(),
         localizer: CatalogLocalizing? = nil,
-        onBack: (() -> Void)? = nil
+        onBack: (() -> Void)? = nil,
+        onOpenReviews: (() -> Void)? = nil,
+        onWriteReview: (() -> Void)? = nil
     ) {
         self.viewModel = viewModel
         self.onBack = onBack
+        self.onOpenReviews = onOpenReviews
+        self.onWriteReview = onWriteReview
         
         self.languageProvider = languageProvider
         self.localizer = localizer ?? DefaultCatalogLocalizer(languageProvider: languageProvider)
@@ -63,6 +72,8 @@ struct ProductDetailsView: View {
         _isFavorite = State(initialValue: viewModel.isFavorite)
         _priceText = State(initialValue: viewModel.priceText)
         _language = State(initialValue: languageProvider.currentLanguage)
+        _reviews = State(initialValue: viewModel.reviews)
+        _canWriteReview = State(initialValue: viewModel.canWriteReview)
     }
     
     // MARK: - Body
@@ -89,12 +100,14 @@ struct ProductDetailsView: View {
                     .lineLimit(1)
                 
                 controlsRow
+                
+                reviewsSection
             }
             .padding(.horizontal, Metrics.Insets.horizontal)
             .padding(.top, Metrics.Insets.verticalTop)
             .padding(.bottom, Metrics.Insets.verticalBottom)
         }
-        .background(Color(uiColor: .tertiarySystemGroupedBackground))
+        .background(Color.white)
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(L10n.ProductDetails.Navigation.title)
         .brandBackButton {
@@ -106,6 +119,8 @@ struct ProductDetailsView: View {
             isFavorite = viewModel.isFavorite
             priceText = viewModel.priceText
             language = languageProvider.currentLanguage
+            reviews = viewModel.reviews
+            canWriteReview = viewModel.canWriteReview
         }
         .onReceive(viewModel.productPublisher) {
             product = $0
@@ -116,6 +131,12 @@ struct ProductDetailsView: View {
         }
         .onReceive(viewModel.isFavoritePublisher.removeDuplicates()) {
             isFavorite = $0
+        }
+        .onReceive(viewModel.reviewsPublisher) {
+            reviews = $0
+        }
+        .onReceive(viewModel.canWriteReviewPublisher.removeDuplicates()) {
+            canWriteReview = $0
         }
         .onReceive(languagePublisher.removeDuplicates()) {
             language = $0
@@ -184,6 +205,87 @@ private extension ProductDetailsView {
             Spacer(minLength: 0)
         }
     }
+    
+    var reviewsSection: some View {
+        Group {
+            if hasAnyReviews {
+                reviewsPreviewSection
+            } else {
+                emptyReviewsSection
+            }
+        }
+        .padding(.top, Metrics.Spacing.reviewsTop)
+    }
+    
+    var emptyReviewsSection: some View {
+        VStack(alignment: .leading, spacing: Metrics.Spacing.emptyReviewsContent) {
+            Text(emptyReviewsTitle)
+                .font(.system(size: Metrics.Fonts.emptyReviewsTitleSize, weight: .bold))
+                .foregroundStyle(Color(uiColor: .label))
+                .multilineTextAlignment(.leading)
+            
+            if canWriteReview {
+                Button(action: {
+                    onWriteReview?()
+                }) {
+                    Text(writeReviewTitle)
+                        .font(.system(size: Metrics.Fonts.writeReviewButtonSize, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, Metrics.Insets.writeReviewButtonHorizontal)
+                        .frame(height: Metrics.Sizes.writeReviewButtonHeight)
+                        .background(
+                            RoundedRectangle(
+                                cornerRadius: Metrics.Corners.writeReviewButton,
+                                style: .continuous
+                            )
+                            .fill(Color.brand)
+                        )
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+    
+    var reviewsPreviewSection: some View {
+        VStack(alignment: .leading, spacing: Metrics.Spacing.reviewsSectionContent) {
+            HStack(alignment: .center, spacing: Metrics.Spacing.reviewsHeader) {
+                Text(reviewsTitle)
+                    .font(.system(size: Metrics.Fonts.reviewsTitleSize, weight: .bold))
+                    .foregroundStyle(Color(uiColor: .label))
+                
+                Spacer(minLength: 0)
+                
+                Button(action: {
+                    onOpenReviews?()
+                }) {
+                    Image(systemName: Symbols.chevronRight)
+                        .font(.system(size: Metrics.Sizes.reviewChevronPointSize, weight: .semibold))
+                        .foregroundStyle(Color.brand)
+                }
+                .buttonStyle(.plain)
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Metrics.Spacing.reviewCards) {
+                    ForEach(previewReviews, id: \.id) { review in
+                        ReviewPreviewCard(review: review)
+                    }
+                }
+                .padding(.trailing, Metrics.Insets.reviewCardsTrailing)
+            }
+            
+            if canWriteReview {
+                Button(action: {
+                    onWriteReview?()
+                }) {
+                    Text(writeReviewTitle)
+                        .font(.system(size: Metrics.Fonts.writeReviewLinkSize, weight: .semibold))
+                        .foregroundStyle(Color.brand)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
 }
 
 // MARK: - Localization (View owns it)
@@ -203,6 +305,38 @@ private extension ProductDetailsView {
         case .en:
             return product.descriptionEn
         }
+    }
+    
+    var emptyReviewsTitle: String {
+        "Отзывов ещё нет, ваш может стать первым"
+    }
+    
+    var writeReviewTitle: String {
+        "Написать отзыв"
+    }
+    
+    var reviewsTitle: String {
+        "Отзывы: \(reviewsCount)"
+    }
+}
+
+// MARK: - Reviews helpers
+
+private extension ProductDetailsView {
+    
+    var reviewsCount: Int {
+        if let product, product.ratingCount > 0 {
+            return max(product.ratingCount, reviews.count)
+        }
+        return reviews.count
+    }
+    
+    var hasAnyReviews: Bool {
+        !reviews.isEmpty || ((product?.ratingCount ?? 0) > 0)
+    }
+    
+    var previewReviews: [ProductReview] {
+        Array(reviews.prefix(2))
     }
 }
 
@@ -225,6 +359,89 @@ private struct ProductDetailsImage: View {
     }
 }
 
+// MARK: - Review Preview Card
+
+private struct ReviewPreviewCard: View {
+    
+    let review: ProductReview
+    
+    private enum Metrics {
+        enum Insets {
+            static let content: CGFloat = 16
+        }
+        
+        enum Sizes {
+            static let width: CGFloat = 240
+            static let height: CGFloat = 200
+        }
+        
+        enum Corners {
+            static let card: CGFloat = 16
+        }
+        
+        enum Spacing {
+            static let content: CGFloat = 12
+            static let header: CGFloat = 8
+        }
+        
+        enum Fonts {
+            static let name: CGFloat = 16
+            static let rating: CGFloat = 16
+            static let text: CGFloat = 15
+            static let star: CGFloat = 16
+        }
+        
+        enum Lines {
+            static let preview: Int = 6
+        }
+    }
+    
+    private enum Symbols {
+        static let starFilled = "star.fill"
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: Metrics.Spacing.content) {
+            HStack(alignment: .top, spacing: Metrics.Spacing.header) {
+                Text(review.userName)
+                    .font(.system(size: Metrics.Fonts.name, weight: .bold))
+                    .foregroundStyle(Color(uiColor: .label))
+                    .lineLimit(1)
+                
+                Spacer(minLength: 0)
+                
+                HStack(spacing: 4) {
+                    Image(systemName: Symbols.starFilled)
+                        .font(.system(size: Metrics.Fonts.star, weight: .semibold))
+                        .foregroundStyle(Color.brand)
+                    
+                    Text("\(review.rating)")
+                        .font(.system(size: Metrics.Fonts.rating, weight: .medium))
+                        .foregroundStyle(Color(uiColor: .label))
+                }
+            }
+            
+            Text((review.comment ?? "").isEmpty ? "—" : (review.comment ?? ""))
+                .font(.system(size: Metrics.Fonts.text, weight: .regular))
+                .foregroundStyle(Color(uiColor: .label))
+                .lineLimit(Metrics.Lines.preview)
+                .multilineTextAlignment(.leading)
+            
+            Spacer(minLength: 0)
+        }
+        .padding(Metrics.Insets.content)
+        .frame(
+            width: Metrics.Sizes.width,
+            height: Metrics.Sizes.height,
+            alignment: .topLeading
+        )
+        .background(
+            RoundedRectangle(cornerRadius: Metrics.Corners.card, style: .continuous)
+                .fill(Color(uiColor: .secondarySystemBackground))
+        )
+    }
+}
+
 // MARK: - Metrics
 
 private extension ProductDetailsView {
@@ -237,12 +454,21 @@ private extension ProductDetailsView {
             
             static let cartButtonH: CGFloat = 14
             static let cartButtonV: CGFloat = 10
+            
+            static let writeReviewButtonHorizontal: CGFloat = 14
+            static let reviewCardsTrailing: CGFloat = 16
         }
         
         enum Spacing {
             static let verticalStack: CGFloat = 16
             static let likePadding: CGFloat = 12
             static let cartInner: CGFloat = 8
+            
+            static let reviewsTop: CGFloat = 12
+            static let emptyReviewsContent: CGFloat = 16
+            static let reviewsSectionContent: CGFloat = 16
+            static let reviewsHeader: CGFloat = 12
+            static let reviewCards: CGFloat = 12
         }
         
         enum Fonts {
@@ -250,6 +476,11 @@ private extension ProductDetailsView {
             static let descriptionSize: CGFloat = 15
             static let priceSize: CGFloat = 18
             static let cartButtonSize: CGFloat = 14
+            
+            static let emptyReviewsTitleSize: CGFloat = 18
+            static let writeReviewButtonSize: CGFloat = 14
+            static let reviewsTitleSize: CGFloat = 18
+            static let writeReviewLinkSize: CGFloat = 15
         }
         
         enum Sizes {
@@ -257,10 +488,14 @@ private extension ProductDetailsView {
             static let favoriteSymbolPointSize: CGFloat = 20
             static let cartSymbolPointSize: CGFloat = 16
             static let backPointSize: CGFloat = 16
+            
+            static let writeReviewButtonHeight: CGFloat = 40
+            static let reviewChevronPointSize: CGFloat = 20
         }
         
         enum Corners {
             static let image: CGFloat = 12
+            static let writeReviewButton: CGFloat = 14
         }
         
         enum Layout {
@@ -274,5 +509,6 @@ private extension ProductDetailsView {
         static let cartFilled = "cart.fill"
         static let cart = "cart"
         static let back = "chevron.left"
+        static let chevronRight = "arrow.right"
     }
 }

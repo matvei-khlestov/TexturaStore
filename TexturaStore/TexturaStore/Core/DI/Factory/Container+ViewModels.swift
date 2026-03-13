@@ -169,9 +169,11 @@ extension Container {
             { userId, productId in
                 ProductDetailsViewModel(
                     productId: productId,
+                    currentUserId: userId,
                     favoritesRepository: self.makeFavoritesRepository(userId),
                     cartRepository: self.makeCartRepository(userId),
                     catalogRepository: self.catalogRepository(),
+                    reviewsRepository: self.makeReviewsRepository(productId),
                     priceFormatter: self.priceFormatter()
                 )
             }
@@ -264,13 +266,41 @@ extension Container {
     }
     
     // MARK: - Orders
-
+    
     var makeOrdersViewModel: Factory<(String) -> OrdersViewModelProtocol> {
         Factory(self) { @MainActor in
             { userId in
                 OrdersViewModel(
                     repository: self.makeOrdersRepository(userId),
                     priceFormatter: self.priceFormatter()
+                )
+            }
+        }
+    }
+    
+    // MARK: - Reviews
+    
+    var makeAddReviewViewModel: Factory<(String, String) -> any AddReviewViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { productId, userId in
+                AddReviewViewModel(
+                    repository: self.makeReviewsRepository(productId),
+                    profileRepository: self.makeProfileRepository(userId),
+                    productId: productId,
+                    userId: userId,
+                    validator: self.formValidator()
+                )
+            }
+        }
+    }
+    
+    var makeReviewsListViewModel: Factory<(String, String) -> any ReviewsListViewModelProtocol> {
+        Factory(self) { @MainActor in
+            { productId, userId in
+                ReviewsListViewModel(
+                    reviewsRepository: self.makeReviewsRepository(productId),
+                    productId: productId,
+                    userId: userId
                 )
             }
         }
