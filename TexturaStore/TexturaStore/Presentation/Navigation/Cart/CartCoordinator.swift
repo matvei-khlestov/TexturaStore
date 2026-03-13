@@ -100,12 +100,68 @@ final class CartCoordinator: CartCoordinating, @MainActor RoutableCoordinator {
         _ route: ProductDetailsRoute
     ) -> AnyView {
         switch route {
-        case .root:
+            
+        case .root(let productId):
+            let userId = authService.currentUserId ?? ""
+            
+            return productDetailsNavigator.makeRoot(
+                productId: productId,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onOpenReviews: { [weak self] in
+                    guard let self else { return }
+                    
+                    self.router.push(
+                        .productDetails(
+                            .reviewsList(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
+                },
+                onWriteReview: { [weak self] in
+                    guard let self else { return }
+                    
+                    self.router.push(
+                        .productDetails(
+                            .addReview(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
+                }
+            )
+            
+        case .reviewsList(let productId, let userId):
             return productDetailsNavigator.makeDestination(
                 route: route,
                 onBack: { [weak self] in
                     self?.router.pop()
+                },
+                onWriteReview: { [weak self] in
+                    guard let self else { return }
+                    
+                    self.router.push(
+                        .productDetails(
+                            .addReview(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
                 }
+            )
+            
+        case .addReview:
+            return productDetailsNavigator.makeDestination(
+                route: route,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onWriteReview: { }
             )
         }
     }

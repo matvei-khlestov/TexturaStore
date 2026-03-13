@@ -33,9 +33,6 @@ struct ProductCardView: View {
         }
         
         enum Insets {
-            static let cardH: CGFloat = 6
-            static let cardV: CGFloat = 6
-            
             static let imageH: CGFloat = 12
             static let imageTop: CGFloat = 12
             
@@ -45,17 +42,22 @@ struct ProductCardView: View {
             static let labelsH: CGFloat = 16
             static let addToCartLeading: CGFloat = 12
             static let addToCartBottom: CGFloat = 16
+            
+            static let cardHorizontal: CGFloat = 9
         }
         
         enum Fonts {
             static let priceSize: CGFloat = 18
             static let titleSize: CGFloat = 15
             static let brandSize: CGFloat = 13
+            static let ratingSize: CGFloat = 13
+            static let ratingIconSize: CGFloat = 12
         }
         
         enum Spacing {
             static let imageToBrand: CGFloat = 10
             static let titleToPrice: CGFloat = 6
+            static let priceToRating: CGFloat = 6
         }
         
         enum FavoriteButton {
@@ -67,6 +69,7 @@ struct ProductCardView: View {
     private enum Symbols {
         static let heartFilled = "heart.fill"
         static let heart = "heart"
+        static let starFilled = "star.fill"
     }
     
     var body: some View {
@@ -85,17 +88,28 @@ struct ProductCardView: View {
                     ZStack {
                         Circle()
                             .fill(Color(uiColor: .secondarySystemGroupedBackground))
-                            .frame(width: Metrics.FavoriteButton.bgSide, height: Metrics.FavoriteButton.bgSide)
+                            .frame(
+                                width: Metrics.FavoriteButton.bgSide,
+                                height: Metrics.FavoriteButton.bgSide
+                            )
                         
                         Image(systemName: isFavorite ? Symbols.heartFilled : Symbols.heart)
                             .font(.system(size: Metrics.FavoriteButton.pointSize, weight: .semibold))
-                            .foregroundStyle(isFavorite ? Color(uiColor: .systemRed) : Color(uiColor: .label))
+                            .foregroundStyle(
+                                isFavorite
+                                ? Color(uiColor: .systemRed)
+                                : Color(uiColor: .label)
+                            )
                     }
                 }
                 .buttonStyle(.plain)
                 .padding(.top, Metrics.Insets.imageTop + Metrics.Insets.favoriteTop)
                 .padding(.trailing, Metrics.Insets.imageH + Metrics.Insets.favoriteTrailing)
-                .accessibilityLabel(isFavorite ? L10n.Catalog.Product.Favorite.remove : L10n.Catalog.Product.Favorite.add)
+                .accessibilityLabel(
+                    isFavorite
+                    ? L10n.Catalog.Product.Favorite.remove
+                    : L10n.Catalog.Product.Favorite.add
+                )
             }
             
             VStack(alignment: .leading, spacing: 0) {
@@ -116,6 +130,18 @@ struct ProductCardView: View {
                     .foregroundStyle(Color(uiColor: .brand))
                     .lineLimit(1)
                     .padding(.top, Metrics.Spacing.titleToPrice)
+                
+                HStack(spacing: 4) {
+                    Image(systemName: Symbols.starFilled)
+                        .font(.system(size: Metrics.Fonts.ratingIconSize, weight: .semibold))
+                        .foregroundStyle(Color.yellow)
+                    
+                    Text(ratingText)
+                        .font(.system(size: Metrics.Fonts.ratingSize, weight: .medium))
+                        .foregroundStyle(Color(uiColor: .secondaryLabel))
+                        .lineLimit(1)
+                }
+                .padding(.top, Metrics.Spacing.priceToRating)
                 
                 HStack {
                     Button(action: {
@@ -155,8 +181,19 @@ struct ProductCardView: View {
                     y: Metrics.Shadow.y
                 )
         )
-        .padding(.horizontal, Metrics.Insets.cardH)
-        .padding(.vertical, Metrics.Insets.cardV)
+        .padding(.horizontal, Metrics.Insets.cardHorizontal)
+    }
+    
+    private var ratingText: String {
+        "\(formattedRating) (\(product.ratingCount))"
+    }
+    
+    private var formattedRating: String {
+        if product.ratingAvg.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", product.ratingAvg)
+        } else {
+            return String(format: "%.1f", product.ratingAvg)
+        }
     }
 }
 

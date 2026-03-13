@@ -22,9 +22,8 @@ struct CatalogProductsHeaderView: View {
         static let iconToLabel: CGFloat = 6
         static let labelToBadge: CGFloat = 6
         
-        static let badgeMinSide: CGFloat = 18
-        static let badgeH: CGFloat = 8
-        static let badgeV: CGFloat = 2
+        static let badgeHeight: CGFloat = 18
+        static let badgeHorizontalPadding: CGFloat = 6
     }
     
     private enum Symbols {
@@ -57,10 +56,13 @@ struct CatalogProductsHeaderView: View {
                         Text("\(count)")
                             .font(.system(size: Metrics.badgeSize, weight: .semibold))
                             .foregroundStyle(.white)
-                            .padding(.horizontal, Metrics.badgeH / 2)
-                            .padding(.vertical, Metrics.badgeV)
-                            .frame(minHeight: Metrics.badgeMinSide)
-                            .background(Capsule().fill(Color(uiColor: .systemRed)))
+                            .padding(.horizontal, Metrics.badgeHorizontalPadding)
+                            .frame(height: Metrics.badgeHeight)
+                            .background(
+                                Capsule()
+                                    .fill(Color(uiColor: .systemRed))
+                            )
+                            .fixedSize()
                             .padding(.leading, Metrics.labelToBadge)
                     }
                 }

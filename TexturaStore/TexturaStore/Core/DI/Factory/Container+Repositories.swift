@@ -74,4 +74,17 @@ extension Container {
             )
         }
     }
+    
+    // MARK: - Reviews Repository Factory
+    
+    /// Создаёт ReviewsRepository под конкретный товар.
+    var makeReviewsRepository: (String) -> ReviewsRepository {
+        { productId in
+            DefaultReviewsRepository(
+                remote: self.reviewsStore(),
+                local: self.reviewsLocalStore(),
+                productId: productId
+            )
+        }
+    }
 }

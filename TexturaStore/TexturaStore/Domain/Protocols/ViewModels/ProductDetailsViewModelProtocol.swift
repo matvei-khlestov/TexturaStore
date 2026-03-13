@@ -10,7 +10,7 @@ import Combine
 
 /// Протокол `ProductDetailsViewModelProtocol` определяет интерфейс ViewModel
 /// для экрана карточки товара, предоставляя реактивные данные и методы
-/// для управления состоянием товара в корзине и избранном.
+/// для управления состоянием товара в корзине, избранном и отзывами.
 ///
 /// Локализация выполняется во View на основе `Product` и текущего языка.
 protocol ProductDetailsViewModelProtocol: AnyObject {
@@ -28,6 +28,18 @@ protocol ProductDetailsViewModelProtocol: AnyObject {
     
     /// Паблишер, уведомляющий об изменении состояния избранного.
     var isFavoritePublisher: AnyPublisher<Bool, Never> { get }
+    
+    /// Паблишер, отправляющий обновления списка отзывов товара.
+    var reviewsPublisher: AnyPublisher<[ProductReview], Never> { get }
+    
+    /// Паблишер, уведомляющий, может ли текущий пользователь оставить отзыв.
+    var canWriteReviewPublisher: AnyPublisher<Bool, Never> { get }
+    
+    /// Текущий список отзывов товара.
+    var reviews: [ProductReview] { get }
+    
+    /// Флаг, может ли текущий пользователь оставить отзыв.
+    var canWriteReview: Bool { get }
     
     /// Отформатированная цена товара.
     var priceText: String { get }

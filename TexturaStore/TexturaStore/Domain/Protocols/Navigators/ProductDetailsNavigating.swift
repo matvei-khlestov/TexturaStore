@@ -11,11 +11,14 @@ import SwiftUI
 protocol ProductDetailsNavigating {
     func makeRoot(
         productId: String,
-        onBack: @escaping () -> Void
+        onBack: @escaping () -> Void,
+        onOpenReviews: @escaping () -> Void,
+        onWriteReview: @escaping () -> Void
     ) -> AnyView
     
     func makeDestination(
         route: ProductDetailsRoute,
-        onBack: @escaping () -> Void
+        onBack: @escaping () -> Void,
+        onWriteReview: @escaping () -> Void
     ) -> AnyView
 }

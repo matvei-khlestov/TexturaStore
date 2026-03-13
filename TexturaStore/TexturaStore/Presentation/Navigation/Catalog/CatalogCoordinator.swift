@@ -153,10 +153,69 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
     
     private func buildProductDetailsRoute(_ route: ProductDetailsRoute) -> AnyView {
         switch route {
-        case .root:
+        case .root(let productId):
+            return productDetailsNavigator.makeRoot(
+                productId: productId,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onOpenReviews: { [weak self] in
+                    guard let self else { return }
+                    
+                    let userId = self.authService.currentUserId ?? ""
+                    
+                    self.router.push(
+                        .productDetails(
+                            .reviewsList(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
+                },
+                onWriteReview: { [weak self] in
+                    guard let self else { return }
+                    
+                    let userId = self.authService.currentUserId ?? ""
+                    
+                    self.router.push(
+                        .productDetails(
+                            .addReview(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
+                }
+            )
+                
+        case .addReview:
             return productDetailsNavigator.makeDestination(
                 route: route,
-                onBack: { [weak self] in self?.router.pop() }
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onWriteReview: { }
+            )
+            
+        case .reviewsList(let productId, let userId):
+            return productDetailsNavigator.makeDestination(
+                route: route,
+                onBack: { [weak self] in
+                    self?.router.pop()
+                },
+                onWriteReview: { [weak self] in
+                    guard let self else { return }
+                    
+                    self.router.push(
+                        .productDetails(
+                            .addReview(
+                                productId: productId,
+                                userId: userId
+                            )
+                        )
+                    )
+                }
             )
         }
     }
@@ -179,7 +238,6 @@ final class CatalogCoordinator: CatalogCoordinating, @MainActor RoutableCoordina
             )
         }
         
-        // initialState берём из текущего состояния каталога
         let initialState = catalogVM.currentState
         lastKnownFilterState = initialState
         

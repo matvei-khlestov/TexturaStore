@@ -78,6 +78,23 @@
 		A02C495B2F63111B00139A78 /* CheckoutRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C495A2F63111B00139A78 /* CheckoutRow.swift */; };
 		A02C495D2F63119300139A78 /* DeliveryAddressRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C495C2F63119300139A78 /* DeliveryAddressRow.swift */; };
 		A02C49602F6319B600139A78 /* AddressFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C495F2F6319B600139A78 /* AddressFieldView.swift */; };
+		A02C49622F63D9B700139A78 /* ProductReviewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49612F63D9B700139A78 /* ProductReviewDTO.swift */; };
+		A02C49642F63E0A600139A78 /* ReviewsStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49632F63E0A600139A78 /* ReviewsStoreProtocol.swift */; };
+		A02C49662F63E35700139A78 /* SupabaseReviewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49652F63E35700139A78 /* SupabaseReviewsStore.swift */; };
+		A02C496D2F63E5CE00139A78 /* CDProductReview+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C496C2F63E5CE00139A78 /* CDProductReview+Mapper.swift */; };
+		A02C496F2F63E91D00139A78 /* ReviewsFRCPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C496E2F63E91D00139A78 /* ReviewsFRCPublisher.swift */; };
+		A02C49712F63EC7E00139A78 /* ReviewsLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49702F63EC7E00139A78 /* ReviewsLocalStore.swift */; };
+		A02C49732F63ED1B00139A78 /* CoreDataReviewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49722F63ED1B00139A78 /* CoreDataReviewsStore.swift */; };
+		A02C49752F63F26900139A78 /* ReviewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49742F63F26900139A78 /* ReviewsRepository.swift */; };
+		A02C49772F63F34600139A78 /* DefaultReviewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49762F63F34600139A78 /* DefaultReviewsRepository.swift */; };
+		A02C497A2F640C9200139A78 /* AddReviewViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49792F640C9200139A78 /* AddReviewViewModelProtocol.swift */; };
+		A02C497F2F640D6F00139A78 /* AddReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C497E2F640D6F00139A78 /* AddReviewViewModel.swift */; };
+		A02C49812F640DCD00139A78 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49802F640DCD00139A78 /* AddReviewView.swift */; };
+		A02C49842F64261700139A78 /* CDProductReview+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49822F64261700139A78 /* CDProductReview+CoreDataClass.swift */; };
+		A02C49852F64261700139A78 /* CDProductReview+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49832F64261700139A78 /* CDProductReview+CoreDataProperties.swift */; };
+		A02C49872F64722B00139A78 /* ReviewsListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49862F64722B00139A78 /* ReviewsListViewModelProtocol.swift */; };
+		A02C498C2F64734000139A78 /* ReviewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C498B2F64734000139A78 /* ReviewsListViewModel.swift */; };
+		A02C498E2F64736900139A78 /* ReviewsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C498D2F64736900139A78 /* ReviewsListView.swift */; };
 		A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABC2F2E541800B00C0F /* AppRootView.swift */; };
 		A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABE2F2E541800B00C0F /* TexturaStore.xcdatamodeld */; };
 		A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABF2F2E541800B00C0F /* TexturaStoreApp.swift */; };
@@ -451,6 +468,23 @@
 		A02C495A2F63111B00139A78 /* CheckoutRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutRow.swift; sourceTree = "<group>"; };
 		A02C495C2F63119300139A78 /* DeliveryAddressRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressRow.swift; sourceTree = "<group>"; };
 		A02C495F2F6319B600139A78 /* AddressFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFieldView.swift; sourceTree = "<group>"; };
+		A02C49612F63D9B700139A78 /* ProductReviewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewDTO.swift; sourceTree = "<group>"; };
+		A02C49632F63E0A600139A78 /* ReviewsStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsStoreProtocol.swift; sourceTree = "<group>"; };
+		A02C49652F63E35700139A78 /* SupabaseReviewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseReviewsStore.swift; sourceTree = "<group>"; };
+		A02C496C2F63E5CE00139A78 /* CDProductReview+Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProductReview+Mapper.swift"; sourceTree = "<group>"; };
+		A02C496E2F63E91D00139A78 /* ReviewsFRCPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsFRCPublisher.swift; sourceTree = "<group>"; };
+		A02C49702F63EC7E00139A78 /* ReviewsLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsLocalStore.swift; sourceTree = "<group>"; };
+		A02C49722F63ED1B00139A78 /* CoreDataReviewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataReviewsStore.swift; sourceTree = "<group>"; };
+		A02C49742F63F26900139A78 /* ReviewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRepository.swift; sourceTree = "<group>"; };
+		A02C49762F63F34600139A78 /* DefaultReviewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReviewsRepository.swift; sourceTree = "<group>"; };
+		A02C49792F640C9200139A78 /* AddReviewViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewModelProtocol.swift; sourceTree = "<group>"; };
+		A02C497E2F640D6F00139A78 /* AddReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewModel.swift; sourceTree = "<group>"; };
+		A02C49802F640DCD00139A78 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
+		A02C49822F64261700139A78 /* CDProductReview+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProductReview+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A02C49832F64261700139A78 /* CDProductReview+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDProductReview+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A02C49862F64722B00139A78 /* ReviewsListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListViewModelProtocol.swift; sourceTree = "<group>"; };
+		A02C498B2F64734000139A78 /* ReviewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListViewModel.swift; sourceTree = "<group>"; };
+		A02C498D2F64736900139A78 /* ReviewsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsListView.swift; sourceTree = "<group>"; };
 		A0572A8C2F2E52B100B00C0F /* TexturaStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexturaStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0572A9E2F2E52B400B00C0F /* TexturaStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexturaStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0572AA82F2E52B400B00C0F /* TexturaStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexturaStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1021,6 +1055,65 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		A02C49672F63E50200139A78 /* CDProductReview */ = {
+			isa = PBXGroup;
+			children = (
+				A02C49822F64261700139A78 /* CDProductReview+CoreDataClass.swift */,
+				A02C49832F64261700139A78 /* CDProductReview+CoreDataProperties.swift */,
+			);
+			path = CDProductReview;
+			sourceTree = "<group>";
+		};
+		A02C497B2F640D1700139A78 /* AddReviewView */ = {
+			isa = PBXGroup;
+			children = (
+				A02C497D2F640D5900139A78 /* ViewModel */,
+				A02C497C2F640D4F00139A78 /* View */,
+			);
+			path = AddReviewView;
+			sourceTree = "<group>";
+		};
+		A02C497C2F640D4F00139A78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A02C49802F640DCD00139A78 /* AddReviewView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A02C497D2F640D5900139A78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A02C497E2F640D6F00139A78 /* AddReviewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A02C49882F6472DD00139A78 /* ReviewsListView */ = {
+			isa = PBXGroup;
+			children = (
+				A02C498A2F64731F00139A78 /* ViewModel */,
+				A02C49892F6472EB00139A78 /* View */,
+			);
+			path = ReviewsListView;
+			sourceTree = "<group>";
+		};
+		A02C49892F6472EB00139A78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A02C498D2F64736900139A78 /* ReviewsListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A02C498A2F64731F00139A78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A02C498B2F64734000139A78 /* ReviewsListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A0572A832F2E52B100B00C0F = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1298,7 @@
 				A0ACED902F49E29D0090AA0D /* DefaultCartRepository.swift */,
 				A0ACEDAD2F4A01100090AA0D /* DefaultFavoritesRepository.swift */,
 				A02C48ED2F6022B000139A78 /* DefaultOrdersRepository.swift */,
+				A02C49762F63F34600139A78 /* DefaultReviewsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1414,6 +1508,8 @@
 				A02C493F2F62E0F400139A78 /* Orders */,
 				A02C49322F62BCAB00139A78 /* OrderSuccess */,
 				A0ACEE162F4BBB580090AA0D /* ProductDetails */,
+				A02C497B2F640D1700139A78 /* AddReviewView */,
+				A02C49882F6472DD00139A78 /* ReviewsListView */,
 				A0E3B7D22F3288A90038E3BB /* ResetPassword */,
 				A0D250FE2F2E7D4300C6B040 /* Profile */,
 				A0E3B89A2F40ACBE0038E3BB /* EditProfile */,
@@ -1976,6 +2072,8 @@
 				A02C49162F61900600139A78 /* PhoneInputSheetViewModelProtocol.swift */,
 				A02C49222F619E8E00139A78 /* AddressInputSheetViewModelProtocol.swift */,
 				A02C493D2F62E08F00139A78 /* OrdersViewModelProtocol.swift */,
+				A02C49792F640C9200139A78 /* AddReviewViewModelProtocol.swift */,
+				A02C49862F64722B00139A78 /* ReviewsListViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2200,6 +2298,7 @@
 				A0ACED792F494ED80090AA0D /* SupabaseCartStore.swift */,
 				A0ACEDA72F49FB5C0090AA0D /* SupabaseFavoritesStore.swift */,
 				A02C48D02F5FFC2E00139A78 /* SupabaseOrdersStore.swift */,
+				A02C49652F63E35700139A78 /* SupabaseReviewsStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -2216,6 +2315,7 @@
 				A0ACED3C2F48D9D70090AA0D /* ProductColorDTO.swift */,
 				A02C48CC2F5FF7E500139A78 /* OrderDTO.swift */,
 				A02C48CE2F5FF82D00139A78 /* OrderItemDTO.swift */,
+				A02C49612F63D9B700139A78 /* ProductReviewDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -2268,6 +2368,7 @@
 				A0ACED8C2F495B130090AA0D /* CoreDataCartStore.swift */,
 				A0ACEDA52F49F9EE0090AA0D /* CoreDataFavoritesStore.swift */,
 				A02C48E92F60200200139A78 /* CoreDataOrdersStore.swift */,
+				A02C49722F63ED1B00139A78 /* CoreDataReviewsStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -2280,6 +2381,7 @@
 				A0ACED7B2F49506E0090AA0D /* CartStoreProtocol.swift */,
 				A0ACEDA92F49FBA80090AA0D /* FavoritesStoreProtocol.swift */,
 				A02C48D22F6001E900139A78 /* OrdersStoreProtocol.swift */,
+				A02C49632F63E0A600139A78 /* ReviewsStoreProtocol.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -2294,6 +2396,7 @@
 				A02C48E72F601F4F00139A78 /* OrdersLocalStore.swift */,
 				A02C48FD2F602AEB00139A78 /* PreferencesStore.swift */,
 				A02C48FF2F602B1F00139A78 /* SecretsStore.swift */,
+				A02C49702F63EC7E00139A78 /* ReviewsLocalStore.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -2309,6 +2412,7 @@
 				A0ACED5B2F48F5A80090AA0D /* BrandsFRCPublisher.swift */,
 				A0ACED662F4936660090AA0D /* ProductColorsFRCPublisher.swift */,
 				A02C48E32F60154500139A78 /* OrdersFRCPublisher.swift */,
+				A02C496E2F63E91D00139A78 /* ReviewsFRCPublisher.swift */,
 			);
 			path = Publishers;
 			sourceTree = "<group>";
@@ -2318,6 +2422,7 @@
 			children = (
 				A0E3B83C2F38B1420038E3BB /* CDProfile */,
 				A0ACED462F48ECAA0090AA0D /* CDProduct */,
+				A02C49672F63E50200139A78 /* CDProductReview */,
 				A02C48D42F6006C400139A78 /* CDCategory */,
 				A0ACED812F4956970090AA0D /* CDCartItem */,
 				A0ACED4B2F48ECE90090AA0D /* CDBrand */,
@@ -2349,6 +2454,7 @@
 				A0ACED552F48F0860090AA0D /* CDBrand+Mapper.swift */,
 				A0ACED642F490F030090AA0D /* CDProductColor+Mapper.swift */,
 				A02C48E52F60166700139A78 /* CDOrder+Mapper.swift */,
+				A02C496C2F63E5CE00139A78 /* CDProductReview+Mapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -2361,6 +2467,7 @@
 				A0ACED8E2F49E1F60090AA0D /* CartRepository.swift */,
 				A0ACEDAB2F4A004D0090AA0D /* FavoritesRepository.swift */,
 				A02C48EB2F60220700139A78 /* OrdersRepository.swift */,
+				A02C49742F63F26900139A78 /* ReviewsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -2818,6 +2925,7 @@
 				A0E3B7732F311D9B0038E3BB /* FormValidatingProtocol.swift in Sources */,
 				A0ACEDAE2F4A01100090AA0D /* DefaultFavoritesRepository.swift in Sources */,
 				A0ACEE0F2F4BB6EA0090AA0D /* CatalogProductsHeaderView.swift in Sources */,
+				A02C49812F640DCD00139A78 /* AddReviewView.swift in Sources */,
 				A0ACED3F2F48DAAD0090AA0D /* SupabaseCatalogStore.swift in Sources */,
 				A0ACEDF32F4B9F7E0090AA0D /* CartRowView.swift in Sources */,
 				A0E3B7702F311D160038E3BB /* FormValidator.swift in Sources */,
@@ -2828,6 +2936,7 @@
 				A0E3B8402F38B3180038E3BB /* CDProfile+CoreDataProperties.swift in Sources */,
 				A021D3702F2E692100AF94A1 /* 24.swift in Sources */,
 				A0E3B79F2F3144170038E3BB /* Container+ViewModels.swift in Sources */,
+				A02C49642F63E0A600139A78 /* ReviewsStoreProtocol.swift in Sources */,
 				A02C48D32F6001E900139A78 /* OrdersStoreProtocol.swift in Sources */,
 				A0E3B8242F38AA0E0038E3BB /* BaseCoreDataStore.swift in Sources */,
 				A02C49052F602D1F00139A78 /* KeychainStore.swift in Sources */,
@@ -2891,11 +3000,14 @@
 				A02C48FE2F602AEB00139A78 /* PreferencesStore.swift in Sources */,
 				A0ACED392F48D6D90090AA0D /* BrandDTO.swift in Sources */,
 				A0E3B7AC2F3215720038E3BB /* PrivacyPolicyView.swift in Sources */,
+				A02C49772F63F34600139A78 /* DefaultReviewsRepository.swift in Sources */,
 				A021D36C2F2E690800AF94A1 /* 22.swift in Sources */,
 				A0D2512E2F2F0BA100C6B040 /* AppCoordinating.swift in Sources */,
 				A0E3B8992F40AC890038E3BB /* EditProfileViewModelProtocol.swift in Sources */,
 				A0E3B8802F3E548B0038E3BB /* SettingsService.swift in Sources */,
 				A0E3B7D82F328B3B0038E3BB /* ResetPasswordView.swift in Sources */,
+				A02C49842F64261700139A78 /* CDProductReview+CoreDataClass.swift in Sources */,
+				A02C49852F64261700139A78 /* CDProductReview+CoreDataProperties.swift in Sources */,
 				A0E3B7912F312FA40038E3BB /* LabelLinkRow.swift in Sources */,
 				A0E3B82C2F38AD1F0038E3BB /* Container+CoreDataStores.swift in Sources */,
 				A0E3B84E2F38BC700038E3BB /* Container+Repositories.swift in Sources */,
@@ -2915,6 +3027,7 @@
 				A02C48E22F600F5900139A78 /* CDOrderItem+CoreDataProperties.swift in Sources */,
 				A0E3B8312F38AE3A0038E3BB /* ProfileLocalStore.swift in Sources */,
 				A0ACEE2D2F4C92E50090AA0D /* ProductDetailsNavigating.swift in Sources */,
+				A02C49662F63E35700139A78 /* SupabaseReviewsStore.swift in Sources */,
 				A0ACEDA42F49F9950090AA0D /* FavoritesLocalStore.swift in Sources */,
 				A0ACEDB02F4A027A0090AA0D /* CatalogViewModelProtocol.swift in Sources */,
 				A0ACEDE62F4B8E660090AA0D /* CartScreenBuilding.swift in Sources */,
@@ -2937,12 +3050,14 @@
 				A02C492A2F61A0E000139A78 /* AddressInputSheetView.swift in Sources */,
 				A0ACED4A2F48ECD10090AA0D /* CDBrand+CoreDataProperties.swift in Sources */,
 				A0E3B7AA2F32143A0038E3BB /* PrivacyPolicyText.swift in Sources */,
+				A02C498E2F64736900139A78 /* ReviewsListView.swift in Sources */,
 				A0E3B7BD2F3245490038E3BB /* NavigationHost.swift in Sources */,
 				A0ACEE4E2F4DF20B0090AA0D /* CatalogFilterViewModelProtocol.swift in Sources */,
 				A02C49032F602C1900139A78 /* DefaultsStore.swift in Sources */,
 				A0E3B8A02F40B1F50038E3BB /* EditProfileRow.swift in Sources */,
 				A0E3B88D2F3E5A8B0038E3BB /* AppLanguage.swift in Sources */,
 				A02C495D2F63119300139A78 /* DeliveryAddressRow.swift in Sources */,
+				A02C496F2F63E91D00139A78 /* ReviewsFRCPublisher.swift in Sources */,
 				A02C49602F6319B600139A78 /* AddressFieldView.swift in Sources */,
 				A02C494E2F62E8BB00139A78 /* DefaultOrdersLocalizer.swift in Sources */,
 				A02C49512F63104400139A78 /* ChangePhoneRow.swift in Sources */,
@@ -2998,6 +3113,7 @@
 				A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */,
 				A0E3B8E32F41F0FD0038E3BB /* EditPhoneView.swift in Sources */,
 				A02C49382F62C1AE00139A78 /* CheckoutRoute.swift in Sources */,
+				A02C496D2F63E5CE00139A78 /* CDProductReview+Mapper.swift in Sources */,
 				A0ACEE772F4E48340090AA0D /* PriceRangeFieldsView.swift in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0ACEDDA2F4B7E250090AA0D /* LocalNotifyingProtocol.swift in Sources */,
@@ -3006,6 +3122,7 @@
 				A02C48D82F6006DE00139A78 /* CDCategory+CoreDataProperties.swift in Sources */,
 				A02C491E2F61932D00139A78 /* PhoneInputSheetView.swift in Sources */,
 				A02C49282F61A00000139A78 /* AddressInputSheetViewModel.swift in Sources */,
+				A02C49712F63EC7E00139A78 /* ReviewsLocalStore.swift in Sources */,
 				A0ACEDE02F4B81B20090AA0D /* CartViewModelProtocol.swift in Sources */,
 				A0ACEDA82F49FB5C0090AA0D /* SupabaseFavoritesStore.swift in Sources */,
 				A0ACED302F454C360090AA0D /* ProductColor.swift in Sources */,
@@ -3026,6 +3143,7 @@
 				A0ACED622F490DBA0090AA0D /* CDProductColor+CoreDataProperties.swift in Sources */,
 				A0ACEDF12F4B9F590090AA0D /* CartCheckoutBarView.swift in Sources */,
 				A02C493A2F62C21700139A78 /* CheckoutNavigating.swift in Sources */,
+				A02C49622F63D9B700139A78 /* ProductReviewDTO.swift in Sources */,
 				A0E3B7E62F33C0100038E3BB /* SupabaseConfig.swift in Sources */,
 				A0D250F02F2E7BF400C6B040 /* AppRoute.swift in Sources */,
 				A0E3B8882F3E55900038E3BB /* SettingsViewModel.swift in Sources */,
@@ -3056,6 +3174,7 @@
 				A0E3B87D2F3E53FD0038E3BB /* UserDefaultsSettingsStorage.swift in Sources */,
 				A0E3B7EF2F33C3B10038E3BB /* Container+SupabaseClient.swift in Sources */,
 				A0E3B7C32F3257030038E3BB /* AppRouter+Typealiases.swift in Sources */,
+				A02C497A2F640C9200139A78 /* AddReviewViewModelProtocol.swift in Sources */,
 				A02C49072F602DCC00139A78 /* Address.swift in Sources */,
 				A0ACEE202F4BC6280090AA0D /* ProductDetailsScreenBuilding.swift in Sources */,
 				A0D2514E2F2FA45900C6B040 /* FavoritesCoordinator.swift in Sources */,
@@ -3069,12 +3188,14 @@
 				A0D251432F2FA37300C6B040 /* CatalogCoordinating.swift in Sources */,
 				A0E3B8DF2F41EE390038E3BB /* EditPhoneViewModelProtocol.swift in Sources */,
 				A0E3B84A2F38B9C40038E3BB /* ProfileRepository.swift in Sources */,
+				A02C49752F63F26900139A78 /* ReviewsRepository.swift in Sources */,
 				A0ACED2C2F4547A60090AA0D /* Category.swift in Sources */,
 				A0E3B7CE2F326EE70038E3BB /* BrandNavigationBackButtonModifier.swift in Sources */,
 				A0E3B8772F3E1A9F0038E3BB /* SettingsView.swift in Sources */,
 				A0E3B8472F38B4E50038E3BB /* CDProfile+Mapper.swift in Sources */,
 				A0E3B8A62F40B79C0038E3BB /* ProfileEditScreenBuilding.swift in Sources */,
 				A0E3B80B2F369D330038E3BB /* ProfileScreenFactory.swift in Sources */,
+				A02C49872F64722B00139A78 /* ReviewsListViewModelProtocol.swift in Sources */,
 				A0E3B80D2F375D6E0038E3BB /* PasswordResetServiceProtocol.swift in Sources */,
 				A0D251002F2E7D5300C6B040 /* ProfileUserView.swift in Sources */,
 				A0E3B8B92F41089E0038E3BB /* EditNameViewModel.swift in Sources */,
@@ -3093,6 +3214,7 @@
 				A0E3B81B2F37EC0A0038E3BB /* ProfileStoreProtocol.swift in Sources */,
 				A02C495B2F63111B00139A78 /* CheckoutRow.swift in Sources */,
 				A0ACEE002F4BA5EC0090AA0D /* ProductsListView.swift in Sources */,
+				A02C49732F63ED1B00139A78 /* CoreDataReviewsStore.swift in Sources */,
 				A0E3B79B2F313AE50038E3BB /* SignUpViewModel.swift in Sources */,
 				A0ACEDD12F4A90700090AA0D /* FavoritesScreenFactory.swift in Sources */,
 				A0E3B7E82F33C0320038E3BB /* SupabaseClientFactory.swift in Sources */,
@@ -3117,6 +3239,7 @@
 				A0E3B78E2F312DC10038E3BB /* BrandedButton.swift in Sources */,
 				A0E3B85A2F3933120038E3BB /* ProfileRoute.swift in Sources */,
 				A0ACED872F4958640090AA0D /* CDCartItem+Mapper.swift in Sources */,
+				A02C497F2F640D6F00139A78 /* AddReviewViewModel.swift in Sources */,
 				A0ACEE3C2F4D40590090AA0D /* CategoryProductsScreenFactory.swift in Sources */,
 				A02C48E82F601F4F00139A78 /* OrdersLocalStore.swift in Sources */,
 				A0D251402F2F7E5B00C6B040 /* Container+Factories.swift in Sources */,
@@ -3150,6 +3273,7 @@
 				A0E3B8C42F41290E0038E3BB /* Routes.swift in Sources */,
 				A0ACED712F4942660090AA0D /* DefaultCatalogRepository.swift in Sources */,
 				A0ACEDDC2F4B7E8C0090AA0D /* NotificationTemplate.swift in Sources */,
+				A02C498C2F64734000139A78 /* ReviewsListViewModel.swift in Sources */,
 				A0ACEE3A2F4D40390090AA0D /* CategoryProductsScreenBuilding.swift in Sources */,
 				A0E3B8182F37EAF70038E3BB /* SupabaseProfileStore.swift in Sources */,
 				A02C49132F618DDA00139A78 /* FormTextView.swift in Sources */,

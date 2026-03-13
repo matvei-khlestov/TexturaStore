@@ -14,7 +14,6 @@ struct ProductReview: Codable, Equatable {
     let rating: Int
     let comment: String?
     let userName: String
-    let userAvatarURL: String?
     let createdAt: Date
     let updatedAt: Date
 }

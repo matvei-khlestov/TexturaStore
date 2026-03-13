@@ -64,4 +64,15 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Reviews
+    
+    var reviewsStore: Factory<any ReviewsStoreProtocol> {
+        Factory(self) { @MainActor in
+            SupabaseReviewsStore(
+                supabase: self.supabaseClient()
+            )
+        }
+        .scope(.singleton)
+    }
 }

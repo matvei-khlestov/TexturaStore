@@ -115,6 +115,7 @@ struct CatalogView: View {
                 ProductsGridView(
                     products: products,
                     minColumnWidth: Metrics.Products.minColumnWidth,
+                    columnSpacing: Metrics.Products.columnSpacing,
                     rowSpacing: Metrics.Products.rowSpacing,
                     isInCart: { inCartIds.contains($0) },
                     isFavorite: { favoriteIds.contains($0) },
@@ -195,11 +196,12 @@ private extension CatalogView {
         }
         
         enum Products {
-            static let rowSpacing: CGFloat = 1
-            static let insetsHorizontal: CGFloat = 8
+            static let columnSpacing: CGFloat = 12
+            static let rowSpacing: CGFloat = 12
+            static let insetsHorizontal: CGFloat = 12
             static let insetsTop: CGFloat = 0
             static let insetsBottom: CGFloat = 16
-            static let minColumnWidth: CGFloat = 170
+            static let minColumnWidth: CGFloat = 150
         }
     }
 }

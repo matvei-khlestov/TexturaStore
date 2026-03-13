@@ -11,6 +11,19 @@ import SwiftUI
 protocol ProductDetailsScreenBuilding {
     func makeProductDetailsView(
         viewModel: ProductDetailsViewModelProtocol,
+        onBack: (() -> Void)?,
+        onOpenReviews: (() -> Void)?,
+        onWriteReview: (() -> Void)?
+    ) -> AnyView
+    
+    func makeAddReviewView(
+        viewModel: AddReviewViewModelProtocol,
         onBack: (() -> Void)?
+    ) -> AnyView
+    
+    func makeReviewsListView(
+        viewModel: ReviewsListViewModelProtocol,
+        onBack: (() -> Void)?,
+        onWriteReview: (() -> Void)?
     ) -> AnyView
 }

@@ -73,4 +73,13 @@ extension Container {
         }
         .scope(.singleton)
     }
+    
+    // MARK: - Reviews
+    
+    var reviewsLocalStore: Factory<any ReviewsLocalStore> {
+        Factory(self) { @MainActor in
+            CoreDataReviewsStore(container: self.coreDataContainer())
+        }
+        .scope(.singleton)
+    }
 }
