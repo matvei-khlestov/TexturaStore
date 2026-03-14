@@ -25,7 +25,7 @@ struct CategoryItemView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CircleImage(urlString: imageURL)
+            CategoryImage(urlString: imageURL)
                 .frame(width: Metrics.imageSide, height: Metrics.imageSide)
             
             Text(title)
@@ -42,22 +42,5 @@ struct CategoryItemView: View {
                 .padding(.top, Metrics.spacingTitleToSubtitle)
         }
         .frame(width: Metrics.width)
-    }
-}
-
-struct CircleImage: View {
-    
-    let urlString: String
-    
-    var body: some View {
-        let url = URL(string: urlString)
-        
-        KFImage(url)
-            .placeholder { Color(uiColor: .secondarySystemBackground) }
-            .cancelOnDisappear(true)
-            .resizable()
-            .scaledToFill()
-            .clipShape(Circle())
-            .background(Circle().fill(Color(uiColor: .secondarySystemBackground)))
     }
 }

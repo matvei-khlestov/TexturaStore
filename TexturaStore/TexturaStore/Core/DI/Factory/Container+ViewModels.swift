@@ -63,7 +63,8 @@ extension Container {
                 EditProfileViewModel(
                     avatarStorage: self.avatarStorageService(),
                     profileRepository: self.makeProfileRepository(userId),
-                    userId: userId
+                    userId: userId,
+                    checkoutStorage: self.checkoutStorage()
                 )
             }
         }

@@ -42,7 +42,7 @@ final class SupabaseCartStore: CartStoreProtocol {
             .eq("user_id", value: uid)
             .execute()
         
-        return try decodeArray(CartDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(CartDTO.self, from: response.data)
     }
     
     // MARK: - Quantity operations
@@ -123,42 +123,15 @@ final class SupabaseCartStore: CartStoreProtocol {
     // MARK: - Realtime
     
     func listenCart(uid: String) -> AnyPublisher<[CartDTO], Never> {
-        let subject = PassthroughSubject<[CartDTO], Never>()
-        let channel = supabase.channel("cart-\(uid)")
-        
-        let changes = channel.postgresChange(
-            AnyAction.self,
-            schema: "public",
-            table: Tables.cartItems
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
+            channelName: "cart-\(uid)",
+            table: Tables.cartItems,
+            fetch: { [weak self] in
+                guard let self else { return [] }
+                return (try? await self.fetchCart(uid: uid)) ?? []
+            }
         )
-        
-        let task = Task { [weak self] in
-            guard let self else { return }
-            
-            // Initial load
-            let initial = (try? await self.fetchCart(uid: uid)) ?? []
-            subject.send(initial)
-            
-            do {
-                try await channel.subscribeWithError()
-            } catch {
-                return
-            }
-            
-            for await _ in changes {
-                let updated = (try? await self.fetchCart(uid: uid)) ?? []
-                subject.send(updated)
-            }
-            
-            await channel.unsubscribe()
-        }
-        
-        return subject
-            .handleEvents(receiveCancel: {
-                task.cancel()
-                Task { await channel.unsubscribe() }
-            })
-            .eraseToAnyPublisher()
     }
 }
 
@@ -180,9 +153,9 @@ private extension SupabaseCartStore {
                 .single()
                 .execute()
             
-            return try decode(CartDTO.self, from: response.data)
+            return try SupabaseDecoding.decode(CartDTO.self, from: response.data)
         } catch {
-            if isNoRowsError(error) {
+            if SupabaseErrorMatcher.isNoRowsError(error) {
                 return nil
             }
             throw error
@@ -225,103 +198,4 @@ private extension SupabaseCartStore {
             case updatedAt = "updated_at"
         }
     }
-}
-
-// MARK: - Decoding
-
-private extension SupabaseCartStore {
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            if let date = SupabaseDateParser.parse(s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Invalid date: \(s)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
-        try Self.decoder.decode(T.self, from: data)
-    }
-    
-    func decodeArray<T: Decodable>(_ type: T.Type, from data: Data) throws -> [T] {
-        try Self.decoder.decode([T].self, from: data)
-    }
-}
-
-// MARK: - Errors
-
-private extension SupabaseCartStore {
-    
-    func isNoRowsError(_ error: Error) -> Bool {
-        let ns = error as NSError
-        let text = [
-            ns.localizedDescription,
-            ns.localizedFailureReason ?? "",
-            ns.localizedRecoverySuggestion ?? "",
-            String(describing: error)
-        ]
-        .joined(separator: " | ")
-        .lowercased()
-        
-        return text.contains("no rows")
-        || text.contains("multiple (or no) rows returned")
-        || text.contains("json object requested")
-        || text.contains("pgrst116")
-    }
-}
-
-enum SupabaseDateParser {
-    
-    static func parse(_ s: String) -> Date? {
-        let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return nil }
-        
-        return iso8601Fractional.date(from: trimmed)
-        ?? iso8601Plain.date(from: trimmed)
-        ?? postgresFallback1.date(from: trimmed)
-        ?? postgresFallback2.date(from: trimmed)
-    }
-}
-
-// MARK: - Formatters
-
-private extension SupabaseDateParser {
-    
-    static let iso8601Fractional: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f
-    }()
-    
-    static let iso8601Plain: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime]
-        return f
-    }()
-    
-    /// Частый fallback для Postgres: `2026-02-21 10:15:30+00:00`
-    static let postgresFallback1: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        f.dateFormat = "yyyy-MM-dd HH:mm:ssXXXXX"
-        return f
-    }()
-    
-    /// Альтернативный fallback: `2026-02-21T10:15:30+00:00`
-    static let postgresFallback2: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        f.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
-        return f
-    }()
 }

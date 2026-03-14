@@ -42,7 +42,7 @@ final class SupabaseFavoritesStore: FavoritesStoreProtocol {
             .eq("user_id", value: uid)
             .execute()
         
-        return try decodeArray(FavoriteDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(FavoriteDTO.self, from: response.data)
     }
     
     // MARK: - Add
@@ -86,42 +86,15 @@ final class SupabaseFavoritesStore: FavoritesStoreProtocol {
     // MARK: - Realtime
     
     func listen(uid: String) -> AnyPublisher<[FavoriteDTO], Never> {
-        let subject = PassthroughSubject<[FavoriteDTO], Never>()
-        let channel = supabase.channel("favorites-\(uid)")
-        
-        let changes = channel.postgresChange(
-            AnyAction.self,
-            schema: "public",
-            table: Tables.favoriteItems
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
+            channelName: "favorites-\(uid)",
+            table: Tables.favoriteItems,
+            fetch: { [weak self] in
+                guard let self else { return [] }
+                return (try? await self.fetch(uid: uid)) ?? []
+            }
         )
-        
-        let task = Task { [weak self] in
-            guard let self else { return }
-            
-            // Initial load
-            let initial = (try? await self.fetch(uid: uid)) ?? []
-            subject.send(initial)
-            
-            do {
-                try await channel.subscribeWithError()
-            } catch {
-                return
-            }
-            
-            for await _ in changes {
-                let updated = (try? await self.fetch(uid: uid)) ?? []
-                subject.send(updated)
-            }
-            
-            await channel.unsubscribe()
-        }
-        
-        return subject
-            .handleEvents(receiveCancel: {
-                task.cancel()
-                Task { await channel.unsubscribe() }
-            })
-            .eraseToAnyPublisher()
     }
 }
 
@@ -152,6 +125,7 @@ private extension SupabaseFavoritesStore {
 // MARK: - CodingKeys
 
 private extension SupabaseFavoritesStore.FavoriteUpsertPayload {
+    
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case productId = "product_id"
@@ -160,30 +134,5 @@ private extension SupabaseFavoritesStore.FavoriteUpsertPayload {
         case imageURL = "image_url"
         case price
         case updatedAt = "updated_at"
-    }
-}
-
-// MARK: - Decoding
-
-private extension SupabaseFavoritesStore {
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            if let date = SupabaseDateParser.parse(s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Invalid date: \(s)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decodeArray<T: Decodable>(_ type: T.Type, from data: Data) throws -> [T] {
-        try Self.decoder.decode([T].self, from: data)
     }
 }

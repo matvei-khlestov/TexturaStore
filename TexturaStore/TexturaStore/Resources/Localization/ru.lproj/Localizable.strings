@@ -335,3 +335,24 @@
 "commentInput.navigation.title" = "Комментарий к заказу";
 "commentInput.placeholder" = "Напишите пожелания курьеру…";
 "commentInput.save" = "Сохранить";
+
+/* Product Details - Reviews */
+"productDetails.reviews.emptyTitle" = "Отзывов ещё нет, ваш может стать первым";
+"productDetails.reviews.write" = "Написать отзыв";
+"productDetails.reviews.title" = "Отзывы: %d";
+
+/* Add Review */
+"addReview.navigation.title" = "Отзыв";
+"addReview.screen.title" = "Написать отзыв";
+"addReview.comment.title" = "Ваш отзыв";
+"addReview.comment.placeholder" = "Введите ваш отзыв";
+"addReview.rating.title" = "Ваша оценка";
+"addReview.submit" = "Отправить";
+
+/* Reviews List */
+"reviewsList.navigation.title" = "Отзывы о товаре (%d)";
+"reviewsList.alert.delete.title" = "Удалить отзыв?";
+"reviewsList.alert.delete.message" = "Это действие нельзя отменить.";
+"reviewsList.alert.delete.confirm" = "Удалить";
+"reviewsList.alert.delete.cancel" = "Отмена";
+"reviewsList.delete.action" = "Удалить отзыв";

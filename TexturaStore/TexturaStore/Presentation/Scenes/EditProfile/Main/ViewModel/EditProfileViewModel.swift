@@ -17,7 +17,6 @@ import Combine
 ///
 /// Обеспечивает реактивное обновление состояния через Combine
 /// и поддерживает актуальность пользовательских данных в профиле.
-
 final class EditProfileViewModel: ObservableObject, EditProfileViewModelProtocol {
     
     // MARK: - Deps
@@ -25,10 +24,11 @@ final class EditProfileViewModel: ObservableObject, EditProfileViewModelProtocol
     private let avatarStorage: AvatarStorageServiceProtocol
     private let userId: String
     private let profileRepository: ProfileRepository
+    private var checkoutStorage: CheckoutStoringProtocol
     
     // MARK: - State
     
-    @Published private(set) var name:  String = "—"
+    @Published private(set) var name: String = "—"
     @Published private(set) var email: String = "—"
     @Published private(set) var phone: String = "—"
     @Published private var avatarData: Data?
@@ -58,11 +58,16 @@ final class EditProfileViewModel: ObservableObject, EditProfileViewModelProtocol
     init(
         avatarStorage: AvatarStorageServiceProtocol,
         profileRepository: ProfileRepository,
-        userId: String
+        userId: String,
+        checkoutStorage: CheckoutStoringProtocol
     ) {
         self.avatarStorage = avatarStorage
         self.profileRepository = profileRepository
         self.userId = userId
+        self.checkoutStorage = checkoutStorage
+        
+        let savedPhone = checkoutStorage.savedReceiverPhoneE164
+        self.phone = (savedPhone?.isEmpty == false) ? savedPhone ?? "—" : "—"
         
         bindProfile()
     }
@@ -89,9 +94,18 @@ final class EditProfileViewModel: ObservableObject, EditProfileViewModelProtocol
             .receive(on: DispatchQueue.main)
             .sink { [weak self] profile in
                 guard let self else { return }
-                self.name  = profile?.name  ?? "—"
+                
+                self.name = profile?.name ?? "—"
                 self.email = profile?.email ?? "—"
-                self.phone = profile?.phone ?? "—"
+                
+                if let profilePhone = profile?.phone, !profilePhone.isEmpty {
+                    self.phone = profilePhone
+                    self.checkoutStorage.savedReceiverPhoneE164 = profilePhone
+                } else if let savedPhone = self.checkoutStorage.savedReceiverPhoneE164, !savedPhone.isEmpty {
+                    self.phone = savedPhone
+                } else {
+                    self.phone = "—"
+                }
             }
             .store(in: &bag)
     }

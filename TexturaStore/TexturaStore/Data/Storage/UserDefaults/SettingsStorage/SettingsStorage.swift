@@ -1,5 +1,5 @@
 //
-//  UserDefaultsSettingsStorage.swift
+//  SettingsStorage.swift
 //  TexturaStore
 //
 //  Created by Matvei Khlestov on 12.02.2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class UserDefaultsSettingsStorage: SettingsStorageProtocol {
+final class SettingsStorage: SettingsStorageProtocol {
     
     // MARK: - Keys
     
@@ -18,18 +18,18 @@ final class UserDefaultsSettingsStorage: SettingsStorageProtocol {
     
     // MARK: - Dependencies
     
-    private let userDefaults: UserDefaults
+    private let prefs: PreferencesStore
     
     // MARK: - Init
     
-    init(userDefaults: UserDefaults = .standard) {
-        self.userDefaults = userDefaults
+    init(prefs: PreferencesStore = DefaultsStore()) {
+        self.prefs = prefs
     }
     
     // MARK: - Language
     
     func loadLanguage() -> AppLanguage {
-        guard let raw = userDefaults.string(forKey: Keys.language),
+        guard let raw = prefs.string(forKey: Keys.language),
               let value = AppLanguage(rawValue: raw) else {
             return .ru
         }
@@ -37,13 +37,13 @@ final class UserDefaultsSettingsStorage: SettingsStorageProtocol {
     }
     
     func saveLanguage(_ language: AppLanguage) {
-        userDefaults.set(language.rawValue, forKey: Keys.language)
+        prefs.set(language.rawValue, forKey: Keys.language)
     }
     
     // MARK: - Theme
     
     func loadTheme() -> AppTheme {
-        guard let raw = userDefaults.string(forKey: Keys.theme),
+        guard let raw = prefs.string(forKey: Keys.theme),
               let value = AppTheme(rawValue: raw) else {
             return .system
         }
@@ -51,6 +51,13 @@ final class UserDefaultsSettingsStorage: SettingsStorageProtocol {
     }
     
     func saveTheme(_ theme: AppTheme) {
-        userDefaults.set(theme.rawValue, forKey: Keys.theme)
+        prefs.set(theme.rawValue, forKey: Keys.theme)
+    }
+    
+    // MARK: - Reset
+    
+    func reset() {
+        prefs.remove(Keys.language)
+        prefs.remove(Keys.theme)
     }
 }

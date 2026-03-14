@@ -58,6 +58,40 @@ internal enum L10n {
       }
     }
   }
+  internal enum AddReview {
+    /// Submit
+    internal static var submit: String {
+      return L10n.tr("Localizable", "addReview.submit", fallback: "Submit")
+    }
+    internal enum Comment {
+      /// Enter your review
+      internal static var placeholder: String {
+        return L10n.tr("Localizable", "addReview.comment.placeholder", fallback: "Enter your review")
+      }
+      /// Your review
+      internal static var title: String {
+        return L10n.tr("Localizable", "addReview.comment.title", fallback: "Your review")
+      }
+    }
+    internal enum Navigation {
+      /// Add Review
+      internal static var title: String {
+        return L10n.tr("Localizable", "addReview.navigation.title", fallback: "Review")
+      }
+    }
+    internal enum Rating {
+      /// Your rating
+      internal static var title: String {
+        return L10n.tr("Localizable", "addReview.rating.title", fallback: "Your rating")
+      }
+    }
+    internal enum Screen {
+      /// Write a review
+      internal static var title: String {
+        return L10n.tr("Localizable", "addReview.screen.title", fallback: "Write a review")
+      }
+    }
+  }
   internal enum Address {
     internal enum Value {
       internal enum Apartment {
@@ -880,6 +914,20 @@ internal enum L10n {
         return L10n.tr("Localizable", "productDetails.navigation.title", fallback: "Product details")
       }
     }
+    internal enum Reviews {
+      /// Product Details - Reviews
+      internal static var emptyTitle: String {
+        return L10n.tr("Localizable", "productDetails.reviews.emptyTitle", fallback: "There are no reviews yet, yours can be the first")
+      }
+      /// Reviews: %d
+      internal static func title(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "productDetails.reviews.title", p1, fallback: "Reviews: %d")
+      }
+      /// Write a review
+      internal static var write: String {
+        return L10n.tr("Localizable", "productDetails.reviews.write", fallback: "Write a review")
+      }
+    }
   }
   internal enum Profile {
     internal enum Delete {
@@ -1026,6 +1074,40 @@ internal enum L10n {
       /// Settings
       internal static var settings: String {
         return L10n.tr("Localizable", "profile.menu.settings", fallback: "Settings")
+      }
+    }
+  }
+  internal enum ReviewsList {
+    internal enum Alert {
+      internal enum Delete {
+        /// Cancel
+        internal static var cancel: String {
+          return L10n.tr("Localizable", "reviewsList.alert.delete.cancel", fallback: "Cancel")
+        }
+        /// Delete
+        internal static var confirm: String {
+          return L10n.tr("Localizable", "reviewsList.alert.delete.confirm", fallback: "Delete")
+        }
+        /// This action cannot be undone.
+        internal static var message: String {
+          return L10n.tr("Localizable", "reviewsList.alert.delete.message", fallback: "This action cannot be undone.")
+        }
+        /// Delete review?
+        internal static var title: String {
+          return L10n.tr("Localizable", "reviewsList.alert.delete.title", fallback: "Delete review?")
+        }
+      }
+    }
+    internal enum Delete {
+      /// Delete review
+      internal static var action: String {
+        return L10n.tr("Localizable", "reviewsList.delete.action", fallback: "Delete review")
+      }
+    }
+    internal enum Navigation {
+      /// Reviews List
+      internal static func title(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "reviewsList.navigation.title", p1, fallback: "Product reviews: %d")
       }
     }
   }
