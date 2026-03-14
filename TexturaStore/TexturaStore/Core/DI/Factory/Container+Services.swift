@@ -29,7 +29,8 @@ extension Container {
         Factory(self) { @MainActor in
             SupabaseAuthService(
                 supabase: self.supabaseClient(),
-                session: self.authSessionStorage()
+                session: self.authSessionStorage(),
+                sessionCleaner: self.sessionCleaner()
             )
         }
         .scope(.singleton)

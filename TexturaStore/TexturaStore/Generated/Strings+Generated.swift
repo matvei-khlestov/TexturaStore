@@ -753,6 +753,10 @@ internal enum L10n {
     }
   }
   internal enum Orders {
+    /// You have no orders yet
+    internal static var emptyState: String {
+      return L10n.tr("Localizable", "orders.emptyState", fallback: "You have no orders yet")
+    }
     internal enum Item {
       /// Orders Item
       internal static var addressPrefix: String {

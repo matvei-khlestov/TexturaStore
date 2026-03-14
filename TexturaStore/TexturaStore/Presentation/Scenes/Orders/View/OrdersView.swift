@@ -39,6 +39,7 @@ struct OrdersView: View {
     
     // MARK: - State
     
+    @State private var orders: [OrderEntity] = []
     @State private var reloadToken = UUID()
     @State private var bag = Set<AnyCancellable>()
     
@@ -58,49 +59,56 @@ struct OrdersView: View {
     // MARK: - Body
     
     var body: some View {
-        if #available(iOS 16.0, *) {
-            List {
-                ForEach(0..<viewModel.sectionsCount, id: \.self) { section in
-                    if let order = viewModel.order(at: section) {
-                        Section {
-                            ForEach(0..<viewModel.rows(in: section), id: \.self) { row in
-                                if let item = viewModel.item(section: section, row: row) {
-                                    OrderItemRow(
-                                        item: item,
-                                        order: order,
-                                        productTitle: localizer.productTitle(item.product),
-                                        priceText: viewModel.formattedPrice(item.lineTotal),
-                                        showsSeparator: row != viewModel.rows(in: section) - 1
-                                    )
-                                    .listRowInsets(EdgeInsets())
-                                    .listRowSeparator(.hidden)
-                                    .listRowBackground(Color(uiColor: .systemBackground))
+        Group {
+            if orders.isEmpty {
+                EmptyStateView(
+                    text: L10n.Orders.emptyState,
+                    horizontalPadding: Metrics.Insets.emptyStateHorizontal
+                )
+            } else if #available(iOS 16.0, *) {
+                List {
+                    ForEach(0..<viewModel.sectionsCount, id: \.self) { section in
+                        if let order = viewModel.order(at: section) {
+                            Section {
+                                ForEach(0..<viewModel.rows(in: section), id: \.self) { row in
+                                    if let item = viewModel.item(section: section, row: row) {
+                                        OrderItemRow(
+                                            item: item,
+                                            order: order,
+                                            productTitle: localizer.productTitle(item.product),
+                                            priceText: viewModel.formattedPrice(item.lineTotal),
+                                            showsSeparator: row != viewModel.rows(in: section) - 1
+                                        )
+                                        .listRowInsets(EdgeInsets())
+                                        .listRowSeparator(.hidden)
+                                        .listRowBackground(Color(uiColor: .systemBackground))
+                                    }
                                 }
+                            } header: {
+                                Text("\(L10n.Orders.Section.headerPrefix) \(Self.maskedOrderId(order.id))")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundStyle(Color(uiColor: .secondaryLabel))
+                                    .textCase(nil)
+                                    .padding(.top, Metrics.Section.headerTop)
                             }
-                        } header: {
-                            Text("\(L10n.Orders.Section.headerPrefix) \(Self.maskedOrderId(order.id))")
-                                .font(.system(size: 13, weight: .semibold))
-                                .foregroundStyle(Color(uiColor: .secondaryLabel))
-                                .textCase(nil)
-                                .padding(.top, Metrics.Section.headerTop)
                         }
                     }
                 }
+                .id(reloadToken)
+                .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+                .background(Color(uiColor: .systemGroupedBackground))
+            } else {
+                EmptyView()
             }
-            .id(reloadToken)
-            .listStyle(.insetGrouped)
-            .scrollContentBackground(.hidden)
-            .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle(L10n.Orders.Navigation.title)
-            .navigationBarTitleDisplayMode(.large)
-            .brandBackButton {
-                onBack?()
-            }
-            .onAppear {
-                bindViewModelIfNeeded()
-            }
-        } else {
-            EmptyView()
+        }
+        .navigationTitle(L10n.Orders.Navigation.title)
+        .navigationBarTitleDisplayMode(.large)
+        .brandBackButton {
+            onBack?()
+        }
+        .onAppear {
+            bindViewModelIfNeeded()
         }
     }
 }
@@ -114,7 +122,8 @@ private extension OrdersView {
         
         viewModel.ordersPublisher
             .receive(on: RunLoop.main)
-            .sink { _ in
+            .sink { orders in
+                self.orders = orders
                 reloadToken = UUID()
             }
             .store(in: &bag)
@@ -140,6 +149,10 @@ private extension OrdersView {
 private extension OrdersView {
     
     enum Metrics {
+        enum Insets {
+            static let emptyStateHorizontal: CGFloat = 24
+        }
+        
         enum Section {
             static let headerTop: CGFloat = 8
         }

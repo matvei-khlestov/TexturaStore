@@ -255,6 +255,7 @@
 /* Orders */
 "orders.navigation.title" = "Мои заказы";
 "orders.section.headerPrefix" = "Заказ";
+"orders.emptyState" = "У вас пока нет заказов";
 
 /* Orders Item */
 "orders.item.addressPrefix" = "Адрес: ";

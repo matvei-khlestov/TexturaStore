@@ -255,6 +255,7 @@
 /* Orders */
 "orders.navigation.title" = "My Orders";
 "orders.section.headerPrefix" = "Order";
+"orders.emptyState" = "You have no orders yet";
 
 /* Orders Item */
 "orders.item.addressPrefix" = "Address: ";

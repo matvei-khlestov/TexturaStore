@@ -105,6 +105,9 @@
 		A02C49AA2F652A8900139A78 /* SupabaseDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49A92F652A8900139A78 /* SupabaseDecoding.swift */; };
 		A02C49AC2F652AA500139A78 /* SupabaseRealtimeListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49AB2F652AA500139A78 /* SupabaseRealtimeListener.swift */; };
 		A02C49AE2F652AC500139A78 /* SupabaseErrorMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49AD2F652AC500139A78 /* SupabaseErrorMatcher.swift */; };
+		A02C49B12F6541E200139A78 /* SessionCleaning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49B02F6541E200139A78 /* SessionCleaning.swift */; };
+		A02C49B52F6542C300139A78 /* SessionCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49B42F6542C300139A78 /* SessionCleaner.swift */; };
+		A02C49B72F65445400139A78 /* Container+SessionCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C49B62F65445400139A78 /* Container+SessionCleaner.swift */; };
 		A0572AC22F2E541800B00C0F /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABC2F2E541800B00C0F /* AppRootView.swift */; };
 		A0572AC42F2E541800B00C0F /* TexturaStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABE2F2E541800B00C0F /* TexturaStore.xcdatamodeld */; };
 		A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0572ABF2F2E541800B00C0F /* TexturaStoreApp.swift */; };
@@ -505,6 +508,9 @@
 		A02C49A92F652A8900139A78 /* SupabaseDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseDecoding.swift; sourceTree = "<group>"; };
 		A02C49AB2F652AA500139A78 /* SupabaseRealtimeListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseRealtimeListener.swift; sourceTree = "<group>"; };
 		A02C49AD2F652AC500139A78 /* SupabaseErrorMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseErrorMatcher.swift; sourceTree = "<group>"; };
+		A02C49B02F6541E200139A78 /* SessionCleaning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCleaning.swift; sourceTree = "<group>"; };
+		A02C49B42F6542C300139A78 /* SessionCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCleaner.swift; sourceTree = "<group>"; };
+		A02C49B62F65445400139A78 /* Container+SessionCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+SessionCleaner.swift"; sourceTree = "<group>"; };
 		A0572A8C2F2E52B100B00C0F /* TexturaStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexturaStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0572A9E2F2E52B400B00C0F /* TexturaStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexturaStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0572AA82F2E52B400B00C0F /* TexturaStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexturaStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1164,6 +1170,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A02C49AF2F6541C600139A78 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				A02C49B02F6541E200139A78 /* SessionCleaning.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		A02C49B32F65424E00139A78 /* SessionCleaner */ = {
+			isa = PBXGroup;
+			children = (
+				A02C49B42F6542C300139A78 /* SessionCleaner.swift */,
+			);
+			path = SessionCleaner;
+			sourceTree = "<group>";
+		};
 		A0572A832F2E52B100B00C0F = {
 			isa = PBXGroup;
 			children = (
@@ -1262,6 +1284,7 @@
 				A0572AD42F2E5A3600B00C0F /* DI */,
 				A0572AD52F2E5A4400B00C0F /* Extensions */,
 				A0572AD62F2E5A5A00B00C0F /* Utils */,
+				A02C49B32F65424E00139A78 /* SessionCleaner */,
 				A0572AD72F2E5A8600B00C0F /* Services */,
 				A0572AD82F2E5A9E00B00C0F /* DesignSystem */,
 				A0E3B8902F3E5B760038E3BB /* Localization */,
@@ -1421,6 +1444,7 @@
 		A0572AE62F2E5C1300B00C0F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A02C49AF2F6541C600139A78 /* Session */,
 				A0ACEE042F4BB0890090AA0D /* Localization */,
 				A0ACEDD82F4B7E180090AA0D /* PushNotifications */,
 				A0E3B8482F38B9AE0038E3BB /* Repositories */,
@@ -2002,6 +2026,7 @@
 				A0E3B82B2F38AD1F0038E3BB /* Container+CoreDataStores.swift */,
 				A0E3B84D2F38BC700038E3BB /* Container+Repositories.swift */,
 				A0ACEE442F4D4BB50090AA0D /* Container+LanguageProvider.swift */,
+				A02C49B62F65445400139A78 /* Container+SessionCleaner.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -3020,6 +3045,7 @@
 				A0E3B8672F3E014F0038E3BB /* BootScreenFactory.swift in Sources */,
 				A0E3B8212F38A71D0038E3BB /* CoreDataStack.swift in Sources */,
 				A0E3B8E12F41EE790038E3BB /* EditPhoneViewModel.swift in Sources */,
+				A02C49B72F65445400139A78 /* Container+SessionCleaner.swift in Sources */,
 				A0E3B7822F3123D80038E3BB /* PhoneFormattingProtocol.swift in Sources */,
 				A0ACEE062F4BB09A0090AA0D /* LanguageProviding.swift in Sources */,
 				A0E3B89C2F40ACF40038E3BB /* EditProfileViewModel.swift in Sources */,
@@ -3174,6 +3200,7 @@
 				A02C49382F62C1AE00139A78 /* CheckoutRoute.swift in Sources */,
 				A02C496D2F63E5CE00139A78 /* CDProductReview+Mapper.swift in Sources */,
 				A0ACEE772F4E48340090AA0D /* PriceRangeFieldsView.swift in Sources */,
+				A02C49B12F6541E200139A78 /* SessionCleaning.swift in Sources */,
 				A0572AC52F2E541800B00C0F /* TexturaStoreApp.swift in Sources */,
 				A0ACEDDA2F4B7E250090AA0D /* LocalNotifyingProtocol.swift in Sources */,
 				A0ACEDDE2F4B7ED70090AA0D /* LocalNotificationService.swift in Sources */,
@@ -3228,6 +3255,7 @@
 				A0ACED692F493A4B0090AA0D /* CatalogLocalStore.swift in Sources */,
 				A021D36E2F2E691400AF94A1 /* 23.swift in Sources */,
 				A02C49172F61900600139A78 /* PhoneInputSheetViewModelProtocol.swift in Sources */,
+				A02C49B52F6542C300139A78 /* SessionCleaner.swift in Sources */,
 				A0E3B8362F38AEDF0038E3BB /* ProfileFRCPublisher.swift in Sources */,
 				A0E3B8D52F41C5CB0038E3BB /* EditEmailViewModelProtocol.swift in Sources */,
 				A0E3B8052F369A8E0038E3BB /* ProfileUserViewModelProtocol.swift in Sources */,

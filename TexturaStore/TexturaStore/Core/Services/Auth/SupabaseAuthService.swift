@@ -29,15 +29,18 @@ final class SupabaseAuthService: AuthServiceProtocol {
     
     private let supabase: SupabaseClient
     private let session: AuthSessionStoringProtocol
+    private let sessionCleaner: SessionCleaning
     
     // MARK: - Init
     
     init(
         supabase: SupabaseClient,
-        session: AuthSessionStoringProtocol
+        session: AuthSessionStoringProtocol,
+        sessionCleaner: SessionCleaning
     ) {
         self.supabase = supabase
         self.session = session
+        self.sessionCleaner = sessionCleaner
         startAuthStateListening()
     }
     
@@ -78,7 +81,10 @@ final class SupabaseAuthService: AuthServiceProtocol {
     
     func signOut() async throws {
         do {
+            let userId = currentUserId
+            
             try await supabase.auth.signOut()
+            sessionCleaner.clearSession(for: userId)
             applyAuthState(session: nil)
         } catch {
             throw mapSupabaseAuthError(error)
@@ -87,6 +93,7 @@ final class SupabaseAuthService: AuthServiceProtocol {
     
     func deleteAccount() async throws {
         do {
+            let userId = currentUserId
             var currentSession = try await supabase.auth.session
             
             if currentSession.isExpired {
@@ -100,6 +107,7 @@ final class SupabaseAuthService: AuthServiceProtocol {
             
             do { try await supabase.auth.signOut() } catch {}
             
+            sessionCleaner.clearSession(for: userId)
             applyAuthState(session: nil)
         } catch {
             throw mapSupabaseAuthError(error)
@@ -281,16 +289,16 @@ private extension SupabaseAuthService {
         if root.domain == NSURLErrorDomain {
             switch root.code {
             case NSURLErrorCannotFindHost,
-                NSURLErrorCannotConnectToHost,
-                NSURLErrorDNSLookupFailed,
-                NSURLErrorNotConnectedToInternet,
-                NSURLErrorTimedOut,
-                NSURLErrorNetworkConnectionLost,
-                NSURLErrorInternationalRoamingOff,
-                NSURLErrorCallIsActive,
-                NSURLErrorDataNotAllowed,
-                NSURLErrorSecureConnectionFailed,
-            NSURLErrorCannotLoadFromNetwork:
+                 NSURLErrorCannotConnectToHost,
+                 NSURLErrorDNSLookupFailed,
+                 NSURLErrorNotConnectedToInternet,
+                 NSURLErrorTimedOut,
+                 NSURLErrorNetworkConnectionLost,
+                 NSURLErrorInternationalRoamingOff,
+                 NSURLErrorCallIsActive,
+                 NSURLErrorDataNotAllowed,
+                 NSURLErrorSecureConnectionFailed,
+                 NSURLErrorCannotLoadFromNetwork:
                 return AuthDomainError.network
                 
             case NSURLErrorCancelled:
