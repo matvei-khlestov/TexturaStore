@@ -25,7 +25,7 @@ extension Container {
     
     var settingsStorage: Factory<SettingsStorageProtocol> {
         Factory(self) { @MainActor in
-            UserDefaultsSettingsStorage()
+            SettingsStorage()
         }
         .scope(.singleton)
     }

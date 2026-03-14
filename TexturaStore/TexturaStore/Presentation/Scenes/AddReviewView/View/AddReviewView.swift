@@ -56,13 +56,13 @@ struct AddReviewView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Metrics.Spacing.content) {
-                Text(Texts.screenTitle)
+                Text(L10n.AddReview.Screen.title)
                     .font(.system(size: Metrics.Fonts.screenTitle, weight: .bold))
                     .foregroundStyle(Color(uiColor: .label))
                 
                 FormTextView(
-                    title: Texts.commentTitle,
-                    placeholder: Texts.commentPlaceholder,
+                    title: L10n.AddReview.Comment.title,
+                    placeholder: L10n.AddReview.Comment.placeholder,
                     text: $commentText,
                     errorMessage: commentError,
                     forceShowError: commentError != nil,
@@ -74,7 +74,7 @@ struct AddReviewView: View {
                 )
                 
                 VStack(alignment: .leading, spacing: Metrics.Spacing.ratingBlock) {
-                    Text("\(Texts.ratingTitle): \(rating)")
+                    Text("\(L10n.AddReview.Rating.title): \(rating)")
                         .font(.system(size: Metrics.Fonts.ratingTitle, weight: .bold))
                         .foregroundStyle(Color(uiColor: .label))
                     
@@ -106,7 +106,7 @@ struct AddReviewView: View {
                 Button(action: {
                     viewModel.submitReview()
                 }) {
-                    Text(Texts.submit)
+                    Text(L10n.AddReview.submit)
                         .font(.system(size: Metrics.Fonts.submitTitle, weight: .semibold))
                         .foregroundStyle(Color.white)
                         .frame(maxWidth: .infinity)
@@ -132,7 +132,7 @@ struct AddReviewView: View {
             .padding(.bottom, Metrics.Insets.bottom)
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .navigationTitle(Texts.navigationTitle)
+        .navigationTitle(L10n.AddReview.Navigation.title)
         .navigationBarTitleDisplayMode(.inline)
         .brandBackButton {
             onBack?()
@@ -169,15 +169,6 @@ struct AddReviewView: View {
 // MARK: - Constants
 
 private extension AddReviewView {
-    
-    enum Texts {
-        static let navigationTitle = "Отзыв"
-        static let screenTitle = "Написать отзыв"
-        static let commentTitle = "Ваш отзыв"
-        static let commentPlaceholder = "Введите ваш отзыв"
-        static let ratingTitle = "Ваша оценка"
-        static let submit = "Отправить"
-    }
     
     enum Symbols {
         static let star = "star.fill"

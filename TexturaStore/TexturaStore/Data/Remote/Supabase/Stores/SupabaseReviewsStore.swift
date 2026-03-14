@@ -42,7 +42,7 @@ final class SupabaseReviewsStore: ReviewsStoreProtocol {
             .order("created_at", ascending: false)
             .execute()
         
-        return try decodeArray(ProductReviewDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(ProductReviewDTO.self, from: response.data)
     }
     
     // MARK: - Add
@@ -96,41 +96,15 @@ final class SupabaseReviewsStore: ReviewsStoreProtocol {
     // MARK: - Realtime
     
     func listen(productId: String) -> AnyPublisher<[ProductReviewDTO], Never> {
-        let subject = PassthroughSubject<[ProductReviewDTO], Never>()
-        let channel = supabase.channel("reviews-\(productId)")
-        
-        let changes = channel.postgresChange(
-            AnyAction.self,
-            schema: "public",
-            table: Tables.productReviews
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
+            channelName: "reviews-\(productId)",
+            table: Tables.productReviews,
+            fetch: { [weak self] in
+                guard let self else { return [] }
+                return (try? await self.fetch(productId: productId)) ?? []
+            }
         )
-        
-        let task = Task { [weak self] in
-            guard let self else { return }
-            
-            let initial = (try? await self.fetch(productId: productId)) ?? []
-            subject.send(initial)
-            
-            do {
-                try await channel.subscribeWithError()
-            } catch {
-                return
-            }
-            
-            for await _ in changes {
-                let updated = (try? await self.fetch(productId: productId)) ?? []
-                subject.send(updated)
-            }
-            
-            await channel.unsubscribe()
-        }
-        
-        return subject
-            .handleEvents(receiveCancel: {
-                task.cancel()
-                Task { await channel.unsubscribe() }
-            })
-            .eraseToAnyPublisher()
     }
 }
 
@@ -181,28 +155,5 @@ private extension SupabaseReviewsStore.ReviewUpdatePayload {
         case rating
         case comment
         case updatedAt = "updated_at"
-    }
-}
-
-private extension SupabaseReviewsStore {
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            if let date = SupabaseDateParser.parse(s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Invalid date: \(s)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decodeArray<T: Decodable>(_ type: T.Type, from data: Data) throws -> [T] {
-        try Self.decoder.decode([T].self, from: data)
     }
 }

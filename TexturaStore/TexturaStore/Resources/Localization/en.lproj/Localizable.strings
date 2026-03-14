@@ -335,3 +335,24 @@
 "commentInput.navigation.title" = "Order comment";
 "commentInput.placeholder" = "Write instructions for the courier…";
 "commentInput.save" = "Save";
+
+/* Product Details - Reviews */
+"productDetails.reviews.emptyTitle" = "There are no reviews yet, yours can be the first";
+"productDetails.reviews.write" = "Write a review";
+"productDetails.reviews.title" = "Reviews: %d";
+
+/* Add Review */
+"addReview.navigation.title" = "Review";
+"addReview.screen.title" = "Write a review";
+"addReview.comment.title" = "Your review";
+"addReview.comment.placeholder" = "Enter your review";
+"addReview.rating.title" = "Your rating";
+"addReview.submit" = "Submit";
+
+/* Reviews List */
+"reviewsList.navigation.title" = "Product reviews: %d";
+"reviewsList.alert.delete.title" = "Delete review?";
+"reviewsList.alert.delete.message" = "This action cannot be undone.";
+"reviewsList.alert.delete.confirm" = "Delete";
+"reviewsList.alert.delete.cancel" = "Cancel";
+"reviewsList.delete.action" = "Delete review";

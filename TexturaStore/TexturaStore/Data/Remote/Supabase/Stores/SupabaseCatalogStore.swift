@@ -19,7 +19,7 @@ import Supabase
 /// Особенности:
 /// - `fetch*` методы читают данные из таблиц Supabase с фильтрацией `is_active == true`;
 /// - `listen*` методы подписываются на изменения таблиц через Realtime и при событиях обновляют данные;
-/// - даты декодируются устойчиво: ISO8601 (с/без fractional seconds) + fallback форматы Postgres.
+/// - даты декодируются устойчиво: через общие компоненты `SupabaseDateParser` и `SupabaseDecoding`.
 final class SupabaseCatalogStore: CatalogStoreProtocol {
     
     // MARK: - Deps
@@ -41,13 +41,14 @@ final class SupabaseCatalogStore: CatalogStoreProtocol {
             .eq("is_active", value: true)
             .execute()
         
-        return try decodeArray(ProductDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(ProductDTO.self, from: response.data)
     }
     
     func listenProducts() -> AnyPublisher<[ProductDTO], Never> {
-        listenTable(
-            table: Tables.products,
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
             channelName: "catalog-products",
+            table: Tables.products,
             fetch: { [weak self] in
                 guard let self else { return [] }
                 return (try? await self.fetchProducts()) ?? []
@@ -64,13 +65,14 @@ final class SupabaseCatalogStore: CatalogStoreProtocol {
             .eq("is_active", value: true)
             .execute()
         
-        return try decodeArray(CategoryDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(CategoryDTO.self, from: response.data)
     }
     
     func listenCategories() -> AnyPublisher<[CategoryDTO], Never> {
-        listenTable(
-            table: Tables.categories,
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
             channelName: "catalog-categories",
+            table: Tables.categories,
             fetch: { [weak self] in
                 guard let self else { return [] }
                 return (try? await self.fetchCategories()) ?? []
@@ -87,13 +89,14 @@ final class SupabaseCatalogStore: CatalogStoreProtocol {
             .eq("is_active", value: true)
             .execute()
         
-        return try decodeArray(BrandDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(BrandDTO.self, from: response.data)
     }
     
     func listenBrands() -> AnyPublisher<[BrandDTO], Never> {
-        listenTable(
-            table: Tables.brands,
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
             channelName: "catalog-brands",
+            table: Tables.brands,
             fetch: { [weak self] in
                 guard let self else { return [] }
                 return (try? await self.fetchBrands()) ?? []
@@ -110,13 +113,14 @@ final class SupabaseCatalogStore: CatalogStoreProtocol {
             .eq("is_active", value: true)
             .execute()
         
-        return try decodeArray(ProductColorDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(ProductColorDTO.self, from: response.data)
     }
     
     func listenProductColors() -> AnyPublisher<[ProductColorDTO], Never> {
-        listenTable(
-            table: Tables.productColors,
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
             channelName: "catalog-product-colors",
+            table: Tables.productColors,
             fetch: { [weak self] in
                 guard let self else { return [] }
                 return (try? await self.fetchProductColors()) ?? []
@@ -134,100 +138,5 @@ private extension SupabaseCatalogStore {
         static let categories = "categories"
         static let brands = "brands"
         static let productColors = "colors"
-    }
-    
-    func listenTable<T: Sendable>(
-        table: String,
-        channelName: String,
-        fetch: @escaping @Sendable () async -> [T]
-    ) -> AnyPublisher<[T], Never> {
-        let subject = PassthroughSubject<[T], Never>()
-        let channel = supabase.channel(channelName)
-
-        let changes = channel.postgresChange(
-            AnyAction.self,
-            schema: "public",
-            table: table
-        )
-
-        let task = Task { [weak self] in
-            guard self != nil else { return }
-
-            do {
-                try await channel.subscribeWithError()
-            } catch {
-                return
-            }
-
-            for await _ in changes {
-                let updated = await fetch()
-                subject.send(updated)
-            }
-
-            await channel.unsubscribe()
-        }
-
-        return subject
-            .handleEvents(receiveCancel: {
-                task.cancel()
-                Task { await channel.unsubscribe() }
-            })
-            .eraseToAnyPublisher()
-    }
-}
-
-// MARK: - Decoding
-
-private extension SupabaseCatalogStore {
-    
-    static let iso8601Fractional: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f
-    }()
-    
-    static let iso8601Plain: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime]
-        return f
-    }()
-    
-    static let postgresFallback1: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        f.dateFormat = "yyyy-MM-dd HH:mm:ssXXXXX"
-        return f
-    }()
-    
-    static let postgresFallback2: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        f.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
-        return f
-    }()
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            if let date = iso8601Fractional.date(from: s) { return date }
-            if let date = iso8601Plain.date(from: s) { return date }
-            if let date = postgresFallback1.date(from: s) { return date }
-            if let date = postgresFallback2.date(from: s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Expected ISO8601/Postgres date, got: \(s)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decodeArray<T: Decodable>(_ type: T.Type, from data: Data) throws -> [T] {
-        try Self.decoder.decode([T].self, from: data)
     }
 }

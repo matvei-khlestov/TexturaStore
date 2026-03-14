@@ -59,10 +59,10 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
                 .single()
                 .execute()
             
-            return try decodeProfile(from: response.data)
+            return try SupabaseDecoding.decode(ProfileDTO.self, from: response.data)
             
         } catch {
-            if isNoRowsError(error) {
+            if SupabaseErrorMatcher.isNoRowsError(error) {
                 return nil
             }
             throw error
@@ -120,11 +120,6 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
     
     // MARK: - Email Change (Supabase Auth)
     
-    /// Запрашивает смену email у текущего авторизованного пользователя в Supabase Auth.
-    /// Supabase отправит письмо(а) для подтверждения смены почты.
-    ///
-    /// После подтверждения (через ваш `email-change.html`) вызывайте `syncProfileEmailFromAuth(uid:)`
-    /// чтобы синхронизировать `profiles.email` с актуальным email из Auth.
     func requestEmailChange(
         newEmail: String,
         redirectURL: URL?
@@ -135,8 +130,6 @@ final class SupabaseProfileStore: ProfileStoreProtocol {
         )
     }
     
-    /// Синхронизирует `profiles.email` с актуальным email из Supabase Auth.
-    /// Вызывать после того, как пользователь подтвердил смену почты.
     func syncProfileEmailFromAuth(uid: String) async throws {
         _ = try? await supabase.auth.refreshSession()
         
@@ -220,53 +213,11 @@ private extension SupabaseProfileStore {
 
 private extension SupabaseProfileStore {
     
-    static let iso8601Fractional: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return f
-    }()
-    
-    static let iso8601Plain: ISO8601DateFormatter = {
-        let f = ISO8601DateFormatter()
-        f.formatOptions = [.withInternetDateTime]
-        return f
-    }()
-    
-    static let postgresFallback: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.timeZone = TimeZone(secondsFromGMT: 0)
-        f.dateFormat = "yyyy-MM-dd HH:mm:ssXXXXX"
-        return f
-    }()
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { d in
-            let c = try d.singleValueContainer()
-            let s = try c.decode(String.self)
-            
-            if let date = iso8601Fractional.date(from: s) { return date }
-            if let date = iso8601Plain.date(from: s) { return date }
-            if let date = postgresFallback.date(from: s) { return date }
-            
-            throw DecodingError.dataCorruptedError(
-                in: c,
-                debugDescription: "Expected ISO8601 date, got: \(s)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decodeProfile(from data: Data) throws -> ProfileDTO {
-        try Self.decoder.decode(ProfileDTO.self, from: data)
-    }
-    
     func decodeProfileFromRecord(_ record: [String: Any]) -> ProfileDTO? {
         guard
             let userId = Self.string(from: record["id"]),
             let updatedAtString = Self.string(from: record["updated_at"]),
-            let updatedAt = Self.parseDate(updatedAtString)
+            let updatedAt = SupabaseDateParser.parse(updatedAtString)
         else {
             return nil
         }
@@ -284,19 +235,13 @@ private extension SupabaseProfileStore {
         )
     }
     
-    static func parseDate(_ s: String) -> Date? {
-        iso8601Fractional.date(from: s)
-        ?? iso8601Plain.date(from: s)
-        ?? postgresFallback.date(from: s)
-    }
-    
     static func string(from value: Any?) -> String? {
-        if let s = value as? String { return s }
-        if let u = value as? UUID { return u.uuidString }
-        if let s = value as? NSString { return s as String }
+        if let string = value as? String { return string }
+        if let uuid = value as? UUID { return uuid.uuidString }
+        if let string = value as? NSString { return string as String }
         
-        if let v = value as? AnyJSON {
-            if case .string(let s) = v { return s }
+        if let value = value as? AnyJSON {
+            if case .string(let string) = value { return string }
         }
         
         return nil
@@ -322,27 +267,5 @@ private extension SupabaseProfileStore {
         }
         
         return nil
-    }
-}
-
-// MARK: - Errors
-
-private extension SupabaseProfileStore {
-    
-    func isNoRowsError(_ error: Error) -> Bool {
-        let ns = error as NSError
-        let text = [
-            ns.localizedDescription,
-            ns.localizedFailureReason ?? "",
-            ns.localizedRecoverySuggestion ?? "",
-            String(describing: error)
-        ]
-            .joined(separator: " | ")
-            .lowercased()
-        
-        return text.contains("no rows")
-        || text.contains("multiple (or no) rows returned")
-        || text.contains("json object requested")
-        || text.contains("pgrst116")
     }
 }

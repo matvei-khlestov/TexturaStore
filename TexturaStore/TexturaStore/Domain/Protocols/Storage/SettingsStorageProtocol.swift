@@ -8,9 +8,12 @@
 import Foundation
 
 protocol SettingsStorageProtocol {
+    
     func loadLanguage() -> AppLanguage
     func saveLanguage(_ language: AppLanguage)
-
+    
     func loadTheme() -> AppTheme
     func saveTheme(_ theme: AppTheme)
+    
+    func reset()
 }

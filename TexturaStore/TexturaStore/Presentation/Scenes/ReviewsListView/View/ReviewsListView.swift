@@ -49,7 +49,7 @@ struct ReviewsListView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 
-                Text("Отзывы о товаре (\(reviews.count))")
+                Text(L10n.ReviewsList.Navigation.title(reviews.count))
                     .font(.system(size: 25, weight: .bold))
                 
                 LazyVStack(alignment: .leading, spacing: 0) {
@@ -94,23 +94,23 @@ struct ReviewsListView: View {
             isDeleting = $0
         }
         .alert(
-            "Удалить отзыв?",
+            L10n.ReviewsList.Alert.Delete.title,
             isPresented: Binding(
                 get: { reviewToDelete != nil },
                 set: { if !$0 { reviewToDelete = nil } }
             )
         ) {
-            Button("Удалить", role: .destructive) {
+            Button(L10n.ReviewsList.Alert.Delete.confirm, role: .destructive) {
                 guard let reviewToDelete else { return }
                 viewModel.deleteReview(reviewToDelete)
                 self.reviewToDelete = nil
             }
             
-            Button("Отмена", role: .cancel) {
+            Button(L10n.ReviewsList.Alert.Delete.cancel, role: .cancel) {
                 reviewToDelete = nil
             }
         } message: {
-            Text("Это действие нельзя отменить.")
+            Text(L10n.ReviewsList.Alert.Delete.message)
         }
     }
 }
@@ -131,66 +131,5 @@ private extension ReviewsListView {
         } else {
             EmptyView()
         }
-    }
-}
-
-// MARK: - ReviewRow
-
-private struct ReviewRow: View {
-    
-    let review: ProductReview
-    let isOwnReview: Bool
-    let isDeleting: Bool
-    let onDelete: () -> Void
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            
-            HStack(alignment: .top, spacing: 12) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(review.userName)
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundStyle(Color(uiColor: .label))
-                    
-                    Text(formattedDate(review.createdAt))
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundStyle(Color(uiColor: .secondaryLabel))
-                }
-                
-                Spacer(minLength: 0)
-                
-                HStack(spacing: 4) {
-                    Image(systemName: "star.fill")
-                        .foregroundStyle(Color.brand)
-                    
-                    Text("\(review.rating)")
-                        .foregroundStyle(Color(uiColor: .label))
-                }
-            }
-            
-            Text(review.comment ?? "—")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color(uiColor: .label))
-                .multilineTextAlignment(.leading)
-            
-            if isOwnReview {
-                Button(role: .destructive) {
-                    onDelete()
-                } label: {
-                    Text("Удалить отзыв")
-                        .font(.system(size: 15, weight: .medium))
-                        .foregroundStyle(Color.red)
-                }
-                .disabled(isDeleting)
-            }
-        }
-        .padding(.vertical, 18)
-    }
-    
-    private func formattedDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ru_RU")
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter.string(from: date)
     }
 }

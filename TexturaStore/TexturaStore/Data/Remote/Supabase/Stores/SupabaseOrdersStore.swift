@@ -43,7 +43,7 @@ final class SupabaseOrdersStore: OrdersStoreProtocol {
             .order("created_at", ascending: false)
             .execute()
         
-        return try decodeArray(OrderDTO.self, from: response.data)
+        return try SupabaseDecoding.decodeArray(OrderDTO.self, from: response.data)
     }
     
     // MARK: - Create
@@ -101,41 +101,15 @@ final class SupabaseOrdersStore: OrdersStoreProtocol {
     // MARK: - Realtime
     
     func listenOrders(uid: String) -> AnyPublisher<[OrderDTO], Never> {
-        let subject = PassthroughSubject<[OrderDTO], Never>()
-        let channel = supabase.channel("orders-\(uid)")
-        
-        let changes = channel.postgresChange(
-            AnyAction.self,
-            schema: "public",
-            table: Tables.orders
+        SupabaseRealtimeListener.listen(
+            supabase: supabase,
+            channelName: "orders-\(uid)",
+            table: Tables.orders,
+            fetch: { [weak self] in
+                guard let self else { return [] }
+                return (try? await self.fetchOrders(uid: uid)) ?? []
+            }
         )
-        
-        let task = Task { [weak self] in
-            guard let self else { return }
-            
-            let initial = (try? await self.fetchOrders(uid: uid)) ?? []
-            subject.send(initial)
-            
-            do {
-                try await channel.subscribeWithError()
-            } catch {
-                return
-            }
-            
-            for await _ in changes {
-                let updated = (try? await self.fetchOrders(uid: uid)) ?? []
-                subject.send(updated)
-            }
-            
-            await channel.unsubscribe()
-        }
-        
-        return subject
-            .handleEvents(receiveCancel: {
-                task.cancel()
-                Task { await channel.unsubscribe() }
-            })
-            .eraseToAnyPublisher()
     }
 }
 
@@ -186,32 +160,5 @@ private extension SupabaseOrdersStore {
             case status
             case updatedAt = "updated_at"
         }
-    }
-}
-
-// MARK: - Decoding
-
-private extension SupabaseOrdersStore {
-    
-    static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom { decoder in
-            let container = try decoder.singleValueContainer()
-            let string = try container.decode(String.self)
-            
-            if let date = SupabaseDateParser.parse(string) {
-                return date
-            }
-            
-            throw DecodingError.dataCorruptedError(
-                in: container,
-                debugDescription: "Invalid date: \(string)"
-            )
-        }
-        return decoder
-    }()
-    
-    func decodeArray<T: Decodable>(_ type: T.Type, from data: Data) throws -> [T] {
-        try Self.decoder.decode([T].self, from: data)
     }
 }
