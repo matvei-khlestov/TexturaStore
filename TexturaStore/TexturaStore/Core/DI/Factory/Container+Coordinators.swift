@@ -1,0 +1,114 @@
+//
+//  Container+Coordinators.swift
+//  TexturaStore
+//
+//  Created by Matvei Khlestov on 01.02.2026.
+//
+
+import FactoryKit
+
+extension Container {
+    
+    // MARK: - Tabs
+    
+    var catalogCoordinator: Factory<any CatalogCoordinating> {
+        Factory(self) { @MainActor in
+            CatalogCoordinator(
+                catalogScreenFactory: self.catalogScreenFactory(),
+                authService: self.authService(),
+                makeCatalogViewModel: self.makeCatalogViewModel(),
+                makeCatalogFilterViewModel: { self.catalogFilterViewModel() },
+                categoryProductsNavigator: self.categoryProductsNavigator(),
+                productDetailsNavigator: self.productDetailsNavigator(),
+                languageProvider: self.languageProvider()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    var favoritesCoordinator: Factory<any FavoritesCoordinating> {
+        Factory(self) { @MainActor in
+            FavoritesCoordinator(
+                favoritesScreenFactory: self.favoritesScreenFactory(),
+                authService: self.authService(),
+                makeFavoritesViewModel: self.makeFavoritesViewModel(),
+                productDetailsNavigator: self.productDetailsNavigator()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    var cartCoordinator: Factory<any CartCoordinating> {
+        Factory(self) { @MainActor in
+            CartCoordinator(
+                cartScreenFactory: self.cartScreenFactory(),
+                authService: self.authService(),
+                makeCartViewModel: self.makeCartViewModel(),
+                productDetailsNavigator: self.productDetailsNavigator(),
+                checkoutNavigator: self.checkoutNavigator()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Profile
+    
+    var profileCoordinator: Factory<any ProfileCoordinating> {
+        Factory(self) { @MainActor in
+            ProfileCoordinator(
+                profileScreenFactory: self.profileScreenFactory(),
+                privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
+                authService: self.authService(),
+                makeProfileViewModel: self.profileViewModel(),
+                makeOrdersViewModel: self.makeOrdersViewModel(),
+                languageProvider: self.languageProvider(),
+                settingsViewModel: self.settingsViewModel(),
+                editProfileNavigator: self.editProfileNavigator()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - Auth
+    
+    var authCoordinator: Factory<any AuthCoordinating> {
+        Factory(self) { @MainActor in
+            AuthCoordinator(
+                authService: self.authService(),
+                authScreenFactory: self.authScreenFactory(),
+                privacyPolicyScreenFactory: self.privacyPolicyScreenFactory(),
+                resetPasswordViewModel: self.resetPasswordViewModel()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - MainTab
+    
+    var mainTabCoordinator: Factory<any MainTabCoordinating> {
+        Factory(self) { @MainActor in
+            MainTabCoordinator(
+                catalogCoordinator: self.catalogCoordinator(),
+                favoritesCoordinator: self.favoritesCoordinator(),
+                cartCoordinator: self.cartCoordinator(),
+                profileCoordinator: self.profileCoordinator()
+            )
+        }
+        .scope(.singleton)
+    }
+    
+    // MARK: - App
+    
+    var appCoordinator: Factory<any AppCoordinating> {
+        Factory(self) { @MainActor in
+            AppCoordinator(
+                authCoordinator: self.authCoordinator(),
+                mainTabCoordinator: self.mainTabCoordinator(),
+                authService: self.authService(),
+                sessionStorage: self.authSessionStorage(),
+                bootScreenFactory: self.bootScreenFactory()
+            )
+        }
+        .scope(.singleton)
+    }
+}

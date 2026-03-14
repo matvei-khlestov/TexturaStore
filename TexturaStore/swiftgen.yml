@@ -1,0 +1,9 @@
+strings:
+  inputs:
+    - TexturaStore/Resources/Localization/en.lproj/Localizable.strings
+  outputs:
+    - templatePath: swiftgen-templates/strings-structured-swift5-var.stencil
+      output: TexturaStore/Generated/Strings+Generated.swift
+      params:
+        enumName: L10n
+        publicAccess: false

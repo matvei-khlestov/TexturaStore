@@ -1,0 +1,359 @@
+/* 
+  Localizable.strings
+  TexturaStore
+
+  Created by Matvei Khlestov on 02.02.2026.
+  
+*/
+
+/* TabBar */
+"tab.catalog" = "Catalog";
+"tab.favorites" = "Favorites";
+"tab.cart" = "Cart";
+"tab.profile" = "Profile";
+
+"screen.catalog.title" = "Catalog";
+"screen.favorites.title" = "Favorites";
+"screen.cart.title" = "Cart";
+"screen.profile.title" = "Profile";
+
+/* Validation */
+"validation.name.minLength" = "Name must contain at least 2 characters";
+
+"validation.email.invalid" = "Enter a valid e-mail";
+
+"validation.password.minLength" = "At least 6 characters";
+"validation.password.noSpaces" = "Password must not contain spaces";
+"validation.password.allowedChars" = "Allowed: latin letters, digits, !@#$%";
+"validation.password.requireDigit" = "Add at least one digit";
+"validation.password.requireSpecial" = "Add at least one special character (!@#$%)";
+"validation.password.requireUppercase" = "Add at least one uppercase letter";
+
+"validation.phone.invalidFormat" = "Enter a phone number in the format +7 (XXX) XXX-XX-XX";
+
+"validation.comment.empty" = "Comment cannot be empty";
+"validation.comment.tooShort" = "Comment is too short";
+"validation.comment.tooLong" = "Comment is too long (maximum 500 characters)";
+
+/* Form - Fields */
+"form.field.name.title" = "Name";
+"form.field.name.placeholder" = "Enter name";
+
+"form.field.email.title" = "E-mail";
+"form.field.email.placeholder" = "Enter e-mail";
+
+"form.field.password.title" = "Password";
+"form.field.password.placeholder" = "Enter password";
+
+"form.field.phone.title" = "Phone";
+"form.field.phone.placeholder" = "+7 (___) ___-__-__";
+
+/* Auth - Sign In */
+"auth.signin.forgotPassword" = "Forgot password?";
+"auth.signin.submit" = "Sign In";
+"auth.signin.noteText" = "Don't have an account?";
+"auth.signin.noteAction" = "Sign Up";
+
+/* Auth - Sign Up */
+"auth.signup.privacyTitle" = "Privacy Policy";
+"auth.signup.agreement.error" = "You must agree to the privacy policy";
+"auth.signup.submit" = "Sign Up";
+"auth.signup.noteText" = "Already have an account?";
+"auth.signup.noteAction" = "Sign In";
+"auth.signup.success.title" = "Registration successful";
+"auth.signup.success.message" = "We sent an email to confirm your email address.\n\nConfirm your email and sign in to the app.\n\nYou will be redirected to the Sign In screen.";
+
+/* Auth - Root */
+"auth.root.signin.title" = "Sign In";
+"auth.root.signup.title" = "Sign Up";
+
+/* Auth - Reset Password */
+"auth.reset.title" = "Password reset";
+"auth.reset.subtitle" = "Enter your e-mail and we will send a password reset link.";
+"auth.reset.submit" = "Send";
+"auth.reset.backRowLabel" = "Remembered your password?";
+"auth.reset.backRowAction" = "Back to Sign In";
+"auth.reset.alert.done.title" = "Done";
+"auth.reset.alert.done.message" = "We sent you an email. Check your inbox.";
+
+/* Common */
+"common.error.title" = "Error";
+"common.ok" = "OK";
+
+/* FavoritesView */
+
+"favorites.navigation.title" = "Favorites";
+"favorites.emptyState" = "No favorites yet";
+
+"favorites.clear.title" = "Clear";
+"favorites.clear.confirm.title" = "Clear favorites?";
+
+"favorites.swipe.delete" = "Delete";
+
+"favorites.cart.in" = "In cart";
+"favorites.cart.add" = "Add to cart";
+
+/* CartView */
+
+"cart.navigation.title" = "Cart";
+"cart.emptyState" = "Your cart is empty";
+
+"cart.checkout.title" = "Checkout";
+
+"cart.clear.title" = "Clear";
+"cart.clear.confirm.title" = "Clear cart?";
+
+"cart.swipe.delete" = "Delete";
+
+/* CatalogView */
+
+"catalog.navigation.title" = "Catalog";
+"catalog.search.placeholder" = "Furniture search";
+
+"catalog.products.title" = "All products";
+"catalog.filters.title" = "Filters";
+
+"catalog.category.products.count" = "%d products";
+
+"catalog.product.favorite.add" = "Add to favorites";
+"catalog.product.favorite.remove" = "Remove from favorites";
+
+"catalog.product.cart.in" = "In cart";
+"catalog.product.cart.add" = "Add to cart";
+
+/* CatalogFilterView */
+
+"catalog.filter.navigation.title" = "Filter";
+"catalog.filter.reset" = "Reset";
+
+"catalog.filter.header.categories" = "Categories";
+"catalog.filter.header.brands" = "Brands";
+"catalog.filter.header.colors" = "Colors";
+"catalog.filter.header.price" = "Price";
+
+"catalog.filter.price.min" = "Min. price";
+"catalog.filter.price.max" = "Max. price";
+
+/* FilterBottomBarView */
+
+"filter.bottomBar.title.found" = "Found %d products";
+"filter.bottomBar.title.empty" = "No filters selected";
+
+"filter.bottomBar.button.showCount" = "Show (%d)";
+"filter.bottomBar.button.showAll" = "Show all products";
+
+/* Product Details */
+"productDetails.navigation.title" = "Product details";
+"productDetails.loading" = "Loading...";
+"productDetails.cart.in" = "In cart";
+"productDetails.cart.add" = "Add to cart";
+"productDetails.favorite.add" = "Add to favorites";
+"productDetails.favorite.remove" = "Remove from favorites";
+"productDetails.back" = "Back";
+
+/* Profile */
+"profile.logout.title" = "Log Out";
+"profile.logout.confirm" = "Log out of your account?";
+"profile.delete.title" = "Delete Account";
+"profile.delete.confirm" = "Delete your account?";
+"profile.error.unknown" = "Unknown error";
+
+/* Profile - Menu */
+"profile.menu.editProfile" = "Edit Profile";
+"profile.menu.orders" = "My Orders";
+"profile.menu.settings" = "Settings";
+"profile.menu.about" = "About Us";
+"profile.menu.contact" = "Contact Us";
+"profile.menu.privacy" = "Privacy Policy";
+
+/* Profile - Edit */
+"profile.edit.row.name" = "Name";
+"profile.edit.row.email" = "E-mail";
+"profile.edit.row.phone" = "Phone";
+
+/* Profile - Edit Screen */
+"profile.edit.title" = "Edit Profile";
+"profile.edit.changePhoto" = "Change photo";
+
+/* Profile - Edit - PhotoPicker */
+"profile.edit.photoPicker.unableToLoadImage" = "Unable to load image.";
+"profile.edit.photoPicker.invalidImageObject" = "Invalid image object.";
+
+/* Profile - Edit Field (BaseEditFieldView) */
+"profile.editField.submit" = "Change";
+
+"profile.editField.email.success.title" = "Check your email";
+"profile.editField.email.success.message" = "We sent an email to confirm changing your e-mail to both your old and new address.";
+
+"profile.editField.name.success.title" = "Done";
+"profile.editField.name.success.message" = "Name successfully changed.";
+
+"profile.editField.phone.success.title" = "Done";
+"profile.editField.phone.success.message" = "Phone number successfully changed.";
+
+/* Profile - Edit Field Screens */
+"profile.editName.title" = "Change name";
+"profile.editEmail.title" = "Change e-mail";
+"profile.editPhone.title" = "Change phone number";
+
+/* Privacy Policy */
+"privacyPolicy.lastUpdated" = "Updated: September 17, 2025";
+"privacyPolicy.body" = "Updated: September 17, 2025\n\n1. General provisions\nTextura respects your personal data and processes it in accordance with applicable laws and internal security standards. This Policy describes what data we collect, how we use and protect it.\n\n2. What data we collect\n• Contact data: name, phone, e-mail.\n• Delivery data: city, street, building, apartment, postal code (if any), delivery comment.\n• Order data: order contents (products/fabrics, length, characteristics), cost, payment/delivery method, purchase history.\n• Technical data: device, OS version, IP address, session/device identifiers, diagnostic data and app usage analytics.\n\n3. Purposes of processing\n• Order placement, processing and delivery (including confirmation and status notifications).\n• User support and request handling.\n• Improving service quality, catalog personalization and recommendations.\n• Compliance with legal requirements (accounting and taxes, refunds, etc.).\n\n4. Legal bases\n• Contract performance (order placement, delivery, returns).\n• User consent (e.g. marketing messages — if enabled).\n• Legitimate interests (service security and fraud prevention).\n• Legal obligations (tax/financial requirements).\n\n5. Transfer to third parties\nWe may transfer data to:\n• Delivery and logistics partners — to fulfill delivery and communicate about the order.\n• Payment providers — to accept payments and process refunds.\n• IT infrastructure and analytics providers — hosting, monitoring, crash diagnostics and stability improvements.\nTransfers are carried out under agreements with data protection obligations.\n\n6. Storage and protection\n• Data is stored as long as necessary for the purposes of processing and within time limits established by law.\n• We apply technical and organizational security measures, including encryption, access control and audits.\n\n7. User rights\nYou can:\n• Request access to your data and receive a copy.\n• Correct inaccurate information.\n• Restrict processing or object to it.\n• Withdraw consent (does not affect lawfulness before withdrawal).\n• Request deletion of data if permitted by law.\n\n8. Cookies, identifiers and analytics\nWe use cookies/identifiers and analytics to ensure the app works properly, enable authorization, improve the UI and service quality. You can manage these settings in the system/device, however this may affect functionality.\n\n9. Contact us\nFor privacy matters:\n• E-mail: privacy@textura.ru\n• Phone: +7 (800) 555-35-35\n• Address: Moscow, Example street, 1\n\n10. Policy changes\nWe may periodically update the Policy. The new version comes into force from the moment it is published in the app. We recommend checking the update date periodically.\n\n—\nTextura";
+
+/* Contact Us */
+"contact.title" = "Contact Us";
+"contact.copy" = "Copy";
+
+"contact.email.openFailed.title" = "Unable to open Mail";
+"contact.email.copied.prefix" = "Address copied to clipboard:\n";
+
+"contact.phone.unavailable.title" = "Call unavailable";
+"contact.phone.copied.prefix" = "Number copied to clipboard:\n";
+
+"contact.url.openFailed.title" = "Unable to open link";
+
+/* Contact Items */
+"contact.item.phone.title" = "Phone";
+"contact.item.email.title" = "Email";
+"contact.item.address.title" = "Address";
+
+"contact.item.phone.detail" = "+7 (800) 555-35-35";
+"contact.item.email.detail" = "support@vemora.ru";
+"contact.item.address.detail" = "Moscow, Khodynsky Boulevard, 4";
+
+/* About */
+"about.intro" = "Textura Store is an online store of fabrics and interior materials, created for those who value quality, style, and thoughtful details. We help bring ideas to life — from cozy home spaces to professional design projects.";
+
+"about.bullet.quality.title" = "Material quality";
+"about.bullet.quality.subtitle" = "We carefully select fabrics and suppliers so that every item in the catalog meets high standards of quality and durability.";
+
+"about.bullet.range.title" = "Wide selection";
+"about.bullet.range.subtitle" = "The assortment includes fabrics of various textures, colors, and purposes — for home, office, and commercial spaces.";
+
+"about.bullet.design.title" = "Contemporary design";
+"about.bullet.design.subtitle" = "We follow trends in textiles and interior design, regularly updating collections and offering modern solutions.";
+
+"about.bullet.client.title" = "Customer focus";
+"about.bullet.client.subtitle" = "We are always ready to help with selection, answer questions, and make the purchasing process simple and convenient.";
+
+/* Settings */
+"settings.title" = "Settings";
+
+"settings.language.header" = "Language";
+"settings.language.footer" = "Choose the app interface language.";
+
+"settings.theme.header" = "Theme";
+"settings.theme.footer" = "Choose the app appearance.";
+
+"settings.language.ru" = "Russian";
+"settings.language.en" = "English";
+
+"settings.theme.light" = "Light";
+"settings.theme.dark" = "Dark";
+"settings.theme.system" = "System";
+
+/* Orders */
+"orders.navigation.title" = "My Orders";
+"orders.section.headerPrefix" = "Order";
+"orders.emptyState" = "You have no orders yet";
+
+/* Orders Item */
+"orders.item.addressPrefix" = "Address: ";
+"orders.item.datePrefix" = "Created at: ";
+"orders.item.paymentPrefix" = "Payment: ";
+
+/* Order Status */
+"orders.status.assembling" = "Assembling";
+"orders.status.ready" = "Ready for pickup";
+"orders.status.delivering" = "Out for delivery";
+"orders.status.delivered" = "Delivered";
+"orders.status.cancelled" = "Cancelled";
+
+/* Checkout */
+
+"checkout.navigation.title" = "Checkout";
+
+"checkout.segment.pickup" = "Pickup";
+"checkout.segment.delivery" = "Delivery";
+
+"checkout.total.title" = "Total";
+"checkout.delivery.title" = "Delivery";
+"checkout.delivery.free" = "Free";
+
+"checkout.delivery.whenPickup" = "The day after tomorrow";
+"checkout.delivery.whenCourier" = "Within 5 business days";
+
+"checkout.delivery.cost" = "Delivery 0 ₽";
+
+"checkout.order.button" = "Place order";
+
+"checkout.pickup.address.example" = "Moscow, Khodynsky Boulevard 4";
+
+"checkout.payment.title" = "How to pay for the order?";
+"checkout.payment.method" = "Pay on delivery";
+
+"checkout.delivery.address.placeholder" = "Enter delivery address";
+"checkout.phone.placeholder" = "Enter phone number";
+"checkout.comment.placeholder" = "Leave a comment";
+
+"checkout.delivery.store.title" = "Delivery Vemora Store";
+
+/* Address Input Sheet Value */
+"address.value.city.prefix" = "city";
+"address.value.street.prefix" = "st.";
+"address.value.house.prefix" = "house";
+"address.value.apartment.prefix" = "apt.";
+"address.value.floor.prefix" = "floor";
+"address.value.intercom.prefix" = "intercom:";
+
+/* Address Input Sheet */
+"addressInput.navigation.title" = "Delivery address";
+"addressInput.save" = "Save address";
+
+"addressInput.city.title" = "City";
+"addressInput.city.placeholder" = "Enter city";
+
+"addressInput.street.title" = "Street";
+"addressInput.street.placeholder" = "Enter street";
+
+"addressInput.house.title" = "House";
+"addressInput.house.placeholder" = "Enter house number";
+
+"addressInput.apartment.title" = "Apartment";
+"addressInput.apartment.placeholder" = "Enter apartment";
+
+"addressInput.floor.title" = "Floor";
+"addressInput.floor.placeholder" = "Enter floor";
+
+"addressInput.intercom.title" = "Intercom code";
+"addressInput.intercom.placeholder" = "Enter intercom code";
+
+/* Phone Input Sheet */
+"phoneInput.navigation.title" = "Recipient phone number";
+"phoneInput.save" = "Save";
+
+/* Comment Input Sheet */
+"commentInput.navigation.title" = "Order comment";
+"commentInput.placeholder" = "Write instructions for the courier…";
+"commentInput.save" = "Save";
+
+/* Product Details - Reviews */
+"productDetails.reviews.emptyTitle" = "There are no reviews yet, yours can be the first";
+"productDetails.reviews.write" = "Write a review";
+"productDetails.reviews.title" = "Reviews: %d";
+
+/* Add Review */
+"addReview.navigation.title" = "Review";
+"addReview.screen.title" = "Write a review";
+"addReview.comment.title" = "Your review";
+"addReview.comment.placeholder" = "Enter your review";
+"addReview.rating.title" = "Your rating";
+"addReview.submit" = "Submit";
+
+/* Reviews List */
+"reviewsList.navigation.title" = "Product reviews: %d";
+"reviewsList.alert.delete.title" = "Delete review?";
+"reviewsList.alert.delete.message" = "This action cannot be undone.";
+"reviewsList.alert.delete.confirm" = "Delete";
+"reviewsList.alert.delete.cancel" = "Cancel";
+"reviewsList.delete.action" = "Delete review";

@@ -1,0 +1,43 @@
+//
+//  ProfileScreenBuilding.swift
+//  TexturaStore
+//
+//  Created by Matvei Khlestov on 07.02.2026.
+//
+
+import SwiftUI
+
+@MainActor
+protocol ProfileScreenBuilding {
+    func makeProfileUserView(
+        viewModel: any ProfileUserViewModelProtocol,
+        onEditProfileTap: (() -> Void)?,
+        onOrdersTap: (() -> Void)?,
+        onSettingsTap: (() -> Void)?,
+        onAboutTap: (() -> Void)?,
+        onContactTap: (() -> Void)?,
+        onPrivacyTap: (() -> Void)?,
+        onLogoutTap: @escaping () -> Void,
+        onDeleteAccountTap: @escaping () -> Void
+    ) -> AnyView
+    
+    func makeOrdersView(
+        viewModel: OrdersViewModelProtocol,
+        languageProvider: any LanguageProviding,
+        localizer: (any OrdersLocalizing)?,
+        onBack: (() -> Void)?
+    ) -> AnyView
+    
+    func makeContactUsView(
+        onBack: @escaping () -> Void
+    ) -> AnyView
+    
+    func makeAboutView(
+        onBack: @escaping () -> Void
+    ) -> AnyView
+    
+    func makeSettingsView(
+        viewModel: any SettingsViewModelProtocol,
+        onBack: @escaping () -> Void
+    ) -> AnyView
+}

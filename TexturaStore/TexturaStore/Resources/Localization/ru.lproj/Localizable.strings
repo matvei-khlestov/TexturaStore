@@ -1,0 +1,359 @@
+/* 
+  Localizable.strings
+  TexturaStore
+
+  Created by Matvei Khlestov on 02.02.2026.
+  
+*/
+
+/* TabBar */
+"tab.catalog" = "Каталог";
+"tab.favorites" = "Избранное";
+"tab.cart" = "Корзина";
+"tab.profile" = "Профиль";
+
+"screen.catalog.title" = "Каталог";
+"screen.favorites.title" = "Избранное";
+"screen.cart.title" = "Корзина";
+"screen.profile.title" = "Профиль";
+
+/* Validation */
+"validation.name.minLength" = "Имя должно содержать минимум 2 символа";
+
+"validation.email.invalid" = "Введите корректный e-mail";
+
+"validation.password.minLength" = "Минимум 6 символов";
+"validation.password.noSpaces" = "Пароль не должен содержать пробелов";
+"validation.password.allowedChars" = "Допустимы: латиница, цифры, !@#$%";
+"validation.password.requireDigit" = "Добавьте хотя бы одну цифру";
+"validation.password.requireSpecial" = "Добавьте хотя бы один спецсимвол (!@#$%)";
+"validation.password.requireUppercase" = "Добавьте хотя бы одну заглавную букву";
+
+"validation.phone.invalidFormat" = "Введите номер в формате +7 (XXX) XXX-XX-XX";
+
+"validation.comment.empty" = "Комментарий не может быть пустым";
+"validation.comment.tooShort" = "Комментарий слишком короткий";
+"validation.comment.tooLong" = "Комментарий слишком длинный (максимум 500 символов)";
+
+/* Form - Fields */
+"form.field.name.title" = "Имя";
+"form.field.name.placeholder" = "Введите имя";
+
+"form.field.email.title" = "E-mail";
+"form.field.email.placeholder" = "Введите e-mail";
+
+"form.field.password.title" = "Пароль";
+"form.field.password.placeholder" = "Введите пароль";
+
+"form.field.phone.title" = "Телефон";
+"form.field.phone.placeholder" = "+7 (___) ___-__-__";
+
+/* Auth - Sign In */
+"auth.signin.forgotPassword" = "Забыли пароль?";
+"auth.signin.submit" = "Войти";
+"auth.signin.noteText" = "Ещё нет аккаунта?";
+"auth.signin.noteAction" = "Регистрация";
+
+/* Auth - Sign Up */
+"auth.signup.privacyTitle" = "Политика конфиденциальности";
+"auth.signup.agreement.error" = "Необходимо согласиться с политикой конфиденциальности";
+"auth.signup.submit" = "Зарегистрироваться";
+"auth.signup.noteText" = "Уже есть аккаунт?";
+"auth.signup.noteAction" = "Войти";
+"auth.signup.success.title" = "Регистрация успешна";
+"auth.signup.success.message" = "На вашу почту было направлено письмо для подтверждения email.\n\nПодтвердите почту и войдите в приложение.\n\nВы будете перенаправлены на экран входа в приложение.";
+
+/* Auth - Root */
+"auth.root.signin.title" = "Вход";
+"auth.root.signup.title" = "Регистрация";
+
+/* Auth - Reset Password */
+"auth.reset.title" = "Восстановление пароля";
+"auth.reset.subtitle" = "Укажите e-mail, мы отправим ссылку для смены пароля.";
+"auth.reset.submit" = "Отправить";
+"auth.reset.backRowLabel" = "Вспомнили пароль?";
+"auth.reset.backRowAction" = "Назад ко входу";
+"auth.reset.alert.done.title" = "Готово";
+"auth.reset.alert.done.message" = "Мы отправили письмо. Проверьте почту.";
+
+/* Common */
+"common.error.title" = "Ошибка";
+"common.ok" = "OK";
+
+/* FavoritesView */
+
+"favorites.navigation.title" = "Избранное";
+"favorites.emptyState" = "Пока нет избранных товаров";
+
+"favorites.clear.title" = "Очистить";
+"favorites.clear.confirm.title" = "Очистить избранное?";
+
+"favorites.swipe.delete" = "Удалить";
+
+"favorites.cart.in" = "В корзине";
+"favorites.cart.add" = "В корзину";
+
+/* CartView */
+
+"cart.navigation.title" = "Корзина";
+"cart.emptyState" = "Ваша корзина пуста";
+
+"cart.checkout.title" = "Оформить заказ";
+
+"cart.clear.title" = "Очистить";
+"cart.clear.confirm.title" = "Очистить корзину?";
+
+"cart.swipe.delete" = "Удалить";
+
+/* CatalogView */
+
+"catalog.navigation.title" = "Каталог";
+"catalog.search.placeholder" = "Поиск мебели";
+
+"catalog.products.title" = "Все товары";
+"catalog.filters.title" = "Фильтры";
+
+"catalog.category.products.count" = "%d товаров";
+
+"catalog.product.favorite.add" = "Добавить в избранное";
+"catalog.product.favorite.remove" = "Убрать из избранного";
+
+"catalog.product.cart.in" = "В корзине";
+"catalog.product.cart.add" = "В корзину";
+
+/* CatalogFilterView */
+
+"catalog.filter.navigation.title" = "Фильтр";
+"catalog.filter.reset" = "Сбросить";
+
+"catalog.filter.header.categories" = "Категории";
+"catalog.filter.header.brands" = "Бренды";
+"catalog.filter.header.colors" = "Цвета";
+"catalog.filter.header.price" = "Цена";
+
+"catalog.filter.price.min" = "Мин. цена";
+"catalog.filter.price.max" = "Макс. цена";
+
+/* FilterBottomBarView */
+
+"filter.bottomBar.title.found" = "Нашлось %d товаров";
+"filter.bottomBar.title.empty" = "Фильтры не установлены";
+
+"filter.bottomBar.button.showCount" = "Показать (%d)";
+"filter.bottomBar.button.showAll" = "Показать все товары";
+
+/* Product Details */
+"productDetails.navigation.title" = "Детали товара";
+"productDetails.loading" = "Загрузка...";
+"productDetails.cart.in" = "В корзине";
+"productDetails.cart.add" = "В корзину";
+"productDetails.favorite.add" = "Добавить в избранное";
+"productDetails.favorite.remove" = "Убрать из избранного";
+"productDetails.back" = "Назад";
+
+/* Profile */
+"profile.logout.title" = "Выйти";
+"profile.logout.confirm" = "Выйти из аккаунта?";
+"profile.delete.title" = "Удалить аккаунт";
+"profile.delete.confirm" = "Удалить аккаунт?";
+"profile.error.unknown" = "Неизвестная ошибка";
+
+/* Profile - Menu */
+"profile.menu.editProfile" = "Редактировать профиль";
+"profile.menu.orders" = "Мои заказы";
+"profile.menu.settings" = "Настройки";
+"profile.menu.about" = "О нас";
+"profile.menu.contact" = "Связаться с нами";
+"profile.menu.privacy" = "Политика конфиденциальности";
+
+/* Profile - Edit */
+"profile.edit.row.name" = "Имя";
+"profile.edit.row.email" = "Почта";
+"profile.edit.row.phone" = "Телефон";
+
+/* Profile - Edit Screen */
+"profile.edit.title" = "Редактирование профиля";
+"profile.edit.changePhoto" = "Изменить фото";
+
+/* Profile - Edit - PhotoPicker */
+"profile.edit.photoPicker.unableToLoadImage" = "Невозможно загрузить изображение.";
+"profile.edit.photoPicker.invalidImageObject" = "Получен некорректный объект изображения.";
+
+/* Profile - Edit Field (BaseEditFieldView) */
+"profile.editField.submit" = "Изменить";
+
+"profile.editField.email.success.title" = "Проверьте почту";
+"profile.editField.email.success.message" = "Мы отправили письмо для подтверждения смены e-mail на старую и новую почту.";
+
+"profile.editField.name.success.title" = "Готово";
+"profile.editField.name.success.message" = "Имя успешно изменено.";
+
+"profile.editField.phone.success.title" = "Готово";
+"profile.editField.phone.success.message" = "Номер телефона успешно изменён.";
+
+/* Profile - Edit Field Screens */
+"profile.editName.title" = "Изменить имя";
+"profile.editEmail.title" = "Изменить почту";
+"profile.editPhone.title" = "Изменить номер";
+
+/* Privacy Policy */
+"privacyPolicy.lastUpdated" = "Обновлено: 17 сентября 2025";
+"privacyPolicy.body" = "Обновлено: 17 сентября 2025\n\n1. Общие положения\nTextura уважает ваши персональные данные и обрабатывает их в соответствии с применимым законодательством и внутренними стандартами безопасности. Настоящая Политика описывает, какие данные мы собираем, как используем и защищаем.\n\n2. Какие данные мы собираем\n• Контактные данные: имя, телефон, e-mail.\n• Данные для доставки: город, улица, дом, квартира, индекс (при наличии), комментарий к доставке.\n• Данные заказов: состав заказа (товары/ткани, метраж, характеристики), стоимость, способ оплаты/доставки, история покупок.\n• Технические данные: устройство, версия ОС, IP-адрес, идентификаторы сессии/устройства, диагностические данные и аналитика использования приложения.\n\n3. Цели обработки\n• Оформление, обработка и доставка заказов (включая подтверждение и информирование о статусах).\n• Поддержка пользователей и обработка обращений.\n• Улучшение качества сервиса, персонализация каталога и рекомендаций.\n• Выполнение требований закона (бухгалтерский и налоговый учёт, возвраты и пр.).\n\n4. Правовые основания\n• Исполнение договора (оформление заказа, доставка, возвраты).\n• Согласие пользователя (например, маркетинговые рассылки — если включены).\n• Законные интересы (обеспечение безопасности сервиса и предотвращение мошенничества).\n• Обязанности по закону (налоговые/финансовые требования).\n\n5. Передача третьим лицам\nМы можем передавать данные:\n• Службам доставки и логистическим партнёрам — для выполнения доставки и коммуникации по заказу.\n• Платёжным провайдерам — для приёма оплат и проведения возвратов.\n• Провайдерам IT-инфраструктуры и аналитики — хостинг, мониторинг, диагностика ошибок и улучшение стабильности.\nПередача осуществляется по договорам с обязательствами по защите данных.\n\n6. Хранение и защита\n• Данные хранятся столько, сколько необходимо для целей обработки и в сроки, установленные законом.\n• Мы применяем технические и организационные меры защиты, включая шифрование, разграничение доступов и аудит.\n\n7. Права пользователя\nВы можете:\n• Запросить доступ к вашим данным и получить копию.\n• Исправить неточные сведения.\n• Ограничить обработку или возразить против неё.\n• Отозвать согласие (не затрагивает законность обработки до отзыва).\n• Запросить удаление данных, если это допускается законом.\n\n8. Cookie, идентификаторы и аналитика\nМы используем cookie/идентификаторы и аналитику для обеспечения работы приложения, авторизации, улучшения интерфейса и качества сервиса. Вы можете управлять настройками в системе/устройстве, однако это может повлиять на функциональность.\n\n9. Связаться с нами\nПо вопросам конфиденциальности:\n• E-mail: privacy@textura.ru\n• Телефон: +7 (800) 555-35-35\n• Адрес: Москва, ул. Примерная, 1\n\n10. Изменения политики\nМы можем периодически обновлять Политику. Новая редакция вступает в силу с момента публикации в приложении. Рекомендуем периодически проверять дату обновления.\n\n—\nTextura";
+
+/* Contact Us */
+"contact.title" = "Контакты";
+"contact.copy" = "Копировать";
+
+"contact.email.openFailed.title" = "Не удалось открыть почту";
+"contact.email.copied.prefix" = "Адрес скопирован в буфер обмена:\n";
+
+"contact.phone.unavailable.title" = "Звонок недоступен";
+"contact.phone.copied.prefix" = "Номер скопирован в буфер обмена:\n";
+
+"contact.url.openFailed.title" = "Не удалось открыть ссылку";
+
+/* Contact Items */
+"contact.item.phone.title" = "Телефон";
+"contact.item.email.title" = "Email";
+"contact.item.address.title" = "Адрес";
+
+"contact.item.phone.detail" = "+7 (800) 555-35-35";
+"contact.item.email.detail" = "support@vemora.ru";
+"contact.item.address.detail" = "Москва, Ходынский бульвар, 4";
+
+/* About */
+"about.intro" = "Textura Store — это онлайн-магазин тканей и материалов для интерьера, созданный для тех, кто ценит качество, стиль и продуманные детали. Мы помогаем воплощать идеи в жизнь — от уютного домашнего пространства до профессиональных дизайнерских проектов.";
+
+"about.bullet.quality.title" = "Качество материалов";
+"about.bullet.quality.subtitle" = "Мы тщательно отбираем ткани и поставщиков, чтобы каждая позиция в каталоге соответствовала высоким стандартам качества и долговечности.";
+
+"about.bullet.range.title" = "Широкий выбор";
+"about.bullet.range.subtitle" = "В ассортименте представлены ткани разных фактур, цветов и назначений — для дома, офиса и коммерческих пространств.";
+
+"about.bullet.design.title" = "Актуальный дизайн";
+"about.bullet.design.subtitle" = "Мы следим за трендами в текстиле и интерьере, регулярно обновляя коллекции и предлагая современные решения.";
+
+"about.bullet.client.title" = "Ориентация на клиента";
+"about.bullet.client.subtitle" = "Мы всегда готовы помочь с выбором, ответить на вопросы и сделать процесс покупки простым и удобным.";
+
+/* Settings */
+"settings.title" = "Настройки";
+
+"settings.language.header" = "Язык";
+"settings.language.footer" = "Выберите язык интерфейса приложения.";
+
+"settings.theme.header" = "Тема";
+"settings.theme.footer" = "Выберите оформление приложения.";
+
+"settings.language.ru" = "Русский";
+"settings.language.en" = "Английский";
+
+"settings.theme.light" = "Светлая";
+"settings.theme.dark" = "Тёмная";
+"settings.theme.system" = "Системная";
+
+/* Orders */
+"orders.navigation.title" = "Мои заказы";
+"orders.section.headerPrefix" = "Заказ";
+"orders.emptyState" = "У вас пока нет заказов";
+
+/* Orders Item */
+"orders.item.addressPrefix" = "Адрес: ";
+"orders.item.datePrefix" = "Дата создания: ";
+"orders.item.paymentPrefix" = "Оплата: ";
+
+/* Order Status */
+"orders.status.assembling" = "На сборке";
+"orders.status.ready" = "Готов к выдаче";
+"orders.status.delivering" = "В доставке";
+"orders.status.delivered" = "Доставлен";
+"orders.status.cancelled" = "Отменён";
+
+/* Checkout */
+
+"checkout.navigation.title" = "Оформление заказа";
+
+"checkout.segment.pickup" = "Самовывоз";
+"checkout.segment.delivery" = "Доставка";
+
+"checkout.total.title" = "Итого";
+"checkout.delivery.title" = "Доставка";
+"checkout.delivery.free" = "Бесплатно";
+
+"checkout.delivery.whenPickup" = "Послезавтра";
+"checkout.delivery.whenCourier" = "В течение 5 рабочих дней";
+
+"checkout.delivery.cost" = "Доставка 0 ₽";
+
+"checkout.order.button" = "Заказать";
+
+"checkout.pickup.address.example" = "Москва, Ходынский бульвар 4";
+
+"checkout.payment.title" = "Как оплатить заказ?";
+"checkout.payment.method" = "При получении";
+
+"checkout.delivery.address.placeholder" = "Указать адрес доставки";
+"checkout.phone.placeholder" = "Указать номер телефона";
+"checkout.comment.placeholder" = "Оставить комментарий";
+
+"checkout.delivery.store.title" = "Доставка Vemora Store";
+
+/* Address Input Sheet Value */
+"address.value.city.prefix" = "г.";
+"address.value.street.prefix" = "ул.";
+"address.value.house.prefix" = "д.";
+"address.value.apartment.prefix" = "кв.";
+"address.value.floor.prefix" = "эт.";
+"address.value.intercom.prefix" = "домофон:";
+
+/* Address Input Sheet */
+"addressInput.navigation.title" = "Адрес доставки";
+"addressInput.save" = "Сохранить адрес";
+
+"addressInput.city.title" = "Город";
+"addressInput.city.placeholder" = "Введите город";
+
+"addressInput.street.title" = "Улица";
+"addressInput.street.placeholder" = "Введите улицу";
+
+"addressInput.house.title" = "Дом";
+"addressInput.house.placeholder" = "Введите номер дома";
+
+"addressInput.apartment.title" = "Квартира";
+"addressInput.apartment.placeholder" = "Введите квартиру";
+
+"addressInput.floor.title" = "Этаж";
+"addressInput.floor.placeholder" = "Введите этаж";
+
+"addressInput.intercom.title" = "Код домофона";
+"addressInput.intercom.placeholder" = "Введите код домофона";
+
+/* Phone Input Sheet */
+"phoneInput.navigation.title" = "Укажите номер получателя";
+"phoneInput.save" = "Сохранить";
+
+/* Comment Input Sheet */
+"commentInput.navigation.title" = "Комментарий к заказу";
+"commentInput.placeholder" = "Напишите пожелания курьеру…";
+"commentInput.save" = "Сохранить";
+
+/* Product Details - Reviews */
+"productDetails.reviews.emptyTitle" = "Отзывов ещё нет, ваш может стать первым";
+"productDetails.reviews.write" = "Написать отзыв";
+"productDetails.reviews.title" = "Отзывы: %d";
+
+/* Add Review */
+"addReview.navigation.title" = "Отзыв";
+"addReview.screen.title" = "Написать отзыв";
+"addReview.comment.title" = "Ваш отзыв";
+"addReview.comment.placeholder" = "Введите ваш отзыв";
+"addReview.rating.title" = "Ваша оценка";
+"addReview.submit" = "Отправить";
+
+/* Reviews List */
+"reviewsList.navigation.title" = "Отзывы о товаре (%d)";
+"reviewsList.alert.delete.title" = "Удалить отзыв?";
+"reviewsList.alert.delete.message" = "Это действие нельзя отменить.";
+"reviewsList.alert.delete.confirm" = "Удалить";
+"reviewsList.alert.delete.cancel" = "Отмена";
+"reviewsList.delete.action" = "Удалить отзыв";
